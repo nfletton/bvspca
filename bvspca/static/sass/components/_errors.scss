@@ -1,0 +1,7 @@
+.error {
+  @include container-narrow;
+  margin-bottom: 10rem;
+  p {
+    text-align: center;
+  }
+}

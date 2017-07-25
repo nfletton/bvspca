@@ -1,0 +1,240 @@
+$event-row-break: 650px;
+
+.home {
+  background-color: $content-dark-bg;
+  color: #fff;
+}
+
+.upcoming-events {
+}
+
+.upcoming-events-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media(min-width: 450px) {
+    padding: {
+      left: 1em;
+      right: 1em;
+    }
+  }
+  @media(min-width: $event-row-break) {
+    flex-direction: row;
+  }
+  @media(min-width: 1100px) {
+    padding: {
+      left: 2em;
+      right: 2em;
+    }
+  }
+}
+
+.upcoming-events-container--single {
+  justify-content: space-around;
+}
+
+.event-block {
+  background-color: #fff;
+  color: $base-font-color;
+  font-size: 0.8em;
+  padding: 1em 2em 2em;
+  margin: {
+    top: 0;
+    bottom: 2em;
+  }
+  text-align: center;
+  width: 100%;
+  &.event-block--1 {
+    margin-top: -230px;
+  }
+  @media(min-width: 400px) {
+    &.event-block--1 {
+      margin-top: -150px;
+    }
+  }
+  @media(min-width: 500px) {
+    &.event-block--1 {
+      margin-top: -130px;
+    }
+  }
+  @media(min-width: 600px) {
+    &.event-block--1 {
+      margin-top: -120px;
+    }
+  }
+  @media(min-width: $event-row-break) {
+    width: 47%;
+    margin: {
+      top: -120px;
+      bottom: 50px;
+    }
+    &.event-block--1 {
+      margin-top: -120px;
+    }
+  }
+}
+
+.upcoming-events-container--single {
+  .event-block {
+    width: 100%;
+    @media(min-width: 700px) {
+      width: 90%;
+    }
+    @media(min-width: 800px) {
+      width: 80%;
+    }
+    @media(min-width: 900px) {
+      width: 90%;
+    }
+    @media(min-width: 1000px) {
+      width: 60%;
+    }
+  }
+}
+
+.event-block__type {
+  color: $heading-grey;
+  font-size: 0.75em;
+  text-transform: uppercase;
+}
+
+.event-block__title {
+  color: $highlight-red-on-white;
+  font-family: $heading-font;
+  font-size: 1.7em;
+  font-weight: 400;
+  margin-top: 0.25em;
+}
+
+.event-block__summary {
+}
+
+.event-block__link {
+  color: $highlight-red-on-white;
+  //font-size: 0.9em;
+  &:link,
+  &:visited {
+    color: $highlight-red-on-white;
+  }
+}
+
+.welcome {
+  @include container-narrow;
+  margin: {
+    top: $content-padding;
+    bottom: $content-padding;
+  };
+  h2 {
+    text-align: center;
+  }
+}
+
+$menu-item-row-break: 550px;
+
+.menu-image-nav {
+  display: flex;
+  flex-direction: column;
+  @media(min-width: $menu-item-row-break) {
+    flex-direction: row;
+  }
+}
+
+.menu-image-nav__item {
+  height: 200px;
+  position: relative;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-right: 1px solid #2b2b2b;
+  text-decoration: none;
+  text-transform: uppercase;
+  @media(min-width: $menu-item-row-break) {
+    height: 300px;
+    flex: 1;
+  }
+  &:link,
+  &:visited {
+    color: $base-font-color;
+  }
+  &:hover {
+    .menu-image-nav__item-title {
+      opacity: 1;
+      transition: opacity 500ms;
+    }
+  }
+}
+
+.menu-image-nav__item-title {
+  background-color: #fff;
+  font-family: $heading-font;
+  font-size: 1.2em;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  padding: 0.5em 1em 0.5em;
+  top: 100px;
+  opacity: 1;
+  transition: opacity 500ms;
+  &:hover {
+    background-color: #e6e6e6;
+  }
+  @media(min-width: $menu-item-row-break) {
+    opacity: 0;
+    font-size: 0.75em;
+    right: auto;
+    top: 200px;
+  }
+  @media(min-width: 750px) {
+    font-size: 0.95em;
+  }
+  @media(min-width: 820px) {
+    font-size: 1.05em;
+  }
+  @media(min-width: 1050px) {
+    padding-left: 3em;
+  }
+}
+
+.menu-image-nav__item-title--right {
+    right: 0;
+    @media(min-width: $menu-item-row-break) {
+      right: auto;
+    }
+}
+
+.menu-image-nav__item--breakfast {
+  background-image: url(../images/menu-image-nav-breakfast--mobile.jpg);
+  @media(min-width: $menu-item-row-break) {
+    background-image: url(../images/menu-image-nav-breakfast.jpg);
+  }
+}
+
+.menu-image-nav__item--tapas {
+  background-image: url(../images/menu-image-nav-tapas--mobile.jpg);
+  @media(min-width: $menu-item-row-break) {
+    background-image: url(../images/menu-image-nav-tapas.jpg);
+  }
+}
+
+.menu-image-nav__item--mains {
+  background-image: url(../images/menu-image-nav-main--mobile.jpg);
+  @media(min-width: $menu-item-row-break) {
+    background-image: url(../images/menu-image-nav-main.jpg);
+  }
+}
+
+.menu-image-nav__item--desserts {
+  background-image: url(../images/menu-image-nav-dessert--mobile.jpg);
+  @media(min-width: $menu-item-row-break) {
+    background-image: url(../images/menu-image-nav-dessert.jpg);
+  }
+}
+
+.menu-image-nav__item--wine {
+  background-image: url(../images/menu-image-nav-wine--mobile.jpg);
+  @media(min-width: $menu-item-row-break) {
+    background-image: url(../images/menu-image-nav-wine.jpg);
+  }
+}

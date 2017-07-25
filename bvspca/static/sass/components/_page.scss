@@ -1,0 +1,61 @@
+main {
+}
+
+.intro,
+.close {
+  background-color: $content-grey-bg;
+  overflow: auto;
+}
+
+.intro-container,
+.close-container {
+  @include container-narrow;
+  margin-top: $content-padding;
+  margin-bottom: $content-padding;
+}
+
+.main-content {
+  @include container-narrow;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
+}
+
+.rich-text {
+  @include clearfix;
+  margin-bottom: 2em;
+}
+
+.richtext-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  &.right {
+    float: right;
+    margin-bottom: 0.5em;
+    margin-left: 1em;
+  }
+  &.left {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+  }
+  &.full-width {
+    margin: 2em auto;
+  }
+}
+
+.inline-image {
+  clear: both;
+  margin: 2em 0;
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+}

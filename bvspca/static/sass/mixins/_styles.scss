@@ -1,0 +1,16 @@
+@mixin responsive-image() {
+  max-width: 100%;
+  height: auto;
+}
+
+@mixin list-hover-bg-style() {
+  &:hover {
+    background: linear-gradient(0deg, shade(white, 3%), shade(white, 8%));
+    color: $base-font-color;
+    text-decoration: none;
+  }
+}
+
+@mixin list-border() {
+  border-bottom: 1px solid shade(white, 8%);
+}

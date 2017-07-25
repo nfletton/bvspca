@@ -1,0 +1,18 @@
+.contact-content {
+  @media(min-width: 600px) {
+    @include container-narrow;
+  }
+}
+.contact-form {
+  @media(min-width: 600px) {
+    margin: $content-padding 0;
+  }
+}
+
+#map {
+  background-color: $content-grey-bg;
+  @media(min-width: 600px) {
+    background-color: transparent;
+    margin-top: $content-padding;
+  }
+}

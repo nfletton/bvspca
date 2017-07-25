@@ -1,0 +1,10 @@
+@mixin tabs() {
+  @extend .nav;
+  @extend .nav-tabs;
+  li {
+    @extend .nav-item;
+  }
+  a {
+    @extend .nav-link;
+  }
+}

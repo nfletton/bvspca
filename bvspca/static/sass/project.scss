@@ -1,66 +1,26 @@
+@import "_project-variables";
+@import "normalize";
+@import "base/layout";
+@import "base/links";
+@import "base/type";
+@import "mixins";
+@import "components/button";
+@import "components/embeds";
+@import "components/errors";
+@import "components/footer";
+@import "components/form";
+@import "components/header";
+@import "components/hero";
+@import "components/magnific-popup";
+@import "components/navigation";
+@import "components/page";
+@import "components/page-contact";
+@import "components/page-events";
+@import "components/page-general-content";
+@import "components/page-home";
+@import "components/social_media";
+@import "components/testimonials";
 
-
-
-
-// project specific CSS goes here
-
-////////////////////////////////
-		//Variables//
-////////////////////////////////
-
-// Alert colors
-
-$white: #fff;
-$mint-green: #d6e9c6;
-$black: #000;
-$pink: #f2dede;
-$dark-pink: #eed3d7;
-$red: #b94a48;
-
-////////////////////////////////
-		//Alerts//
-////////////////////////////////
-
-// bootstrap alert CSS, translated to the django-standard levels of
-// debug, info, success, warning, error
-
-.alert-debug {
-  background-color: $white;
-  border-color: $mint-green;
-  color: $black;
-}
-
-.alert-error {
-  background-color: $pink;
-  border-color: $dark-pink;
-  color: $red;
-}
-
-////////////////////////////////
-		//Navbar//
-////////////////////////////////
-
-// This is a fix for the bootstrap4 alpha release
-
-.navbar {
-  border-radius: 0px;
-}
-
-@media (max-width: 47.9em) {
-  .navbar-nav .nav-item {
-    display: inline-block;
-    float: none;
-    width: 100%;
-  }
-
-  .navbar-nav .nav-item + .nav-item {
-    margin-left: 0;
-  }
-
-  .nav.navbar-nav.pull-xs-right {
-    float: none !important;
-  }
-}
 
 ////////////////////////////////
 		//Django Toolbar//

@@ -1,0 +1,23 @@
+ul.social-media {
+  margin: 16px 0 0 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+  li {
+    display: inline;
+  }
+  a {
+    margin: 0 15px;
+    display: inline-block;
+    &:hover {
+      z-index: 1;
+      transform: translateY(-2px);
+    }
+  }
+  img {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+

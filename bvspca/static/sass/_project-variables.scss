@@ -1,0 +1,29 @@
+//sizing
+$max-width: 1100px !default;
+
+$content-padding: 3rem;
+$content-padding-large: 5rem;
+
+// fonts
+$base-font: 'Montserrat', sans-serif;
+$title-font: 'brandon_textlight', sans-serif;
+$heading-font: 'Droid Serif', serif;
+$base-font-color: #231f20;
+$base-font-size: 1.2rem;
+
+// common color definitions
+$highlight-red-on-white: #ff3e3e;
+$highlight-red-on-black: #ff2424;
+$highlight-brown: #fa7b24;
+
+$footer-dark-bg: #0c0c0c;
+$content-dark-bg: #000;
+$content-light-bg: #fff;
+$content-grey-bg: #ececec;
+
+$heading-grey: #a6a6a6;
+
+// buttons
+$button-hover: darken($highlight-red-on-white, 30%);
+$button-color: $highlight-red-on-white;
+

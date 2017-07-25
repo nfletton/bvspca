@@ -1,0 +1,92 @@
+$footer-block-break: 800px;
+
+footer {
+  background-color: $footer-dark-bg;
+  color: white;
+  padding: 90px 0;
+}
+
+.footer-container {
+  @include container-wide;
+}
+
+.block-container {
+  @media (min-width: $footer-block-break) {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.contact-block {
+  font-size: 1.1em;
+  font-family: $title-font;
+  text-align: center;
+  margin-bottom: $content-padding-large;
+  @media (min-width: $footer-block-break) {
+    text-align: left;
+    margin: 0;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    padding-left:30px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.contact-block__name {
+  color: $highlight-red-on-black;
+}
+
+.contact-block__address {
+  margin-bottom: 2em;
+}
+
+.contact-block__phone {
+  a {
+    background: url(../svg/phone.svg) no-repeat 1px 4px;
+    background-size: 20px 20px;
+  }
+}
+
+.contact-block__email {
+  a {
+  background: url(../svg/email.svg) no-repeat 0 7px;
+  background-size: 22px 16px;
+  }
+}
+
+.social-media-block {
+
+}
+
+.newsletter-signup {
+  margin: 27px 0 0 0;
+  text-align: center;
+}
+
+.newsletter-signup__heading {
+  color: $highlight-red-on-black;
+  font-family: $heading-font;
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+}
+
+.newsletter-signup__button {
+  background-color: $highlight-red-on-black;
+  color: #fff;
+  &:link,
+  &:visited {
+    color: #fff;
+  }
+  font-family: $title-font;
+  padding: 0.25em 2em;
+  text-decoration: none;
+  &:hover {
+    background-color: #cecece;
+    color: $base-font-color;
+    text-decoration: none;
+  }
+}

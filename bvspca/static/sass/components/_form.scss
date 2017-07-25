@@ -1,0 +1,38 @@
+form {
+  background-color: $content-grey-bg;
+  padding: 0.5em;
+  width: 100%;
+  @media(min-width: 500px) {
+    padding: $content-padding;
+  }
+}
+
+input[type=text],
+input[type=email],
+textarea {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0.4rem;
+}
+
+.asteriskField {
+  color: $highlight-red-on-white;
+}
+
+button {
+  color: #fff;
+  background-color: $highlight-red-on-white;
+  display: block;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  padding: 0.5em 2em;
+  margin: 1em auto;
+}
+
+#div_id_wagtailcaptcha {
+  text-align: center;
+  > div {
+    display: inline-block;
+  }
+}

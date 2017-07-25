@@ -1,0 +1,9 @@
+@mixin base-block() {
+  background-color: $block-bg-color;
+  border: 1px solid $base-border-color;
+  border-radius: $base-border-radius;
+  @include main-content-padding;
+  .more {
+    display: block;
+  }
+}

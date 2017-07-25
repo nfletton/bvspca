@@ -1,0 +1,38 @@
+@mixin inline-radios() {
+  label {
+    @extend .custom-control;
+    @extend .custom-radio;
+  }
+  input[type=radio] {
+    @extend .custom-control-input;
+  }
+  .indicator {
+    @extend .custom-control-indicator;
+  }
+  .description {
+    @extend .custom-control-description;
+  }
+}
+
+@mixin inline-checkboxes() {
+  label {
+    @extend .custom-control;
+    @extend .custom-checkbox;
+  }
+  input[type=checkbox] {
+    @extend .custom-control-input;
+  }
+  .indicator {
+    @extend .custom-control-indicator;
+  }
+  .description {
+    @extend .custom-control-description;
+  }
+}
+
+@mixin selects() {
+  select {
+    @extend .form-control;
+    @extend .form-control-sm;
+  }
+}
