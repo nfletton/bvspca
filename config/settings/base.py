@@ -46,16 +46,10 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     'crispy_forms',  # Form layouts
-    'allauth',  # registration
-    'allauth.account',  # registration
-    'allauth.socialaccount',  # registration
 ]
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
-    # custom users app
-    'bvspca.users.apps.UsersConfig',
-    # Your stuff: custom apps go here
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -64,7 +58,6 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -76,7 +69,6 @@ MIDDLEWARE = [
 # MIGRATIONS CONFIGURATION
 # ------------------------------------------------------------------------------
 MIGRATION_MODULES = {
-    'sites': 'bvspca.contrib.sites.migrations'
 }
 
 # DEBUG
@@ -120,10 +112,10 @@ DATABASES['default']['ATOMIC_REQUESTS'] = True
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'MTN'
+TIME_ZONE = 'America/Edmonton'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-ca'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -198,7 +190,7 @@ STATICFILES_FINDERS = [
 # MEDIA CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR('media'))
+MEDIA_ROOT = str(ROOT_DIR('media'))
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'
@@ -244,27 +236,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
 ]
-
-# Some really nice defaults
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-
-ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
-ACCOUNT_ADAPTER = 'bvspca.users.adapters.AccountAdapter'
-SOCIALACCOUNT_ADAPTER = 'bvspca.users.adapters.SocialAccountAdapter'
-
-# Custom user app defaults
-# Select the correct user model
-AUTH_USER_MODEL = 'users.User'
-LOGIN_REDIRECT_URL = 'users:redirect'
-LOGIN_URL = 'account_login'
-
-# SLUGLIFIER
-AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
-
 
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
 ADMIN_URL = r'^admin/'
