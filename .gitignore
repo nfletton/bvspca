@@ -59,11 +59,14 @@ node_modules/
 .env
 
 # User-uploaded media
-bvspca/media/
+media/
 
+staticfiles/
 
+db/
+libs/
 
 staticfiles/
 
 .cache/
-
+bvspca/static/dist/
