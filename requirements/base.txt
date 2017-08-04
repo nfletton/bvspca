@@ -4,9 +4,7 @@
 # Verified bug on Python 3.5.1
 wheel==0.29.0
 
-
-# Bleeding edge Django
-django==1.11.3 # pyup: >=1.11,<1.12
+django==1.11.4
 
 # Configuration
 django-environ==0.4.3
@@ -28,3 +26,5 @@ psycopg2==2.7.3
 pytz==2017.2
 
 # Your custom requirements go here
+wagtail==1.11.1
+wagtail-django-recaptcha==0.2

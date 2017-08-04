@@ -46,6 +46,28 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     'crispy_forms',  # Form layouts
+
+    # For Wagtail
+    'wagtail.wagtailforms',
+    'wagtail.wagtailredirects',
+    'wagtail.wagtailembeds',
+    'wagtail.wagtailsites',
+    'wagtail.wagtailusers',
+    'wagtail.wagtailsnippets',
+    'wagtail.wagtaildocs',
+    'wagtail.wagtailimages',
+    'wagtail.wagtailsearch',
+    'wagtail.wagtailadmin',
+    'wagtail.wagtailcore',
+
+    'wagtail.contrib.modeladmin',
+    'wagtail.contrib.table_block',
+
+    'taggit',
+    'modelcluster',
+
+    'captcha',
+    'wagtailcaptcha',
 ]
 
 # Apps specific for this project go here.
@@ -64,6 +86,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'wagtail.wagtailcore.middleware.SiteMiddleware',
+    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 ]
 
 # MIGRATIONS CONFIGURATION
@@ -239,7 +264,17 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
-ADMIN_URL = r'^admin/'
+ADMIN_URL = r'^djadmin/'
 
 # Your common stuff: Below this line define 3rd party library settings
-# ------------------------------------------------------------------------------
+LOGIN_REDIRECT_URL = 'wagtailadmin_home'  # see https://github.com/wagtail/wagtail/issues/3620
+
+WAGTAIL_ADMIN_URL = r'^admin/'
+WAGTAIL_SITE_NAME = 'Bow Valley SPCA'
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'no-reply@example.com'
+
+RECAPTCHA_PUBLIC_KEY = ''
+RECAPTCHA_PRIVATE_KEY = ''
+NOCAPTCHA = True
+
+GOOGLE_MAPS_KEY = ''

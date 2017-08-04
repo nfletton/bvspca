@@ -65,3 +65,6 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # Your local stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+INSTALLED_APPS += ('wagtail.contrib.wagtailstyleguide', )
+
+ALLOWED_HOSTS = ('127.0.0.1', '10.0.0.101', 'localhost',)

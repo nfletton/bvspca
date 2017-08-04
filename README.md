@@ -1,5 +1,19 @@
 # Bow Valley SPCA Website
 
+## Deployment
+### Evironment Variables
+The following environment variables need to be set in a production
+environment
+```
+DJANGO_SECRET_KEY
+DJANGO_SETTINGS_MODULE = 'config.settings.production'
+DATABASE_URL
+WAGTAIL_ADMIN_URL = r'my-secret-path'
+RECAPTCHA_PUBLIC_KEY = ''
+RECAPTCHA_PRIVATE_KEY = ''
+
+```
+
 ## Development Commands
 
 ### Code Style Checks
