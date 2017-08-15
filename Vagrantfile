@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = "xenial64"
   end
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = ENV['HOME'] + "/ansible-playbooks/django-dev.yml"
+    ansible.playbook = ENV['HOME'] + "/ansible-playbooks/django-elastic-dev.yml"
     ansible.sudo = true
     ansible.extra_vars = ENV['HOME'] + "/ansible-playbooks/host_vars/dev.bowvalleyspca.org.yml"
   end
