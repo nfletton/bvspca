@@ -68,10 +68,12 @@ THIRD_PARTY_APPS = [
 
     'captcha',
     'wagtailcaptcha',
+    'wagtailfontawesome',
 ]
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
+    'bvspca.core.apps.CoreConfig',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

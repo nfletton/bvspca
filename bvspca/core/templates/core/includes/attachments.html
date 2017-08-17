@@ -1,0 +1,10 @@
+{% if page.attachments %}
+  <div class="attachments">
+    <h3>Attachments</h3>
+    <div class="attachments__list">
+      {% for attachment in page.attachments %}
+        <a class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" href="{{ attachment.value.url }}">{{ attachment.value.title }}<span>{{ attachment.value.file_extension }}</span></a>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

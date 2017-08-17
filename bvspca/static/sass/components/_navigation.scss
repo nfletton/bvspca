@@ -1,8 +1,8 @@
 $nav-primary-color: #fff;
 $nav-active-color: $highlight-red-on-white;
-$nav-bg-color: rgba(0, 0 , 0 , 0.7);
-$nav-bg-home-color: rgba(0, 0 , 0 , 0.6);
-$nav-mobile-bg-color: rgba(0, 0 , 0 , 0.9);
+$nav-bg-color: rgba(0, 0, 0, 0.7);
+$nav-bg-home-color: rgba(0, 0, 0, 0.6);
+$nav-mobile-bg-color: rgba(0, 0, 0, 0.9);
 
 $nav-breakpoint: 950px;
 $nav-icon-size: 40px;
@@ -23,7 +23,6 @@ header {
     height: auto;
   }
 }
-
 
 .logo {
   width: 110px;
@@ -94,11 +93,11 @@ header {
 }
 
 .main-nav__items {
-  display:none;
-  list-style:none;
+  display: none;
+  list-style: none;
   margin: 0;
   padding: 0;
-  @media(min-width: $nav-breakpoint){
+  @media(min-width: $nav-breakpoint) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -117,7 +116,7 @@ header {
 
 .main-nav__item {
   @media(min-width: $nav-breakpoint) {
-    position:relative;
+    position: relative;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -141,7 +140,7 @@ header {
   color: $nav-primary-color;
   &:link,
   &:visited {
-  color: $nav-primary-color;
+    color: $nav-primary-color;
   }
 }
 
@@ -155,7 +154,6 @@ header {
   }
 }
 
-
 .main-nav__link--highlight {
   color: $nav-active-color;
 }
@@ -166,9 +164,9 @@ header {
   @media(min-width: $nav-breakpoint) {
     display: none !important;
     padding: 0 0 1em 0.5em;
-    position:absolute;
+    position: absolute;
     top: $nav-height;
-    left:0;
+    left: 0;
     width: $nav-sub-nav-width;
     z-index: 100;
   }
@@ -178,7 +176,7 @@ header {
   color: #fff;
   display: block;
   padding: 1rem 0 0 1.5rem;
-  text-align:left;
+  text-align: left;
   text-decoration: none;
   &:hover {
     color: $nav-active-color;

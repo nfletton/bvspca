@@ -125,7 +125,8 @@ $event-row-break: 650px;
   margin: {
     top: $content-padding;
     bottom: $content-padding;
-  };
+  }
+;
   h2 {
     text-align: center;
   }
@@ -198,10 +199,10 @@ $menu-item-row-break: 550px;
 }
 
 .menu-image-nav__item-title--right {
-    right: 0;
-    @media(min-width: $menu-item-row-break) {
-      right: auto;
-    }
+  right: 0;
+  @media(min-width: $menu-item-row-break) {
+    right: auto;
+  }
 }
 
 .menu-image-nav__item--breakfast {

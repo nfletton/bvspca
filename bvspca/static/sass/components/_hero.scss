@@ -57,14 +57,15 @@ $nav-height: 86px;
     padding: {
       left: 10px;
       right: 10px;
-    };
+    }
+  ;
   }
 }
 
 .hero__title {
   clear: both;
   color: #fff;
-  font-size: $base-font-size * 1.953;    // sizing based on 1.25 ratio http://www.modularscale.com
+  font-size: $base-font-size * 1.953; // sizing based on 1.25 ratio http://www.modularscale.com
   font-family: "brandon_textlight", sans-serif;
   font-weight: normal;
   padding-top: 110px;
@@ -75,7 +76,7 @@ $nav-height: 86px;
     padding-top: 170px;
   }
   @media(min-width: 350px) {
-  font-size: $base-font-size * 2.441;
+    font-size: $base-font-size * 2.441;
   }
   @media(min-width: 450px) {
     font-size: $base-font-size * 3.052;
@@ -99,7 +100,7 @@ $nav-height: 86px;
   font-style: italic;
   text-align: center;
   @media(min-width: 600px) {
-  font-size: $base-font-size * 1.25;
+    font-size: $base-font-size * 1.25;
   }
 }
 

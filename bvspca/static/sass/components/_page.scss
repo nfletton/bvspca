@@ -1,6 +1,32 @@
 main {
 }
 
+.attachments {
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+.attachments__list {
+  a {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    span {
+      background: url(../svg/download-icon.svg) no-repeat 100% 50%;
+      font-size: 0.8rem;
+      line-height: 2;
+      padding-right: 2rem;
+      text-transform: uppercase;
+    }
+    &.odd {
+    }
+  }
+}
+
+
 .intro,
 .close {
   background-color: $content-grey-bg;

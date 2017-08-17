@@ -3,6 +3,7 @@
     @include container-narrow;
   }
 }
+
 .contact-form {
   @media(min-width: 600px) {
     margin: $content-padding 0;

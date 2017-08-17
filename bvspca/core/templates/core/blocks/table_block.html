@@ -1,0 +1,6 @@
+{% load wagtailcore_tags %}
+
+<figure class="table-block">
+  {% include_block value.bound_blocks.table %}
+  <figcaption class="table-block__caption">{{ self.caption }}</figcaption>
+</figure>

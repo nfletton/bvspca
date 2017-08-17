@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+  <div class="general-content">
+    {% for block in page.body %}
+      {% include_block block %}
+    {% endfor %}
+    {% include 'core/includes/attachments.html' %}
+  </div>
+{% endblock content %}
+
+{% block sm_init %}
+  {% if page.social_media %}
+    {% include 'core/includes/addthis_init.html' %}
+  {% endif %}
+{% endblock %}
