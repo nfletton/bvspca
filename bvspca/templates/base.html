@@ -1,14 +1,29 @@
-{% load staticfiles i18n %}<!DOCTYPE html>
+{% load i18n utility_tags navigation_tags static wagtailuserbar %}<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{% block title %}Bow Valley SPCA Website{% endblock title %}</title>
+  <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }} | ATESL{% endif %}{% endblock title %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="{{ self.search_description }}">
 
   <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Montserrat:400,400i,600,600i,700,700i" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'images/manifest.json' %}">
+  <link rel="mask-icon" href="{% static 'images/safari-pinned-tab.svg' %}" color="#f57300">
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+  <meta name="msapplication-config" content="{% static 'images/browserconfig.xml' %}">
+  <meta name="theme-color" content="#f5730">
+
+  {% if page.depth == 2 %}
+    {# RSS link on home page only   #}
+    <link href="/feeds/all/" type="application/atom+xml" rel="alternate" title="BVSPCA Sitewide Feed" />
+    <link href="/feeds/animals/" type="application/atom+xml" rel="alternate" title="BVSPCA Animals Feed" />
+    <link href="/feeds/events/" type="application/atom+xml" rel="alternate" title="BVSPCA Events Feed" />
+    <link href="/feeds/news/" type="application/atom+xml" rel="alternate" title="BVSPCA News Feed" />
+  {% endif %}
 
   {% block css %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -17,46 +32,19 @@
 
 </head>
 
-<body>
+<body class="{% block body_class %}{% endblock %} page-{{ page.pk }}">
+{% wagtailuserbar %}
 
-<div class="m-b-1">
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    {#        <a class="navbar-brand" href="{% url 'home' %}">Bow Valley SPCA Website</a>#}
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        {#            <li class="nav-item active">#}
-        {#              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>#}
-        {#            </li>#}
-        {#            <li class="nav-item">#}
-        {#              <a class="nav-link" href="{% url 'about' %}">About</a>#}
-        {#            </li>#}
-        {% if request.user.is_authenticated %}
-          {#              <li class="nav-item">#}
-          URL provided by django-allauth/account/urls.py
-          {#                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>#}
-          {#              </li>#}
-          {#              <li class="nav-item">#}
-          URL provided by django-allauth/account/urls.py
-          {#                <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>#}
-          {#              </li>#}
-          {#            {% else %}#}
-          {#              <li class="nav-item">#}
-          URL provided by django-allauth/account/urls.py
-          {#                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>#}
-          {#              </li>#}
-          {#              <li class="nav-item">#}
-          URL provided by django-allauth/account/urls.py
-          {#                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>#}
-          {#              </li>#}
-        {% endif %}
+<div>
+  {% block main_navigation %}
+    <nav class="collapse navbar-collapse" id="main-navigation" role="navigation" aria-label="Primary site navigation">
+      <ul class="nav nav-pills">
+        {# main_menu is defined in base/templatetags/navigation_tags.py #}
+        {% get_site_root as site_root %}
+        {% top_menu parent=site_root calling_page=self %}
       </ul>
-    </div>
-  </nav>
-
+    </nav>
+  {% endblock %}
 </div>
 
 <div class="container">
@@ -84,6 +72,27 @@
 
 
 {% endblock javascript %}
+{% get_google_analytics_id as ga_tracking_id %}
+{% if ga_tracking_id %}
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ ga_tracking_id }}', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+{% endif %}
+{% block sm_init %}{% endblock %}
 </body>
 </html>
 
