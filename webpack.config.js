@@ -11,6 +11,7 @@ const config = function () {
   return {
     entry: {
       sass: `${basePath}/static/sass/project.scss`,
+      site: `${basePath}/core/js_src/site.js`,
     },
     output: {
       path: `${basePath}/static/dist`,
