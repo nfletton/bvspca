@@ -57,7 +57,30 @@
   margin-top: 0;
 }
 
-/* raw HTML block */
+/* paragraph block */
+.rich-text {
+  @include clearfix;
+  margin-bottom: 2em;
+}
+
+.richtext-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  &.right {
+    float: right;
+    margin-bottom: 0.5em;
+    margin-left: 1em;
+  }
+  &.left {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+  }
+  &.full-width {
+    margin: 2em auto;
+  }
+}
 
 /* table block */
 .table-block {

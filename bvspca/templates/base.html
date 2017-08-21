@@ -33,33 +33,86 @@
 </head>
 
 <body class="{% block body_class %}{% endblock %} page-{{ page.pk }}">
+<svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="icon-nav-open" viewBox="0 0 24 24">
+      <title>nav open</title>
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </symbol>
+    <symbol id="icon-nav-close" viewBox="0 0 24 24">
+      <title>nav close</title>
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+      <path d="M0 0h24v24H0z" fill="none"/>
+    </symbol>
+    {%  block extra_svg %}{% endblock extra_svg %}
+  </defs>
+</svg>
 {% wagtailuserbar %}
 
-<div>
-  {% block main_navigation %}
-    <nav class="collapse navbar-collapse" id="main-navigation" role="navigation" aria-label="Primary site navigation">
-      <ul class="nav nav-pills">
-        {# main_menu is defined in base/templatetags/navigation_tags.py #}
+<header>
+  <div class="header-nav-container">
+    <a href="/">
+      <img src="{% static 'svg/logo.svg' %}"
+           title="{{ request.site.site_name }}"
+           alt="{{ request.site.site_name }} Logo" class="logo">
+    </a>
+    <nav class="main-nav" id="main-nav" aria-label="Primary site navigation">
+      <a href="javascript:void(0)" id="main-nav-toggle" class="main-nav__toggle">
+        <span class="main-nav__toggle-label">Menu</span>
+        <svg class="main-nav__icon--open">
+          <use xlink:href="#icon-nav-open"></use>
+        </svg>
+        <svg class="main-nav__icon--close">
+          <use xlink:href="#icon-nav-close"></use>
+        </svg>
+      </a>
+      <ul class="main-nav__items">
         {% get_site_root as site_root %}
         {% top_menu parent=site_root calling_page=self %}
       </ul>
     </nav>
-  {% endblock %}
-</div>
-
-<div class="container">
-
+  </div>
+</header>
+<main>
   {% if messages %}
     {% for message in messages %}
       <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
     {% endfor %}
   {% endif %}
 
-  {% block content %}
-    <p>Use this document as a way to quick start any new project.</p>
-  {% endblock content %}
-
-</div> <!-- /container -->
+  {% block content %}{% endblock content %}
+</main>
+<footer id="footer">
+  <div class="footer-container">
+    <div class="block-container">
+      <div class="contact-block">
+        <div class="contact-block__name">Bow Valley SPCA</div>
+        <div class="contact-block__address"><a href="">Contact details &amp; hours</a></div>
+        <div class="contact-block__phone"><a href="tel:+14036092022">403-609-2022</a></div>
+        <div class="contact-block__email"><a href="mailto:info@bowvalleyspca.org">info@bowvalleyspca.org</a></div>
+      </div>
+      <div class="social-media-block">
+        <ul class="social-media">
+          <li><a href="//www.facebook.com/thebowvalleyspca/" title="facebook"><img src="{% static "svg/facebook.svg" %}"></a></li>
+          <li><a href="//twitter.com/BOW_VALLEY_SPCA/" title="twitter"><img src="{% static "svg/twitter.svg" %}"></a></li>
+          <li><a href="//www.instagram.com/bvspca/" title="instagram"><img src="{% static "svg/instagram.svg" %}"></a></li>
+          <li><a href="//www.youtube.com/channel/UC2utMCVRbLcgMdTYf-s0FBg" title="youtube"><img src="{% static "svg/youtube.svg" %}"></a></li>
+          <li><a href="/" title="email"><img src="{% static "svg/envelop.svg" %}"></a></li>
+        </ul>
+        <div class="newsletter-signup">
+          <div class="newsletter-signup__heading">Sign up for our newsletter</div>
+          <a class="newsletter-signup__button" href="/newsletter-signup">Sign up Now!</a>
+        </div>
+      </div>
+    </div>
+    <div class="acknowledgement">
+      This website is open sourced with the generous support of The Calgary Foundation.<br>
+      <a href="">Read more&hellip;</a>
+    </div>
+  </div>
+</footer>
 
 {% block modal %}{% endblock modal %}
 
@@ -68,9 +121,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
-  <script src="{% static 'dist/project.js' %}"></script>
-
-
+  <script src="{% static 'dist/site.js' %}"></script>
 {% endblock javascript %}
 {% get_google_analytics_id as ga_tracking_id %}
 {% if ga_tracking_id %}

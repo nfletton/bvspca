@@ -2,11 +2,14 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-  <div class="general-content">
+  <div class="main-content">
     {% for block in page.body %}
       {% include_block block %}
     {% endfor %}
     {% include 'core/includes/attachments.html' %}
+    {% if page.social_media %}
+      {% include 'core/includes/addthis_widgets.html' %}
+    {% endif %}
   </div>
 {% endblock content %}
 
