@@ -1,5 +1,30 @@
 # Bow Valley SPCA Website
 
+## Apps
+
+### core
+
+### animals
+All animal related data, templates and functionality. The app includes:
+
+* a management command to synchronize animal data managed in 
+  PetPoint (http://www.petpoint.com/) with local animal data in this 
+  app.
+* 
+
+### newsletter
+Includes a management command to construct a weekly newsletter with
+recent updates on animals, news and events. The newsletter is published
+via MailChimp.
+
+The newsletter includes:
+
+* animals arrived in the last 14 days
+* animals adopted in the last 14 days
+* upcoming events in the next 7 days
+* news items in the last 7 days
+
+
 ## Deployment
 ### Evironment Variables
 The following environment variables need to be set in a production
@@ -7,8 +32,9 @@ environment
 ```
 DJANGO_SECRET_KEY
 DJANGO_SETTINGS_MODULE = 'config.settings.production'
+DJANGO_ADMIN_URL = r'my-secret-django-admin-path'
 DATABASE_URL
-WAGTAIL_ADMIN_URL = r'my-secret-path'
+WAGTAIL_ADMIN_URL = r'my-secret-wagtail-admin-path'
 RECAPTCHA_SITE_KEY = ''
 RECAPTCHA_SECRET_KEY = ''
 GOOGLE_ANALYTICS_ID 
