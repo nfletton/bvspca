@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load staticfiles wagtailcore_tags %}
+
+{% block content %}
+  <div class="news-list-page">
+    {% include 'core/includes/page_title.html' %}
+    <div id="news">
+      <ul class="news list">
+        {% for news_item in news %}
+          <li>
+            <a class="list-item {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" href="{% pageurl news_item %}">
+                <div class="list-item__date">{{ news_item.first_published_at|date }}</div>
+                <div class="list-item__title">{{ news_item.title }}{% if news_item.published_status %}<span class="published-status {{ news_item.published_status }}">{{ news_item.published_status }}</span>{% endif %}</div>
+                <div class="list-item__summary">
+                  {{ news_item.details|truncatewords_html:50|striptags }}
+                </div>
+            </a>
+          </li>
+        {% empty %}
+          <li class="empty-list">No news available</li>
+        {% endfor %}
+      </ul>
+      {% include 'core/includes/pagination.html' with target=news %}
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags core_tags %}
+
+{% block content %}
+  <div class="news-item">
+    {% include 'core/includes/page_title.html' %}
+    {{ page.details|richtext }}
+    {% include 'core/includes/addthis_widgets.html' %}
+    {% include 'core/includes/attachments.html' %}
+  </div>
+{% endblock content %}
+
+{% block sm_init %}
+  {% include 'core/includes/addthis_init.html' %}
+{% endblock %}
