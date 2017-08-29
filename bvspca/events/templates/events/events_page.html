@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load staticfiles wagtailcore_tags %}
+
+{% block content %}
+  <div class="events-list-page">
+    {% include 'core/includes/page_title.html' %}
+    <div id="events">
+      <div class="chapter-filter">
+        <div class="filter">
+          <div class="radio-block">
+            <label for="chapter-0">
+              <input type="radio" id="chapter-0" class="filter-option" name="chapter" value="0" {% if current_chapter == 0 %}checked{% endif %}>
+              <span class="indicator"></span>
+              <span class="description">All</span>
+            </label>
+            {% for chapter in chapters %}
+              <label for="chapter-{{ chapter.id }}">
+                <input type="radio" id="chapter-{{ chapter.id }}" class="filter-option" name="chapter" value="{{ chapter.id }}"  {% if current_chapter == chapter.id %}checked{% endif %}>
+                <span class="indicator"></span>
+                <span class="description">{{ chapter.short_name }}</span>
+              </label>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <ul class="events-tabs">
+        <li><a id="future" href="#" class="event-tab {% if event_state == 'future' %}active{% endif %}">Future Events</a></li>
+        <li><a id="past" href="#" class="event-tab {% if event_state == 'past' %}active{% endif %}">Past Events</a></li>
+      </ul>
+      <ul class="events list">
+        {% for event in events %}
+          <li>
+            <a class="list-item {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" href="{% pageurl event %}">
+              <div class="list-item__date">{{ event.formatted_date }}</div>
+              <div class="list-item__title">{{ event.title }}{% if event.published_status %}<span class="published-status {{ event.published_status }}">{{ event.published_status }}</span>{% endif %}</div>
+              <div class="list-item__summary">
+                {{ event.details|truncatewords_html:50|striptags }}
+              </div>
+            </a>
+          </li>
+        {% empty %}
+          <li class="empty-list"><img src="{% static 'svg/warning.svg' %}">No events available</li>
+        {% endfor %}
+      </ul>
+      {% include 'core/includes/pagination.html' with target=events %}
+    </div>
+  </div>
+{% endblock content %}
+
+{% block extra_javascript %}
+  <script src="{% static 'dist/events.js' %}"></script>
+{% endblock extra_javascript %}

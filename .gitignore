@@ -70,3 +70,4 @@ staticfiles/
 
 .cache/
 bvspca/static/dist/
+/logs/
