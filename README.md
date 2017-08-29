@@ -29,17 +29,25 @@ The newsletter includes:
 ### Evironment Variables
 The following environment variables need to be set in a production
 environment
-```
-DJANGO_SECRET_KEY
-DJANGO_SETTINGS_MODULE = 'config.settings.production'
-DJANGO_ADMIN_URL = r'my-secret-django-admin-path'
-DATABASE_URL
-WAGTAIL_ADMIN_URL = r'my-secret-wagtail-admin-path'
-RECAPTCHA_SITE_KEY = ''
-RECAPTCHA_SECRET_KEY = ''
-GOOGLE_ANALYTICS_ID 
-ADDTHIS_PUB_ID = ''
-```
+
+| Name | Example | Note |
+|---|---|---|
+| DJANGO_SECRET_KEY | | |
+| DJANGO_SETTINGS_MODULE | config.settings.production | |
+| DJANGO_ADMIN_URL | r'my-secret-django-admin-path' | Defaults to 'djadmin' in development |
+| DATABASE_URL | | |
+| WAGTAIL_ADMIN_URL | r'my-secret-wagtail-admin-path' | Defaults to 'admin' in development |
+| RECAPTCHA_SITE_KEY | | |
+| RECAPTCHA_SECRET_KEY | | |
+| GOOGLE_ANALYTICS_ID | | |
+| ADDTHIS_PUB_ID  | | |
+| MAILCHIMP_USERNAME | | Required by 'newsletter' app |
+| MAILCHIMP_SECRET_KEY  | | Required by 'newsletter' app |
+| MAILCHIMP_LIST_ID| 83c4276af1 | MailChimp list ID that newsletter will be distributed to |
+| MAILCHIMP_TEMPLATE_ID| 351313 | MailChimp template ID that newsletter will be created with |
+| MAILCHIMP_SUBJECT| | Subject line of email |
+| MAILCHIMP_FROM_NAME| | From name of email |
+| MAILCHIMP_REPLY_TO| | Reply to address of email |
 
 ## Development Commands
 

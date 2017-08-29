@@ -73,8 +73,9 @@ THIRD_PARTY_APPS = [
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
-    'bvspca.core.apps.CoreConfig',
-    'bvspca.animals.apps.AnimalsConfig',
+    'bvspca.core',
+    'bvspca.animals',
+    'bvspca.newsletter',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -279,6 +280,14 @@ WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'no-reply@example.com'
 RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_SITE_KEY')
 RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_SECRET_KEY')
 NOCAPTCHA = True
+
+MAILCHIMP_USERNAME = env('MAILCHIMP_USERNAME')
+MAILCHIMP_SECRET_KEY = env('MAILCHIMP_SECRET_KEY')
+MAILCHIMP_LIST_ID = env('MAILCHIMP_LIST_ID')
+MAILCHIMP_TEMPLATE_ID = env('MAILCHIMP_TEMPLATE_ID')
+MAILCHIMP_SUBJECT = env('MAILCHIMP_SUBJECT')
+MAILCHIMP_FROM_NAME = env('MAILCHIMP_FROM_NAME')
+MAILCHIMP_REPLY_TO = env('MAILCHIMP_REPLY_TO')
 
 ADDTHIS_PUB_ID = env('ADDTHIS_PUB_ID')
 

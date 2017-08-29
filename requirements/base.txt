@@ -29,3 +29,4 @@ pytz==2017.2
 wagtail==1.12
 wagtail-django-recaptcha==0.2
 wagtailfontawesome==1.0.6
+mailchimp3==2.0.15
