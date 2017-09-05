@@ -1,4 +1,5 @@
 from wagtail.contrib.table_block.blocks import TableBlock
+from wagtail.wagtailcore import blocks
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock
@@ -88,3 +89,18 @@ class ContentStreamBlock(StreamBlock):
     )
     table_block = ContentTableBlock()
     raw_html = ContentRawHTML()
+
+
+class TeamMemberBlock(blocks.StructBlock):
+    name = blocks.CharBlock(max_length=50)
+    role = blocks.CharBlock(max_length=50, required=False)
+    role_since = blocks.CharBlock(max_length=50, required=False)
+    location = blocks.CharBlock(max_length=50, required=False)
+    pets = blocks.CharBlock(max_length=100, required=False)
+    bio = blocks.TextBlock()
+    photo = ImageChooserBlock(required=False)
+    photo_caption = blocks.CharBlock(max_length=50, required=False)
+
+    class Meta:
+        template = 'core/blocks/team_member.html'
+        icon = 'user'

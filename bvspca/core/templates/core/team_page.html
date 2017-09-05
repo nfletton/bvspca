@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="team">
+        <div class="member-nav">
+        {% for member in page.members %}
+            <a href="#{{ member.value.name|slugify }}" class="member-nav-item {% if forloop.counter == 1 %}open{% endif %}" data-member="{{ member.value.name|slugify }}">{{ member.value.name }}</a>
+        {% endfor %}
+        </div>
+        <div class="team__members">{{ page.members }}</div>
+    </div>
+{% endblock content %}

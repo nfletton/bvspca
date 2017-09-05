@@ -1,9 +1,11 @@
 from django.conf import settings
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailsearch import index
 
+from bvspca.core.blocks import TeamMemberBlock
 from bvspca.events.models import Event
 from bvspca.news.models import News
 from .blocks import ContentStreamBlock
@@ -48,3 +50,20 @@ class HomePage(Page):
         context['events'] = Event.objects.future(settings.SPCA_LIST_BLOCK_LENGTH)
         context['news'] = News.objects.news(settings.SPCA_LIST_BLOCK_LENGTH)
         return context
+
+
+class TeamPage(Page, MenuTitleable):
+    members = StreamField([
+        ('section', blocks.CharBlock(classname="full title")),
+        ('member', TeamMemberBlock()),
+    ], blank=True)
+    parent_page_types = [HomePage]
+
+    content_panels = [
+        FieldPanel('title'),
+        StreamFieldPanel('members'),
+    ]
+
+    class Meta:
+        verbose_name = 'Team Page'
+

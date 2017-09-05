@@ -1,0 +1,23 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div id="{{ value.name|slugify }}" class="team-member">
+    {% if value.photo %}
+        <div class="team-member__photo">
+          {% image value.photo fill-280x280 %}
+          {% if value.photo_caption %}
+            <div class="team-member__photo-caption">{{ value.photo_caption }}</div>
+          {% endif %}
+        </div>
+    {% endif %}
+    <h3>{{ value.name }}{% if value.role %}, {{ value.role }}{% endif %}</h3>
+`
+    {{ value.bio|richtext }}
+    {% if value.location %}
+      <div>Location: {{ value.location }}</div>
+    {% endif %}
+    {% if value.pets %}
+      <div>Pets: {{ value.pets }}</div>
+    {% endif %}
+    {% if value.role_since %}
+      <div>{{ value.role_since }}</div>
+    {% endif %}
+</div>
