@@ -1,0 +1,23 @@
+{% load utility_tags wagtailcore_tags %}
+<div class=item-list>
+    {% if chapter %}
+        <h2><a href="{% slugurl index_page %}?chapter={{ chapter }}">{{ title }}</a></h2>
+    {% else %}
+        <h2><a href="{% slugurl index_page %}">{{ title }}</a></h2>
+    {% endif %}
+    <ul>
+    {% for item in items %}
+        <li>
+            <a href="{% pageurl item %}">
+                <div class="item-title">{{ item.title }}{% if item.published_status %}<span class="published-status {{ item.published_status }}">{{ item.published_status }}</span>{% endif %}</div>
+                <div class="item-date">{{ item|get_property:date_field|date }}</div>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+    {% if chapter %}
+        <div class="more-link"><a href="{% slugurl index_page %}?chapter={{ chapter }}">All Chapter {{ title }}</a></div>
+    {% else %}
+        <div class="more-link"><a href="{% slugurl index_page %}">All {{ title }}</a></div>
+    {% endif %}
+</div>

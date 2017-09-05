@@ -1,29 +1,13 @@
-from django.db import models
+from django.conf import settings
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
-from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 from wagtail.wagtailsearch import index
 
+from bvspca.events.models import Event
+from bvspca.news.models import NewsPage
 from .blocks import ContentStreamBlock
-
-
-class MenuTitleable(models.Model):
-    menu_title = models.CharField(verbose_name='menu title', max_length=100, blank=True)
-
-    promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
-
-    class Meta:
-        abstract = True
-
-
-class Attachable(models.Model):
-    attachments = StreamField([
-        ('document', DocumentChooserBlock()),
-    ], blank=True)
-
-    class Meta:
-        abstract = True
+from .models_abstract import Attachable, MenuTitleable
 
 
 class ContentPage(Page, MenuTitleable, Attachable):
@@ -43,3 +27,24 @@ class ContentPage(Page, MenuTitleable, Attachable):
 
     class Meta:
         verbose_name = 'General Content Page'
+
+
+class HomePage(Page):
+    parent_page_types = ['wagtailcore.Page']
+
+    search_fields = Page.search_fields + [
+    ]
+
+    content_panels = [
+        FieldPanel('title'),
+    ]
+
+    class Meta:
+        verbose_name = 'Home Page'
+
+    def get_context(self, request, *args, **kwargs):
+        # Update template context
+        context = super(HomePage, self).get_context(request, args, kwargs)
+        context['events'] = Event.objects.future(settings.SPCA_LIST_BLOCK_LENGTH)
+        # context['news'] = NewsPage.news(settings.SPCA_LIST_BLOCK_LENGTH)
+        return context

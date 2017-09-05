@@ -1,11 +1,24 @@
+import datetime
 from django.db import models
+from django.db.models import Q
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, FieldRowPanel, StreamFieldPanel
 from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore.models import Page, PageManager
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
-from bvspca.core.models import Attachable, MenuTitleable
+from bvspca.core.models_abstract import Attachable, MenuTitleable
+
+
+class EventManager(PageManager):
+
+    def future(self, limit=None):
+        events = self.live().filter(
+            Q(start_date__gte=datetime.date.today()) | Q(end_date__gte=datetime.date.today()),
+        ).order_by('start_date')
+        if limit:
+            return events[:limit]
+        return events
 
 
 class Event(Page, Attachable):
@@ -23,6 +36,8 @@ class Event(Page, Attachable):
     contact_email = models.EmailField(max_length=100, blank=True)
     contact_phone = models.CharField(max_length=15, blank=True)
     website = models.URLField(max_length=200, blank=True)
+
+    objects = EventManager()
 
     search_fields = Page.search_fields + [
         index.SearchField('details'),
@@ -60,11 +75,14 @@ class Event(Page, Attachable):
 
 
 class EventsPage(Page, MenuTitleable):
-    parent_page_types = []
-
     content_panels = [
         FieldPanel('title'),
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(EventsPage, self).get_context(request, args, kwargs)
+        context['events'] = Event.objects.future()
+        return context
 
     def __str__(self):
         return self.title

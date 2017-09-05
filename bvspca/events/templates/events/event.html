@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags core_tags %}
+{% load wagtailcore_tags utility_tags %}
 
 {% block content %}
   <div class="event-item">
@@ -7,7 +7,6 @@
     <h2>{{ page.formatted_date }}</h2>
     {{ page.details|richtext }}
     {% include 'core/includes/addthis_widgets.html' %}
-    <p>ATESL Chapter: {{ page.chapter.short_name }}</p>
     {% include 'core/includes/attachments.html' %}
   </div>
 {% endblock content %}
