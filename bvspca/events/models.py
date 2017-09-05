@@ -79,6 +79,8 @@ class EventsPage(Page, MenuTitleable):
         FieldPanel('title'),
     ]
 
+    promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
+
     def get_context(self, request, *args, **kwargs):
         context = super(EventsPage, self).get_context(request, args, kwargs)
         context['events'] = Event.objects.future()

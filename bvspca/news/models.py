@@ -64,6 +64,8 @@ class NewsPage(Page, MenuTitleable):
         FieldPanel('title'),
     ]
 
+    promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
+
     def get_context(self, request, *args, **kwargs):
         news = News.objects.news()
 

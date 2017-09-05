@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.http import HttpResponseRedirect
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.fields import StreamField
@@ -26,6 +27,8 @@ class ContentPage(Page, MenuTitleable, Attachable):
         StreamFieldPanel('body'),
         StreamFieldPanel('attachments'),
     ]
+
+    promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 
     class Meta:
         verbose_name = 'General Content Page'
@@ -64,6 +67,27 @@ class TeamPage(Page, MenuTitleable):
         StreamFieldPanel('members'),
     ]
 
+    promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
+
     class Meta:
         verbose_name = 'Team Page'
 
+
+class ParentPage(Page):
+    """
+    A page for parent pages with no content. If a request is targeted at the page,
+    the request is redirected to the first subpage if one exists. Otherwise the request
+    is redirected to the home page
+    """
+    content_panels = [
+        FieldPanel('title'),
+    ]
+
+    class Meta:
+        verbose_name = 'Parent Page with No Content'
+
+    def serve(self, request, *args, **kwargs):
+        first_subpage = self.get_children().live().first()
+        if first_subpage:
+            return HttpResponseRedirect(first_subpage.url)
+        return HttpResponseRedirect('/')
