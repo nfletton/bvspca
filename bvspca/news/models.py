@@ -1,13 +1,22 @@
 from django.conf import settings
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore.models import Page, PageManager
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
-from bvspca.core.models import Attachable, MenuTitleable
+from bvspca.core.models_abstract import Attachable, MenuTitleable
+
+
+class NewsManager(PageManager):
+
+    def news(self, limit=None):
+        news = self.live().order_by('-first_published_at')
+        if limit:
+            return news[:limit]
+        return news
 
 
 class News(Page, Attachable):
@@ -22,6 +31,8 @@ class News(Page, Attachable):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+
+    objects = NewsManager()
 
     parent_page_types = ['news.NewsPage']
     subpage_type = []
@@ -47,39 +58,22 @@ class NewsPage(Page, MenuTitleable):
     """
     News list view
     """
-    parent_page_types = []
     subpage_types = ['news.News']
 
     content_panels = [
         FieldPanel('title'),
     ]
 
-    @staticmethod
-    def news(limit=0):
-        news = News.objects.live().order_by('-first_published_at')
-        if limit == 0:
-            return news
-        return news[:limit]
-
     def get_context(self, request, *args, **kwargs):
-        news = self.news()
-
-        try:
-            chapter = int(request.GET.get('chapter', 0))
-        except ValueError:
-            chapter = 0
-
-        if chapter:
-            news = news.filter(chapter=chapter)
+        news = News.objects.news()
 
         page = request.GET.get('page', 1)
-        paginator = Paginator(news, settings.ATESL_LIST_PAGE_LENGTH)
+        paginator = Paginator(news, settings.SPCA_LIST_PAGE_LENGTH)
 
         try:
             news = paginator.page(page)
         except (PageNotAnInteger, EmptyPage):
             news = paginator.page(1)
-
 
         context = super(NewsPage, self).get_context(request, args, kwargs)
         context['news'] = news
