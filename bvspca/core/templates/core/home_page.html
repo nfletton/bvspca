@@ -8,18 +8,11 @@
     {% endfor %}
   </div>
   <div class="summary-blocks">
-{% comment %}
     <div class="summary-block news-block {{ news_bg }}">
       {% include 'core/includes/list_block.html' with items=news title='News' date_field='first_published_at' index_page='news'%}
     </div>
-{% endcomment %}
     <div class="summary-block events-block {{ events_bg }}">
       {% include 'core/includes/list_block.html' with items=events title='Events' date_field='start_date' index_page='events'%}
     </div>
-{% comment %}
-    <div class="summary-block jobs-block {{ jobs_bg }}">
-      {% include 'core/includes/list_block.html' with items=jobs title='Jobs' date_field='start_date' index_page='jobs'%}
-    </div>
-{% endcomment %}
   </div>
 {% endblock content %}

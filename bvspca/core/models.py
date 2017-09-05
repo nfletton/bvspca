@@ -5,7 +5,7 @@ from wagtail.wagtailcore.models import Page
 from wagtail.wagtailsearch import index
 
 from bvspca.events.models import Event
-from bvspca.news.models import NewsPage
+from bvspca.news.models import News
 from .blocks import ContentStreamBlock
 from .models_abstract import Attachable, MenuTitleable
 
@@ -46,5 +46,5 @@ class HomePage(Page):
         # Update template context
         context = super(HomePage, self).get_context(request, args, kwargs)
         context['events'] = Event.objects.future(settings.SPCA_LIST_BLOCK_LENGTH)
-        # context['news'] = NewsPage.news(settings.SPCA_LIST_BLOCK_LENGTH)
+        context['news'] = News.objects.news(settings.SPCA_LIST_BLOCK_LENGTH)
         return context
