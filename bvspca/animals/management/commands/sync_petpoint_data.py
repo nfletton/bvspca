@@ -6,6 +6,8 @@ from django.core.management.base import BaseCommand
 from lxml import etree
 from zeep import Client
 
+from bvspca.animals.models import Animal, AnimalsPage
+
 PETPOINT_AUTH_KEY = getattr(settings, 'PETPOINT_AUTH_KEY', "")
 
 
@@ -20,9 +22,15 @@ class Command(BaseCommand):
 
         adoptable_animal_ids = fetch_petpoint_adoptable_animal_ids(client)
 
+        animal_parent = AnimalsPage.objects.get(pk=13)
         for animal_id in adoptable_animal_ids:
-            animal_details = fetch_petpoint_animal_details(client, animal_id)
-            print(animal_details.AnimalName)
+            petpoint_animal_details = fetch_petpoint_animal_details(client, animal_id)
+            try:
+                local_animal_details = Animal.objects.get(petpoint_id=animal_id)
+                # TODO: update existing animal details
+            except Animal.DoesNotExist:
+                new_animal = Animal.create(petpoint_animal_details)
+                animal_parent.add_child(instance=new_animal)
 
 
 def extract_animal_ids(animal_summary_etree):
@@ -75,5 +83,9 @@ class AdoptableAnimal:
     def __getattr__(self, item):
         property_element = self.element.find(item)
         if property_element is not None:
-            return property_element.text
+            property_value = property_element.text
+            if property_value is None:
+                return ''
+            else:
+                return property_value
         raise AttributeError('AdoptableAnimal has no attribute {}'.format(item))
