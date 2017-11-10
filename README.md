@@ -30,24 +30,25 @@ The newsletter includes:
 The following environment variables need to be set in a production
 environment
 
-| Name | Example | Note |
-|---|---|---|
-| DJANGO_SECRET_KEY | | |
-| DJANGO_SETTINGS_MODULE | config.settings.production | |
-| DJANGO_ADMIN_URL | r'my-secret-django-admin-path' | Defaults to 'djadmin' in development |
-| DATABASE_URL | | |
-| WAGTAIL_ADMIN_URL | r'my-secret-wagtail-admin-path' | Defaults to 'admin' in development |
-| RECAPTCHA_SITE_KEY | | |
-| RECAPTCHA_SECRET_KEY | | |
-| GOOGLE_ANALYTICS_ID | | |
-| ADDTHIS_PUB_ID  | | |
-| MAILCHIMP_USERNAME | | Required by 'newsletter' app |
-| MAILCHIMP_SECRET_KEY  | | Required by 'newsletter' app |
-| MAILCHIMP_LIST_ID| 83c4276af1 | MailChimp list ID that newsletter will be distributed to |
-| MAILCHIMP_TEMPLATE_ID| 351313 | MailChimp template ID that newsletter will be created with |
-| MAILCHIMP_SUBJECT| | Subject line of email |
-| MAILCHIMP_FROM_NAME| | From name of email |
-| MAILCHIMP_REPLY_TO| | Reply to address of email |
+| Name | App |Example | Note |
+|---|---|---|---|
+| DJANGO_SECRET_KEY | | | |
+| DJANGO_SETTINGS_MODULE | | config.settings.production | |
+| DJANGO_ADMIN_URL | | r'my-secret-django-admin-path' | Defaults to 'djadmin' in development |
+| DATABASE_URL | | | |
+| WAGTAIL_ADMIN_URL | | r'my-secret-wagtail-admin-path' | Defaults to 'admin' in development |
+| RECAPTCHA_SITE_KEY | | | |
+| RECAPTCHA_SECRET_KEY | | | |
+| GOOGLE_ANALYTICS_ID | core | | |
+| ADDTHIS_PUB_ID  | core | | |
+| MAILCHIMP_USERNAME | newsletter | | Required by 'newsletter' app |
+| MAILCHIMP_SECRET_KEY | newsletter | | Required by 'newsletter' app |
+| MAILCHIMP_LIST_ID | newsletter | 83c4276af1 | MailChimp list ID that newsletter will be distributed to |
+| MAILCHIMP_TEMPLATE_ID | newsletter | 351313 | MailChimp template ID that newsletter will be created with |
+| MAILCHIMP_SUBJECT | newsletter | | Subject line of email |
+| MAILCHIMP_FROM_NAME | newsletter | | From name of email |
+| MAILCHIMP_REPLY_TO | newsletter | | Reply to address of email |
+| PETPOINT_AUTH_KEY | animals | | PetPoint Authorization Key |
 
 ## Development Commands
 
@@ -88,8 +89,12 @@ To run the tests, check your test coverage, and generate an HTML coverage report
 
 ## Manage.py Cron Jobs
 
-* clearsessions (daily)
-* publish_scheduled_pages (hourly)
+| Command | Required by |Frequency | Note |
+|---|---|---|---|
+| clearsessions | django | daily | |
+| publish_scheduled_pages | wagtail | hourly | |
+| sync_petpoint_data | animals app | daily | |
+| send_newsletter | newsletter app | weekly | |
 
 ## Graphic Design
 

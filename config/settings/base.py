@@ -66,8 +66,8 @@ THIRD_PARTY_APPS = [
     'taggit',
     'modelcluster',
 
-    'captcha',
-    'wagtailcaptcha',
+    # 'captcha',
+    # 'wagtailcaptcha',
     'wagtailfontawesome',
 ]
 
@@ -297,3 +297,5 @@ GOOGLE_MAPS_KEY = ''
 
 SPCA_LIST_BLOCK_LENGTH = 5
 SPCA_LIST_PAGE_LENGTH = 20
+
+PETPOINT_AUTH_KEY = env('PETPOINT_AUTH_KEY')
