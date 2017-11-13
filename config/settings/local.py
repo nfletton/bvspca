@@ -107,11 +107,33 @@ LOGGING = {
             'filename': '../logs/weekly-email.log',
             'formatter': 'verbose',
         },
+        'petpoint': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '../logs/petpoint-updates.log',
+            'formatter': 'verbose',
+        },
+        'petpoint-errors': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': '../logs/petpoint-errors.log',
+            'formatter': 'verbose',
+        },
     },
     'loggers': {
         'bvspca.newsletter': {
             'level': 'ERROR',
             'handlers': ['weekly_emails'],
+            'propagate': False
+        },
+        'bvspca.animals.petpoint': {
+            'level': 'INFO',
+            'handlers': ['petpoint'],
+            'propagate': False
+        },
+        'bvspca.animals.petpoint.errors': {
+            'level': 'ERROR',
+            'handlers': ['petpoint-errors'],
             'propagate': False
         },
     }

@@ -10,27 +10,41 @@ from bvspca.animals.models import Animal, AnimalsPage
 
 PETPOINT_AUTH_KEY = getattr(settings, 'PETPOINT_AUTH_KEY', "")
 
+logger = logging.getLogger('bvspca.animals.petpoint')
+error_logger = logging.getLogger('bvspca.animals.petpoint.errors')
+
 
 class Command(BaseCommand):
     help = 'Synchronize animal data from PetPoint'
-
-    logger = logging.getLogger(__name__)
 
     def handle(self, *args, **options):
         client = Client('http://ws.petango.com/webservices/wsadoption.asmx?WSDL')
         client.raw_response = True
 
         adoptable_animal_ids = fetch_petpoint_adoptable_animal_ids(client)
-
-        animal_parent = AnimalsPage.objects.get(pk=13)
-        for animal_id in adoptable_animal_ids:
-            petpoint_animal_details = fetch_petpoint_animal_details(client, animal_id)
-            try:
-                local_animal_details = Animal.objects.get(petpoint_id=animal_id)
-                # TODO: update existing animal details
-            except Animal.DoesNotExist:
-                new_animal = Animal.create(petpoint_animal_details)
-                animal_parent.add_child(instance=new_animal)
+        if adoptable_animal_ids is not None:
+            animal_parent = AnimalsPage.objects.get(pk=13)
+            for animal_id in adoptable_animal_ids:
+                petpoint_animal_details = fetch_petpoint_animal_details(client, animal_id)
+                if petpoint_animal_details is not None:
+                    try:
+                        local_animal_details = Animal.objects.get(petpoint_id=animal_id)
+                        # TODO: update existing animal details
+                        logger.info(
+                            'Updated animal {} ({})'.format(
+                                local_animal_details.petpoint_id,
+                                local_animal_details.title,
+                            )
+                        )
+                    except Animal.DoesNotExist:
+                        new_animal = Animal.create(petpoint_animal_details)
+                        animal_parent.add_child(instance=new_animal)
+                        logger.info(
+                            'Created animal new {} ({})'.format(
+                                new_animal.petpoint_id,
+                                new_animal.title,
+                            )
+                        )
 
 
 def extract_animal_ids(animal_summary_etree):
@@ -60,7 +74,14 @@ def fetch_petpoint_adoptable_animal_ids(client):
         'A',  # noKids
         '',  # stageID
     )
-    return extract_animal_ids(etree.parse(io.BytesIO(adoptable_search_response.content)))
+    if adoptable_search_response.status_code is 200:
+        return extract_animal_ids(etree.parse(io.BytesIO(adoptable_search_response.content)))
+    else:
+        error_logger.error(
+            'Failed to retrieve adoptable animals. HTTP status code {}'.format(
+                adoptable_search_response.status_code,
+            )
+        )
 
 
 def extract_animal(animal_detail_etree):
@@ -73,7 +94,16 @@ def fetch_petpoint_animal_details(client, animal_id):
         animal_id,
         PETPOINT_AUTH_KEY,
     )
-    return extract_animal(etree.parse(io.BytesIO(animal_details_response.content)))
+    if animal_details_response.status_code is 200:
+        return extract_animal(etree.parse(io.BytesIO(animal_details_response.content)))
+    else:
+        error_logger.error(
+            'Failed to retrieve animal {} details. HTTP status code: {}. Reason: {}'.format(
+                animal_id,
+                animal_details_response.status_code,
+                animal_details_response.reason,
+            )
+        )
 
 
 class AdoptableAnimal:
