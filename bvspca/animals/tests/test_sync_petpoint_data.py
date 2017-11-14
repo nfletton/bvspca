@@ -29,11 +29,7 @@ def test_extract_animal_details():
 
 @pytest.mark.django_db(transaction=False)
 def test_create_animal_from_petpoint_data():
-    parent_page = Page.objects.get(url_path='/home/')
-    animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_response.xml')
-    animal_details = extract_animal(animal_etree)
-    animal = Animal.create(animal_details)
-    parent_page.add_child(instance=animal)
+    animal = create_animal_object()
 
     retrieved_animal = Animal.objects.get(pk=animal.pk)
     assert retrieved_animal.petpoint_id == 36607476
@@ -41,11 +37,7 @@ def test_create_animal_from_petpoint_data():
 
 @pytest.mark.django_db(transaction=False)
 def test_update_animal_from_petpoint_data():
-    parent_page = Page.objects.get(url_path='/home/')
-    animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_response.xml')
-    animal_details = extract_animal(animal_etree)
-    animal = Animal.create(animal_details)
-    parent_page.add_child(instance=animal)
+    animal = create_animal_object()
 
     animal = Animal.objects.get(petpoint_id=animal.petpoint_id)
     animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_modified_response.xml')
@@ -75,3 +67,12 @@ def test_update_animal_from_petpoint_data():
     assert retrieved_animal.lived_with_animals == 'Unknown'
     assert retrieved_animal.lived_with_animal_types == 'snakes'
     assert retrieved_animal.weight == '2 kilograms'
+
+
+def create_animal_object():
+    parent_page = Page.objects.get(url_path='/home/')
+    animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_response.xml')
+    animal_details = extract_animal(animal_etree)
+    animal = Animal.create(animal_details)
+    parent_page.add_child(instance=animal)
+    return animal
