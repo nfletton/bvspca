@@ -69,6 +69,21 @@ def test_update_animal_from_petpoint_data():
     assert retrieved_animal.weight == '2 kilograms'
 
 
+@pytest.mark.django_db(transaction=False)
+def test_update_previously_adoptable_animal_from_petpoint_data():
+    animal = create_animal_object()
+    animal.live = False
+    animal.save()
+
+    animal = Animal.objects.get(petpoint_id=animal.petpoint_id)
+    animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_modified_response.xml')
+    animal_details = extract_animal(animal_etree)
+    animal.update(animal_details)
+
+    retrieved_animal = Animal.objects.get(pk=animal.pk)
+    assert retrieved_animal.live
+
+
 def create_animal_object():
     parent_page = Page.objects.get(url_path='/home/')
     animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_response.xml')
