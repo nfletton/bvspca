@@ -80,8 +80,17 @@ class Animal(Page):
 
     @classmethod
     def create(cls, petpoint_data):
-        kwargs = {
-            'petpoint_id': int(petpoint_data.ID),
+        return cls(**cls.map_fields(petpoint_data))
+
+    @classmethod
+    def map_fields(cls, petpoint_data):
+        """
+        Map local field names to PetPoint data values.
+        :param petpoint_data: PetPointAnimal object
+        :return: Dictionary of Animal model field names to PetPoint value
+        """
+        return {
+            'petpoint_id': petpoint_data.ID,
             'title': petpoint_data.AnimalName,
             'species': petpoint_data.Species,
             'sex': petpoint_data.Sex,
@@ -89,23 +98,34 @@ class Animal(Page):
             'secondary_breed': petpoint_data.SecondaryBreed,
             'primary_color': petpoint_data.PrimaryColor,
             'secondary_color': petpoint_data.SecondaryColor,
-            'age': int(petpoint_data.Age),
+            'age': petpoint_data.Age,
             'size': petpoint_data.Size,
             'description': petpoint_data.Dsc,
             'photo_1_url': petpoint_data.Photo1,
             'photo_2_url': petpoint_data.Photo2,
             'photo_3_url': petpoint_data.Photo3,
-            'on_hold': True if petpoint_data.OnHold == 'Yes' else False,
+            'on_hold': petpoint_data.OnHold,
             'special_needs': petpoint_data.SpecialNeeds,
-            'no_dogs': True if petpoint_data.NoDogs == 'Y' else False,
-            'no_cats': True if petpoint_data.NoCats == 'Y' else False,
-            'no_kids': True if petpoint_data.NoKids == 'Y' else False,
+            'no_dogs': petpoint_data.NoDogs,
+            'no_cats': petpoint_data.NoCats,
+            'no_kids': petpoint_data.NoKids,
             'lived_with_kids': petpoint_data.LivedWithChildren,
             'lived_with_animals': petpoint_data.LivedWithAnimals,
             'lived_with_animal_types': petpoint_data.LivedWithAnimalTypes,
             'weight': petpoint_data.BodyWeight,
         }
-        return cls(**kwargs)
+
+    def update(self, petpoint_data):
+        dirty = False
+        field_map = self.map_fields(petpoint_data)
+        for field_name, value in field_map.items():
+            if getattr(self, field_name) != value:
+                setattr(self, field_name, value)
+                dirty = True
+        if dirty:
+            self.save()
+            return True
+        return False
 
     def __str__(self):
         return self.name

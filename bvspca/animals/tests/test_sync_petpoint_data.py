@@ -3,7 +3,7 @@ from django.core.management import call_command
 from lxml import etree
 from wagtail.wagtailcore.models import Page
 
-from bvspca.animals.management.commands.sync_petpoint_data import extract_animal, extract_animal_ids
+from bvspca.animals.petpoint import extract_animal_ids, extract_animal
 from bvspca.animals.models import Animal
 
 
@@ -37,3 +37,41 @@ def test_create_animal_from_petpoint_data():
 
     retrieved_animal = Animal.objects.get(pk=animal.pk)
     assert retrieved_animal.petpoint_id == 36607476
+
+
+@pytest.mark.django_db(transaction=False)
+def test_update_animal_from_petpoint_data():
+    parent_page = Page.objects.get(url_path='/home/')
+    animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_response.xml')
+    animal_details = extract_animal(animal_etree)
+    animal = Animal.create(animal_details)
+    parent_page.add_child(instance=animal)
+
+    animal = Animal.objects.get(petpoint_id=animal.petpoint_id)
+    animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_modified_response.xml')
+    animal_details = extract_animal(animal_etree)
+    animal.update(animal_details)
+
+    retrieved_animal = Animal.objects.get(pk=animal.pk)
+    assert retrieved_animal.title == 'Sniffy 2'
+    assert retrieved_animal.species == 'Dog'
+    assert retrieved_animal.sex == 'Female'
+    assert retrieved_animal.primary_breed == 'Domestic Longhair'
+    assert retrieved_animal.secondary_breed == 'Mix 2'
+    assert retrieved_animal.primary_color == 'Orange'
+    assert retrieved_animal.secondary_color == 'Brown'
+    assert retrieved_animal.age == 160
+    assert retrieved_animal.size == 'M'
+    assert retrieved_animal.description == 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    assert retrieved_animal.photo_1_url == 'http://www.example.com/1.jpg'
+    assert retrieved_animal.photo_2_url == 'http://www.example.com/2.jpg'
+    assert retrieved_animal.photo_3_url == 'http://www.example.com/3.jpg'
+    assert retrieved_animal.on_hold
+    assert retrieved_animal.special_needs == 'special needs'
+    assert retrieved_animal.no_dogs
+    assert not retrieved_animal.no_cats
+    assert retrieved_animal.no_kids
+    assert retrieved_animal.lived_with_kids == 'No'
+    assert retrieved_animal.lived_with_animals == 'Unknown'
+    assert retrieved_animal.lived_with_animal_types == 'snakes'
+    assert retrieved_animal.weight == '2 kilograms'
