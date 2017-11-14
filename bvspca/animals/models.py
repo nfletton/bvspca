@@ -122,6 +122,9 @@ class Animal(Page):
             if getattr(self, field_name) != value:
                 setattr(self, field_name, value)
                 dirty = True
+        if petpoint_data.Stage != 'Available' and self.live:
+            self.live = False
+            dirty = True
         if dirty:
             self.save()
             return True
