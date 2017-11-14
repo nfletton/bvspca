@@ -40,4 +40,6 @@ class Command(BaseCommand):
                                 new_animal.title,
                             )
                         )
-            # TODO: unpublish animals no longer adoptable
+            # unpublish animals no longer adoptable
+            Animal.objects.filter(live=True).exclude(petpoint_id__in=adoptable_animal_ids).update(live=False)
+
