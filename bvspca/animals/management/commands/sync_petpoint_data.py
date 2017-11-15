@@ -35,11 +35,19 @@ class Command(BaseCommand):
                         new_animal = Animal.create(petpoint_animal)
                         animal_parent.add_child(instance=new_animal)
                         logger.info(
-                            'Created animal new {} ({})'.format(
+                            'Created animal {} ({})'.format(
                                 new_animal.petpoint_id,
                                 new_animal.title,
                             )
                         )
             # unpublish animals no longer adoptable
-            Animal.objects.filter(live=True).exclude(petpoint_id__in=adoptable_animal_ids).update(live=False)
-
+            unavailable_animals = Animal.objects.filter(live=True).exclude(petpoint_id__in=adoptable_animal_ids)
+            for animal in unavailable_animals:
+                animal.live = False
+                animal.save()
+                logger.info(
+                    'Unpublished animal {} ({})'.format(
+                        animal.petpoint_id,
+                        animal.title,
+                    )
+                )
