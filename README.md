@@ -5,12 +5,20 @@
 ### core
 
 ### animals
-All animal related data, templates and functionality. The app includes:
+This app provides the main functionality for displaying animals
+available for adoption. The app is based around using 
+PetPoint (http://www.petpoint.com/) for managing animal data. It
+provides a Django [management command](#cronjobs) to synchronize 
+current adoptable animals in the PetPoint data management system 
+with an 'Animal' Wagtail page model.
 
-* a management command to synchronize animal data managed in 
-  PetPoint (http://www.petpoint.com/) with local animal data in this 
-  app.
-* 
+A PETPOINT_AUTH_KEY [environment variable](#venv) needs to be set to
+enable access to the PetPoint SOAP API.
+
+The animals app can easily be modified for rescue centres
+that do not use PetPoint by modifying the Wagtail Animal page model
+to suit specific requirements.
+
 
 ### newsletter
 Includes a management command to construct a weekly newsletter with
@@ -26,7 +34,7 @@ The newsletter includes:
 
 
 ## Deployment
-### Evironment Variables
+### <a name="venv"/>Evironment Variables
 The following environment variables need to be set in a production
 environment
 
@@ -87,7 +95,7 @@ To run the tests, check your test coverage, and generate an HTML coverage report
   $ npm run build
 ```
 
-## Manage.py Cron Jobs
+## <a name="cronjobs"/>Manage.py Cron Jobs Summary
 
 | Command | Required by |Frequency | Note |
 |---|---|---|---|
