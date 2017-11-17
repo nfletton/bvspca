@@ -144,5 +144,8 @@ class AnimalsPage(Page, MenuTitleable):
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 
+    def animals(self):
+        return Animal.objects.live().descendant_of(self).order_by('-petpoint_id')
+
     def __str__(self):
         return self.title

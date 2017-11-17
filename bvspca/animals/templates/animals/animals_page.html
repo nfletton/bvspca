@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load staticfiles wagtailcore_tags %}
+
+{% block content %}
+  <div class="animals">
+    {% for animal in  page.animals %}
+        <div class="animals__animal">
+          <a class="animals__animal-details" href="{% pageurl animal %}">
+            <div>{{ animal.title }}</div>
+          </a>
+        </div>
+      {% endfor %}
+  </div>
+{% endblock content %}

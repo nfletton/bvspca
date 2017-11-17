@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles wagtailcore_tags %}
+
+{% block content %}
+  <div class="animal-profile">
+    <div>{{ page.title }}</div>
+    <div class="animal-profile__gallery"></div>
+    <ul class="animal-profile__info">
+      <li class="animal-profile__info"><label>Gender</label><div>{{ page.sex }}</div></li>
+      <li class="animal-profile__info"><label>Weight</label><div></div>{{ page.weight }}</li>
+      <li class="animal-profile__info"><label>Size</label><div>{{ page.size }}</div></li>
+      <li class="animal-profile__info"><label>Age</label><div>{{ page.age }}</div></li>
+      <li class="animal-profile__info"><label>Colour</label><div>{{ page.primary_color }}</div></li>
+      <li class="animal-profile__info"><label>Breed</label><div>{{ page.primary_breed }}</div></li>
+      <li class="animal-profile__info">
+        <label>Status</label>
+        <div>{% if page.on_hold %}On Hold{% else %}Available for Adoption{% endif %}</div>
+      </li>
+      <li class="animal-profile__info">
+        <label>Compatibility</label>
+        <ul>
+          {% if page.special_needs %}<li>{{ page.special_needs }}</li>{% endif %}
+          {% if page.no_dogs %}<li>No Dogs</li>{% endif %}
+          {% if page.no_cats %}<li>No Cats</li>{% endif %}
+          {% if page.no_kids %}<li>No Children</li>{% endif %}
+          {% if page.lived_with_kids %}<li>{{ page.lived_with_kids }}</li>{% endif %}
+          {% if page.lived_with_animals %}<li>{{ page.lived_with_animals }}</li>{% endif %}
+          {% if page.lived_with_animal_types %}<li>{{ page.lived_with_animal_types }}</li>{% endif %}
+        </ul>
+      </li>
+    </ul>
+    <div class="animal-profile__description">
+      {{ page.description }}
+    </div>
+  </div>
+{% endblock content %}
