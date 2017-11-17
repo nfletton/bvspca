@@ -15,6 +15,10 @@ with an 'Animal' Wagtail page model.
 A PETPOINT_AUTH_KEY [environment variable](#venv) needs to be set to
 enable access to the PetPoint SOAP API.
 
+Animal photo galleries use the 
+[Featherlight](https://github.com/noelboss/featherlight/) jQuery 
+lightbox plugin.
+
 The animals app can easily be modified for rescue centres
 that do not use PetPoint by modifying the Wagtail Animal page model
 to suit specific requirements.

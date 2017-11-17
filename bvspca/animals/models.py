@@ -1,6 +1,11 @@
 from django.db import models
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
+from django.db.models import ForeignKey
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailimages.models import Image
 from wagtail.wagtailsearch import index
 
 from bvspca.core.models_abstract import MenuTitleable
@@ -33,6 +38,20 @@ class Animal(Page):
     lived_with_animals = models.CharField(max_length=10, default='Unknown')
     lived_with_animal_types = models.CharField(max_length=200, blank=True)
     weight = models.CharField(max_length=30, blank=True)
+    # local updatable fields
+    main_photo = ForeignKey(
+        Image,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+        related_name='+',
+    )
+    additional_photos = StreamField(
+        [
+            ('image', ImageChooserBlock())
+        ],
+        blank=True,
+    )
 
     search_fields = Page.search_fields + [
         index.SearchField('title'),
@@ -47,9 +66,11 @@ class Animal(Page):
     subpage_types = []
 
     content_panels = [
-        FieldPanel('title'),
+        ImageChooserPanel('main_photo'),
+        StreamFieldPanel('additional_photos'),
         MultiFieldPanel(
             [
+                FieldPanel('title'),
                 FieldPanel('petpoint_id'),
                 FieldPanel('species'),
                 FieldPanel('sex'),

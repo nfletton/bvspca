@@ -1,0 +1,92 @@
+/* Animal list page */
+.animals {
+  @include container-wide;
+}
+
+/* Animal profile page */
+
+$animal-profile-2-column: 800px;
+
+.animal-profile {
+  @include container-wide;
+}
+
+.animal-profile__gallery-and-details {
+  @media(min-width: $animal-profile-2-column) {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+
+.animal-profile__gallery {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media(min-width: $animal-profile-2-column) {
+    width: 48%;
+  }
+}
+
+.animal-profile__gallery-thumbs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.animal-profile__gallery-thumbs--hidden {
+  display: none;
+}
+
+.animal-profile__gallery-thumb {
+  //border: 1px solid $gp-yellow;
+  display: inline-block;
+  margin: 0.1em;
+  &:hover {
+    //border-color: darken($gp-yellow, 20%);
+  }
+  img {
+    display: block;
+  }
+}
+
+.animal-profile__gallery-thumb-main {
+  display: none;
+}
+
+.animal-profile__primary-photo {
+  margin-bottom: 1em;
+  img {
+    @include responsive-image;
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.animal-profile__details {
+  @media(min-width: $animal-profile-2-column) {
+    width: 48%;
+  }
+}
+
+.animal-profile__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.animal-profile__info-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  label {
+    font-weight: 700;
+  }
+}
+
+.animal-profile__info-compatibility {
+  display: flex;
+  flex-direction: column;
+}
+
