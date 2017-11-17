@@ -26,7 +26,7 @@ psycopg2==2.7.3.2
 pytz==2017.3
 
 # Your custom requirements go here
-wagtail==1.13
-wagtailfontawesome==1.1.0
+wagtail==1.13.1
+wagtailfontawesome==1.1.1
 mailchimp3==2.0.18
 zeep==2.4.0
