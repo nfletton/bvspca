@@ -5,23 +5,29 @@
   <div class="animal-profile">
     <div class="animal-profile__gallery-and-details">
       <div class="animal-profile__gallery">
-        <div class="animal-profile__primary-photo">
-          {% image page.main_photo fill-500x500 %}
-        </div>
-        <div class="animal-profile__gallery-thumbs{% if not page.additional_photos %} animal-profile__gallery-thumbs--hidden{% endif %}">
-          {% image page.main_photo width-1000 as main_photo %}
-          <a class="animal-profile__gallery-thumb animal-profile__gallery-thumb-main"
-             href="{{ main_photo.url }}">
-            {% image page.main_photo fill-100x100 %}
-          </a>
-          {% for next_photo in page.additional_photos %}
-            {% image next_photo.value width-1000 as additional_photo %}
-            <a class="animal-profile__gallery-thumb"
-               href="{{ additional_photo.url }}">
-              {% image next_photo.value fill-100x100 %}
+        {% if page.main_photo %}
+          <div class="animal-profile__primary-photo">
+            {% image page.main_photo fill-500x500 %}
+          </div>
+          <div class="animal-profile__gallery-thumbs{% if not page.additional_photos %} animal-profile__gallery-thumbs--hidden{% endif %}">
+            {% image page.main_photo width-1000 as main_photo %}
+            <a class="animal-profile__gallery-thumb animal-profile__gallery-thumb-main"
+               href="{{ main_photo.url }}">
+              {% image page.main_photo fill-100x100 %}
             </a>
-          {% endfor %}
-        </div>
+            {% for next_photo in page.additional_photos %}
+              {% image next_photo.value width-1000 as additional_photo %}
+              <a class="animal-profile__gallery-thumb"
+                 href="{{ additional_photo.url }}">
+                {% image next_photo.value fill-100x100 %}
+              </a>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="animal-profile__primary-photo animal-profile__placeholder-photo">
+            <img src="{% if page.species == 'Cat' %}{% static 'svg/cat.svg' %}{% else %}{% static 'svg/dog.svg' %}{% endif %}">
+          </div>
+        {% endif %}
       </div>
       <div class="animal-profile__details">
         <h1>{{ page.title }}</h1>

@@ -65,6 +65,12 @@ $animal-profile-2-column: 800px;
   }
 }
 
+.animal-profile__placeholder-photo {
+  img {
+    cursor: auto;
+  }
+}
+
 .animal-profile__details {
   @media(min-width: $animal-profile-2-column) {
     width: 48%;
