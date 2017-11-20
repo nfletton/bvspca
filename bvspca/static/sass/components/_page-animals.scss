@@ -3,6 +3,46 @@
   @include container-wide;
 }
 
+$animal-summary-photo-width: 240px;
+$animal-summary-photo-border-width: 4px;
+
+.animals-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  @media(min-width: $max-width) {
+    justify-content: space-around;
+  }
+}
+
+.animal-summary-item {
+  width: $animal-summary-photo-width + (2 * $animal-summary-photo-border-width);
+  position: relative;
+  text-align: center;
+  margin: 0 0 2em 0;
+  @media(min-width: 400px) {
+    margin: 0 1em 2em 1em;
+  }
+  &:hover {
+    color: #fff;
+  }
+}
+
+.animal-summary {
+  display: block;
+  &:active, &:focus, &:hover {
+    text-decoration: none;
+  }
+}
+
+.animal-summary__more {
+  width: 100%;
+}
+
 /* Animal profile page */
 
 $animal-profile-2-column: 800px;

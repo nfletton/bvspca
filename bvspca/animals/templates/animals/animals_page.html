@@ -1,14 +1,31 @@
 {% extends "base.html" %}
-{% load staticfiles wagtailcore_tags %}
+{% load staticfiles wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
   <div class="animals">
-    {% for animal in  page.animals %}
-        <div class="animals__animal">
-          <a class="animals__animal-details" href="{% pageurl animal %}">
-            <div>{{ animal.title }}</div>
+    <ul class="animals-list">
+      {% for animal in  page.animals %}
+        <li class="animal-summary-item">
+          <a class="animal-summary" href="{% pageurl animal %}">
+            <div class="animal-summary__photo">
+              {% if animal.main_photo %}
+                {% image animal.main_photo fill-240x240 %}
+              {% else %}
+                <img class="animal-summary__photo-placeholder"
+                     src="{% static 'svg/' %}{{ animal.species|lower }}.svg"
+                     width="240" height="240"
+                >
+              {% endif %}
+            </div>
+            <div class="animal-summary__details">
+              <div class="animal-summary__title">{{ animal.title }}</div>
+              <div class="animal-summary__gender">Gender: {{ animal.sex }}</div>
+              <div class="animal-summary__age">Age: {{ animal.age }}</div>
+              <button class="animal-summary__more">About {{ animal.title }} &hellip;</button>
+            </div>
           </a>
-        </div>
+        </li>
       {% endfor %}
+    </ul>
   </div>
 {% endblock content %}
