@@ -159,8 +159,13 @@ class Animal(Page):
 
 
 class AnimalsPage(Page, MenuTitleable):
+    PETPOINT_CAT_CODE = 'Cat'
+    PETPOINT_DOG_CODE = 'Dog'
+    ANIMAL_TYPES = ((PETPOINT_CAT_CODE, PETPOINT_CAT_CODE), (PETPOINT_DOG_CODE, PETPOINT_DOG_CODE))
+    species = models.CharField(max_length=20, choices=ANIMAL_TYPES)
     content_panels = [
         FieldPanel('title'),
+        FieldPanel('species'),
     ]
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]

@@ -18,7 +18,6 @@ class Command(BaseCommand):
 
         adoptable_animal_ids = fetch_petpoint_adoptable_animal_ids(client)
         if adoptable_animal_ids is not None:
-            animal_parent = AnimalsPage.objects.get(pk=13)
             for animal_id in adoptable_animal_ids:
                 petpoint_animal = fetch_petpoint_animal(client, animal_id)
                 if petpoint_animal is not None:
@@ -33,6 +32,7 @@ class Command(BaseCommand):
                             )
                     except Animal.DoesNotExist:
                         new_animal = Animal.create(petpoint_animal)
+                        animal_parent = AnimalsPage.objects.get(species=new_animal.species)
                         animal_parent.add_child(instance=new_animal)
                         logger.info(
                             'Created animal {} ({})'.format(
