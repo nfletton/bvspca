@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles wagtailcore_tags wagtailimages_tags %}
+{% load staticfiles wagtailcore_tags wagtailimages_tags animal_tags %}
 
 {% block content %}
   <div class="animal-profile">
@@ -42,7 +42,7 @@
             <div>{{ page.size }}</div>
           </li>
           <li class="animal-profile__info-item"><label>Age</label>
-            <div>{{ page.age }}</div>
+            <div>{{ page.age|to_years_an_months }}</div>
           </li>
           <li class="animal-profile__info-item"><label>Colour</label>
             <div>{{ page.primary_color }}</div>

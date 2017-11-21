@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles wagtailcore_tags wagtailimages_tags %}
+{% load staticfiles wagtailcore_tags wagtailimages_tags animal_tags %}
 
 {% block content %}
   <div class="animals">
@@ -20,7 +20,7 @@
             <div class="animal-summary__details">
               <div class="animal-summary__title">{{ animal.title }}</div>
               <div class="animal-summary__gender">Gender: {{ animal.sex }}</div>
-              <div class="animal-summary__age">Age: {{ animal.age }}</div>
+              <div class="animal-summary__age">Age: {{ animal.age|to_years_an_months }}</div>
               <button class="animal-summary__more">About {{ animal.title }} &hellip;</button>
             </div>
           </a>
