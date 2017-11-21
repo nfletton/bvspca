@@ -1,3 +1,4 @@
+import datetime
 import io
 import logging
 
@@ -79,6 +80,8 @@ class PetPointAnimal:
             property_value = property_element.text
             if propName in ['ID', 'Age']:
                 return int(property_value)
+            if propName in ['DateOfSurrender']:
+                return datetime.datetime.strptime(property_value[:10], '%Y-%m-%d').date()
             if propName in ['NoDogs', 'NoCats', 'NoKids']:
                 return True if property_value == 'Y' else False
             if propName in ['OnHold']:
@@ -86,4 +89,4 @@ class PetPointAnimal:
             if property_value is None:
                 return ''
             return property_value
-        raise AttributeError('AdoptableAnimal has no attribute {}'.format(propName))
+        return None

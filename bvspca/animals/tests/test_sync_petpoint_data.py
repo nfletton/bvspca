@@ -1,3 +1,5 @@
+import datetime
+
 import pytest
 from django.core.management import call_command
 from lxml import etree
@@ -25,6 +27,7 @@ def test_extract_animal_details():
     animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_response.xml')
     animal_details = extract_animal(animal_etree)
     assert animal_details.AnimalName == 'Sniffy'
+    assert animal_details.DateOfSurrender == datetime.date(2017, 9, 20)
 
 
 @pytest.mark.django_db(transaction=False)
@@ -67,6 +70,7 @@ def test_update_animal_from_petpoint_data():
     assert retrieved_animal.lived_with_animals == 'Unknown'
     assert retrieved_animal.lived_with_animal_types == 'snakes'
     assert retrieved_animal.weight == '2 kilograms'
+    assert retrieved_animal.surrender_date == datetime.date(2017, 11, 11)
 
 
 @pytest.mark.django_db(transaction=False)
