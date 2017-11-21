@@ -80,7 +80,7 @@ class PetPointAnimal:
             property_value = property_element.text
             if propName in ['ID', 'Age']:
                 return int(property_value)
-            if propName in ['DateOfSurrender']:
+            if propName in ['DateOfSurrender', 'LastIntakeDate']:
                 return datetime.datetime.strptime(property_value[:10], '%Y-%m-%d').date()
             if propName in ['NoDogs', 'NoCats', 'NoKids']:
                 return True if property_value == 'Y' else False

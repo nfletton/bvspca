@@ -39,6 +39,7 @@ class Animal(Page):
     lived_with_animal_types = models.CharField(max_length=200, blank=True)
     weight = models.CharField(max_length=30, blank=True)
     surrender_date = models.DateField(null=True, blank=True)
+    last_intake_date = models.DateField(null=True, blank=True)
     # local updatable fields
     main_photo = ForeignKey(
         Image,
@@ -95,6 +96,7 @@ class Animal(Page):
                 FieldPanel('lived_with_animal_types'),
                 FieldPanel('weight'),
                 FieldPanel('surrender_date'),
+                FieldPanel('last_intake_date'),
             ],
             heading="PetPoint Data",
             classname="collapsible collapsed"
@@ -137,6 +139,7 @@ class Animal(Page):
             'lived_with_animal_types': petpoint_data.LivedWithAnimalTypes,
             'weight': petpoint_data.BodyWeight,
             'surrender_date': petpoint_data.DateOfSurrender,
+            'last_intake_date': petpoint_data.LastIntakeDate,
         }
 
     def update(self, petpoint_data):
@@ -174,7 +177,7 @@ class AnimalsPage(Page, MenuTitleable):
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 
     def animals(self):
-        return Animal.objects.live().descendant_of(self).order_by('-petpoint_id')
+        return Animal.objects.live().descendant_of(self).order_by('-last_intake_date')
 
     def __str__(self):
         return self.title
