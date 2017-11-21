@@ -8,6 +8,16 @@ from wagtail.wagtailcore.blocks import (
     RawHTMLBlock)
 
 
+class VideoBlock(StructBlock):
+    video = EmbedBlock(required=True)
+    caption = CharBlock(required=False)
+
+    class Meta:
+        label = 'Video'
+        template = 'core/blocks/video.html'
+        icon = 'fa-video-camera'
+
+
 class ImageBlock(StructBlock):
     image = ImageChooserBlock(required=True)
     caption = CharBlock(required=False)
@@ -86,6 +96,7 @@ class ContentStreamBlock(StreamBlock):
         label='Embedded Media',
         help_text='Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
         icon='fa-external-link-square',
+        template='core/blocks/embed_block.html',
     )
     table_block = ContentTableBlock()
     raw_html = ContentRawHTML()

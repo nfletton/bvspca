@@ -8,6 +8,7 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import Image
 from wagtail.wagtailsearch import index
 
+from bvspca.core.blocks import ContentStreamBlock
 from bvspca.core.models_abstract import MenuTitleable
 
 
@@ -54,7 +55,9 @@ class Animal(Page):
         ],
         blank=True,
     )
-
+    updates = StreamField(
+        ContentStreamBlock(), verbose_name="Animal Updates", blank=True
+    )
     search_fields = Page.search_fields + [
         index.SearchField('title'),
         index.SearchField('primary_breed'),
@@ -70,6 +73,7 @@ class Animal(Page):
     content_panels = [
         ImageChooserPanel('main_photo'),
         StreamFieldPanel('additional_photos'),
+        StreamFieldPanel('updates'),
         MultiFieldPanel(
             [
                 FieldPanel('title'),
