@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.db.models import ForeignKey
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
@@ -9,10 +10,10 @@ from wagtail.wagtailimages.models import Image
 from wagtail.wagtailsearch import index
 
 from bvspca.core.blocks import ContentStreamBlock
-from bvspca.core.models_abstract import MenuTitleable
+from bvspca.core.models_abstract import MenuTitleable, MetaTagable
 
 
-class Animal(Page):
+class Animal(Page, MetaTagable):
     # PetPoint read-only fields
     petpoint_id = models.PositiveIntegerField(
         verbose_name='petpoint animal id',
@@ -160,6 +161,17 @@ class Animal(Page):
             self.save()
             return True
         return False
+
+    def seo_and_social_meta_values(self):
+        data = super().seo_and_social_meta_values()
+        if self.main_photo:
+            data['photo'] = self.main_photo
+            data['social_title'] = 'Meet {}'.format(self.title)
+            data['social_description'] = \
+                '{} is looking for a forever home. Contact us for more information'.format(self.title)
+            data['site_name'] = getattr(settings, 'WAGTAIL_SITE_NAME')
+            data['page_url'] = self.full_url
+        return data
 
     def __str__(self):
         return self.title

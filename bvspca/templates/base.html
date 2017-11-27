@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }} | ATESL{% endif %}{% endblock title %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{ self.search_description }}">
+  {% block seo_and_social_tags %}
+    {% seo_and_social_meta_tags self %}
+  {% endblock seo_and_social_tags %}
 
   <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Montserrat:400,400i,600,600i,700,700i" rel="stylesheet">
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
