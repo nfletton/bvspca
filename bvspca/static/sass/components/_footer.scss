@@ -1,8 +1,7 @@
 $footer-block-break: 800px;
 
 footer {
-  background-color: $footer-dark-bg;
-  color: white;
+  background-color: $footer-bg;
   padding: 90px 0;
 }
 
@@ -27,7 +26,6 @@ footer {
     margin: 0;
   }
   a {
-    color: #fff;
     text-decoration: none;
     padding-left: 30px;
     &:hover {
@@ -76,10 +74,8 @@ footer {
 
 .newsletter-signup__button {
   background-color: $highlight-red-on-black;
-  color: #fff;
   &:link,
   &:visited {
-    color: #fff;
   }
   font-family: $title-font;
   padding: 0.25em 2em;

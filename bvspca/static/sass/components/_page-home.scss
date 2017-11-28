@@ -1,8 +1,7 @@
 $event-row-break: 650px;
 
-.home {
-  background-color: $content-dark-bg;
-  color: #fff;
+.home-page {
+  @include container-wide;
 }
 
 .upcoming-events {
