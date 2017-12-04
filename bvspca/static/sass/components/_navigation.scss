@@ -1,6 +1,6 @@
-$nav-primary-color: #fff;
-$nav-active-color: $highlight-red-on-white;
-$nav-bg-color: rgba(0, 0, 0, 0.7);
+$nav-primary-color: $primary-color;
+$nav-active-color: #6b6b6b;
+$nav-bg-color: rgba(71, 71, 71, 0.7);
 $nav-bg-home-color: rgba(0, 0, 0, 0.6);
 $nav-mobile-bg-color: rgba(0, 0, 0, 0.9);
 
@@ -126,6 +126,7 @@ header {
     flex-direction: column;
     justify-content: center;
     height: $nav-height;
+    margin-top: 1em;
   }
 }
 
@@ -139,12 +140,19 @@ header {
   }
 }
 
-.main-nav__link,
-.main-nav__child-link {
+.main-nav__link {
   color: $nav-primary-color;
   &:link,
   &:visited {
     color: $nav-primary-color;
+  }
+}
+
+.main-nav__child-link {
+  color: #fff;
+  &:link,
+  &:visited {
+    color: #fff;
   }
 }
 
