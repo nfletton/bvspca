@@ -2,6 +2,6 @@
 
 <ul class="nav__children" role="menu">
   {% for child in menuitems_children %}
-    <li><a href="{% pageurl child %}" role="menuitem">{{ child.title }}</a></li>
+    <li><a href="{% pageurl child %}" role="menuitem" class="nav__child-link">{{ child.menu_title|default:child.title }}</a></li>
   {% endfor %}
 </ul>
