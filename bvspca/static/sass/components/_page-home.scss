@@ -1,7 +1,9 @@
 $event-row-break: 650px;
 
 .home-page {
-  @include container-wide;
+  @include container;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
 }
 
 .upcoming-events {

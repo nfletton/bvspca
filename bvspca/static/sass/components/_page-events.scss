@@ -1,51 +1,17 @@
-.specials {
-  overflow: hidden;
-}
-
-.special {
-  overflow: hidden;
-}
-
-.standalone-special {
-  margin: $content-padding 0;
-}
-
-.special--first {
-  margin-top: $content-padding;
-}
-
-.special--last {
-  background-color: $content-grey-bg;
-  margin-top: $content-padding;
-  padding-top: $content-padding;
-  padding-bottom: $content-padding;
-  &.special--first {
-    margin-top: 0;
-  }
-}
-
-.special__container {
-  @include container-narrow;
-}
-
-.special__title {
-  text-align: center;
-}
-
-.special__summary {
-  text-align: center;
-}
-
-.special__image {
-  text-align: center;
-}
-
-.events {
-  @include container-narrow;
-  margin: $content-padding auto;
+.events-page {
+  @include container;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
 }
 
 .events__title,
 .event__title {
   text-align: center;
 }
+
+.event-page {
+  @include container;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
+}
+

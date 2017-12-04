@@ -40,12 +40,6 @@ main {
   margin-bottom: $content-padding;
 }
 
-.main-content {
-  @include container-narrow;
-  margin-top: $content-padding-large;
-  margin-bottom: $content-padding-large;
-}
-
 .inline-image {
   clear: both;
   margin: 2em 0;

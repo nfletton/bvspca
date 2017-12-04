@@ -2,8 +2,8 @@
 {% load staticfiles wagtailcore_tags %}
 
 {% block content %}
-  <div class="events-list-page">
-{#    {% include 'core/includes/page_title.html' %}#}
+  <div class="events-page">
+    <h1>{{ page.title }}</h1>
     <div id="events">
       <ul class="events list">
         {% for event in events %}

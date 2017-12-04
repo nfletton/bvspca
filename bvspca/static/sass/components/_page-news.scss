@@ -1,7 +1,11 @@
 .news-page {
-  @include container-wide;
+  @include container;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
 }
 
 .news-item-page {
-  @include container-wide;
+  @include container;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
 }

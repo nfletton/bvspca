@@ -1,3 +1,5 @@
 .team {
-  @include container-wide;
+  @include container;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
 }

@@ -5,7 +5,7 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock
 from wagtail.wagtailcore.blocks import (
     CharBlock, ChoiceBlock, RichTextBlock, StreamBlock, StructBlock, TextBlock,
-    RawHTMLBlock)
+    RawHTMLBlock, PageChooserBlock)
 
 
 class VideoBlock(StructBlock):
@@ -115,3 +115,13 @@ class TeamMemberBlock(blocks.StructBlock):
     class Meta:
         template = 'core/blocks/team_member.html'
         icon = 'user'
+
+
+class PictureLinkBlock(blocks.StructBlock):
+    title = blocks.CharBlock(max_length=50)
+    image = ImageChooserBlock()
+    page = PageChooserBlock()
+
+    class Meta:
+        template = 'core/blocks/picture_link.html'
+        icon = 'fa-camera-retro'

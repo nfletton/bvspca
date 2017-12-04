@@ -1,0 +1,6 @@
+{% load wagtailimages_tags %}
+
+<a href="{{ value.page.url }}" class="picture-link-block">
+  {% image value.image width-200 class='picture-link-block__title' %}
+  <div class="picture-link-block__title">{{ value.title }}</div>
+</a>

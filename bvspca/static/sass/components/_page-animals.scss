@@ -1,6 +1,8 @@
 /* Animal list page */
 .animals {
   @include container-wide;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
 }
 
 $animal-summary-photo-width: 240px;

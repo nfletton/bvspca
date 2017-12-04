@@ -2,11 +2,12 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailcore import blocks
+from wagtail.wagtailcore.blocks import ListBlock
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailsearch import index
 
-from bvspca.core.blocks import TeamMemberBlock
+from bvspca.core.blocks import PictureLinkBlock, TeamMemberBlock
 from bvspca.events.models import Event
 from bvspca.news.models import News
 from .blocks import ContentStreamBlock
@@ -60,7 +61,7 @@ class TeamPage(Page, MenuTitleable):
         ('section', blocks.CharBlock(classname="full title")),
         ('member', TeamMemberBlock()),
     ], blank=True)
-    parent_page_types = [HomePage]
+    subpage_types = []
 
     content_panels = [
         FieldPanel('title'),
@@ -91,3 +92,22 @@ class ParentPage(Page):
         if first_subpage:
             return HttpResponseRedirect(first_subpage.url)
         return HttpResponseRedirect('/')
+
+
+class AdoptionCentre(Page, MenuTitleable):
+    """
+    Top level navigation page where all things related to animal adoption
+    are located as submenus items e.g. available dogs and cats,
+    adoption policy, fees, etc.
+    """
+    body = StreamField([
+        ('picture_links', ListBlock(PictureLinkBlock()))
+    ], blank=True)
+
+    content_panels = [
+        FieldPanel('title'),
+        StreamFieldPanel('body'),
+    ]
+
+    class Meta:
+        verbose_name = 'Adoption Centre'
