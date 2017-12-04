@@ -26,6 +26,18 @@ main {
   }
 }
 
+.document-block {
+  text-align: center;
+  font-size: 1.1em;
+  span {
+    background: url(../svg/download-icon.svg) no-repeat 100% 50%;
+    background-size: 1em;
+    font-size: 0.8em;
+    line-height: 2;
+    padding-right: 1.5em;
+    text-transform: uppercase;
+  }
+}
 
 .intro,
 .close {

@@ -31,12 +31,11 @@ class ImageBlock(StructBlock):
 
 class DocumentBlock(StructBlock):
     document = DocumentChooserBlock(required=True)
-    title = CharBlock(required=False)
 
     class Meta:
         label = 'Document'
         icon = 'document'
-        template = 'core/blocks/image_block.html'
+        template = 'core/blocks/document_block.html'
 
 
 class HeadingBlock(StructBlock):
@@ -91,6 +90,7 @@ class ContentStreamBlock(StreamBlock):
         icon='fa-paragraph',
     )
     image_block = ImageBlock()
+    document_block = DocumentBlock()
     block_quote = BlockQuote()
     embed_block = EmbedBlock(
         label='Embedded Media',
