@@ -9,7 +9,6 @@
         </div>
     {% endif %}
     <h3>{{ value.name }}{% if value.role %}, {{ value.role }}{% endif %}</h3>
-`
     {{ value.bio|richtext }}
     {% if value.location %}
       <div>Location: {{ value.location }}</div>
