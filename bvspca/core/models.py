@@ -7,7 +7,7 @@ from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailsearch import index
 
-from bvspca.core.blocks import PictureLinkBlock, TeamMemberBlock
+from bvspca.core.blocks import PictureLinkBlock, TeamMemberBlock, SupporterBlock, HeadingBlock
 from bvspca.events.models import Event
 from bvspca.news.models import News
 from .blocks import ContentStreamBlock
@@ -54,6 +54,24 @@ class HomePage(Page):
         context['events'] = Event.objects.future(settings.SPCA_LIST_BLOCK_LENGTH)
         context['news'] = News.objects.news(settings.SPCA_LIST_BLOCK_LENGTH)
         return context
+
+
+class SupportersPage(Page, MenuTitleable):
+    supporters = StreamField([
+        ('category', HeadingBlock()),
+        ('supporter', SupporterBlock()),
+    ], blank=True)
+    subpage_types = []
+
+    content_panels = [
+        FieldPanel('title'),
+        StreamFieldPanel('supporters'),
+    ]
+
+    promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
+
+    class Meta:
+        verbose_name = 'Supporters Page'
 
 
 class TeamPage(Page, MenuTitleable):

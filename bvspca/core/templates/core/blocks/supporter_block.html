@@ -1,0 +1,13 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="supporter">
+  <div class="supporter__logo">
+    {% if value.logo %}
+      {% image value.logo width-220 %}
+    {% endif %}
+  </div>
+  <div class="supporter__details">
+    <div class="supporter__name">{{ value.name }}</div>
+    <div class="supporter__summary">{{ value.summary }}</div>
+    {% if value.url %}<a href="{{ value.url }}" class="supporter__link">Website...</a>{% endif %}
+  </div>
+</div>

@@ -1,0 +1,50 @@
+$supporters-block-break: 700px;
+
+.supporters {
+  @include container;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
+  .block-category {
+    text-align: center;
+  }
+}
+
+.supporter {
+  margin-bottom: $content-padding;
+  @media(min-width: $supporters-block-break)  {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $content-padding-large;
+  }
+}
+
+.supporter__logo {
+  img {
+    margin: 1em auto;
+    display: block;
+    @media(min-width: $supporters-block-break) {
+      margin: 0;
+    }
+  }
+
+  @media(min-width: $supporters-block-break) {
+    margin-right: $content-padding;
+    min-width: 220px; // should be the same value as the width of the image in supporter_block.html
+  }
+}
+.supporter__name {
+  @extend h3;
+  text-align: center;
+  @media(min-width: $supporters-block-break) {
+    text-align: left;
+  }
+}
+
+.supporter__link {
+  margin-top: 1em;
+  display: block;
+  text-align: center;
+  @media(min-width: $supporters-block-break) {
+    text-align: left;
+  }
+}

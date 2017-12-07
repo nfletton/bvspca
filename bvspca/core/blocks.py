@@ -125,3 +125,14 @@ class PictureLinkBlock(blocks.StructBlock):
     class Meta:
         template = 'core/blocks/picture_link.html'
         icon = 'fa-camera-retro'
+
+
+class SupporterBlock(blocks.StructBlock):
+    name = blocks.CharBlock(max_length=100)
+    summary = blocks.TextBlock()
+    logo = ImageChooserBlock(required=False)
+    url = blocks.URLBlock(required=False)
+
+    class Meta:
+        template = 'core/blocks/supporter_block.html'
+        icon = 'fa-money'

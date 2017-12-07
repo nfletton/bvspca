@@ -16,11 +16,13 @@ h2, .h2 {
   font-size: $base-font-size * 1.563;
   font-family: $heading-font;
   font-weight: 400;
+  margin-bottom: 1.5em;
 }
 
 h3, .h3 {
   font-size: $base-font-size * 1.25;
   font-family: $heading-font;
+  margin-bottom: 1em;
 }
 
 h4, .h4 {
