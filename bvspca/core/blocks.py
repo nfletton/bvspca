@@ -34,7 +34,7 @@ class DocumentBlock(StructBlock):
 
     class Meta:
         label = 'Document'
-        icon = 'document'
+        icon = 'fa-file-text'
         template = 'core/blocks/document_block.html'
 
 
@@ -49,7 +49,7 @@ class HeadingBlock(StructBlock):
 
     class Meta:
         label = 'Heading'
-        icon = 'title'
+        icon = 'fa-header'
         template = 'core/blocks/heading_block.html'
 
 

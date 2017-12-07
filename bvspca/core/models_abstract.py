@@ -13,8 +13,8 @@ class MenuTitleable(models.Model):
 
 class Attachable(models.Model):
     attachments = StreamField([
-        ('document', DocumentChooserBlock()),
-    ], blank=True)
+        ('document', DocumentChooserBlock(icon='fa-file-text')),
+    ], blank=True,)
 
     class Meta:
         abstract = True
