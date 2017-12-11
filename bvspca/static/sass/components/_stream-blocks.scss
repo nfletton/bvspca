@@ -96,8 +96,8 @@
 /* link block */
 .external-link {
   a {
-    padding: 0.5em 1em 0.5em 0;
-    margin: 0 2em;
+    padding: 0.25em 1em 0.25em 0;
+    margin: 0 2rem 1rem;
     display: block;
     background: url(../svg/external.svg) no-repeat 100% 55%;
     background-size: 17px;
@@ -106,3 +106,26 @@
     }
   }
 }
+
+.document-block {
+  text-align: center;
+  font-size: 1.1em;
+  a {
+    padding: 0.25em 1em 0.25em 0;
+    margin: 0 2rem 1rem;
+    display: block;
+    &:hover {
+      span {
+        background-image: url(../svg/download-active.svg);
+      }
+    }
+  }
+  span {
+    background: url(../svg/download.svg) no-repeat 100% 50%;
+    font-size: 0.8em;
+    line-height: 2;
+    padding-right: 1.5em;
+    text-transform: uppercase;
+  }
+}
+

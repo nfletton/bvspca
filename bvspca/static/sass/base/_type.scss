@@ -2,7 +2,8 @@ body {
   color: $base-font-color;
   font-family: $base-font;
   font-size: $base-font-size;
-  line-height: 1.5;
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
 // sizing based on 1.25 ratio http://www.modularscale.com
@@ -16,18 +17,15 @@ h2, .h2 {
   font-size: $base-font-size * 1.563;
   font-family: $heading-font;
   font-weight: 400;
-  margin-bottom: 1.5em;
 }
 
 h3, .h3 {
   font-size: $base-font-size * 1.25;
   font-family: $heading-font;
-  margin-bottom: 1em;
 }
 
 h4, .h4 {
   font-family: $heading-font;
-  margin-bottom: 0.5em;
 }
 
 h5, .h5 {
