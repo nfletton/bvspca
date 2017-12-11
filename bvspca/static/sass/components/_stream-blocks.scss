@@ -92,3 +92,17 @@
   text-align: center;
   margin-top: 0.5em;
 }
+
+/* link block */
+.external-link {
+  a {
+    padding: 0.5em 1em 0.5em 0;
+    margin: 0 2em;
+    display: block;
+    background: url(../svg/external.svg) no-repeat 100% 55%;
+    background-size: 17px;
+    &:hover {
+      background-image: url(../svg/external-active.svg);
+    }
+  }
+}

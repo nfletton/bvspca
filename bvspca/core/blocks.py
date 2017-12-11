@@ -83,6 +83,15 @@ class ContentRawHTML(StructBlock):
         template = 'core/blocks/raw_html_block.html'
 
 
+class ExternalLinkBlock(StructBlock):
+    title = blocks.CharBlock()
+    url = blocks.URLBlock()
+
+    class Meta:
+        template = 'core/blocks/external_link_block.html'
+        icon = 'fa-external-link'
+
+
 class ContentStreamBlock(StreamBlock):
     heading_block = HeadingBlock()
     paragraph_block = RichTextBlock(
@@ -91,6 +100,7 @@ class ContentStreamBlock(StreamBlock):
     )
     image_block = ImageBlock()
     document_block = DocumentBlock()
+    external_link = ExternalLinkBlock()
     block_quote = BlockQuote()
     embed_block = EmbedBlock(
         label='Embedded Media',
