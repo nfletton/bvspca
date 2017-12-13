@@ -1,13 +1,13 @@
 from django.conf import settings
+from django.db import models
 from django.http import HttpResponseRedirect
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.wagtailcore import blocks
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.wagtailcore.blocks import ListBlock
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailsearch import index
 
-from bvspca.core.blocks import PictureLinkBlock, TeamMemberBlock, SupporterBlock, HeadingBlock
+from bvspca.core.blocks import HeadingBlock, PictureLinkBlock, SupporterBlock, TeamMemberBlock
 from bvspca.events.models import Event
 from bvspca.news.models import News
 from .blocks import ContentStreamBlock
@@ -75,18 +75,69 @@ class SupportersPage(Page, MenuTitleable):
 
 
 class TeamPage(Page, MenuTitleable):
-    members = StreamField([
-        ('section', blocks.CharBlock(classname="full title")),
-        ('member', TeamMemberBlock()),
-    ], blank=True)
+    group1_title = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True,
+        verbose_name='title',
+    )
+    group1_members = StreamField([
+        ('member', TeamMemberBlock())
+    ], blank=True, verbose_name='members')
+    group2_title = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True,
+        verbose_name='title',
+    )
+    group2_members = StreamField([
+        ('member', TeamMemberBlock())
+    ], blank=True, verbose_name='members')
+    group3_title = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True,
+        verbose_name='title',
+    )
+    group3_members = StreamField([
+        ('member', TeamMemberBlock())
+    ], blank=True, verbose_name='members')
+
     subpage_types = []
 
     content_panels = [
         FieldPanel('title'),
-        StreamFieldPanel('members'),
+        MultiFieldPanel([
+            FieldPanel('group1_title'),
+            StreamFieldPanel('group1_members'),
+        ],
+            heading="Team Group 1",
+            classname="collapsible collapsed"
+        ),
+        MultiFieldPanel([
+            FieldPanel('group2_title'),
+            StreamFieldPanel('group2_members'),
+        ],
+            heading="Team Group 2",
+            classname="collapsible collapsed"
+        ),
+        MultiFieldPanel([
+            FieldPanel('group3_title'),
+            StreamFieldPanel('group3_members'),
+        ],
+            heading="Team Group 3",
+            classname="collapsible collapsed"
+        ),
     ]
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
+
+    def team_groups(self):
+        return [
+            (self.group1_title, self.group1_members),
+            (self.group2_title, self.group2_members),
+            (self.group3_title, self.group3_members),
+        ]
 
     class Meta:
         verbose_name = 'Team Page'

@@ -60,7 +60,7 @@
 /* paragraph block */
 .rich-text {
   @include clearfix;
-  margin-bottom: 2em;
+  margin: 2em 0;
 }
 
 .richtext-image {

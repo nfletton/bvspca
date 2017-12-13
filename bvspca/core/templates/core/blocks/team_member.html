@@ -1,22 +1,39 @@
-{% load wagtailcore_tags wagtailimages_tags %}
-<div id="{{ value.name|slugify }}" class="team-member">
-    {% if value.photo %}
-        <div class="team-member__photo">
-          {% image value.photo fill-280x280 %}
-          {% if value.photo_caption %}
-            <div class="team-member__photo-caption">{{ value.photo_caption }}</div>
-          {% endif %}
-        </div>
-    {% endif %}
-    <h3>{{ value.name }}{% if value.role %}, {{ value.role }}{% endif %}</h3>
-    {{ value.bio|richtext }}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<div class="team-member" data-key="{{ forloop.parentloop.counter }}-{{ forloop.counter }}">
+  {% if value.photo %}
+    <div class="team-member__photo">
+      {% image value.photo fill-200x200 %}
+      <div class="team-member__photo-bio-link">bio</div>
+    </div>
+  {%  else %}
+    <div class="team-member__photo-paceholder">
+      <img src="{% static 'svg/paw.svg' %}" width="100" height="100">
+      <div class="team-member__photo-bio-link">bio</div>
+    </div>
+  {% endif %}
+  <div class="team-member__name">{{ value.name }}</div>
+  {% if value.role %}
+    <div class="team-member__role">{{ value.role }}</div>
+  {% endif %}
+  <div id="bio-{{ forloop.parentloop.counter }}-{{ forloop.counter }}" class="team-member__bio team-member__bio--hidden">
+    <h3 class="team-member__bio-title">{{ value.name }} &mdash; {{ value.role }}</h3>
     {% if value.location %}
-      <div>Location: {{ value.location }}</div>
+      <div class="team-member__location">{{ value.location }}</div>
+    {% endif %}
+    {% if value.photo %}
+      <div class="team-member__bio-photo">
+        {% image value.photo width-500 %}
+      </div>
     {% endif %}
     {% if value.pets %}
-      <div>Pets: {{ value.pets }}</div>
+      <div class="team-member__pets"><span>Pets:</span> {{ value.pets }}</div>
+    {% endif %}
+    {% if value.bio %}
+      {{ value.bio|richtext }}
     {% endif %}
     {% if value.role_since %}
-      <div>{{ value.role_since }}</div>
+      <div class="team-member__role-since">{{ value.role_since }}</div>
     {% endif %}
+  </div>
 </div>

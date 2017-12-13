@@ -117,10 +117,9 @@ class TeamMemberBlock(blocks.StructBlock):
     role = blocks.CharBlock(max_length=50, required=False)
     role_since = blocks.CharBlock(max_length=50, required=False)
     location = blocks.CharBlock(max_length=50, required=False)
-    pets = blocks.CharBlock(max_length=100, required=False)
-    bio = blocks.TextBlock()
+    pets = blocks.CharBlock(max_length=200, required=False)
+    bio = blocks.RichTextBlock(required=False)
     photo = ImageChooserBlock(required=False)
-    photo_caption = blocks.CharBlock(max_length=50, required=False)
 
     class Meta:
         template = 'core/blocks/team_member.html'

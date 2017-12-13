@@ -1,12 +1,22 @@
 {% extends "base.html" %}
 
+{% load static wagtailcore_tags %}
+
 {% block content %}
-    <div class="team">
-        <div class="member-nav">
-        {% for member in page.members %}
-            <a href="#{{ member.value.name|slugify }}" class="member-nav-item {% if forloop.counter == 1 %}open{% endif %}" data-member="{{ member.value.name|slugify }}">{{ member.value.name }}</a>
+  <div class="team">
+    <h1>{{ page.title }}</h1>
+    {% for group_title, group_members in page.team_groups %}
+      <h2>{{ group_title }}</h2>
+      <div class="team-members">
+        {% for member in group_members %}
+          {% include_block member %}
         {% endfor %}
-        </div>
-        <div class="team__members">{{ page.members }}</div>
-    </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div id="team-overlay" class="team-overlay team-overlay--hidden"></div>
 {% endblock content %}
+
+{% block extra_javascript %}
+  <script src="{% static 'dist/bio.js' %}"></script>
+{% endblock extra_javascript %}

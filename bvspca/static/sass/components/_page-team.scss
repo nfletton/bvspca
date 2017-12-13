@@ -1,5 +1,131 @@
+$team-break: 550px;
+$team-photo-border-width: 1px;
+
 .team {
   @include container;
   margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
+  h2 {
+    text-align: center;
+  }
+}
+
+.team-members {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  @media(min-width: $team-break) {
+    justify-content: space-between;
+  }
+}
+
+.team-member {
+  margin: 2rem 1rem;
+  width: 200px + 2 * $team-photo-border-width;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    .team-member__photo-bio-link {
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+  }
+}
+
+.team-member__photo,
+.team-member__photo-paceholder {
+  border: 1px solid #e68a26;
+  position: relative;
+}
+
+.team-member__photo-bio-link {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 0.85rem;
+  padding: 0.25em 0.75em;
+}
+
+.team-member__name {
+  margin: 1rem 0;
+}
+
+.team-member__role {
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+.team-member__role-since {
+  font-weight: bold;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.team-member__photo-paceholder {
+  padding: 50px;
+}
+
+.team-member__bio {
+  background: #fff url(../svg/close.svg) no-repeat 98% 2%;
+  background-size: 24px 24px;
+  position: fixed;
+  top: 5%;
+  bottom: 5%;
+  left: 0.5rem;
+  right: 0.5rem;
+  text-align: left;
+  @media(min-width: 850px) {
+    left: 20%;
+    right: 20%;
+  }
+  overflow-y: scroll;
+  background-color: #fff;
+  z-index: 200;
+  padding: $content-padding;
+  span {
+    font-weight: bold;
+  }
+}
+
+.team-member__bio--hidden {
+  display: none;
+}
+.team-member__bio-title {
+  text-align: center;
+}
+
+.team-member__location {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.team-member__pets {
+  margin: 1rem 4rem;
+  text-align: center;
+}
+
+.team-member__bio-photo {
+  margin: 2rem 0;
+  img {
+    display: block;
+    margin: 0 auto;
+    @include responsive-image;
+  }
+}
+
+.team-overlay {
+  opacity:    0.5;
+  background: #000;
+  width:      100%;
+  height:     100%;
+  z-index:    10;
+  top:        0;
+  left:       0;
+  position:   fixed;
+}
+
+.team-overlay--hidden {
+  display: none;
 }
