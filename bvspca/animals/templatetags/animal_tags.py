@@ -4,7 +4,7 @@ register = template.Library()
 
 
 @register.filter
-def to_years_an_months(months):
+def to_years_and_months(months):
     """
     Convert a integer value into a string of years and months e.g.
     27 would be represented as '2 Years 3 Months'
@@ -23,3 +23,16 @@ def to_years_an_months(months):
         else:
             result += '{} Months'.format(remaining_months)
     return result
+
+
+@register.filter
+def to_friendly_size(size_code):
+    if size_code == 'S':
+        return 'Small'
+    if size_code == 'M':
+        return 'Medium'
+    if size_code == 'L':
+        return 'Large'
+    if size_code == 'XL':
+        return 'Extra Large'
+    return size_code

@@ -29,64 +29,67 @@
           </div>
         {% endif %}
       </div>
-      <div class="animal-profile__details">
+      <div class="animal-profile__summary">
         <h1>{{ page.title }}</h1>
         <ul class="animal-profile__info">
-          <li class="animal-profile__info-item"><label>Gender</label>
+          <li class="animal-profile__info-item"><span>Gender</span>
             <div>{{ page.sex }}</div>
           </li>
-          <li class="animal-profile__info-item"><label>Weight</label>
+          <li class="animal-profile__info-item"><span>Weight</span>
             <div></div>
             {{ page.weight }}</li>
-          <li class="animal-profile__info-item"><label>Size</label>
-            <div>{{ page.size }}</div>
+          <li class="animal-profile__info-item"><span>Size</span>
+            <div>{{ page.size|to_friendly_size }}</div>
           </li>
-          <li class="animal-profile__info-item"><label>Age</label>
-            <div>{{ page.age|to_years_an_months }}</div>
+          <li class="animal-profile__info-item"><span>Age</span>
+            <div>{{ page.age|to_years_and_months }}</div>
           </li>
-          <li class="animal-profile__info-item"><label>Colour</label>
+          <li class="animal-profile__info-item"><span>Colour</span>
             <div>{{ page.primary_color }}</div>
           </li>
-          <li class="animal-profile__info-item"><label>Breed</label>
+          <li class="animal-profile__info-item"><span>Breed</span>
             <div>{{ page.primary_breed }}</div>
           </li>
           <li class="animal-profile__info-item">
-            <label>Status</label>
+            <span>Status</span>
             <div>{% if page.on_hold %}On Hold{% else %}Available for Adoption{% endif %}</div>
           </li>
           {% if page.last_intake_date %}
             <li class="animal-profile__info-item">
-              <label>Arrival Date</label>
+              <span>Arrival Date</span>
               <div>{{ page.last_intake_date }}</div>
             </li>
           {% endif %}
           <li class="animal-profile__info-item animal-profile__info-compatibility">
-            <label>Compatibility</label>
-            <ul>
+            <span>Compatibility</span>
+            <ul class="animal-profile__compatibilities">
               {% if page.special_needs %}
-                <li>{{ page.special_needs }}</li>{% endif %}
-              {% if page.no_dogs %}
+                <li>Special needs: {{ page.special_needs }}</li>{% endif %}
+              {% if page.no_dogs == 'Y' %}
                 <li>No Dogs</li>{% endif %}
-              {% if page.no_cats %}
+              {% if page.no_cats == 'Y' %}
                 <li>No Cats</li>{% endif %}
-              {% if page.no_kids %}
+              {% if page.no_kids == 'Y' %}
                 <li>No Children</li>{% endif %}
               {% if page.lived_with_kids %}
-                <li>{{ page.lived_with_kids }}</li>{% endif %}
+                <li>Has lived with kids: {{ page.lived_with_kids }}</li>{% endif %}
               {% if page.lived_with_animals %}
-                <li>{{ page.lived_with_animals }}</li>{% endif %}
+                <li>Has lived with animals: {{ page.lived_with_animals }}</li>{% endif %}
               {% if page.lived_with_animal_types %}
-                <li>{{ page.lived_with_animal_types }}</li>{% endif %}
+                <li>Has lived with these animals: {{ page.lived_with_animal_types }}</li>{% endif %}
             </ul>
           </li>
         </ul>
       </div>
     </div>
-    <div class="animal-profile__description">
-      {{ page.description }}
-    </div>
-    <div class="animal-profile__updates">
-      {{ page.updates }}
+    <div class="animal-profile__narrative">
+      <h2>About {{ page.title }}</h2>
+      <div class="animal-profile__description">
+        {{ page.description|safe }}
+      </div>
+      <div class="animal-profile__updates">
+        {{ page.updates }}
+      </div>
     </div>
   </div>
 {% endblock content %}

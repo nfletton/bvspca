@@ -52,6 +52,10 @@ $animal-profile-2-column: 800px;
 
 .animal-profile {
   @include container-wide;
+  margin: {
+    top: $content-padding;
+    bottom: $content-padding;
+  }
 }
 
 .animal-profile__gallery-and-details {
@@ -114,7 +118,7 @@ $animal-profile-2-column: 800px;
   }
 }
 
-.animal-profile__details {
+.animal-profile__summary {
   @media(min-width: $animal-profile-2-column) {
     width: 48%;
   }
@@ -123,14 +127,40 @@ $animal-profile-2-column: 800px;
 .animal-profile__info {
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 
 .animal-profile__info-item {
+  font-size: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  label {
-    font-weight: 700;
+  margin: {
+    bottom: 1rem;
+  };
+  @media(min-width: 400px) {
+    margin: {
+      left: 5%;
+      right: 5%;
+    };
+  }
+  @media(min-width: 550px) {
+    margin: {
+      left: 15%;
+      right: 15%;
+    };
+  }
+  @media(min-width: 450px) {
+    font-size: inherit;
+  }
+  @media(min-width: $animal-profile-2-column) {
+    margin: {
+      left: 0;
+      right: 0;
+    };
+  }
+  span {
+    font-weight: 600;
   }
 }
 
@@ -139,3 +169,17 @@ $animal-profile-2-column: 800px;
   flex-direction: column;
 }
 
+.animal-profile__compatibilities {
+  list-style: none;
+}
+
+.animal-profile__narrative {
+  margin: $content-padding 0;
+}
+
+.animal-profile__description {
+  margin: {
+    top: $content-padding;
+    bottom: $content-padding;
+  }
+}
