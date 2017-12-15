@@ -1,0 +1,5 @@
+{% load wagtailcore_tags %}
+
+{% for item in value %}
+  {% include_block item %}
+{% endfor %}

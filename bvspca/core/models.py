@@ -170,7 +170,7 @@ class AdoptionCentre(Page, MenuTitleable):
     adoption policy, fees, etc.
     """
     body = StreamField([
-        ('picture_links', ListBlock(PictureLinkBlock()))
+        ('picture_links', ListBlock(PictureLinkBlock(), template='core/blocks/picture_links.html'))
     ], blank=True)
 
     content_panels = [

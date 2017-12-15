@@ -3,3 +3,31 @@
   margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
 }
+
+.block-picture_links {
+  display: flex;
+  flex-direction: row;
+}
+
+.picture-link-block {
+  display: block;
+  position: relative;
+  &:hover {
+    .picture-link-block__title {
+      background-color: darken($tertiary-color, 10);
+    }
+  }
+}
+
+.picture-link-block__title {
+  position: absolute;
+  bottom: 30px;
+  left: 170px;
+  right: 170px;
+  padding: 1rem;
+  font-size: 2rem;
+  background-color: $tertiary-color;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
