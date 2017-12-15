@@ -169,8 +169,16 @@ $animal-profile-2-column: 800px;
   flex-direction: column;
 }
 
+.animal-profile__compatibility-title {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
 .animal-profile__compatibilities {
   list-style: none;
+  li {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .animal-profile__narrative {
