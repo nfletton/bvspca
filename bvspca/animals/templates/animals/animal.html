@@ -87,6 +87,7 @@
       <div class="animal-profile__description">
         {{ page.description|safe }}
       </div>
+      {% include 'core/includes/addthis_widgets.html' %}
       <div class="animal-profile__updates">
         {{ page.updates }}
       </div>
@@ -118,3 +119,7 @@
     });
   </script>
 {% endblock extra_javascript %}
+
+{% block sm_init %}
+  {% include 'core/includes/addthis_init.html' %}
+{% endblock %}
