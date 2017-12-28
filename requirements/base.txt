@@ -30,3 +30,4 @@ wagtail==1.13.1
 wagtailfontawesome==1.1.1
 mailchimp3==2.0.18
 zeep==2.4.0
+django-ical==1.4

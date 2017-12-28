@@ -20,10 +20,10 @@
 
   {% if page.depth == 2 %}
     {# RSS link on home page only   #}
-    <link href="/feeds/all/" type="application/atom+xml" rel="alternate" title="BVSPCA Sitewide Feed" />
-    <link href="/feeds/animals/" type="application/atom+xml" rel="alternate" title="BVSPCA Animals Feed" />
-    <link href="/feeds/events/" type="application/atom+xml" rel="alternate" title="BVSPCA Events Feed" />
-    <link href="/feeds/news/" type="application/atom+xml" rel="alternate" title="BVSPCA News Feed" />
+    <link href="/feed/animals/" type="application/atom+xml" rel="alternate" title="BVSPCA Animal Feed" />
+    <link href="/feed/events/" type="application/atom+xml" rel="alternate" title="BVSPCA Event Feed" />
+    <link href="/feed/news/" type="application/atom+xml" rel="alternate" title="BVSPCA News Feed" />
+    <link href="/feed/all/" type="application/atom+xml" rel="alternate" title="BVSPCA All Content Feed" />
   {% endif %}
 
   {% block css %}

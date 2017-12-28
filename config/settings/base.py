@@ -78,6 +78,7 @@ LOCAL_APPS = [
     'bvspca.newsletter',
     'bvspca.events',
     'bvspca.news',
+    'bvspca.feeds',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
