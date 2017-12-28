@@ -40,18 +40,13 @@ header {
   @include container-wide;
   padding-top: 0;
   @media(min-width: $nav-breakpoint) {
-    display: flex;
-    justify-content: space-between;
   }
 }
 
 .main-nav {
-  //display: flex;
-  //justify-content: space-between;
   font-size: 0.9rem;
   font-weight: 400;
   @media(min-width: $nav-breakpoint) {
-    //flex-grow: 1;
   }
 }
 
@@ -126,6 +121,7 @@ header {
     justify-content: center;
     height: $nav-height;
     margin-top: 1em;
+    padding: 0;
   }
 }
 
