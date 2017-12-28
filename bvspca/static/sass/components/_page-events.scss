@@ -1,3 +1,4 @@
+@import "mixins/lists";
 .events-page {
   @include container;
   margin-top: $content-padding-large;
@@ -15,3 +16,22 @@
   margin-bottom: $content-padding-large;
 }
 
+.event-overview {
+  @include list-item();
+}
+
+.event-overview__photo {
+  @include list-item-photo();
+}
+
+.event-overview__details {
+  @include list-item-details();
+}
+
+.event-overview__date {
+  @include list-item-date();
+}
+
+.event-overview__title {
+  @include list-item-title();
+}
