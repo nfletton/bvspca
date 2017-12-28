@@ -6,16 +6,27 @@
 
 .block-picture_links {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  @media(min-width: 900px) {
+    flex-direction: row;
+  }
 }
 
 .picture-link-block {
   display: block;
   position: relative;
+  margin-bottom: $content-padding;
   &:hover {
     .picture-link-block__title {
       background-color: darken($tertiary-color, 10);
     }
+  }
+  img {
+    display: block;
+    margin: {
+      left: auto;
+      right: auto;
+    };
   }
 }
 
