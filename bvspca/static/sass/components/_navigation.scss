@@ -6,7 +6,7 @@ $nav-mobile-bg-color: rgba(0, 0, 0, 0.9);
 
 $nav-breakpoint: 950px;
 $nav-icon-size: 40px;
-$nav-sub-nav-width: 14em;
+$nav-sub-nav-width: 18em;
 
 $nav-height: 86px;
 $nav-height-mobile: 65px;
@@ -112,6 +112,10 @@ header {
 .main-nav__item {
   a {
     padding: 1em 2em;
+    &:hover {
+      background-color: $nav-bg-color;
+      color: #fff;
+    }
   }
   @media(min-width: $nav-breakpoint) {
     position: relative;
@@ -119,9 +123,9 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: $nav-height;
     margin-top: 1em;
     padding: 0;
+    height: $nav-height;
   }
 }
 
@@ -130,7 +134,7 @@ header {
     span {
       background: url(../svg/nav-parent.svg) no-repeat 100% 20%;
       background-size: 7px 5.22px;
-      padding-right: 16px;
+      padding-right: 12px;
     }
   }
 }
@@ -172,7 +176,7 @@ header {
     display: none !important;
     padding: 0 0 1em 0.5em;
     position: absolute;
-    top: $nav-height;
+    top: 67px;
     left: 0;
     width: $nav-sub-nav-width;
     z-index: 100;
