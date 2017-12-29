@@ -9,8 +9,8 @@ class AnimalModelAdmin(ModelAdmin):
     menu_icon = 'fa-paw'
     menu_order = 100
     add_to_settings_menu = False
-    list_display = ('title', 'petpoint_id', 'live',)
-    search_fields = ('title', 'description', 'petpoint_id')
+    list_display = ('title', 'petpoint_id', 'adoption_date', 'live')
+    search_fields = ('title', 'description', 'petpoint_id', 'adoption_message')
     list_filter = ('species', 'sex',)
     ordering = ('-live', '-petpoint_id',)
 

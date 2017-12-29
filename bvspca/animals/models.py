@@ -42,6 +42,7 @@ class Animal(Page, MetaTagable):
     weight = models.CharField(max_length=30, blank=True)
     surrender_date = models.DateField(null=True, blank=True)
     last_intake_date = models.DateField(null=True, blank=True)
+    adoption_date = models.DateField(blank=True, null=True)
     # local updatable fields
     main_photo = ForeignKey(
         Image,
@@ -56,8 +57,11 @@ class Animal(Page, MetaTagable):
         ],
         blank=True,
     )
+    adoption_message = models.TextField(blank=True)
     updates = StreamField(
-        ContentStreamBlock(), verbose_name="Animal Updates", blank=True
+        ContentStreamBlock(required=False),
+        verbose_name='Animal Updates',
+        blank=True,
     )
     search_fields = Page.search_fields + [
         index.SearchField('title'),
@@ -74,6 +78,7 @@ class Animal(Page, MetaTagable):
     content_panels = [
         ImageChooserPanel('main_photo'),
         StreamFieldPanel('additional_photos'),
+        FieldPanel('adoption_message'),
         StreamFieldPanel('updates'),
     ]
 
