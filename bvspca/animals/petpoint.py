@@ -48,6 +48,59 @@ def fetch_petpoint_adoptable_animal_ids(client):
         )
 
 
+def extract_animal_adoption_dates(adoptions_etree):
+    """
+    Extract animal ids and adoption dates from etree response for
+    PetPoints AdoptionList API call
+
+    :param adoptions_etree:
+    :return: a list of animal id and adoption date tuples
+    """
+    animal_adoptions = []
+    for adoption in adoptions_etree.findall('.//adoption'):
+        id = adoption.find('AnimalID')
+        adoption_date = adoption.find('AdoptionDate')
+        if id is not None:
+            animal_adoptions.append(
+                (
+                    int(id.text),
+                    datetime.datetime.strptime(adoption_date.text[:10], '%Y-%m-%d').date()
+                )
+            )
+    return animal_adoptions
+
+
+def fetch_petpoint_adopted_dates_since(client, start_date):
+    """
+    From the start date, retrieve all adopted animals
+
+    :param client: lxml client object
+    :param start_date: the date to start checking for adoptions
+    :return: a list of animal id and adoption date tuples
+    """
+    one_day_delta = datetime.timedelta(days=1)
+    loop_date = start_date
+    end_date = datetime.date.today()
+    all_adoptions = []
+    while loop_date <= end_date:
+        adoption_list_response = client.service.AdoptionList(
+            PETPOINT_AUTH_KEY,
+            loop_date,                       # adoptionDate
+            0,                               # sideID
+        )
+        if adoption_list_response.status_code is 200:
+            all_adoptions.extend(extract_animal_adoption_dates(etree.parse(io.BytesIO(adoption_list_response.content))))
+        else:
+            error_logger.error(
+                'Failed to retrieve adopted animalsfor day {}. HTTP status code {}'.format(
+                    adoption_list_response.status_code,
+                    loop_date,
+                )
+            )
+        loop_date += one_day_delta
+    return all_adoptions
+
+
 def extract_animal(animal_detail_etree):
     details = animal_detail_etree.find('.//adoptableDetails')
     return PetPointAnimal(details)

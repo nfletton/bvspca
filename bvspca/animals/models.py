@@ -167,7 +167,7 @@ class AnimalsPage(Page, MenuTitleable):
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 
     def animals(self):
-        return Animal.objects.live().descendant_of(self).order_by('-last_intake_date')
+        return Animal.objects.live().descendant_of(self).filter(adoption_date__isnull=True).order_by('-last_intake_date')
 
     def __str__(self):
         return self.title

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfXmlNode xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.petango.com/">
+  <XmlNode>
+    <adoption xmlns="">
+      <AnimalID>36917491</AnimalID>
+      <AnimalName>Tommy</AnimalName>
+      <Species>Dog</Species>
+      <Sex>Male</Sex>
+      <AdoptionDate>2017-12-23T17:44:44.337</AdoptionDate>
+      <ReleaseDate>2017-12-23T17:44:19.110</ReleaseDate>
+      <PersonID>29556109</PersonID>
+      <Salutation>
+      </Salutation>
+      <FirstName>Ashley</FirstName>
+      <LastName>One</LastName>
+      <Email>ashley@example.com</Email>
+    </adoption>
+  </XmlNode>
+  <XmlNode>
+    <adoption xmlns="">
+      <AnimalID>37395336</AnimalID>
+      <AnimalName>Scout</AnimalName>
+      <Species>Dog</Species>
+      <Sex>Male</Sex>
+      <AdoptionDate>2017-12-23T17:57:33.420</AdoptionDate>
+      <ReleaseDate>2017-12-23T17:57:16.190</ReleaseDate>
+      <PersonID>29556224</PersonID>
+      <Salutation>
+      </Salutation>
+      <FirstName>Anne</FirstName>
+      <LastName>Two</LastName>
+      <Email>anne@example.com</Email>
+    </adoption>
+  </XmlNode>
+    <XmlNode>
+    <adoption xmlns="">
+      <AnimalID>37359759</AnimalID>
+      <AnimalName>Ellie</AnimalName>
+      <Species>Cat</Species>
+      <Sex>Female</Sex>
+      <AdoptionDate>2017-12-24T17:22:25.620</AdoptionDate>
+      <ReleaseDate>2017-12-24T17:22:08.253</ReleaseDate>
+      <PersonID>29559456</PersonID>
+      <Salutation>
+      </Salutation>
+      <FirstName>Theresa</FirstName>
+      <LastName>Three</LastName>
+      <Email>theresa@example.com</Email>
+    </adoption>
+  </XmlNode>
+  <XmlNode>
+    <adoption xmlns="">
+      <AnimalID>36744898</AnimalID>
+      <AnimalName>Freddie</AnimalName>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <AdoptionDate>2017-12-24T18:24:43.787</AdoptionDate>
+      <ReleaseDate>2017-12-24T18:24:16.350</ReleaseDate>
+      <PersonID>29559561</PersonID>
+      <Salutation>
+      </Salutation>
+      <FirstName>Alexander</FirstName>
+      <LastName>Four</LastName>
+      <Email>alex@example.com</Email>
+    </adoption>
+  </XmlNode>
+</ArrayOfXmlNode>

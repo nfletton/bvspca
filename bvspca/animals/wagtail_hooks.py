@@ -12,7 +12,7 @@ class AnimalModelAdmin(ModelAdmin):
     list_display = ('title', 'petpoint_id', 'adoption_date', 'live')
     search_fields = ('title', 'description', 'petpoint_id', 'adoption_message')
     list_filter = ('species', 'sex',)
-    ordering = ('-live', '-petpoint_id',)
+    ordering = ('-live', '-adoption_date', '-petpoint_id',)
 
 
 modeladmin_register(AnimalModelAdmin)

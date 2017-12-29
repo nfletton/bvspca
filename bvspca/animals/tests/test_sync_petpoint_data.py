@@ -5,7 +5,7 @@ from django.core.management import call_command
 from lxml import etree
 from wagtail.wagtailcore.models import Page
 
-from bvspca.animals.petpoint import extract_animal_ids, extract_animal
+from bvspca.animals.petpoint import extract_animal_ids, extract_animal, extract_animal_adoption_dates
 from bvspca.animals.models import Animal
 
 
@@ -86,6 +86,24 @@ def test_update_previously_adoptable_animal_from_petpoint_data():
 
     retrieved_animal = Animal.objects.get(pk=animal.pk)
     assert retrieved_animal.live
+
+
+def test_extract_animal_adoption_dates():
+    adoptions_etree = etree.parse('bvspca/animals/tests/data/petpoint_adoptions_valid_response.xml')
+    animal_adoptions = extract_animal_adoption_dates(adoptions_etree)
+    assert len(animal_adoptions) == 4
+    assert animal_adoptions[0][0] == 36917491
+    assert animal_adoptions[0][1] == datetime.date(2017, 12, 23)
+    assert animal_adoptions[1][0] == 37395336
+    assert animal_adoptions[1][1] == datetime.date(2017, 12, 23)
+    assert animal_adoptions[-1][0] == 36744898
+    assert animal_adoptions[-1][1] == datetime.date(2017, 12, 24)
+
+
+def test_extract_animal_adoption_dates_when_none():
+    adoptions_etree = etree.parse('bvspca/animals/tests/data/petpoint_adoptions_valid_empty_response.xml')
+    animal_adoptions = extract_animal_adoption_dates(adoptions_etree)
+    assert len(animal_adoptions) == 0
 
 
 def create_animal_object():
