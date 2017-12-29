@@ -75,37 +75,6 @@ class Animal(Page, MetaTagable):
         ImageChooserPanel('main_photo'),
         StreamFieldPanel('additional_photos'),
         StreamFieldPanel('updates'),
-        MultiFieldPanel(
-            [
-                FieldPanel('title'),
-                FieldPanel('petpoint_id'),
-                FieldPanel('species'),
-                FieldPanel('sex'),
-                FieldPanel('primary_breed'),
-                FieldPanel('secondary_breed'),
-                FieldPanel('primary_color'),
-                FieldPanel('secondary_color'),
-                FieldPanel('age'),
-                FieldPanel('size'),
-                FieldPanel('description'),
-                FieldPanel('photo_1_url'),
-                FieldPanel('photo_2_url'),
-                FieldPanel('photo_3_url'),
-                FieldPanel('on_hold'),
-                FieldPanel('special_needs'),
-                FieldPanel('no_dogs'),
-                FieldPanel('no_cats'),
-                FieldPanel('no_kids'),
-                FieldPanel('lived_with_kids'),
-                FieldPanel('lived_with_animals'),
-                FieldPanel('lived_with_animal_types'),
-                FieldPanel('weight'),
-                FieldPanel('surrender_date'),
-                FieldPanel('last_intake_date'),
-            ],
-            heading="PetPoint Data",
-            classname="collapsible collapsed"
-        ),
     ]
 
     @classmethod
