@@ -62,6 +62,7 @@ THIRD_PARTY_APPS = [
 
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
+    'wagtail.contrib.settings',
 
     'taggit',
     'modelcluster',

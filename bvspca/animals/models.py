@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.db import models
 from django.db.models import ForeignKey
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.blocks import ImageChooserBlock
@@ -167,7 +168,28 @@ class AnimalsPage(Page, MenuTitleable):
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 
     def animals(self):
-        return Animal.objects.live().descendant_of(self).filter(adoption_date__isnull=True).order_by('-last_intake_date')
+        return Animal.objects.live()\
+            .descendant_of(self)\
+            .filter(adoption_date__isnull=True)\
+            .order_by('-last_intake_date')
 
     def __str__(self):
         return self.title
+
+
+@register_setting(icon='fa-paw')
+class AnimalCountSettings(BaseSetting):
+    cats_adopted = models.PositiveIntegerField(default=0)
+    cats_rescued = models.PositiveIntegerField(default=0)
+    dogs_adopted = models.PositiveIntegerField(default=0)
+    dogs_rescued = models.PositiveIntegerField(default=0)
+
+    panels = [
+        FieldPanel('cats_adopted'),
+        FieldPanel('cats_rescued'),
+        FieldPanel('dogs_adopted'),
+        FieldPanel('dogs_rescued'),
+    ]
+
+    class Meta:
+        verbose_name = 'animals counts'

@@ -4,7 +4,7 @@ import logging
 from django.core.management.base import BaseCommand
 from zeep import Client
 
-from bvspca.animals.models import Animal, AnimalsPage
+from bvspca.animals.models import Animal, AnimalsPage, AnimalCountSettings
 from bvspca.animals.petpoint import fetch_petpoint_adoptable_animal_ids, fetch_petpoint_animal, \
     fetch_petpoint_adopted_dates_since
 
@@ -35,6 +35,7 @@ class Command(BaseCommand):
                             )
                     except Animal.DoesNotExist:
                         new_animal = Animal.create(petpoint_animal)
+                        self.increment_animal_count(new_animal.species, 'rescued')
                         animal_parent = AnimalsPage.objects.get(species=new_animal.species)
                         animal_parent.add_child(instance=new_animal)
                         logger.info(
@@ -54,6 +55,7 @@ class Command(BaseCommand):
                         local_animal.adoption_date = adoption[1]
                         local_animal.live = True
                         local_animal.save()
+                        self.increment_animal_count(local_animal.species, 'rescued')
                         logger.info(
                             'Animal {} adopted on {}'.format(
                                 adoption[0],
@@ -82,3 +84,23 @@ class Command(BaseCommand):
                         animal.title,
                     )
                 )
+
+    def increment_animal_count(self, species, event_type):
+        """
+        Increment the counts of animals rescued and adopted.
+
+        :param species: 'cat' or 'dog'
+        :param event_type: 'rescued' or 'adopted'
+        :return:
+        """
+        try:
+            animal_counts = AnimalCountSettings.objects.get(site_id=2)
+            count_field_name = '{}_{}'.format(species.lower(), event_type.lower())
+            current_count = getattr(animal_counts, count_field_name, 0)
+            setattr(animal_counts, count_field_name, current_count + 1)
+            animal_counts.save()
+            logger.info(
+                '{} {} count incremented'.format(species, event_type)
+            )
+        except AnimalCountSettings.DoesNotExist:
+            logger.error('Animal count settings do not exist')
