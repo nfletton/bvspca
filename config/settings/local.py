@@ -104,19 +104,19 @@ LOGGING = {
         'weekly_emails': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '../logs/weekly-email.log',
+            'filename': '{}/logs/weekly-email.log'.format(env.str('HOME')),
             'formatter': 'verbose',
         },
         'petpoint': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '../logs/petpoint-updates.log',
+            'filename': '{}/logs/petpoint-updates.log'.format(env.str('HOME')),
             'formatter': 'verbose',
         },
         'petpoint-errors': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'filename': '../logs/petpoint-errors.log',
+            'filename': '{}/logs/petpoint-errors.log'.format(env.str('HOME')),
             'formatter': 'verbose',
         },
     },
