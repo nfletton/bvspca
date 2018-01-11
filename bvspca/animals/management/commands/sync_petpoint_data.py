@@ -55,7 +55,7 @@ class Command(BaseCommand):
                         local_animal.adoption_date = adoption[1]
                         local_animal.live = True
                         local_animal.save()
-                        self.increment_animal_count(local_animal.species, 'rescued')
+                        self.increment_animal_count(local_animal.species, 'adopted')
                         logger.info(
                             'Animal {} adopted on {}'.format(
                                 adoption[0],
