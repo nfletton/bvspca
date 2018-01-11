@@ -1,8 +1,8 @@
 //sizing
 $max-width: 1100px !default;
 
-$content-padding: 3rem;
-$content-padding-large: 5rem;
+$content-padding: 2rem;
+$content-padding-large: 2rem;
 
 // fonts
 $base-font: 'Montserrat', sans-serif;
@@ -26,6 +26,10 @@ $content-light-bg: #fff;
 $content-grey-bg: #ececec;
 
 $heading-grey: #a6a6a6;
+$bg-gray: #e0e0e0;
+$bg-gray-hover: darken($bg-gray, 1);
+$bg-gray-even: darken($bg-gray, 1);
+$search-form-bg: #eeeeee;
 
 // buttons
 $button-hover: darken($highlight-red-on-white, 30%);

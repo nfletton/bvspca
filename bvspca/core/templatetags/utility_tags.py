@@ -31,14 +31,15 @@ def get_google_analytics_id():
 
 @register.inclusion_tag('core/tags/meta_tags.html', takes_context=True)
 def seo_and_social_meta_tags(context, page):
-    site_short_name = getattr(settings, 'SPCA_SITE_SHORT_NAME')
-    if hasattr(page, 'seo_and_social_meta_values'):
-        request = context.request
-        data = page.seo_and_social_meta_values()
-        data['root_url'] = '{}://{}'.format(request.scheme, request.META['HTTP_HOST'])
-    else:
-        data = dict(
-            title='{} | {}'.format(page.seo_title if page.seo_title else page.title, site_short_name),
-            description=page.search_description,
-        )
-    return data
+    if page:
+        site_short_name = getattr(settings, 'SPCA_SITE_SHORT_NAME')
+        if hasattr(page, 'seo_and_social_meta_values'):
+            request = context.request
+            data = page.seo_and_social_meta_values()
+            data['root_url'] = '{}://{}'.format(request.scheme, request.META['HTTP_HOST'])
+        else:
+            data = dict(
+                title='{} | {}'.format(page.seo_title if page.seo_title else page.title, site_short_name),
+                description=page.search_description,
+            )
+        return data

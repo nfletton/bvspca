@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+
+{% block title %}Search BVSPCA{% endblock %}
+
+{% block content %}
+  <div class="search-result-content">
+    <h1>Search Results</h1>
+    <ul class="search-results">
+      {% if search_results %}
+        {% for result in search_results %}
+          <li class="search-result {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+            <a  class="search-result__title" href="{% pageurl result %}">{{ result }}</a>
+            <div class="search-result__summary">
+              {% if result.specific.body %}
+                {{ result.specific.body|striptags|truncatechars:150 }}
+              {% elif result.specific.details %}
+                {{ result.specific.details|striptags|truncatechars:150 }}
+              {% elif result.specific.description %}
+                {{ result.specific.description|striptags|truncatechars:150 }}
+              {% endif %}
+            </div>
+            {% if result.last_published_at %}
+              <div class="search-result__date">Last updated: {{ result.last_published_at }}</div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      {% elif search_query %}
+        <li class="empty-list"><img src="{% static 'svg/warning.svg' %}">No results found</li>
+      {% else %}
+        <li class="empty-list"><img src="{% static 'svg/warning.svg' %}">Please enter a search term</li>
+      {% endif %}
+    </ul>
+    {% include 'core/includes/pagination.html' with target=search_results %}
+  </div>
+{% endblock %}

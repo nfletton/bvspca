@@ -22,3 +22,21 @@ document.getElementsByTagName('body')[0].addEventListener('click', () => {
     bodyClasses.remove(NAV_VISIBLE_CLASS);
   }
 }, false);
+
+
+/* Site search */
+const searchBlock = document.getElementById('search-block');
+const searchButton = document.getElementById('search-button');
+const searchText = document.getElementById('search-text');
+
+if (searchBlock) {
+  searchBlock.addEventListener('click', (e) => {
+    if (e.target.id === 'search-button' && searchText.value !== '') {
+      searchBlock.submit();
+    }
+    searchBlock.classList.add('search-block--active');
+    searchButton.src = '/static/svg/search-icon-green.svg';
+    searchText.placeholder = '';
+    searchText.focus();
+  });
+}

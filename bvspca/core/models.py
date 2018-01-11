@@ -61,7 +61,12 @@ class SupportersPage(Page, MenuTitleable):
         ('category', HeadingBlock()),
         ('supporter', SupporterBlock()),
     ], blank=True)
+
     subpage_types = []
+
+    search_fields = Page.search_fields + [
+        index.SearchField('supporters'),
+    ]
 
     content_panels = [
         FieldPanel('title'),
@@ -104,6 +109,12 @@ class TeamPage(Page, MenuTitleable):
     ], blank=True, verbose_name='members')
 
     subpage_types = []
+
+    search_fields = Page.search_fields + [
+        index.SearchField('group1_members'),
+        index.SearchField('group2_members'),
+        index.SearchField('group3_members'),
+    ]
 
     content_panels = [
         FieldPanel('title'),

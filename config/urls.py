@@ -8,7 +8,8 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailsearch import urls as wagtailsearch_urls
 
-from bvspca.feeds import urls as bvspca_feed_urls
+from bvspca.feeds import urls as feed_urls
+from bvspca.core import urls as core_urls
 
 urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
@@ -18,7 +19,10 @@ urlpatterns = [
     url(settings.WAGTAIL_ADMIN_URL, include(wagtailadmin_urls)),
     url(r'^search/', include(wagtailsearch_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^feed/', include(bvspca_feed_urls)),
+    url(r'^feed/', include(feed_urls)),
+
+    # core: search
+    url(r'^core/', include(core_urls, namespace='core')),
 
     url(r'', include(wagtail_urls)),
 

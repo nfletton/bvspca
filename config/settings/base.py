@@ -63,6 +63,7 @@ THIRD_PARTY_APPS = [
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
     'wagtail.contrib.settings',
+    'wagtail.contrib.postgres_search',
 
     'taggit',
     'modelcluster',
@@ -280,6 +281,11 @@ LOGIN_REDIRECT_URL = 'wagtailadmin_home'  # see https://github.com/wagtail/wagta
 WAGTAIL_ADMIN_URL = r'^admin/'
 WAGTAIL_SITE_NAME = 'Bow Valley SPCA'
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'no-reply@example.com'
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.contrib.postgres_search.backend',
+    },
+}
 
 RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_SITE_KEY')
 RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_SECRET_KEY')
@@ -298,7 +304,7 @@ ADDTHIS_PUB_ID = env('ADDTHIS_PUB_ID')
 GOOGLE_MAPS_KEY = ''
 
 SPCA_LIST_BLOCK_LENGTH = 5
-SPCA_LIST_PAGE_LENGTH = 20
+SPCA_LIST_PAGE_LENGTH = 10
 
 SPCA_SITE_SHORT_NAME = 'BVSPCA'
 

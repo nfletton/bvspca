@@ -1,24 +1,21 @@
 {% load staticfiles %}
+
 <div class="pagination">
-  <div class="page-nav previous">
+  <div class="pager-btn__previous">
     {% if target.has_previous %}
       <a href="?page={{ target.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" title="Previous">
-        <img src="{% static 'svg/chevron-left.svg' %}">
+        <i></i>
       </a>
-    {% else %}
-      <button type="button" class="disabled"><img src="{% static 'svg/chevron-left.svg' %}"></button>
     {% endif %}
   </div>
-  <div class="pages">
-    Page {{ target.number }} of {{ target.paginator.num_pages }}
+  <div class="pager__pages">
+    <span class="pager__current_page">{{ target.number }}</span> of {{ target.paginator.num_pages }}
   </div>
-  <div class="page-nav next">
+  <div class="pager-btn__next">
     {% if target.has_next %}
       <a href="?page={{ target.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" title="Next">
-        <img src="{% static 'svg/chevron-right.svg' %}">
+        <i></i>
       </a>
-    {% else %}
-      <button type="button" class="disabled"><img src="{% static 'svg/chevron-right.svg' %}"></button>
     {% endif %}
   </div>
 </div>

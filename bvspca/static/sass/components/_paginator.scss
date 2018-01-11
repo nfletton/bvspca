@@ -1,0 +1,38 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pager-btn__previous,
+.pager-btn__next {
+  i {
+    margin: 7px 15px;
+    border-style: solid;
+    border-color: #3a3a3a;
+    width: 10px;
+    height: 10px;
+    display: block;
+    cursor: pointer;
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+}
+.pager-btn__previous {
+  i {
+    border-width: 1px 0 0 1px;
+    transform: rotate(-45deg);
+  }
+}
+.pager-btn__next {
+  i {
+    border-width: 1px 1px 0 0;
+    transform: rotate(45deg);
+  }
+}
+
+.pager__current_page {
+  color: $primary-color;
+}

@@ -64,6 +64,7 @@ class Animal(Page, MetaTagable):
         verbose_name='Animal Updates',
         blank=True,
     )
+
     search_fields = Page.search_fields + [
         index.SearchField('title'),
         index.SearchField('primary_breed'),
@@ -72,6 +73,7 @@ class Animal(Page, MetaTagable):
         index.SearchField('secondary_color'),
         index.SearchField('size'),
         index.SearchField('description'),
+        index.SearchField('adoption_message'),
     ]
 
     subpage_types = []
