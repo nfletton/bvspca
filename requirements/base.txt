@@ -4,7 +4,7 @@
 # Verified bug on Python 3.5.1
 wheel==0.29.0
 
-django==1.11.8
+django==1.11.9
 
 # Configuration
 django-environ==0.4.4
@@ -14,7 +14,7 @@ django-braces==1.12.0
 django-crispy-forms==1.7.0
 
 # Models
-django-model-utils==3.0.0
+django-model-utils==3.1.1
 
 # Password storage
 argon2-cffi==16.3.0
@@ -29,5 +29,5 @@ pytz==2017.3
 wagtail==1.13.1
 wagtailfontawesome==1.1.1
 mailchimp3==2.0.18
-zeep==2.4.0
+zeep==2.5.0
 django-ical==1.4
