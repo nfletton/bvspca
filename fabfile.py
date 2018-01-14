@@ -49,6 +49,7 @@ def deploy_full(dry_run='no', venv='yes'):
     upload_files(dry_run)
     run('mkdir -p backups')
     run('mkdir -p staticfiles')
+    run('mkdir -p logs')
     if dry_run == 'no':
         set_permissions()
         _stop_gunicorn()
@@ -63,7 +64,7 @@ def deploy_full(dry_run='no', venv='yes'):
 @task
 def collect_static():
     with prefix('source ' + ACTIVATE_SCRIPT):
-        run(PYTHON_EXECUTABLE + ' manage.py collectstatic')
+        run(PYTHON_EXECUTABLE + ' manage.py collectstatic --no-input')
 
 
 @task
@@ -134,7 +135,22 @@ def rebuild_venv():
     run(PIP_EXECUTABLE + ' install -U setuptools', shell=True)
     _set_environment_variable('DJANGO_SECRET_KEY', DJANGO_SECRET_KEY, ACTIVATE_SCRIPT)
     _set_environment_variable('DJANGO_SETTINGS_MODULE', DJANGO_SETTINGS_MODULE, ACTIVATE_SCRIPT)
+    _set_environment_variable('DJANGO_ADMIN_URL', DJANGO_ADMIN_URL, ACTIVATE_SCRIPT)
+    _set_environment_variable('WAGTAIL_ADMIN_URL', WAGTAIL_ADMIN_URL, ACTIVATE_SCRIPT)
     _set_environment_variable('DATABASE_URL', DATABASE_URL, ACTIVATE_SCRIPT)
+    _set_environment_variable('PATH', PATH, ACTIVATE_SCRIPT)
+    _set_environment_variable('ADDTHIS_PUB_ID', ADDTHIS_PUB_ID, ACTIVATE_SCRIPT)
+    _set_environment_variable('RECAPTCHA_SITE_KEY', RECAPTCHA_SITE_KEY, ACTIVATE_SCRIPT)
+    _set_environment_variable('RECAPTCHA_SECRET_KEY', RECAPTCHA_SECRET_KEY, ACTIVATE_SCRIPT)
+    _set_environment_variable('GOOGLE_ANALYTICS_ID', GOOGLE_ANALYTICS_ID, ACTIVATE_SCRIPT)
+    _set_environment_variable('MAILCHIMP_USERNAME', MAILCHIMP_USERNAME, ACTIVATE_SCRIPT)
+    _set_environment_variable('MAILCHIMP_SECRET_KEY', MAILCHIMP_SECRET_KEY, ACTIVATE_SCRIPT)
+    _set_environment_variable('MAILCHIMP_LIST_ID', MAILCHIMP_LIST_ID, ACTIVATE_SCRIPT)
+    _set_environment_variable('MAILCHIMP_TEMPLATE_ID', MAILCHIMP_TEMPLATE_ID, ACTIVATE_SCRIPT)
+    _set_environment_variable('MAILCHIMP_SUBJECT', MAILCHIMP_SUBJECT, ACTIVATE_SCRIPT)
+    _set_environment_variable('MAILCHIMP_FROM_NAME', MAILCHIMP_FROM_NAME, ACTIVATE_SCRIPT)
+    _set_environment_variable('MAILCHIMP_REPLY_TO', MAILCHIMP_REPLY_TO, ACTIVATE_SCRIPT)
+    _set_environment_variable('PETPOINT_AUTH_KEY', PETPOINT_AUTH_KEY, ACTIVATE_SCRIPT)
 
 
 def _set_environment_variable(name, value, location):

@@ -179,5 +179,5 @@ ADMIN_URL = env('DJANGO_ADMIN_URL')
 
 # Your production stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
-GOOGLE_ANALYTICS_ID = ''
+GOOGLE_ANALYTICS_ID = env('GOOGLE_ANALYTICS_ID')
 WAGTAIL_ADMIN_URL = env('WAGTAIL_ADMIN_URL')
