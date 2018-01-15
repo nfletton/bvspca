@@ -167,9 +167,6 @@ def load_live_db(dump_file):
     put(dump_file, 'tmp/')
     basename = path.basename(dump_file)
     remote_dump_file = 'tmp/' + basename
-    # convert dev user to live user in dump file
-    sed(remote_dump_file, DB_NAME, PROJECT_USER)
-    # backup_db()
     _stop_gunicorn()
     statement = "DROP DATABASE " + DB_NAME + ";"
     _run_psql_statement(statement, warn_only=True)
