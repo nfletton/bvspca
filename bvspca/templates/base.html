@@ -73,6 +73,7 @@
           <use xlink:href="#icon-nav-close"></use>
         </svg>
       </a>
+      {% include 'includes/social_media.html' %}
       <ul class="main-nav__items">
         {% get_site_root as site_root %}
         {% top_menu parent=site_root calling_page=self %}
@@ -109,13 +110,6 @@
         <div class="contact-block__email"><a href="mailto:info@bowvalleyspca.org">info@bowvalleyspca.org</a></div>
       </div>
       <div class="social-media-block">
-        <ul class="social-media">
-          <li><a href="//www.facebook.com/thebowvalleyspca/" title="facebook"><img src="{% static "svg/facebook.svg" %}"></a></li>
-          <li><a href="//twitter.com/BOW_VALLEY_SPCA/" title="twitter"><img src="{% static "svg/twitter.svg" %}"></a></li>
-          <li><a href="//www.instagram.com/bvspca/" title="instagram"><img src="{% static "svg/instagram.svg" %}"></a></li>
-          <li><a href="//www.youtube.com/channel/UC2utMCVRbLcgMdTYf-s0FBg" title="youtube"><img src="{% static "svg/youtube.svg" %}"></a></li>
-          <li><a href="/" title="email"><img src="{% static "svg/envelop.svg" %}"></a></li>
-        </ul>
         <div class="newsletter-signup">
           <div class="newsletter-signup__heading">Sign up for our newsletter</div>
           <a class="newsletter-signup__button" href="/newsletter-signup">Sign up Now!</a>

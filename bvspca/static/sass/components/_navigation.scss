@@ -12,7 +12,7 @@ $nav-height: 86px;
 $nav-height-mobile: 65px;
 $nav-color: #fff;
 $nav-active-color: $highlight-red-on-white;
-$nav-toggle-color: #fff;
+$nav-toggle-color: $primary-color;
 $nav-icon-size: 40px;
 $nav-max-width: 320px;
 
@@ -24,14 +24,17 @@ header {
 }
 
 .logo {
-  width: 130px;
+  width: 150px;
   position: relative;
-  top: 10px;
-  margin-left: 1em;
+  top: 5px;
+  left: 0;
+  @media(min-width: 500px) {
+    left: calc(50% - 80px);
+  }
   @media(min-width: $nav-breakpoint) {
     width: 250px;
-    position: relative;
     top: 15px;
+    left: 2em;
     margin-right: 30px;
   }
 }
@@ -39,6 +42,7 @@ header {
 .header-nav-container {
   @include container-wide;
   padding-top: 0;
+  position: relative;
   @media(min-width: $nav-breakpoint) {
   }
 }
@@ -47,6 +51,15 @@ header {
   font-size: 0.9rem;
   font-weight: 400;
   @media(min-width: $nav-breakpoint) {
+  }
+  .social-media {
+    display: none;
+    position: absolute;
+    top: 0px;
+    right: 4em;
+    @media(min-width: $nav-breakpoint) {
+      display: block;
+    }
   }
 }
 
@@ -218,6 +231,11 @@ header {
   .nav-visible {
     .main-nav {
       background-color: $nav-mobile-bg-color;
+      .social-media {
+        display: block;
+        top: 0px;
+        left: 2em;
+      }
     }
     .main-nav__toggle-label {
       color: transparent;
