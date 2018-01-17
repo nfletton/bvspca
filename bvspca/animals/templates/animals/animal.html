@@ -52,7 +52,7 @@
           </li>
           <li class="animal-profile__info-item">
             <span>Status</span>
-            <div>{% if page.on_hold %}On Hold{% else %}Available for Adoption{% endif %}</div>
+            <div>{% if page.on_hold %}On Hold{% elif page.adoption_date %}Adopted on {{ page.adoption_date }}{% else %}Available for Adoption{% endif %}</div>
           </li>
           {% if page.last_intake_date %}
             <li class="animal-profile__info-item">
