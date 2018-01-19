@@ -8,6 +8,14 @@ from wagtail.wagtailcore.blocks import (
     RawHTMLBlock, PageChooserBlock)
 
 
+class DonateBlock(blocks.StructBlock):
+    button_name = CharBlock(default='Donate5.png')
+
+    class Meta:
+        template = 'core/blocks/donate_button.html'
+        icon = 'fa-money'
+
+
 class VideoBlock(StructBlock):
     video = EmbedBlock(required=True)
     caption = CharBlock(required=False)
@@ -110,6 +118,7 @@ class ContentStreamBlock(StreamBlock):
     )
     table_block = ContentTableBlock()
     raw_html = ContentRawHTML()
+    donate_button = DonateBlock()
 
 
 class TeamMemberBlock(blocks.StructBlock):
