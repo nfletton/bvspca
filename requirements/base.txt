@@ -28,6 +28,7 @@ pytz==2017.3
 # Your custom requirements go here
 wagtail==1.13.1
 wagtailfontawesome==1.1.1
+wagtail-django-recaptcha==0.2
 mailchimp3==2.0.18
 zeep==2.5.0
 django-ical==1.4

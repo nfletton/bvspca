@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags %}
+
+{% block intoduction %}{% endblock intoduction %}
+
+{% block content %}
+  <div class="contact-thank-you">
+    {{ page.thank_you_text|richtext }}
+  </div>
+{% endblock content %}

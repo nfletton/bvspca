@@ -1,17 +1,20 @@
 from django.conf import settings
 from django.db import models
 from django.http import HttpResponseRedirect
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel
+from modelcluster.fields import ParentalKey
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel, InlinePanel
 from wagtail.wagtailcore.blocks import ListBlock
-from wagtail.wagtailcore.fields import StreamField
+from wagtail.wagtailcore.fields import StreamField, RichTextField
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtailforms.models import AbstractFormField
 from wagtail.wagtailsearch import index
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 from bvspca.core.blocks import HeadingBlock, PictureLinkBlock, SupporterBlock, TeamMemberBlock
 from bvspca.events.models import Event
 from bvspca.news.models import News
 from .blocks import ContentStreamBlock
-from .models_abstract import Attachable, MenuTitleable
+from .models_abstract import Attachable, MenuTitleable, SendMailMixin
 
 
 class ContentPage(Page, MenuTitleable, Attachable):
@@ -191,3 +194,27 @@ class AdoptionCentre(Page, MenuTitleable):
 
     class Meta:
         verbose_name = 'Adoption Centre'
+
+
+class ContactFormField(AbstractFormField):
+    page = ParentalKey('ContactFormPage', related_name='form_fields')
+
+
+class ContactFormPage(MenuTitleable, SendMailMixin, WagtailCaptchaEmailForm, Page):
+    intro = StreamField(ContentStreamBlock(), verbose_name="Details", blank=True)
+    thank_you_text = RichTextField(blank=True)
+
+    subpage_type = []
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('intro'),
+        FieldPanel('thank_you_text'),
+        InlinePanel('form_fields', label="Form fields"),
+        MultiFieldPanel([
+            FieldPanel('to_address', classname="full"),
+            FieldPanel('from_address', classname="full"),
+            FieldPanel('subject', classname="full"),
+        ], "Email")
+    ]
+
+    promote_panels = Page.promote_panels + [FieldPanel('menu_title')]

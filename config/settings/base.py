@@ -68,8 +68,8 @@ THIRD_PARTY_APPS = [
     'taggit',
     'modelcluster',
 
-    # 'captcha',
-    # 'wagtailcaptcha',
+    'captcha',
+    'wagtailcaptcha',
     'wagtailfontawesome',
 ]
 
@@ -280,7 +280,7 @@ LOGIN_REDIRECT_URL = 'wagtailadmin_home'  # see https://github.com/wagtail/wagta
 
 WAGTAIL_ADMIN_URL = r'^admin/'
 WAGTAIL_SITE_NAME = 'Bow Valley SPCA'
-WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'no-reply@example.com'
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = env('WAGTAILADMIN_NOTIFICATION_FROM_EMAIL', default='no-reply@example.com')
 WAGTAILSEARCH_BACKENDS = {
     'default': {
         'BACKEND': 'wagtail.contrib.postgres_search.backend',

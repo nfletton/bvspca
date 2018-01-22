@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags crispy_forms_tags %}
+
+{% block body_class %}contact-page{% endblock %}
+
+{% block content %}
+  <div class="contact-content">
+    {% for block in page.intro %}
+      {% include_block block %}
+    {% endfor %}
+    <form class="form-horizontal contact-form" action="{% pageurl page %}#form" method="POST" id="form">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </div>
+    </form>
+    <div class="contact-close">{{ page.close|richtext }}</div>
+  </div>
+{% endblock content %}

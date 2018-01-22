@@ -1,7 +1,7 @@
 .contact-content {
-  @media(min-width: 600px) {
-    @include container-narrow;
-  }
+  @include container-narrow;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
 }
 
 .contact-form {
@@ -10,10 +10,8 @@
   }
 }
 
-#map {
-  background-color: $content-grey-bg;
-  @media(min-width: 600px) {
-    background-color: transparent;
-    margin-top: $content-padding;
-  }
+.contact-thank-you {
+  @include container-narrow;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
 }

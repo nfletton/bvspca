@@ -61,6 +61,7 @@ environment
 | MAILCHIMP_FROM_NAME | newsletter | | From name of email |
 | MAILCHIMP_REPLY_TO | newsletter | | Reply to address of email |
 | PETPOINT_AUTH_KEY | animals | | PetPoint Authorization Key |
+| WAGTAILADMIN_NOTIFICATION_FROM_EMAIL | | | Admin From email |
 
 ## Development Commands
 
