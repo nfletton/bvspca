@@ -2,7 +2,7 @@ $footer-block-break: 800px;
 
 footer {
   background-color: $footer-bg;
-  padding: 90px 0;
+  padding: 03rem 0;
 }
 
 .footer-container {
@@ -35,7 +35,7 @@ footer {
 }
 
 .contact-block__name {
-  color: $highlight-red-on-black;
+  color: $highlight-color;
 }
 
 .contact-block__address {
@@ -61,28 +61,30 @@ footer {
 }
 
 .newsletter-signup {
-  margin: 27px 0 0 0;
+  margin: 0;
   text-align: center;
 }
 
 .newsletter-signup__heading {
-  color: $highlight-red-on-black;
+  color: $highlight-color;
   font-family: $heading-font;
   font-size: 1.1em;
   margin-bottom: 0.5em;
 }
 
 .newsletter-signup__button {
-  background-color: $highlight-red-on-black;
+  background-color: $highlight-color;
+  color: #fff;
   &:link,
   &:visited {
+    color: #fff;
   }
   font-family: $title-font;
   padding: 0.25em 2em;
   text-decoration: none;
   &:hover {
-    background-color: #cecece;
-    color: $base-font-color;
+    background-color: lighten($highlight-color, 10);
+    color: #fff;
     text-decoration: none;
   }
 }
