@@ -64,11 +64,10 @@ class Event(Page, Attachable):
         super(Event, self).save(*args, **kwargs)
 
     def formatted_date(self):
+        #  todo: move to a template tag??
         if self.start_date == self.end_date:
-            return self.start_date.strftime('%b %d, %Y')
-        if self.start_date.month == self.end_date.month:
-            return self.start_date.strftime('%b %d - ') + self.end_date.strftime('%d, %Y')
-        return self.start_date.strftime('%b %d - ') + self.end_date.strftime('%b %d, %Y')
+            return self.start_date.strftime('%a, %d %b %Y')
+        return self.start_date.strftime('%a, %d %b ') + '&ndash;' + self.end_date.strftime(' %a, %d %b %Y')
 
     def __str__(self):
         return self.title

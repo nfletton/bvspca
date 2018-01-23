@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
   <div class="events-page">
@@ -7,18 +7,18 @@
     <div class="events">
       {% for event in events %}
         <a class="event-overview {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" href="{% pageurl event %}">
-          <div class="event-overview__photo">
+          <div class="event-overview__picture">
             {% if event.photo %}
-              {% image event.photo fill-200x150 %}
+              {% image event.photo fill-200x200 class="event-overview__photo" %}
             {% else %}
-              {% image event.photo fill-200x150 %}
+              <img class="event-overview__photo-placeholder" src="{% static 'svg/calendar.svg' %}" width="100" height="100" style="padding: 49px;border: 1px solid #aeaeae">
             {% endif %}
           </div>
           <div class="event-overview__details">
-            <div class="event-overview__date">{{ event.formatted_date }}</div>
+            <div class="event-overview__date">{{ event.formatted_date|safe }}</div>
             <div class="event-overview__title">{{ event.title }}{% if event.published_status %}<span class="published-status {{ event.published_status }}">{{ event.published_status }}</span>{% endif %}</div>
             <div class="event-overview__summary">
-              {{ event.details|truncatewords_html:50|striptags }}
+              {{ event.details|truncatewords_html:50|striptags }}<span class="event-overview__read-more"> (read more)</span>
             </div>
           </div>
         </a>
@@ -26,10 +26,5 @@
         <li class="empty-list"><img src="{% static 'svg/warning.svg' %}">No events available</li>
       {% endfor %}
     </div>
-    {#      {% include 'core/includes/pagination.html' with target=events %}#}
   </div>
 {% endblock content %}
-
-{% block extra_javascript %}
-  <script src="{% static 'dist/events.js' %}"></script>
-{% endblock extra_javascript %}

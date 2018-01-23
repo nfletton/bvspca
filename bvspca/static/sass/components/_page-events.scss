@@ -16,12 +16,19 @@
   margin-bottom: $content-padding-large;
 }
 
-.event-overview {
+a.event-overview {
   @include list-item();
 }
 
-.event-overview__photo {
+.event-overview__picture {
   @include list-item-photo();
+}
+
+.event-overview__photo-placeholder {
+  width: 200px;
+  height: 200px;
+  padding: 60px;
+  border: 1px solid #aeaeae;
 }
 
 .event-overview__details {
@@ -34,4 +41,8 @@
 
 .event-overview__title {
   @include list-item-title();
+}
+
+.event-overview__read-more {
+  @include list-item-read-more();
 }

@@ -9,12 +9,11 @@ $list-full-break: 700px;
     background-size: 15px 20px;
     &.odd:hover, &.even:hover {
       background-image: url(../svg/arrow-head-dark-green.svg);
-      //background-color: $bg-gray-hover;
+      background-color: $bg-gray-hover;
       color: $base-font-color;
     }
   }
   &.even {
-    //background-color: $bg-gray;
   }
 }
 
@@ -24,7 +23,7 @@ $list-full-break: 700px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: $content-padding;
+  padding: $content-padding/2;
   @media(min-width: $list-full-break) {
     flex-direction: row;
   }
@@ -84,6 +83,10 @@ $list-full-break: 700px;
   }
 }
 
+@mixin list-item-read-more() {
+  font-size: 0.9rem;
+  color: $link-color;
+}
 //@keyframes fadein {
 //  from {
 //    opacity: 0;

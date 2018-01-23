@@ -4,7 +4,7 @@
 {% block content %}
   <div class="event-page">
     {% include 'core/includes/page_title.html' %}
-    <h2>{{ page.formatted_date }}</h2>
+    <h2>{{ page.formatted_date|safe }}</h2>
     {{ page.details|richtext }}
     {% include 'core/includes/addthis_widgets.html' %}
     {% include 'core/includes/attachments.html' %}
