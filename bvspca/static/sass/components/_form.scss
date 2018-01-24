@@ -16,18 +16,31 @@ textarea {
 }
 
 .asteriskField {
-  color: $highlight-red-on-white;
+  color: $highlight-color;
 }
 
 button {
   color: #fff;
-  background-color: $highlight-red-on-white;
-  display: block;
+  background-color: $button-color;
   border: none;
-  border-radius: 5px;
+  border-radius: $button-radius;
+  display: block;
   font-size: 1.1em;
   padding: 0.5em 1em;
   margin: 1em auto;
+  &:hover {
+    background-color: $button-hover;
+  }
+}
+
+
+button.btn-primary {
+  color: #fff;
+  background-color: $button-color;
+  border: none;
+  &:hover {
+    background-color: $button-hover;
+  }
 }
 
 #div_id_wagtailcaptcha {

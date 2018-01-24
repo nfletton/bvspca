@@ -17,8 +17,7 @@ $primary-color: #e87d24;
 $secondary-color: #FF6C22;
 $tertiary-color: #F54B1C;
 
-$highlight-red-on-white: $tertiary-color;
-$highlight-color: $primary-color;
+$highlight-color: $tertiary-color;
 
 $link-color: darken($secondary-color, 0);
 
@@ -33,6 +32,6 @@ $bg-gray-even: darken($bg-gray, 1);
 $search-form-bg: #eeeeee;
 
 // buttons
-$button-hover: darken($highlight-red-on-white, 30%);
-$button-color: $highlight-red-on-white;
-
+$button-hover: darken($highlight-color, 30%);
+$button-color: $highlight-color;
+$button-radius: 3px;

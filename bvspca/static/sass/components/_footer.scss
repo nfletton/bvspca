@@ -73,17 +73,18 @@ footer {
 }
 
 .newsletter-signup__button {
-  background-color: $highlight-color;
+  background-color: $button-color;
+  border-radius: $button-radius;
   color: #fff;
+  font-family: $title-font;
+  padding: 0.25em 2em;
+  text-decoration: none;
   &:link,
   &:visited {
     color: #fff;
   }
-  font-family: $title-font;
-  padding: 0.25em 2em;
-  text-decoration: none;
   &:hover {
-    background-color: lighten($highlight-color, 10);
+    background-color: $button-hover;
     color: #fff;
     text-decoration: none;
   }
