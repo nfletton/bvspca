@@ -5,11 +5,6 @@
   margin-bottom: $content-padding-large;
 }
 
-.events__title,
-.event__title {
-  text-align: center;
-}
-
 .event-page {
   @include container;
   margin-top: $content-padding-large;

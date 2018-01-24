@@ -1,25 +1,29 @@
 {% extends "base.html" %}
-{% load staticfiles wagtailcore_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
   <div class="news-page">
     <h1>{{ page.title }}</h1>
-    <div id="news">
-      <ul class="news list">
-        {% for news_item in news %}
-          <li>
-            <a class="list-item {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" href="{% pageurl news_item %}">
-                <div class="list-item__date">{{ news_item.first_published_at|date }}</div>
-                <div class="list-item__title">{{ news_item.title }}{% if news_item.published_status %}<span class="published-status {{ news_item.published_status }}">{{ news_item.published_status }}</span>{% endif %}</div>
-                <div class="list-item__summary">
-                  {{ news_item.details|truncatewords_html:50|striptags }}
-                </div>
-            </a>
-          </li>
-        {% empty %}
-          <li class="empty-list">No news available</li>
-        {% endfor %}
-      </ul>
+    <div class="news">
+      {% for news_item in news %}
+        <a class="news-item-overview {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" href="{% pageurl news_item %}">
+          <div class="news-item-overview__picture">
+            {% if news_item.main_photo %}
+              {% image news_item.main_photo fill-200x200 class="news-item-overview__photo" %}
+            {% else %}
+              <img class="news-item-overview__photo-placeholder" src="{% static 'svg/calendar.svg' %}" width="100" height="100" style="padding: 49px;border: 1px solid #aeaeae">
+            {% endif %}
+          </div>
+          <div class="news-item-overview__details">
+            <div class="news-item-overview__date">{{ news_item.first_published_at|date }}</div>
+            <div class="news-item-overview__title">{{ news_item.title }}{% if news_item.published_status %}{% endif %}</div>
+            <div class="news-item-overview__summary">{{ news_item.details|truncatewords_html:50|striptags }}<span class="news-item-overview__read-more"> (read more)</span>
+            </div>
+          </div>
+        </a>
+      {% empty %}
+        <div class="empty-list"><img src="{% static 'svg/warning.svg' %}">No news available</div>
+      {% endfor %}
       {% include 'core/includes/pagination.html' with target=news %}
     </div>
   </div>

@@ -5,10 +5,7 @@ $list-full-break: 700px;
     text-decoration: none;
   }
   @media(min-width: $list-full-break) {
-    background: url(../svg/arrow-head-green.svg) no-repeat right 2em center;
-    background-size: 15px 20px;
     &.odd:hover, &.even:hover {
-      background-image: url(../svg/arrow-head-dark-green.svg);
       background-color: $bg-gray-hover;
       color: $base-font-color;
     }

@@ -9,3 +9,34 @@
   margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
 }
+
+a.news-item-overview {
+  @include list-item();
+}
+
+.news-item-overview__picture {
+  @include list-item-photo();
+}
+
+.news-item-overview__photo-placeholder {
+  width: 200px;
+  height: 200px;
+  padding: 60px;
+  border: 1px solid #aeaeae;
+}
+
+.news-item-overview__details {
+  @include list-item-details();
+}
+
+.news-item-overview__date {
+  @include list-item-date();
+}
+
+.news-item-overview__title {
+  @include list-item-title();
+}
+
+.news-item-overview__read-more {
+  @include list-item-read-more();
+}
