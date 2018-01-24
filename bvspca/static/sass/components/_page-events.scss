@@ -1,11 +1,7 @@
 @import "mixins/lists";
-.events-page {
-  @include container;
-  margin-top: $content-padding-large;
-  margin-bottom: $content-padding-large;
-}
 
-.event-page {
+/* Events list page */
+.events-page {
   @include container;
   margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
@@ -40,4 +36,51 @@ a.event-overview {
 
 .event-overview__read-more {
   @include list-item-read-more();
+}
+
+/* Event page */
+.event-page {
+  @include container-narrow;
+  margin-top: $content-padding-large;
+  margin-bottom: $content-padding-large;
+}
+
+.event__date {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.event__photo {
+  display: block;
+  margin: $content-padding auto;
+  @include responsive-image;
+}
+
+.event-block {
+
+}
+
+$block-row-break: 600px;
+
+.event-block-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  text-align: center;
+  @media(min-width: $block-row-break) {
+    flex-direction: row;
+  }
+}
+
+.event_block_field__label {
+  font-weight: 600;
+  @media(min-width: $block-row-break) {
+    width: 10em;
+    text-align: right;
+    margin-right: 2em;
+  }
+}
+
+.event_block_field__value {
 }

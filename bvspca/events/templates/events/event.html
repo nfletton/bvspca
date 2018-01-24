@@ -1,11 +1,36 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags utility_tags %}
+{% load wagtailcore_tags wagtailimages_tags utility_tags %}
 
 {% block content %}
   <div class="event-page">
-    {% include 'core/includes/page_title.html' %}
-    <h2>{{ page.formatted_date|safe }}</h2>
+    <h1>{{ page.title }}</h1>
+    <div class="event__date">{{ page.formatted_date|safe }}</div>
+    {% if page.photo %}
+      {% image page.photo width-600 class="event__photo" %}
+    {% endif %}
     {{ page.details|richtext }}
+    <div class="event-block">
+      {% if page.contact_name %}
+        <div class="event-block-field">
+          <span class="event_block_field__label">Contact Name:</span><span class="event_block_field__value">{{ page.contact_name }}</span>
+        </div>
+      {% endif %}
+      {% if page.contact_email %}
+        <div class="event-block-field">
+          <span class="event_block_field__label">Email:</span><span class="event_block_field__value">{{ page.contact_email }}</span>
+        </div>
+      {% endif %}
+      {% if page.contact_phone %}
+        <div class="event-block-field">
+          <span class="event_block_field__label">Phone:</span><span class="event_block_field__value">{{ page.contact_phone }}</span>
+        </div>
+      {% endif %}
+      {% if page.website %}
+        <div class="event-block-field">
+          <span class="event_block_field__label">Website:</span><span class="event_block_field__value">{{ page.website }}</span>
+        </div>
+      {% endif %}
+    </div>
     {% include 'core/includes/addthis_widgets.html' %}
     {% include 'core/includes/attachments.html' %}
   </div>
