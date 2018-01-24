@@ -15,7 +15,7 @@
             {% endif %}
           </div>
           <div class="news-item-overview__details">
-            <div class="news-item-overview__date">{{ news_item.first_published_at|date }}</div>
+            <div class="news-item-overview__date">{{ news_item.first_published_at|date:'D, j M Y' }}</div>
             <div class="news-item-overview__title">{{ news_item.title }}{% if news_item.published_status %}{% endif %}</div>
             <div class="news-item-overview__summary">{{ news_item.details|truncatewords_html:50|striptags }}<span class="news-item-overview__read-more"> (read more)</span>
             </div>

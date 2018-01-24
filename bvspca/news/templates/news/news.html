@@ -1,10 +1,17 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags utility_tags %}
+{% load wagtailcore_tags wagtailimages_tags utility_tags %}
 
 {% block content %}
   <div class="news-item-page">
-    {% include 'core/includes/page_title.html' %}
+    <h1>{{ page.title }}</h1>
+    <div class="news__date">{{ page.first_published_at|date:'D, j M Y' }}</div>
+    {% if page.main_photo %}
+      {% image page.main_photo width-600 class="news-item__photo" %}
+    {% endif %}
     {{ page.details|richtext }}
+    {% for block in page.extra_details %}
+      {% include_block block %}
+    {% endfor %}
     {% include 'core/includes/addthis_widgets.html' %}
     {% include 'core/includes/attachments.html' %}
   </div>

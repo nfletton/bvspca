@@ -2,11 +2,12 @@ from django.conf import settings
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailcore.models import Page, PageManager
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
+from bvspca.core.blocks import ContentStreamBlock
 from bvspca.core.models_abstract import Attachable, MenuTitleable
 
 
@@ -31,6 +32,7 @@ class News(Page, Attachable):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    extra_details = StreamField(ContentStreamBlock(required=False), verbose_name="Extra Content", blank=True)
 
     objects = NewsManager()
 
@@ -44,6 +46,7 @@ class News(Page, Attachable):
     content_panels = Page.content_panels + [
         FieldPanel('details'),
         ImageChooserPanel('main_photo'),
+        StreamFieldPanel('extra_details'),
         StreamFieldPanel('attachments'),
     ]
 
