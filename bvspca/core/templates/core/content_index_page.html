@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags %}
+
+{% block content %}
+  <div class="content-index">
+    <h1>{{ page.title }}</h1>
+
+    <div class="intro">{{ page.intro|richtext }}</div>
+    {% with page.get_children as topics %}
+      {% if topics %}
+        {% for topic in topics %}
+          <h2 class="content-index__item"><a href="{% pageurl topic %}">{{ topic.title }}</a></h2>
+        {% endfor %}
+      {% else %}
+        <div class="empty-list"><img src="{% static 'svg/warning.svg' %}">{{ page.empty_message }}</div>
+      {% endif %}
+    {% endwith %}
+  </div>
+{% endblock %}

@@ -204,7 +204,7 @@ class ContactFormPage(MenuTitleable, SendMailMixin, WagtailCaptchaEmailForm, Pag
     intro = StreamField(ContentStreamBlock(), verbose_name="Details", blank=True)
     thank_you_text = RichTextField(blank=True)
 
-    subpage_type = []
+    subpage_types = []
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('intro'),
@@ -215,6 +215,20 @@ class ContactFormPage(MenuTitleable, SendMailMixin, WagtailCaptchaEmailForm, Pag
             FieldPanel('from_address', classname="full"),
             FieldPanel('subject', classname="full"),
         ], "Email")
+    ]
+
+    promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
+
+
+class ContentIndexPage(MenuTitleable, Page):
+    intro = RichTextField(blank=True)
+    empty_message = models.CharField(max_length=200, default='Empty')
+
+    subpage_types = [ContentPage]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro'),
+        FieldPanel('empty_message'),
     ]
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]

@@ -1,5 +1,15 @@
 .general-content {
   @include container;
-  margin-top: $content-padding-large;
-  margin-bottom: $content-padding-large;
+  margin-top: $content-padding;
+  margin-bottom: $content-padding;
+}
+
+.content-index {
+  @include container-narrow;
+  margin-top: $content-padding;
+  margin-bottom: $content-padding;
+}
+
+.content-index__item {
+  margin: 1em 0;
 }
