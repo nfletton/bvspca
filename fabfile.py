@@ -151,6 +151,12 @@ def rebuild_venv():
     _set_environment_variable('MAILCHIMP_FROM_NAME', MAILCHIMP_FROM_NAME, ACTIVATE_SCRIPT)
     _set_environment_variable('MAILCHIMP_REPLY_TO', MAILCHIMP_REPLY_TO, ACTIVATE_SCRIPT)
     _set_environment_variable('PETPOINT_AUTH_KEY', PETPOINT_AUTH_KEY, ACTIVATE_SCRIPT)
+    _set_environment_variable('WAGTAILADMIN_NOTIFICATION_FROM_EMAIL', WAGTAILADMIN_NOTIFICATION_FROM_EMAIL, ACTIVATE_SCRIPT)
+    _set_environment_variable('FACEBOOK_PAGE_ACCESS_TOKEN', FACEBOOK_PAGE_ACCESS_TOKEN, ACTIVATE_SCRIPT)
+    _set_environment_variable('TWITTER_CONSUMER_KEY', TWITTER_CONSUMER_KEY, ACTIVATE_SCRIPT)
+    _set_environment_variable('TWITTER_CONSUMER_SECRET', TWITTER_CONSUMER_SECRET, ACTIVATE_SCRIPT)
+    _set_environment_variable('TWITTER_ACCESS_TOKEN_KEY', TWITTER_ACCESS_TOKEN_KEY, ACTIVATE_SCRIPT)
+    _set_environment_variable('TWITTER_ACCESS_TOKEN_SECRET', TWITTER_ACCESS_TOKEN_SECRET, ACTIVATE_SCRIPT)
 
 
 def _set_environment_variable(name, value, location):
@@ -208,6 +214,7 @@ def _stop_gunicorn():
 
 
 def _start_gunicorn():
+    sudo('sudo supervisorctl update ' + PROJECT_USER)
     sudo('sudo supervisorctl start ' + PROJECT_USER)
 
 

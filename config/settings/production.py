@@ -132,6 +132,12 @@ LOGGING = {
             'filename': '{}/logs/weekly-email.log'.format(env.str('HOME')),
             'formatter': 'verbose',
         },
+        'social': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '{}/logs/social-media-posts.log'.format(env.str('HOME')),
+            'formatter': 'verbose',
+        },
         'petpoint': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
@@ -159,6 +165,11 @@ LOGGING = {
         'bvspca.newsletter': {
             'level': 'ERROR',
             'handlers': ['weekly_emails'],
+            'propagate': False
+        },
+        'bvspca.social': {
+            'level': 'INFO',
+            'handlers': ['social'],
             'propagate': False
         },
         'bvspca.animals.petpoint': {

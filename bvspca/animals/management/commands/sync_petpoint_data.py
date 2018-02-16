@@ -4,9 +4,10 @@ import logging
 from django.core.management.base import BaseCommand
 from zeep import Client
 
-from bvspca.animals.models import Animal, AnimalsPage, AnimalCountSettings
-from bvspca.animals.petpoint import fetch_petpoint_adoptable_animal_ids, fetch_petpoint_animal, \
-    fetch_petpoint_adopted_dates_since
+from bvspca.animals.models import Animal, AnimalCountSettings, AnimalsPage
+from bvspca.animals.petpoint import fetch_petpoint_adoptable_animal_ids, fetch_petpoint_adopted_dates_since, \
+    fetch_petpoint_animal
+from bvspca.social.interface import add_to_social_queue
 
 logger = logging.getLogger('bvspca.animals.petpoint')
 
@@ -38,6 +39,7 @@ class Command(BaseCommand):
                         self.increment_animal_count(new_animal.species, 'rescued')
                         animal_parent = AnimalsPage.objects.get(species=new_animal.species)
                         animal_parent.add_child(instance=new_animal)
+                        add_to_social_queue(new_animal)
                         logger.info(
                             'Created animal {} ({})'.format(
                                 new_animal.petpoint_id,
@@ -46,7 +48,7 @@ class Command(BaseCommand):
                         )
 
         # check for adoptions since yesterday and set adoption dates
-        adoptions = fetch_petpoint_adopted_dates_since(client, datetime.date.today() - datetime.timedelta(1))
+        adoptions = fetch_petpoint_adopted_dates_since(client, datetime.date.today() - datetime.timedelta(10))
         if adoptions:
             for adoption in adoptions:
                 try:
@@ -56,6 +58,7 @@ class Command(BaseCommand):
                         local_animal.live = True
                         local_animal.save()
                         self.increment_animal_count(local_animal.species, 'adopted')
+                        add_to_social_queue(local_animal)
                         logger.info(
                             'Animal {} adopted on {}'.format(
                                 adoption[0],

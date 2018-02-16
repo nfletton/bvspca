@@ -62,6 +62,12 @@ environment
 | MAILCHIMP_REPLY_TO | newsletter | | Reply to address of email |
 | PETPOINT_AUTH_KEY | animals | | PetPoint Authorization Key |
 | WAGTAILADMIN_NOTIFICATION_FROM_EMAIL | | | Admin From email |
+| FACEBOOK_PAGE_ACCESS_TOKEN | social | | Facebook page access token |
+| FACEBOOK_PAGE_ID | social | | Facebook page id |
+| TWITTER_CONSUMER_KEY | social | | Twitter consumer key |
+| TWITTER_CONSUMER_SECRET | social | | Twitter consumer secret |
+| TWITTER_ACCESS_TOKEN_KEY | social | | Twitter access token key |
+| TWITTER_ACCESS_TOKEN_SECRET | social | | Twitter access token secret |
 
 ## Development Commands
 

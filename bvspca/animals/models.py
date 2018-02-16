@@ -12,9 +12,10 @@ from wagtail.wagtailsearch import index
 
 from bvspca.core.blocks import ContentStreamBlock
 from bvspca.core.models_abstract import MenuTitleable, MetaTagable
+from bvspca.social.models import SocialMediaPostable
 
 
-class Animal(Page, MetaTagable):
+class Animal(Page, MetaTagable, SocialMediaPostable):
     # PetPoint read-only fields
     petpoint_id = models.PositiveIntegerField(
         verbose_name='petpoint animal id',
@@ -84,6 +85,25 @@ class Animal(Page, MetaTagable):
         FieldPanel('adoption_message'),
         StreamFieldPanel('updates'),
     ]
+
+    def social_media_ready_to_post(self):
+        if self.main_photo:
+            if self.adoption_date and self.adoption_message:
+                # animal adopted and ready to post
+                return True
+            elif self.description:
+                # animal arrived and ready to post
+                return True
+        return False
+
+    def social_media_post_text(self):
+        if self.adoption_date:
+            return self.adoption_message
+        else:
+            return self.description
+
+    def social_media_post_image(self):
+        return self.main_photo
 
     @classmethod
     def create(cls, petpoint_data):
