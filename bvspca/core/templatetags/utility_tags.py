@@ -36,7 +36,7 @@ def seo_and_social_meta_tags(context, page):
         if hasattr(page, 'seo_and_social_meta_values'):
             request = context.request
             data = page.seo_and_social_meta_values()
-            data['root_url'] = '{}://{}'.format(request.scheme, request.META['HTTP_HOST'])
+            data['root_url'] = request.site.root_url
         else:
             data = dict(
                 title='{} | {}'.format(page.seo_title if page.seo_title else page.title, site_short_name),
