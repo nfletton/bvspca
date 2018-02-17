@@ -9,8 +9,8 @@ class NewsSocialMediaQueueModelAdmin(ModelAdmin):
     menu_icon = 'fa-share-square '
     menu_order = 450
     add_to_settings_menu = True
-    list_display = ('date',)
-    ordering = ('-priority', 'ready')
+    list_display = ('date', 'priority', '__str__', 'ready')
+    ordering = ('-priority', 'date')
 
 
 modeladmin_register(NewsSocialMediaQueueModelAdmin)

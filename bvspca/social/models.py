@@ -51,7 +51,6 @@ class SocialMediaQueue(models.Model):
     PRIORITIES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
     date = models.DateTimeField(verbose_name='timestamp', auto_now_add=True)
     priority = models.PositiveSmallIntegerField(choices=PRIORITIES)
-    ready = models.BooleanField(default=False)
     page = models.OneToOneField(
         Page,
         on_delete=models.DO_NOTHING,
@@ -62,6 +61,9 @@ class SocialMediaQueue(models.Model):
 
     class Meta:
         pass
+
+    def ready(self):
+        return self.page.specific.social_media_ready_to_post()
 
     def __str__(self):
         return self.page.title
