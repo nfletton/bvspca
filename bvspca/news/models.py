@@ -44,8 +44,8 @@ class News(Page, Attachable):
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('details'),
         ImageChooserPanel('main_photo'),
+        FieldPanel('details'),
         StreamFieldPanel('extra_details'),
         StreamFieldPanel('attachments'),
     ]

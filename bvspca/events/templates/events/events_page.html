@@ -8,8 +8,8 @@
       {% for event in events %}
         <a class="event-overview {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" href="{% pageurl event %}">
           <div class="event-overview__picture">
-            {% if event.photo %}
-              {% image event.photo fill-200x200 class="event-overview__photo" %}
+            {% if event.main_photo %}
+              {% image event.main_photo fill-200x200 class="event-overview__photo" %}
             {% else %}
               <img class="event-overview__photo-placeholder" src="{% static 'svg/calendar.svg' %}" width="100" height="100" style="padding: 49px;border: 1px solid #aeaeae">
             {% endif %}

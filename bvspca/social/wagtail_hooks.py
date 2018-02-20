@@ -10,7 +10,7 @@ class NewsSocialMediaQueueModelAdmin(ModelAdmin):
     menu_order = 450
     add_to_settings_menu = True
     list_display = ('date', 'priority', '__str__', 'ready')
-    ordering = ('-priority', 'date')
+    ordering = ('priority', 'date')
 
 
 modeladmin_register(NewsSocialMediaQueueModelAdmin)

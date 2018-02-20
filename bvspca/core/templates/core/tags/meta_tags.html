@@ -2,8 +2,10 @@
 {% if title %}
   <title>{{ title }}</title>
 {% endif %}
-{% if description %}
+{% if description  %}
   <meta name="description" content="{{ description }}">
+{% elif social_description %}
+  <meta name="description" content="{{ social_description }}">
 {% endif %}
 
 {% if photo %}
