@@ -63,3 +63,38 @@ h1 {
   text-align: center;
   text-transform: uppercase;
 }
+
+.random-animals {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.random-animal {
+  position: relative;
+  &:hover {
+    .random-animal__details  {
+      height: 55%;
+      transition: height 0.5s;
+    }
+  }
+}
+
+.random-animal__photo {
+  display: block;
+}
+
+.random-animal__details {
+  position: absolute;
+  height: 35%;
+  transition: height 0.5s;
+  overflow: hidden;
+  display: block;
+  text-align: center;
+  bottom: 0;
+  padding: 3em 0 1em;
+  width: 100%;
+  color: #fff;
+  background-image: linear-gradient(to top,rgba(0,0,0, 0.8), transparent);
+}
+

@@ -1,0 +1,13 @@
+{% load wagtailimages_tags animal_tags %}
+
+<div class="random-animals">
+    {% for animal in random_animals %}
+        <a href="{{ animal.url }}" class="random-animal">
+            {% image animal.main_photo fill-300x280 class="random-animal__photo" %}
+            <div class="random-animal__details">
+                {{ animal.title }}<br><br>
+                {{ animal.primary_breed }}
+            </div>
+        </a>
+    {% endfor %}
+</div>

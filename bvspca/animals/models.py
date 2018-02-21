@@ -4,7 +4,7 @@ from django.db.models import ForeignKey
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore.models import Page, PageManager
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import Image
@@ -13,6 +13,11 @@ from wagtail.wagtailsearch import index
 from bvspca.core.blocks import ContentStreamBlock
 from bvspca.core.models_abstract import MenuTitleable, MetaTagable
 from bvspca.social.models import SocialMediaPostable
+
+
+class AnimalManager(PageManager):
+    def random(self, count):
+        return self.live().filter(adoption_date__isnull=True).order_by('?')[:count]
 
 
 class Animal(Page, MetaTagable, SocialMediaPostable):
@@ -65,6 +70,8 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
         verbose_name='Animal Updates',
         blank=True,
     )
+
+    objects = AnimalManager()
 
     search_fields = Page.search_fields + [
         index.SearchField('title'),

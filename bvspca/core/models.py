@@ -10,6 +10,7 @@ from wagtail.wagtailforms.models import AbstractFormField
 from wagtail.wagtailsearch import index
 from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
+from bvspca.animals.models import Animal
 from bvspca.core.blocks import HeadingBlock, PictureLinkBlock, SupporterBlock, TeamMemberBlock
 from bvspca.events.models import Event
 from bvspca.news.models import News
@@ -56,6 +57,7 @@ class HomePage(Page):
         context = super(HomePage, self).get_context(request, args, kwargs)
         context['events'] = Event.objects.future(settings.SPCA_LIST_BLOCK_LENGTH)
         context['news'] = News.objects.news(settings.SPCA_LIST_BLOCK_LENGTH)
+        context['random_animals'] = Animal.objects.random(7)
         return context
 
 
