@@ -74,7 +74,7 @@ h1 {
   position: relative;
   &:hover {
     .random-animal__details  {
-      height: 55%;
+      height: 40%;
       transition: height 0.5s;
     }
   }
@@ -86,15 +86,19 @@ h1 {
 
 .random-animal__details {
   position: absolute;
-  height: 35%;
+  height: 30%;
   transition: height 0.5s;
   overflow: hidden;
   display: block;
   text-align: center;
   bottom: 0;
-  padding: 3em 0 1em;
+  padding: 3rem 0 1rem;
   width: 100%;
   color: #fff;
   background-image: linear-gradient(to top,rgba(0,0,0, 0.8), transparent);
 }
 
+.random-animal__details--extra {
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+}
