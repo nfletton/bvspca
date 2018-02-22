@@ -14,14 +14,17 @@ $base-font-size: 1.2rem;
 
 // common color definitions
 $primary-color: #e87d24;
-$secondary-color: #FF6C22;
-$tertiary-color: #F54B1C;
+$secondary-color: #f47c22;
+$tertiary-color: #09bcc1;
 
 $highlight-color: $tertiary-color;
 
 $link-color: darken($secondary-color, 0);
 
-$footer-bg: #ececec;
+$footer-bg: #1f262b;
+$footer-copyright-bg: #12181c;
+$footer-text: #8aa5b4;
+
 $content-light-bg: #e68a26;
 $content-grey-bg: #ececec;
 

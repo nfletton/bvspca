@@ -100,24 +100,63 @@
 
   {% block content %}{% endblock content %}
 </main>
+<div class="newsletter-signup">
+  <div class="newsletter-signup__heading">Sign up for our newsletters</div>
+  <a class="newsletter-signup__button" href="/newsletters">Sign up Now!</a>
+</div>
 <footer id="footer">
-  <div class="footer-container">
-    <div class="block-container">
-      <div class="contact-block">
-        <div class="contact-block__address"><a href="/about/contact-us">Contact details &amp; hours&hellip;</a></div>
-      </div>
-      <div class="social-media-block">
-        <div class="newsletter-signup">
-          <div class="newsletter-signup__heading">Sign up for our newsletters</div>
-          <a class="newsletter-signup__button" href="/newsletters">Sign up Now!</a>
+  <div class="footer-main">
+    <div class="footer-container">
+      <div class="footer-block-container">
+        <div class="social-media-block footer-block">
+          <div class="footer-block-title">Follow</div>
+          <ul class="footer-social-media">
+            <li><a href="//twitter.com/BOW_VALLEY_SPCA/" title="twitter"><img class="social-icon social-icon-twitter" src="{% static "svg/twitter2.svg" %}">Twitter</a></li>
+            <li><a href="//www.youtube.com/channel/UC2utMCVRbLcgMdTYf-s0FBg" title="youtube"><img class="social-icon social-icon-youtube" src="{% static "svg/youtube2.svg" %}">YouTube</a></li>
+            <li><a href="//www.facebook.com/thebowvalleyspca/" title="facebook"><img class="social-icon social-icon-facebook" src="{% static "svg/facebook2.svg" %}">Facebook</a></li>
+            <li><a href="//www.instagram.com/bvspca/" title="instagram"><img class="social-icon social-icon-instagram" src="{% static "svg/instagram2.svg" %}">Instagram</a></li>
+          </ul>
+        </div>
+        <div class="location-block footer-block">
+          <div class="footer-block-title">Location &amp; Hours</div>
+          <ul class="footer-address-hours">
+            <li class="location-block__address">
+              <img class="facility-icon facility-icon-address" src="{% static "svg/location.svg" %}">
+              <div class="indented-list-content">
+                Bow Valley SPCA<br>
+                123 Bow Meadows Crescent<br>
+                Canmore, Alberta T1W 2W8
+              </div>
+            </li>
+            <li class="location-block__hours">
+              <img class="facility-icon facility-icon-hours" src="{% static "svg/hours.svg" %}">
+              <div class="indented-list-content">
+                <div class="footer-block-subtitle">Hours</div>
+                Mon-Fri: 8-6<br>
+                Sat-Sun: 10-6
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="contact-block footer-block">
+          <div class="footer-block-title">Contact</div>
+          <ul class="footer-contacts">
+            <li class="contact-block__email"><img class="contact-icon contact-icon-email" src="{% static "svg/envelope.svg" %}"><a href="mailto:info@bowvalleyspca.org">info@bowvalleyspca.org</a></li>
+            <li class="contact-block__phone"><img class="contact-icon contact-icon-phone" src="{% static "svg/phone.svg" %}">403-609-2022</li>
+            <li class="contact-block__fax"><img class="contact-icon contact-icon-fax" src="{% static "svg/fax.svg" %}">403-609-2110</li>
+          </ul>
         </div>
       </div>
     </div>
-    <div class="acknowledgement">
-      This website is open sourced with the generous support of The Calgary Foundation.<br>
-      <a href="/calgary-foundation">Read more&hellip;</a>
+  </div>
+  <div class="footer-acknowledge">
+    <div class="footer-container">
+      <div class="acknowledgement">
+        This website is open sourced with the generous support of The Calgary Foundation.
+        <a href="/calgary-foundation">Read more&hellip;</a>
+      </div>
+      <div class="copyright">Copyright {% now 'Y' %}. Bow Valley SPCA (BVSPCA)</div>
     </div>
-    <div class="copyright">Copyright {% now 'Y' %}. Bow Valley SPCA (BVSPCA)</div>
   </div>
 </footer>
 
@@ -142,10 +181,10 @@
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;
       i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-          }, i[r].l = 1 * new Date();
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
       a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
+        m = s.getElementsByTagName(o)[0];
       a.async = 1;
       a.src = g;
       m.parentNode.insertBefore(a, m)

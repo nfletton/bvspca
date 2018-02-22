@@ -24,3 +24,38 @@ ul.social-media {
     height: 30px;
   }
 }
+
+.footer-social-media {
+  list-style: none;
+  padding: 0;
+  a:link,
+  a:active,
+  a:visited {
+    color: $footer-text;
+  }
+  li {
+    margin-bottom: 1.5em;
+    vertical-align: top;
+  }
+}
+
+.social-icon {
+  width: 28px;
+  margin-right: 28px;
+  vertical-align: text-top;
+}
+
+.social-icon-facebook {
+  width: 14px;
+  margin: 0 calc(7px + 28px) 0 7px;
+}
+
+.social-icon-youtube {
+  position: relative;
+  top: 3px;
+}
+
+.social-icon-instagram {
+  width: 24px;
+  margin: 0 calc(2px + 28px) 0 2px;
+}
