@@ -3,6 +3,6 @@
 <figure class="image-block">
   {% image self.image width-600 %}
   <figcaption class="image-block__caption">{{ self.caption }}
-    {% if self.attribution %} &mdash; {{ self.attribution }}{% endif %}
+    {% if self.attribution %}<span class="image-block__caption-attribution"> &mdash; {{ self.attribution }}{% endif %}</span>
   </figcaption>
 </figure>
