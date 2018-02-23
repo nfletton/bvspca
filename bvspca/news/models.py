@@ -50,6 +50,10 @@ class News(Page, Attachable):
         StreamFieldPanel('attachments'),
     ]
 
+    settings_panels = Page.settings_panels + [
+        FieldPanel('first_published_at')
+    ]
+
     class Meta:
         verbose_name_plural = 'News'
 
