@@ -56,7 +56,7 @@ class HomePage(Page):
         # Update template context
         context = super(HomePage, self).get_context(request, args, kwargs)
         context['events'] = Event.objects.future(settings.SPCA_LIST_BLOCK_LENGTH)
-        context['news'] = News.objects.news(settings.SPCA_LIST_BLOCK_LENGTH)
+        context['news'] = News.objects.news(3)
         context['random_animals'] = Animal.objects.random(7)
         return context
 

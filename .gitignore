@@ -71,3 +71,4 @@ staticfiles/
 .cache/
 bvspca/static/dist/
 /logs/
+/legacy_data/

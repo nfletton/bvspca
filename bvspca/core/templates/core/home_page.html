@@ -1,23 +1,29 @@
 {% extends "base.html" %}
-{% load staticfiles wagtailcore_tags %}
+{% load staticfiles wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
   <div class="home-page">
-    <div class="info-blocks">
-      {% for block in  page.welcome %}
-        {% include_block block with counter=forloop.counter %}
-      {% endfor %}
-    </div>
-    <div class="summary-blocks">
-      <div class="summary-block news-block {{ news_bg }}">
-        {% include 'core/includes/list_block.html' with items=news title='News' date_field='first_published_at' index_page='news' %}
-      </div>
-      <div class="summary-block home-events-block {{ events_bg }}">
-        {% include 'core/includes/list_block.html' with items=events title='Events' date_field='start_date' index_page='events' %}
-      </div>
-    </div>
   </div>
   {% include 'animals/includes/random_animals.html' %}
+  <div class="home-news">
+    <div class="home-news__header">
+      <div class="home-more-news"><a href="{% slugurl 'news'  %}">All News</a></div>
+      <h2>News</h2>
+    </div>
+    <div class="home-news-list">
+      {% for news_item in news %}
+          <a class="home-news-list__item{% if forloop.first %} first{% elif forloop.last %} last{% endif %}" href="{% pageurl news_item %}">
+            <div class="home-news-list__item-photo">{% image news_item.main_photo fill-275x205 %}</div>
+            <div class="home-news-list__item-details">
+              <div class="home-news-list__item-date">{{ news_item.first_published_at|date:'M j' }}</div>
+              <div class="home-news-list__item-title">{{ news_item.title }}</div>
+              <div class="home-news-list__item-summary">{{ news_item.details|striptags|truncatechars:80 }}</div>
+            </div>
+            <div class="home-news-list__item-full-post">Full Post</div>
+          </a>
+      {% endfor %}
+    </div>
+  </div>
 {% endblock content %}
 
 {% block extra_javascript %}
