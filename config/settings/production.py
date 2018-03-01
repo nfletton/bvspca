@@ -53,6 +53,10 @@ CACHES = {
     }
 }
 
+# STORAGE
+# ------------------------------------------------------------------------------
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
 
 # LOGGING CONFIGURATION
 # ------------------------------------------------------------------------------
