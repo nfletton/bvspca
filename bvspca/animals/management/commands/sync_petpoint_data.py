@@ -27,7 +27,10 @@ class Command(BaseCommand):
                 if petpoint_animal is not None:
                     try:
                         local_animal = Animal.objects.get(petpoint_id=animal_id)
-                        if local_animal.update(petpoint_animal):
+                        if local_animal.adoption_date:
+                            # adjust adopted count since animal previously adopted
+                            self.increment_animal_count(local_animal.species, 'adopted', -1)
+                        if local_animal.updateAdoptableAnimal(petpoint_animal):
                             logger.info(
                                 '{} {} updated ({})'.format(
                                     local_animal.species,
@@ -50,7 +53,7 @@ class Command(BaseCommand):
                         )
 
         # check for adoptions since yesterday and set adoption dates
-        adoptions = fetch_petpoint_adopted_dates_since(client, datetime.date.today() - datetime.timedelta(10))
+        adoptions = fetch_petpoint_adopted_dates_since(client, datetime.date.today() - datetime.timedelta(1))
         if adoptions:
             for adoption in adoptions:
                 try:
@@ -93,22 +96,23 @@ class Command(BaseCommand):
                 )
 
     @staticmethod
-    def increment_animal_count(species, event_type):
+    def increment_animal_count(species, event_type, increment=1):
         """
-        Increment the counts of animals rescued and adopted.
+        Increment (or decrement) the counts of animals rescued and adopted.
 
         :param species: 'cat' or 'dog'
         :param event_type: 'rescued' or 'adopted'
+        :param increment: 'rescued' or 'adopted'
         :return:
         """
         try:
             animal_counts = AnimalCountSettings.objects.get(site_id=2)
             count_field_name = '{}s_{}'.format(species.lower(), event_type.lower())
             current_count = getattr(animal_counts, count_field_name, 0)
-            setattr(animal_counts, count_field_name, current_count + 1)
+            setattr(animal_counts, count_field_name, current_count + increment)
             animal_counts.save()
             logger.info(
-                '{} {} count incremented'.format(species, event_type)
+                '{} {} count incremented by {}'.format(species, event_type, increment)
             )
         except AnimalCountSettings.DoesNotExist:
             logger.error('Animal count settings do not exist')

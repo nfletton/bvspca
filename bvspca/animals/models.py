@@ -151,15 +151,21 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
             'last_intake_date': petpoint_data.LastIntakeDate,
         }
 
-    def update(self, petpoint_data):
+    def updateAdoptableAnimal(self, petpoint_data):
         dirty = False
         field_map = self.map_fields(petpoint_data)
         for field_name, value in field_map.items():
             if getattr(self, field_name) != value:
                 setattr(self, field_name, value)
                 dirty = True
-        if petpoint_data.Stage == 'Available' and not self.live:
+        if not self.live:
+            # adoptable animals should be live
             self.live = True
+            dirty = True
+        if self.adoption_date or self.adoption_message:
+            # adoptable animals should not have adoption data
+            self.adoption_date = None
+            self.adoption_message = ''
             dirty = True
         if dirty:
             self.save()
