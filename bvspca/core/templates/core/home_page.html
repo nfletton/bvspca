@@ -4,6 +4,18 @@
 {% block content %}
   <div class="home-page">
   </div>
+  <div class="home-animal-count-section">
+    <div class="home-animal-counts">
+      <div class="animal-count-block animal-count-block-cats">
+        <div class="animal-count"><span class="animal-count__value">{{ animal_counts.cats_adopted }}</span> Cats Adopted</div>
+        <div class="animal-count"><span class="animal-count__value">{{ animal_counts.cats_rescued }}</span> Cats Rescued</div>
+      </div>
+      <div class="animal-count-block animal-count-block-dogs">
+        <div class="animal-count"><span class="animal-count__value">{{ animal_counts.dogs_adopted }}</span> Dogs Adopted</div>
+        <div class="animal-count"><span class="animal-count__value">{{ animal_counts.dogs_rescued }}</span> Dogs Rescued</div>
+      </div>
+    </div>
+  </div>
   {% include 'animals/includes/random_animals.html' %}
   <div class="home-news">
     <div class="home-news__header">
@@ -12,15 +24,15 @@
     </div>
     <div class="home-news-list">
       {% for news_item in news %}
-          <a class="home-news-list__item{% if forloop.first %} first{% elif forloop.last %} last{% endif %}" href="{% pageurl news_item %}">
-            <div class="home-news-list__item-photo">{% image news_item.main_photo fill-275x205 %}</div>
-            <div class="home-news-list__item-details">
-              <div class="home-news-list__item-date">{{ news_item.first_published_at|date:'M j' }}</div>
-              <div class="home-news-list__item-title">{{ news_item.title }}</div>
-              <div class="home-news-list__item-summary">{{ news_item.details|striptags|truncatechars:80 }}</div>
-            </div>
-            <div class="home-news-list__item-full-post">Full Post</div>
-          </a>
+        <a class="home-news-list__item{% if forloop.first %} first{% elif forloop.last %} last{% endif %}" href="{% pageurl news_item %}">
+          <div class="home-news-list__item-photo">{% image news_item.main_photo fill-275x205 %}</div>
+          <div class="home-news-list__item-details">
+            <div class="home-news-list__item-date">{{ news_item.first_published_at|date:'M j' }}</div>
+            <div class="home-news-list__item-title">{{ news_item.title }}</div>
+            <div class="home-news-list__item-summary">{{ news_item.details|striptags|truncatechars:80 }}</div>
+          </div>
+          <div class="home-news-list__item-full-post">Full Post</div>
+        </a>
       {% endfor %}
     </div>
   </div>
