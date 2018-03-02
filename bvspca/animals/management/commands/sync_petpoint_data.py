@@ -29,7 +29,8 @@ class Command(BaseCommand):
                         local_animal = Animal.objects.get(petpoint_id=animal_id)
                         if local_animal.update(petpoint_animal):
                             logger.info(
-                                'Updated animal {} ({})'.format(
+                                '{} {} updated ({})'.format(
+                                    local_animal.species,
                                     local_animal.petpoint_id,
                                     local_animal.title,
                                 )
@@ -41,7 +42,8 @@ class Command(BaseCommand):
                         animal_parent.add_child(instance=new_animal)
                         add_to_social_queue(new_animal)
                         logger.info(
-                            'Created animal {} ({})'.format(
+                            '{} {} created ({})'.format(
+                                new_animal.species,
                                 new_animal.petpoint_id,
                                 new_animal.title,
                             )
@@ -60,9 +62,11 @@ class Command(BaseCommand):
                         self.increment_animal_count(local_animal.species, 'adopted')
                         add_to_social_queue(local_animal)
                         logger.info(
-                            'Animal {} adopted on {}'.format(
-                                adoption[0],
-                                adoption[1],
+                            '{} {} adopted on {} ({})'.format(
+                                local_animal.species,
+                                local_animal.petpoint_id,
+                                local_animal.adoption_date,
+                                local_animal.title,
                             )
                         )
                 except Animal.DoesNotExist:
@@ -97,7 +101,7 @@ class Command(BaseCommand):
         :return:
         """
         try:
-            animal_counts = AnimalCountSettings.objects.get(site_id=2)
+            animal_counts = AnimalCountSettings.objects.get(pk=2)
             count_field_name = '{}_{}'.format(species.lower(), event_type.lower())
             current_count = getattr(animal_counts, count_field_name, 0)
             setattr(animal_counts, count_field_name, current_count + 1)
