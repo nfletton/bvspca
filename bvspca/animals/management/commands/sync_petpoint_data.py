@@ -92,7 +92,8 @@ class Command(BaseCommand):
                     )
                 )
 
-    def increment_animal_count(self, species, event_type):
+    @staticmethod
+    def increment_animal_count(species, event_type):
         """
         Increment the counts of animals rescued and adopted.
 
@@ -101,8 +102,8 @@ class Command(BaseCommand):
         :return:
         """
         try:
-            animal_counts = AnimalCountSettings.objects.get(pk=2)
-            count_field_name = '{}_{}'.format(species.lower(), event_type.lower())
+            animal_counts = AnimalCountSettings.objects.get(site_id=2)
+            count_field_name = '{}s_{}'.format(species.lower(), event_type.lower())
             current_count = getattr(animal_counts, count_field_name, 0)
             setattr(animal_counts, count_field_name, current_count + 1)
             animal_counts.save()
