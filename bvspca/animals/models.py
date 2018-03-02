@@ -95,11 +95,11 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
 
     def social_media_ready_to_post(self):
         if self.main_photo:
-            if self.adoption_date and self.adoption_message:
-                # animal adopted and ready to post
-                return True
+            if self.adoption_date:
+                # animal adopted
+                return bool(self.adoption_message)
             elif self.description:
-                # animal arrived and ready to post
+                # animal arrived
                 return True
         return False
 
