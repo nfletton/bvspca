@@ -45,7 +45,7 @@ def test_update_animal_from_petpoint_data():
     animal = Animal.objects.get(petpoint_id=animal.petpoint_id)
     animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_modified_response.xml')
     animal_details = extract_animal(animal_etree)
-    animal.update(animal_details)
+    animal.updateAdoptableAnimal(animal_details)
 
     retrieved_animal = Animal.objects.get(pk=animal.pk)
     assert retrieved_animal.title == 'Sniffy 2'
@@ -82,7 +82,7 @@ def test_update_previously_adoptable_animal_from_petpoint_data():
     animal = Animal.objects.get(petpoint_id=animal.petpoint_id)
     animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_modified_response.xml')
     animal_details = extract_animal(animal_etree)
-    animal.update(animal_details)
+    animal.updateAdoptableAnimal(animal_details)
 
     retrieved_animal = Animal.objects.get(pk=animal.pk)
     assert retrieved_animal.live
