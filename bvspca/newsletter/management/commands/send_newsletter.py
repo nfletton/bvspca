@@ -16,7 +16,7 @@ class Command(BaseCommand):
     logger = logging.getLogger(__name__)
 
     def handle(self, *args, **options):
-        client = MailChimp(settings.MAILCHIMP_USERNAME, settings.MAILCHIMP_SECRET_KEY, timeout=20.0)
+        client = MailChimp(settings.MAILCHIMP_SECRET_KEY, settings.MAILCHIMP_USERNAME,  timeout=20.0)
 
         campaign_data = {
             "type": "regular",
