@@ -4,9 +4,9 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtailimages.blocks
+import wagtail.core.blocks
+import wagtail.core.fields
+import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('menu_title', models.CharField(blank=True, max_length=100, verbose_name='menu title')),
-                ('members', wagtail.wagtailcore.fields.StreamField((('section', wagtail.wagtailcore.blocks.CharBlock(classname='full title')), ('member', wagtail.wagtailcore.blocks.StructBlock((('name', wagtail.wagtailcore.blocks.CharBlock(max_length=50)), ('role', wagtail.wagtailcore.blocks.CharBlock(max_length=50, required=False)), ('role_since', wagtail.wagtailcore.blocks.CharBlock(max_length=50, required=False)), ('location', wagtail.wagtailcore.blocks.CharBlock(max_length=50, required=False)), ('pets', wagtail.wagtailcore.blocks.CharBlock(max_length=100, required=False)), ('bio', wagtail.wagtailcore.blocks.TextBlock()), ('photo', wagtail.wagtailimages.blocks.ImageChooserBlock(required=False)), ('photo_caption', wagtail.wagtailcore.blocks.CharBlock(max_length=50)))))), blank=True)),
+                ('members', wagtail.core.fields.StreamField((('section', wagtail.core.blocks.CharBlock(classname='full title')), ('member', wagtail.core.blocks.StructBlock((('name', wagtail.core.blocks.CharBlock(max_length=50)), ('role', wagtail.core.blocks.CharBlock(max_length=50, required=False)), ('role_since', wagtail.core.blocks.CharBlock(max_length=50, required=False)), ('location', wagtail.core.blocks.CharBlock(max_length=50, required=False)), ('pets', wagtail.core.blocks.CharBlock(max_length=100, required=False)), ('bio', wagtail.core.blocks.TextBlock()), ('photo', wagtail.images.blocks.ImageChooserBlock(required=False)), ('photo_caption', wagtail.core.blocks.CharBlock(max_length=50)))))), blank=True)),
             ],
             options={
                 'verbose_name': 'Team Page',

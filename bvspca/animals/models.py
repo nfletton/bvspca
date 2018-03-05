@@ -2,13 +2,13 @@ from django.conf import settings
 from django.db import models
 from django.db.models import ForeignKey
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore.models import Page, PageManager
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailimages.models import Image
-from wagtail.wagtailsearch import index
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.core.fields import StreamField
+from wagtail.core.models import Page, PageManager
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.models import Image
+from wagtail.search import index
 
 from bvspca.core.blocks import ContentStreamBlock
 from bvspca.core.models_abstract import MenuTitleable, MetaTagable

@@ -1,7 +1,7 @@
 from django.contrib.syndication.views import Feed
 from django.template.defaultfilters import truncatewords_html
 from django_ical.views import ICalFeed
-from wagtail.wagtailcore.models import Page
+from wagtail.core.models import Page
 
 from bvspca.events.models import Event
 from bvspca.animals.models import Animal

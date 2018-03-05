@@ -2,12 +2,12 @@ from django.conf import settings
 from django.db import models
 from django.http import HttpResponseRedirect
 from modelcluster.fields import ParentalKey
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel, InlinePanel
-from wagtail.wagtailcore.blocks import ListBlock
-from wagtail.wagtailcore.fields import StreamField, RichTextField
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailforms.models import AbstractFormField
-from wagtail.wagtailsearch import index
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel, InlinePanel
+from wagtail.core.blocks import ListBlock
+from wagtail.core.fields import StreamField, RichTextField
+from wagtail.core.models import Page
+from wagtail.contrib.forms.models import AbstractFormField
+from wagtail.search import index
 from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 from bvspca.animals.models import Animal, AnimalCountSettings

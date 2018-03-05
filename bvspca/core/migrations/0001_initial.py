@@ -5,11 +5,11 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 import wagtail.contrib.table_block.blocks
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtaildocs.blocks
-import wagtail.wagtailembeds.blocks
-import wagtail.wagtailimages.blocks
+import wagtail.core.blocks
+import wagtail.core.fields
+import wagtail.documents.blocks
+import wagtail.embeds.blocks
+import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
@@ -26,8 +26,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('menu_title', models.CharField(blank=True, max_length=100, verbose_name='menu title')),
-                ('attachments', wagtail.wagtailcore.fields.StreamField((('document', wagtail.wagtaildocs.blocks.DocumentChooserBlock()),), blank=True)),
-                ('body', wagtail.wagtailcore.fields.StreamField((('heading_block', wagtail.wagtailcore.blocks.StructBlock((('heading_text', wagtail.wagtailcore.blocks.CharBlock(classname='title', required=True)), ('size', wagtail.wagtailcore.blocks.ChoiceBlock(blank=True, choices=[('', 'Select a header size'), ('h2', 'H2'), ('h3', 'H3'), ('h4', 'H4')], required=False))))), ('paragraph_block', wagtail.wagtailcore.blocks.RichTextBlock(icon='fa-paragraph', template='core/blocks/paragraph_block.html')), ('image_block', wagtail.wagtailcore.blocks.StructBlock((('image', wagtail.wagtailimages.blocks.ImageChooserBlock(required=True)), ('caption', wagtail.wagtailcore.blocks.CharBlock(required=False)), ('attribution', wagtail.wagtailcore.blocks.CharBlock(required=False))))), ('block_quote', wagtail.wagtailcore.blocks.StructBlock((('text', wagtail.wagtailcore.blocks.TextBlock()), ('attribute_name', wagtail.wagtailcore.blocks.CharBlock(blank=True, label='e.g. Mary Berry', required=False))))), ('embed_block', wagtail.wagtailembeds.blocks.EmbedBlock(help_text='Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks', icon='fa-s15', template='core/blocks/embed_block.html')), ('table_block', wagtail.wagtailcore.blocks.StructBlock((('table', wagtail.contrib.table_block.blocks.TableBlock()), ('caption', wagtail.wagtailcore.blocks.CharBlock(required=False))))), ('raw_html', wagtail.wagtailcore.blocks.RawHTMLBlock(icon='fa-code', template='core/blocks/raw_html_block.html'))), blank=True, verbose_name='Page body')),
+                ('attachments', wagtail.core.fields.StreamField((('document', wagtail.documents.blocks.DocumentChooserBlock()),), blank=True)),
+                ('body', wagtail.core.fields.StreamField((('heading_block', wagtail.core.blocks.StructBlock((('heading_text', wagtail.core.blocks.CharBlock(classname='title', required=True)), ('size', wagtail.core.blocks.ChoiceBlock(blank=True, choices=[('', 'Select a header size'), ('h2', 'H2'), ('h3', 'H3'), ('h4', 'H4')], required=False))))), ('paragraph_block', wagtail.core.blocks.RichTextBlock(icon='fa-paragraph', template='core/blocks/paragraph_block.html')), ('image_block', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock(required=True)), ('caption', wagtail.core.blocks.CharBlock(required=False)), ('attribution', wagtail.core.blocks.CharBlock(required=False))))), ('block_quote', wagtail.core.blocks.StructBlock((('text', wagtail.core.blocks.TextBlock()), ('attribute_name', wagtail.core.blocks.CharBlock(blank=True, label='e.g. Mary Berry', required=False))))), ('embed_block', wagtail.embeds.blocks.EmbedBlock(help_text='Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks', icon='fa-s15', template='core/blocks/embed_block.html')), ('table_block', wagtail.core.blocks.StructBlock((('table', wagtail.contrib.table_block.blocks.TableBlock()), ('caption', wagtail.core.blocks.CharBlock(required=False))))), ('raw_html', wagtail.core.blocks.RawHTMLBlock(icon='fa-code', template='core/blocks/raw_html_block.html'))), blank=True, verbose_name='Page body')),
             ],
             options={
                 'verbose_name': 'General Content Page',

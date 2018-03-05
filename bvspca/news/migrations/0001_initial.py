@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.wagtailcore.fields
-import wagtail.wagtaildocs.blocks
+import wagtail.core.fields
+import wagtail.documents.blocks
 
 
 class Migration(migrations.Migration):
@@ -22,8 +22,8 @@ class Migration(migrations.Migration):
             name='News',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('attachments', wagtail.wagtailcore.fields.StreamField((('document', wagtail.wagtaildocs.blocks.DocumentChooserBlock()),), blank=True)),
-                ('details', wagtail.wagtailcore.fields.RichTextField(verbose_name='details')),
+                ('attachments', wagtail.core.fields.StreamField((('document', wagtail.documents.blocks.DocumentChooserBlock()),), blank=True)),
+                ('details', wagtail.core.fields.RichTextField(verbose_name='details')),
                 ('main_photo', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
             options={

@@ -6,7 +6,7 @@ import bvspca.core.models_abstract
 from django.db import migrations, models
 import django.db.models.deletion
 import modelcluster.fields
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -42,10 +42,10 @@ class Migration(migrations.Migration):
                 ('from_address', models.CharField(blank=True, max_length=255, verbose_name='from address')),
                 ('subject', models.CharField(blank=True, max_length=255, verbose_name='subject')),
                 ('menu_title', models.CharField(blank=True, max_length=100, verbose_name='menu title')),
-                ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('thank_you_text', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('intro', wagtail.core.fields.RichTextField(blank=True)),
+                ('thank_you_text', wagtail.core.fields.RichTextField(blank=True)),
                 ('embedded_map', models.TextField(blank=True)),
-                ('close', wagtail.wagtailcore.fields.RichTextField(blank=True)),
+                ('close', wagtail.core.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,

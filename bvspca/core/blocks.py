@@ -1,9 +1,9 @@
 from wagtail.contrib.table_block.blocks import TableBlock
-from wagtail.wagtailcore import blocks
-from wagtail.wagtaildocs.blocks import DocumentChooserBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailcore.blocks import (
+from wagtail.core import blocks
+from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.core.blocks import (
     CharBlock, ChoiceBlock, RichTextBlock, StreamBlock, StructBlock, TextBlock,
     RawHTMLBlock, PageChooserBlock)
 

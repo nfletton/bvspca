@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailsearch.models import Query
+from wagtail.core.models import Page
+from wagtail.search.models import Query
 
 
 def site_search(request):

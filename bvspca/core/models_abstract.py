@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.db import models
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtaildocs.blocks import DocumentChooserBlock
+from wagtail.core.fields import StreamField
+from wagtail.documents.blocks import DocumentChooserBlock
 
 
 class MenuTitleable(models.Model):

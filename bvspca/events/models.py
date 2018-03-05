@@ -5,11 +5,11 @@ from django.db import models
 from django.db.models import Q
 from django.utils.html import strip_tags
 from django.utils.text import Truncator
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, FieldRowPanel, StreamFieldPanel
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailcore.models import Page, PageManager
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsearch import index
+from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel, StreamFieldPanel
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Page, PageManager
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
 
 from bvspca.core.blocks import ContentStreamBlock
 from bvspca.core.models_abstract import Attachable, MenuTitleable, MetaTagable
