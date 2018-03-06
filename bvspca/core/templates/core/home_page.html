@@ -6,14 +6,14 @@
   </div>
   <div class="home-animal-count-section">
     <div class="home-animal-counts">
-      <div class="animal-count-block animal-count-block-cats">
+      <a class="animal-count-block animal-count-block-cats" href="{% slugurl 'cats' %}">
         <div class="animal-count"><span class="animal-count__value">{{ animal_counts.cats_adopted }}</span> Cats Adopted</div>
         <div class="animal-count"><span class="animal-count__value">{{ animal_counts.cats_rescued }}</span> Cats Rescued</div>
-      </div>
-      <div class="animal-count-block animal-count-block-dogs">
+      </a>
+      <a class="animal-count-block animal-count-block-dogs" href="{% slugurl 'dogs' %}">
         <div class="animal-count"><span class="animal-count__value">{{ animal_counts.dogs_adopted }}</span> Dogs Adopted</div>
         <div class="animal-count"><span class="animal-count__value">{{ animal_counts.dogs_rescued }}</span> Dogs Rescued</div>
-      </div>
+      </a>
     </div>
   </div>
   {% include 'animals/includes/random_animals.html' %}

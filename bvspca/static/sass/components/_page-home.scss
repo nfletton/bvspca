@@ -32,6 +32,10 @@ $animal-count-break: 600px;
 
 .animal-count-block {
   padding-top: 80px;
+  display: block;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .animal-count-block-cats {
