@@ -2,6 +2,7 @@
 from bvspca.core import views
 from django.conf.urls import url
 
+app_name = 'core'
 urlpatterns = [
     url(
         regex=r'^search/$',
