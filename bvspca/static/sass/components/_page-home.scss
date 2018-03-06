@@ -6,6 +6,95 @@ $event-row-break: 650px;
   margin-bottom: $content-padding-large;
 }
 
+/* Priorities Section */
+$priorities-break: 600px;
+
+.home-priorities-section {
+  @include container;
+  margin-top: 4.5rem;
+  margin-bottom: 4.5rem;
+}
+
+.home-priorities {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: center;
+  @media (min-width: $priorities-break) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+.home-priority {
+  padding-top: 120px;
+  display: block;
+  text-align: center;
+  max-width: 300px;
+  outline: 0;
+  &:hover, a:active, a:focus {
+    text-decoration: none;
+    .home-priority__button {
+      background-color: darken($tertiary-color, 10);
+    }
+  }
+  &:link {
+    color: $heading-gray-color;
+  }
+}
+
+.home-priority__title {
+  text-align: center;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.home-priority__summary {
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+.home-priority__button {
+  display: inline-block;
+  margin: .5rem 0 2rem;
+  padding: 0.75em 1.5em;
+  text-transform: uppercase;
+  background-color: $tertiary-color;
+  color: #fff;
+  border-radius: 22px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.home-priority-adoptions {
+  background: url(../svg/dog1.svg) no-repeat 50% 0;
+  background-size: 70px;
+  margin-bottom: 3rem;
+  @media (min-width: $priorities-break) {
+    margin-bottom: 0;
+  }
+}
+
+.home-priority-donations {
+  background: url(../svg/cat3.svg) no-repeat 50% 0;
+  background-size: 100px;
+  margin-bottom: 3rem;
+  @media (min-width: $priorities-break) {
+    margin-bottom: 0;
+  }
+}
+
+.home-priority-volunteers {
+  background: url(../svg/dog2.svg) no-repeat 50% 15px;
+  background-size: 84px;
+  margin-bottom: 3rem;
+  @media (min-width: $priorities-break) {
+    margin-bottom: 0;
+  }
+}
+
 /* Animal count section */
 $animal-count-break: 600px;
 
@@ -33,7 +122,8 @@ $animal-count-break: 600px;
 .animal-count-block {
   padding-top: 80px;
   display: block;
-  &:hover {
+  outline: 0;
+  &:hover, a:active, a:focus {
     text-decoration: none;
   }
 }
@@ -101,27 +191,19 @@ $news-block-wrap-width: 1000px;
   width: 275px;
   box-shadow: 0px 12px 10px 1px rgba(0,0,0,0.17);
   margin: 0 2rem 3rem;
+  outline: 0;
   @media (min-width: $news-block-wrap-width) {
     margin: {
       left: 0;
       right: 0;
     };
   }
-  &:hover {
+  &:hover, a:active, a:focus {
     text-decoration: none;
     .home-news-list__item-full-post {
       background-color: darken($content-grey-bg, 7);
     }
   }
-  &.first {
-
-  }
-  &.last {
-  }
-}
-
-.home-news-list__item-photo {
-
 }
 
 .home-news-list__item-details {

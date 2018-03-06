@@ -4,6 +4,25 @@
 {% block content %}
   <div class="home-page">
   </div>
+  <div class="home-priorities-section">
+    <div class="home-priorities">
+      <a class="home-priority home-priority-adoptions" href="{% slugurl 'adopt' %}">
+        <div class="home-priority__title">Adoptions</div>
+        <div class="home-priority__summary">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+        <div class="home-priority__button">Learn More</div>
+      </a>
+      <a class="home-priority home-priority-donations" href="{% slugurl 'invest-their-future' %}">
+        <div class="home-priority__title">Donations</div>
+        <div class="home-priority__summary">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+        <div class="home-priority__button">Learn More</div>
+      </a>
+      <a class="home-priority home-priority-volunteers" href="{% slugurl 'volunteers' %}">
+        <div class="home-priority__title">Volunteers</div>
+        <div class="home-priority__summary">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+        <div class="home-priority__button">Learn More</div>
+      </a>
+    </div>
+  </div>
   <div class="home-animal-count-section">
     <div class="home-animal-counts">
       <a class="animal-count-block animal-count-block-cats" href="{% slugurl 'cats' %}">
