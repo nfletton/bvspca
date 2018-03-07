@@ -39,6 +39,18 @@ def test_create_animal_from_petpoint_data():
 
 
 @pytest.mark.django_db(transaction=False)
+def test_create_animals_from_petpoint_data_with_duplicate_names():
+    # first animal
+    animal_one = create_animal_object()
+    retrieved_animal_one = Animal.objects.get(pk=animal_one.pk)
+    assert retrieved_animal_one.petpoint_id == 36607476
+    # first animal
+    animal_two = create_animal_object(fixture='petpoint_animal_valid_response_duplicate_name.xml')
+    retrieved_animal_two = Animal.objects.get(pk=animal_two.pk)
+    assert retrieved_animal_two.petpoint_id == 36607488
+
+
+@pytest.mark.django_db(transaction=False)
 def test_update_animal_from_petpoint_data():
     animal = create_animal_object()
 
@@ -106,9 +118,9 @@ def test_extract_animal_adoption_dates_when_none():
     assert len(animal_adoptions) == 0
 
 
-def create_animal_object():
+def create_animal_object(fixture='petpoint_animal_valid_response.xml'):
     parent_page = Page.objects.get(url_path='/home/')
-    animal_etree = etree.parse('bvspca/animals/tests/data/petpoint_animal_valid_response.xml')
+    animal_etree = etree.parse('bvspca/animals/tests/data/{}'.format(fixture))
     animal_details = extract_animal(animal_etree)
     animal = Animal.create(animal_details)
     parent_page.add_child(instance=animal)
