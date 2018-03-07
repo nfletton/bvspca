@@ -102,14 +102,14 @@
 {% endblock content %}
 
 {% block extra_css %}
-  <link href="{% static '3rdparty/featherlight' %}/featherlight.min.css" type="text/css" rel="stylesheet"/>
-  <link href="{% static '3rdparty/featherlight' %}/featherlight.gallery.min.css" type="text/css" rel="stylesheet"/>
+  <link href="{% static '3rdparty/featherlight/featherlight.min.css' %}" type="text/css" rel="stylesheet"/>
+  <link href="{% static '3rdparty/featherlight/featherlight.gallery.min.css' %}" type="text/css" rel="stylesheet"/>
 {% endblock extra_css %}
 
 {% block extra_javascript %}
-  <script src="{% static '3rdparty/featherlight' %}/featherlight.min.js"
+  <script src="{% static '3rdparty/featherlight/featherlight.min.js' %}"
           type="text/javascript" charset="utf-8"></script>
-  <script src="{% static '3rdparty/featherlight' %}/featherlight.gallery.min.js"
+  <script src="{% static '3rdparty/featherlight/featherlight.gallery.min.js' %}"
           type="text/javascript" charset="utf-8"></script>
   <script>
     $(document).ready(function () {

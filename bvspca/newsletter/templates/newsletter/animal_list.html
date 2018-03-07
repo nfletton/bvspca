@@ -14,7 +14,7 @@
           {% else %}
             <img class="animal-summary__photo-placeholder"
                  style="border: 1px solid #6e6e6e"
-                 src="{{ root_url }}{% static 'images/' %}{{ animal.species|lower }}.png"
+                 src="{{ root_url }}{% static 'images/{{ animal.species|lower }}.png' %}"
                  width="200" height="200">
           {% endif %}
         </td>

@@ -13,7 +13,7 @@
                 {% image animal.main_photo fill-240x240 %}
               {% else %}
                 <img class="animal-summary__photo-placeholder"
-                     src="{% static 'svg/' %}{{ animal.species|lower }}.svg"
+                     src="{% static 'svg/{{ animal.species|lower }}.svg' %}"
                      width="240" height="240"
                 >
               {% endif %}
