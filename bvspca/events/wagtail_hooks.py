@@ -8,7 +8,7 @@ class EventModelAdmin(ModelAdmin):
     menu_icon = 'date'
     menu_order = 470
     add_to_settings_menu = False
-    list_display = ('title', 'start_date',)
+    list_display = ('title', 'start_date', 'end_date',)
     ordering = ('-start_date',)
 
 

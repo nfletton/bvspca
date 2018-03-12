@@ -1,17 +1,17 @@
-from django.conf import settings
 from django.db import models
 from django.http import HttpResponseRedirect
 from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel, InlinePanel
-from wagtail.core.blocks import ListBlock
-from wagtail.core.fields import StreamField, RichTextField
-from wagtail.core.models import Page
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.contrib.forms.models import AbstractFormField
+from wagtail.core.blocks import ListBlock
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Page
+from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 from bvspca.animals.models import Animal, AnimalCountSettings
-from bvspca.core.blocks import HeadingBlock, PictureLinkBlock, SupporterBlock, TeamMemberBlock, SliderBlock
+from bvspca.core.blocks import HeadingBlock, PictureLinkBlock, SliderBlock, SupporterBlock, TeamMemberBlock
 from bvspca.events.models import Event
 from bvspca.news.models import News
 from .blocks import ContentStreamBlock
@@ -44,6 +44,15 @@ class HomePage(Page):
         ('slider_item', SliderBlock())
     ], blank=True)
 
+    events_photo = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='This image MUST BE EXACTLY 1400px by 530px',
+    )
+
     parent_page_types = ['wagtailcore.Page']
 
     search_fields = Page.search_fields + [
@@ -52,6 +61,7 @@ class HomePage(Page):
     content_panels = [
         FieldPanel('title'),
         StreamFieldPanel('slider'),
+        ImageChooserPanel('events_photo')
     ]
 
     class Meta:
@@ -60,7 +70,7 @@ class HomePage(Page):
     def get_context(self, request, *args, **kwargs):
         # Update template context
         context = super(HomePage, self).get_context(request, args, kwargs)
-        context['events'] = Event.objects.future(settings.SPCA_LIST_BLOCK_LENGTH)
+        context['events'] = Event.objects.future(4)
         context['news'] = News.objects.news(3)
         context['random_animals'] = Animal.objects.random(7)
         context['animal_counts'] = AnimalCountSettings.objects.get(pk=2)

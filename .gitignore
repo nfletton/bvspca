@@ -72,3 +72,4 @@ staticfiles/
 bvspca/static/dist/
 /logs/
 /legacy_data/
+/bvspca/news/management/commands/news_migrate.py

@@ -29,6 +29,20 @@
       </a>
     </div>
   </div>
+  <div class="home-events-section">
+    <div class="home-events-section__content">
+        <h2 class="home-events-section__title">Upcoming Events</h2>
+        {% for event in events %}
+          <a class="home-events-section__event" href="{% pageurl event %}">
+            <div class="home-events-section__event-date">{{ event.start_date|date:'M<\s\p\a\n>j</\s\p\a\n>'|safe }}</div>
+            <div class="home-events-section__event-title">{{ event.title }}</div>
+          </a>
+        {% endfor %}
+        <div class="home-more-link home-more-link__events" ><a href="{% slugurl 'events' %}">All Events</a></div>
+    </div>
+  </div>
+</div>
+
   <div class="home-animal-count-section">
     <div class="home-animal-counts">
       <a class="animal-count-block animal-count-block-cats" href="{% slugurl 'cats' %}">
@@ -44,7 +58,7 @@
   {% include 'animals/includes/random_animals.html' %}
   <div class="home-news">
     <div class="home-news__header">
-      <div class="home-more-news"><a href="{% slugurl 'news'  %}">All News</a></div>
+      <div class="home-more-link home-more-link__news"><a href="{% slugurl 'news'  %}">All News</a></div>
       <h2>News</h2>
     </div>
     <div class="home-news-list">
@@ -66,6 +80,7 @@
 {% block extra_pre_css %}
   <link rel="stylesheet" href="{% static '3rdparty/swiper/css/swiper.min.css' %}">
   <style>
+    {#  Slider images #}
     {% for slider_item in page.slider %}
       #slide-{{ forloop.counter }} {
       {% image slider_item.value.photo fill-500x475 as photo_1 %}
@@ -84,6 +99,23 @@
         }
       }
     {% endfor %}
+    {# Events image #}
+      .home-events-section {
+      {% image page.events_photo fill-500x475 as photo_1 %}
+        background: url({{ photo_1.url }}) no-repeat center top/cover;
+      }
+      @media screen and (min-width: 500px) {
+      {% image page.events_photo fill-800x475 as photo_2 %}
+        .home-events-section {
+          background-image: url({{ photo_2.url }});
+        }
+      }
+      @media screen and (min-width: 800px) {
+      {% image page.events_photo original as photo_3 %}
+        .home-events-section {
+          background-image: url({{ photo_3.url }});
+        }
+      }
   </style>
 {% endblock extra_pre_css %}
 

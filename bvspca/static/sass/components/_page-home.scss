@@ -1,3 +1,16 @@
+/* Common styles */
+.home-more-link {
+  display: inline-block;
+  text-transform: uppercase;
+  color: $primary-color;
+  background: url(../svg/continue-triangle.svg) no-repeat 100% 50%;
+  background-size: 7px;
+  padding-right: 1em;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+
 /* Slider section */
 .swiper-container {
   width: 100%;
@@ -197,18 +210,13 @@ $news-block-wrap-width: 1000px;
   margin-bottom: 3rem;
 }
 
-.home-news__header {
-  margin-bottom: 2rem;
+.home-more-link__news {
+  float: right;
+  vert-align: bottom;
 }
 
-.home-more-news {
-  float: right;
-  @extend h5;
-  text-transform: uppercase;
-  vert-align: bottom;
-  background: url(../svg/continue-triangle.svg) no-repeat 100% 50%;
-  background-size: 7px;
-  padding-right: 1em;
+.home-news__header {
+  margin-bottom: 2rem;
 }
 
 .home-news-list {
@@ -280,4 +288,65 @@ $news-block-wrap-width: 1000px;
 }
 
 /* Events section */
+.home-events-section {
+  height: 530px;
+}
 
+.home-events-section__content {
+  @include container;
+  padding-top: 50px;
+}
+
+.home-events-section__title {
+  font-weight: 700;
+  font-size: 2.3rem;
+  margin-bottom: 1em;
+}
+
+.home-events-section__event {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  vertical-align: center;
+  margin-bottom: 1.5em;
+  max-width: 450px;
+  &:hover {
+    text-decoration: none;
+    .home-events-section__event-date {
+      background-color: darken($tertiary-color, 15);
+    }
+  }
+}
+
+.home-events-section__event-date {
+  flex-grow: 0;
+  flex-shrink: 0;
+  background-color: $tertiary-color;
+  text-align: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 3px;
+  color: #fff;
+  padding-top: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-right: 1.2rem;
+  vertical-align: middle;
+  span {
+    display: block;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+}
+
+.home-events-section__event-title {
+  font-weight: 600;
+  color: #fff;
+  vertical-align: middle;
+}
+
+.home-more-link__events {
+}
