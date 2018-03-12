@@ -1,9 +1,47 @@
-$event-row-break: 650px;
+/* Slider section */
+.swiper-container {
+  width: 100%;
+  height: 475px;
+}
 
-.home-page {
-  @include container;
-  margin-top: $content-padding-large;
-  margin-bottom: $content-padding-large;
+.swiper-slide {
+  position: relative;
+  z-index: 0;
+  display: block;
+}
+
+.swiper-slide__title {
+  position: absolute;
+  top: 140px;
+  left: 15%;
+  font-size: 4.2rem;
+  font-weight: 600;
+  z-index: 10;
+  color: $primary-color;
+}
+
+.swiper-slide__summary {
+  position: absolute;
+  top: 230px;
+  left: 15%;
+  width: 350px;
+  color: white;
+  z-index: 10;
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 10px;
+}
+
+.swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
+  opacity: 0.3;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #fff;
+  opacity: 1;
 }
 
 /* Priorities Section */

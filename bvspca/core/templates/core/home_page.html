@@ -1,8 +1,14 @@
 {% extends "base.html" %}
-{% load staticfiles wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-  <div class="home-page">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      {% for slider_item in page.slider %}
+        {% include_block slider_item %}
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
   </div>
   <div class="home-priorities-section">
     <div class="home-priorities">
@@ -57,6 +63,51 @@
   </div>
 {% endblock content %}
 
+{% block extra_pre_css %}
+  <link rel="stylesheet" href="{% static '3rdparty/swiper/css/swiper.min.css' %}">
+  <style>
+    {% for slider_item in page.slider %}
+      #slide-{{ forloop.counter }} {
+      {% image slider_item.value.photo fill-500x475 as photo_1 %}
+        background: url({{ photo_1.url }}) no-repeat center top/cover;
+      }
+      @media screen and (min-width: 500px) {
+      {% image slider_item.value.photo fill-800x475 as photo_2 %}
+        #slide-{{ forloop.counter }} {
+          background-image: url({{ photo_2.url }});
+        }
+      }
+      @media screen and (min-width: 800px) {
+      {% image slider_item.value.photo original as photo_3 %}
+        #slide-{{ forloop.counter }} {
+          background-image: url({{ photo_3.url }});
+        }
+      }
+    {% endfor %}
+  </style>
+{% endblock extra_pre_css %}
+
+{% block extra_pre_javascript %}
+  <script src="{% static '3rdparty/swiper/js/swiper.min.js' %}"></script>
+{% endblock extra_pre_javascript %}
+
 {% block extra_javascript %}
   <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us15.list-manage.com","uuid":"c26f76b0683e590dc58d9596d","lid":"edbc3e05fc"}) })</script>
+  <script>
+    {# Swiper Slider: http://idangero.us/swiper/ #}
+    $(document).ready(function () {
+      var mySwiper = new Swiper('.swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        speed: 600,
+        autoplay: {
+          delay: 7000,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      });
+    });
+  </script>
 {% endblock extra_javascript %}

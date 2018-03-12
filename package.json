@@ -1,7 +1,9 @@
 {
   "name": "bvspca",
   "version": "0.1.0",
-  "dependencies": {},
+  "dependencies": {
+    "swiper": "^4.1.6"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",

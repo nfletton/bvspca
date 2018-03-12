@@ -154,3 +154,14 @@ class SupporterBlock(blocks.StructBlock):
     class Meta:
         template = 'core/blocks/supporter_block.html'
         icon = 'fa-money'
+
+
+class SliderBlock(blocks.StructBlock):
+    title = blocks.CharBlock(max_length=25)
+    summary = blocks.TextBlock(max_length=60)
+    photo = ImageChooserBlock()
+    page = PageChooserBlock(required=False)
+
+    class Meta:
+        template = 'core/blocks/slider_block.html'
+        icon = 'fa-slideshare'

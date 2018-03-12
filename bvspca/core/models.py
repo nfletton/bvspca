@@ -11,7 +11,7 @@ from wagtail.search import index
 from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 from bvspca.animals.models import Animal, AnimalCountSettings
-from bvspca.core.blocks import HeadingBlock, PictureLinkBlock, SupporterBlock, TeamMemberBlock
+from bvspca.core.blocks import HeadingBlock, PictureLinkBlock, SupporterBlock, TeamMemberBlock, SliderBlock
 from bvspca.events.models import Event
 from bvspca.news.models import News
 from .blocks import ContentStreamBlock
@@ -40,6 +40,10 @@ class ContentPage(Page, MenuTitleable, Attachable):
 
 
 class HomePage(Page):
+    slider = StreamField([
+        ('slider_item', SliderBlock())
+    ], blank=True)
+
     parent_page_types = ['wagtailcore.Page']
 
     search_fields = Page.search_fields + [
@@ -47,6 +51,7 @@ class HomePage(Page):
 
     content_panels = [
         FieldPanel('title'),
+        StreamFieldPanel('slider'),
     ]
 
     class Meta:
