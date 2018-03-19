@@ -3,28 +3,6 @@
   text-align: center;
 }
 
-ul.social-media {
-  margin: 16px 0 0 0;
-  padding: 0;
-  list-style-type: none;
-  display: block;
-  li {
-    display: inline;
-  }
-  a {
-    margin: 0 5px;
-    display: inline-block;
-    &:hover {
-      z-index: 1;
-      transform: translateY(-2px);
-    }
-  }
-  img {
-    width: 30px;
-    height: 30px;
-  }
-}
-
 .footer-social-media {
   list-style: none;
   padding: 0;
@@ -39,23 +17,23 @@ ul.social-media {
   }
 }
 
-.social-icon {
+.footer-social-icon {
   width: 28px;
   margin-right: 28px;
   vertical-align: text-top;
 }
 
-.social-icon-facebook {
+.footer-social-icon__facebook {
   width: 14px;
   margin: 0 calc(7px + 28px) 0 7px;
 }
 
-.social-icon-youtube {
+.footer-social-icon__youtube {
   position: relative;
   top: 3px;
 }
 
-.social-icon-instagram {
+.footer-social-icon__instagram {
   width: 24px;
   margin: 0 calc(2px + 28px) 0 2px;
 }

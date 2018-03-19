@@ -1,13 +1,14 @@
 const NAV_VISIBLE_CLASS = 'nav-visible';
 
 /* Navigation */
-document.getElementById('main-nav-toggle').addEventListener('click', () => {
+document.getElementById('main-nav-toggle').addEventListener('click', (event) => {
   const bodyClasses = document.body.classList;
   if (bodyClasses.contains(NAV_VISIBLE_CLASS)) {
     bodyClasses.remove(NAV_VISIBLE_CLASS);
   } else {
     bodyClasses.add(NAV_VISIBLE_CLASS);
   }
+  event.stopPropagation();
 }, false);
 
 document.getElementById('main-nav').addEventListener('click', (event) => {
@@ -28,6 +29,9 @@ document.getElementsByTagName('body')[0].addEventListener('click', () => {
 const searchBlock = document.getElementById('search-block');
 const searchButton = document.getElementById('search-button');
 const searchText = document.getElementById('search-text');
+const headerSearchButton = document.getElementById('header-button-search');
+
+const SEARCH_VISIBLE_CLASS = 'search-visible';
 
 if (searchBlock) {
   searchBlock.addEventListener('click', (e) => {
@@ -38,5 +42,22 @@ if (searchBlock) {
     searchButton.src = '/static/svg/search-icon-green.svg';
     searchText.placeholder = '';
     searchText.focus();
+  });
+}
+
+if (headerSearchButton) {
+  headerSearchButton.addEventListener('click', () => {
+    const bodyClasses = document.body.classList;
+    if (bodyClasses.contains(SEARCH_VISIBLE_CLASS)) {
+      bodyClasses.remove(SEARCH_VISIBLE_CLASS);
+    } else {
+      bodyClasses.add(SEARCH_VISIBLE_CLASS);
+      bodyClasses.remove(NAV_VISIBLE_CLASS);
+      // set focus on search and ensure cursor is at the end of the search string
+      const searchString = searchText.value;
+      searchText.value = '';
+      searchText.focus();
+      searchText.value = searchString;
+    }
   });
 }

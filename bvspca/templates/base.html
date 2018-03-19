@@ -1,4 +1,4 @@
-{% load i18n utility_tags navigation_tags static wagtailuserbar %}<!DOCTYPE html>
+{% load i18n utility_tags navigation_tags static wagtailuserbar wagtailcore_tags %}<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -12,6 +12,7 @@
     {% endif %}
   {% endblock seo_and_social_tags %}
 
+  <meta name="theme-color" content="#1a3b3b">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i" rel="stylesheet">
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
@@ -49,7 +50,7 @@
     </symbol>
     <symbol id="icon-nav-close" viewBox="0 0 24 24" style="fill: #e68a26">
       <title>nav close</title>
-      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="#fff"/>
       <path d="M0 0h24v24H0z" fill="none"/>
     </symbol>
     {%  block extra_svg %}{% endblock extra_svg %}
@@ -58,40 +59,49 @@
 {% wagtailuserbar %}
 
 <header>
-  <div class="header-nav-container">
-    <a href="/">
+  <div class="search-region">
+    <div class="search-region-content">
+      <form id="search-block" class="search-block" method="get" action="{% url 'core:search' %}">
+        <div class="search-controls">
+          <input id="search-text" class="search-block__text" name="query" type="text" placeholder="Search website"{% if search_query %} value="{{ search_query }}"{% endif %}>
+          <img id="search-button" class="search-block__button" src="{% static 'svg/search-icon-white.svg' %}" width="40" height="40">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="header-adornments">
+    <a class="logo-link" href="/">
       <img src="{% static 'svg/logo.svg' %}"
            title="{{ request.site.site_name }}"
            alt="{{ request.site.site_name }} Logo" class="logo">
     </a>
-    <nav class="main-nav" id="main-nav" aria-label="Primary site navigation">
-      <a href="javascript:void(0)" id="main-nav-toggle" class="main-nav__toggle">
-        <span class="main-nav__toggle-label">Menu</span>
-        <svg class="main-nav__icon--open">
-          <use xlink:href="#icon-nav-open"></use>
-        </svg>
-        <svg class="main-nav__icon--close">
-          <use xlink:href="#icon-nav-close"></use>
-        </svg>
-      </a>
-      {% include 'includes/social_media.html' %}
+    {% include 'includes/social_media.html' %}
+    <a class="header-button" href="{% slugurl 'contact-us' %}">Contact</a>
+    <a class="header-button header-button__donate" href="{% slugurl 'donate' %}">Donate</a>
+    <div id="header-button-search" class="header-button header-button__search"></div>
+  </div>
+  <a href="javascript:void(0)" id="main-nav-toggle" class="main-nav__toggle">
+    <span class="main-nav__toggle-label">Menu</span>
+    <svg class="main-nav__icon--open">
+      <use xlink:href="#icon-nav-open"></use>
+    </svg>
+    <svg class="main-nav__icon--close">
+      <use xlink:href="#icon-nav-close"></use>
+    </svg>
+  </a>
+  <nav class="main-nav" id="main-nav" aria-label="Primary site navigation">
+    <div class="main-nav__items-wrapper">
       <ul class="main-nav__items">
         {% get_site_root as site_root %}
         {% top_menu parent=site_root calling_page=self %}
       </ul>
-    </nav>
+    </div>
+  </nav>
+  <div class="mobile-button-nav">
+    <a class="mobile-button mobile-button__adopt" href="{% slugurl 'adopt' %}">Adopt</a>
+    <a class="mobile-button mobile-button__donate" href="{% slugurl 'donate' %}">Donate</a>
   </div>
 </header>
-<div class="search-region">
-  <div class="search-region-content">
-    <form id="search-block" class="search-block" method="get" action="{% url 'core:search' %}">
-      <div class="search-controls">
-        <input id="search-text" class="search-block__text" name="query" type="text" placeholder="Search website"{% if search_query %} value="{{ search_query }}"{% endif %}>
-        <img id="search-button" class="search-block__button" src="{% static 'svg/search-icon-grey.svg' %}" width="40" height="40">
-      </div>
-    </form>
-  </div>
-</div>
 <main>
   {% if messages %}
     {% for message in messages %}
@@ -120,10 +130,10 @@
         <div class="social-media-block footer-block">
           <div class="footer-block-title">Follow</div>
           <ul class="footer-social-media">
-            <li><a href="//twitter.com/BOW_VALLEY_SPCA/" title="twitter"><img class="social-icon social-icon-twitter" src="{% static "svg/twitter2.svg" %}">Twitter</a></li>
-            <li><a href="//www.youtube.com/channel/UC2utMCVRbLcgMdTYf-s0FBg" title="youtube"><img class="social-icon social-icon-youtube" src="{% static "svg/youtube2.svg" %}">YouTube</a></li>
-            <li><a href="//www.facebook.com/thebowvalleyspca/" title="facebook"><img class="social-icon social-icon-facebook" src="{% static "svg/facebook2.svg" %}">Facebook</a></li>
-            <li><a href="//www.instagram.com/bvspca/" title="instagram"><img class="social-icon social-icon-instagram" src="{% static "svg/instagram2.svg" %}">Instagram</a></li>
+            <li><a href="//twitter.com/BOW_VALLEY_SPCA/" title="twitter"><img class="footer-social-icon footer-social-icon__twitter" src="{% static "svg/twitter.svg" %}">Twitter</a></li>
+            <li><a href="//www.youtube.com/channel/UC2utMCVRbLcgMdTYf-s0FBg" title="youtube"><img class="footer-social-icon footer-social-icon__youtube" src="{% static "svg/youtube.svg" %}">YouTube</a></li>
+            <li><a href="//www.facebook.com/thebowvalleyspca/" title="facebook"><img class="footer-social-icon footer-social-icon__facebook" src="{% static "svg/facebook.svg" %}">Facebook</a></li>
+            <li><a href="//www.instagram.com/bvspca/" title="instagram"><img class="footer-social-icon footer-social-icon__instagram" src="{% static "svg/instagram.svg" %}">Instagram</a></li>
           </ul>
         </div>
         <div class="location-block footer-block">
