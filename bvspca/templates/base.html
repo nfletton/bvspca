@@ -64,7 +64,7 @@
       <form id="search-block" class="search-block" method="get" action="{% url 'core:search' %}">
         <div class="search-controls">
           <input id="search-text" class="search-block__text" name="query" type="text" placeholder="Search website"{% if search_query %} value="{{ search_query }}"{% endif %}>
-          <img id="search-button" class="search-block__button" src="{% static 'svg/search-icon-white.svg' %}" width="40" height="40">
+          <div id="search-button" class="search-block__button">Search</div>
         </div>
       </form>
     </div>
@@ -90,6 +90,7 @@
     </svg>
   </a>
   <nav class="main-nav" id="main-nav" aria-label="Primary site navigation">
+    <div id="main-nav-mobile-search" class="header-button nav-button__search"><span>Search</span></div>
     <div class="main-nav__items-wrapper">
       <ul class="main-nav__items">
         {% get_site_root as site_root %}

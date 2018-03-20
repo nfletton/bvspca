@@ -53,13 +53,15 @@
 
 .search-block {
   padding: 0;
+  background-color: transparent;
 }
 
 .search-controls {
   display: flex;
   flex-direction: row;
+  align-items: stretch;
   width: 60%;
-  margin: 6px auto 0 auto;
+  margin: 9px auto 0 auto;
 }
 
 input.search-block__text {
@@ -78,9 +80,17 @@ input.search-block__text {
 }
 
 .search-block__button {
-  background-color: $button-color;
+  background-color: $tertiary-color;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
-  padding: 0 2rem;
+  padding: .6rem 1.5rem;
   cursor: pointer;
+  &:hover {
+    background-color: darken($tertiary-color, 10);
+  }
 }

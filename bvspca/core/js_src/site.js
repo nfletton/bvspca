@@ -1,4 +1,6 @@
 const NAV_VISIBLE_CLASS = 'nav-visible';
+const SEARCH_VISIBLE_CLASS = 'search-visible';
+
 
 /* Navigation */
 document.getElementById('main-nav-toggle').addEventListener('click', (event) => {
@@ -7,6 +9,7 @@ document.getElementById('main-nav-toggle').addEventListener('click', (event) => 
     bodyClasses.remove(NAV_VISIBLE_CLASS);
   } else {
     bodyClasses.add(NAV_VISIBLE_CLASS);
+    bodyClasses.remove(SEARCH_VISIBLE_CLASS);
   }
   event.stopPropagation();
 }, false);
@@ -30,8 +33,7 @@ const searchBlock = document.getElementById('search-block');
 const searchButton = document.getElementById('search-button');
 const searchText = document.getElementById('search-text');
 const headerSearchButton = document.getElementById('header-button-search');
-
-const SEARCH_VISIBLE_CLASS = 'search-visible';
+const mobileSearchButton = document.getElementById('main-nav-mobile-search');
 
 if (searchBlock) {
   searchBlock.addEventListener('click', (e) => {
@@ -45,19 +47,25 @@ if (searchBlock) {
   });
 }
 
+function toggleSearchDisplay() {
+  const bodyClasses = document.body.classList;
+  if (bodyClasses.contains(SEARCH_VISIBLE_CLASS)) {
+    bodyClasses.remove(SEARCH_VISIBLE_CLASS);
+  } else {
+    bodyClasses.add(SEARCH_VISIBLE_CLASS);
+    bodyClasses.remove(NAV_VISIBLE_CLASS);
+    // set focus on search and ensure cursor is at the end of the search string
+    const searchString = searchText.value;
+    searchText.value = '';
+    searchText.focus();
+    searchText.value = searchString;
+  }
+}
+
 if (headerSearchButton) {
-  headerSearchButton.addEventListener('click', () => {
-    const bodyClasses = document.body.classList;
-    if (bodyClasses.contains(SEARCH_VISIBLE_CLASS)) {
-      bodyClasses.remove(SEARCH_VISIBLE_CLASS);
-    } else {
-      bodyClasses.add(SEARCH_VISIBLE_CLASS);
-      bodyClasses.remove(NAV_VISIBLE_CLASS);
-      // set focus on search and ensure cursor is at the end of the search string
-      const searchString = searchText.value;
-      searchText.value = '';
-      searchText.focus();
-      searchText.value = searchString;
-    }
-  });
+  headerSearchButton.addEventListener('click', toggleSearchDisplay);
+}
+
+if (mobileSearchButton) {
+  mobileSearchButton.addEventListener('click', toggleSearchDisplay);
 }
