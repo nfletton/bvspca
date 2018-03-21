@@ -118,7 +118,7 @@ header {
   display: block;
   border-color: #fff;
   border-width: 1px;
-  background-color: lighten($nav-mobile-bg-color, 25);
+  background-color: $primary-color;
   color: #fff;
   padding: .5rem 2.2rem;
   cursor: pointer;
@@ -128,6 +128,9 @@ header {
   font-weight: 700;
   margin: 5rem 2rem 1rem;
   width: 80%;
+  &:hover {
+    background-color: darken($primary-color, 10);
+  }
   @media(min-width: $nav-breakpoint) {
     display: none;
   }
@@ -316,7 +319,6 @@ header {
 .main-nav__items {
   padding: 80px 0 0 0;
   margin-bottom: 0;
-  position: relative;
   list-style: none;
   @media(min-width: $nav-breakpoint) {
     @include container-wide;
@@ -345,13 +347,16 @@ header {
     }
   }
   @media(min-width: $nav-breakpoint) {
-    position: relative;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0;
     height: $nav-height;
+    &:hover {
+      background: transparent url(../svg/nav-pointer.svg) no-repeat 50% 100%;
+      background-size: 16px;
+    }
   }
 }
 
@@ -394,17 +399,27 @@ header {
 }
 
 .main-nav__children {
-  background-color: $nav-bg-color;
+  background-color: $nav-drop-down-bg-color;
   list-style: none;
   font-weight: 600;
   @media(min-width: $nav-breakpoint) {
     display: none !important;
     padding: 0 0 1em 0.5em;
     position: absolute;
+    right: 0;
+    left: auto;
     top: 100%;
-    left: 0;
-    width: $nav-sub-nav-width;
-    z-index: 100;
+    width: 100%;
+  }
+}
+
+.main-nav__children-content {
+  @media(min-width: $nav-breakpoint) {
+    @include container-narrow;
+    padding: {
+      top: 1rem;
+      bottom: 1rem;
+    }
   }
 }
 
