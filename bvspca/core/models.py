@@ -15,10 +15,10 @@ from bvspca.core.blocks import HeadingBlock, PictureLinkBlock, SliderBlock, Supp
 from bvspca.events.models import Event
 from bvspca.news.models import News
 from .blocks import ContentStreamBlock
-from .models_abstract import Attachable, MenuTitleable, SendMailMixin
+from .models_abstract import Attachable, MenuTitleable, SendMailMixin, PageDesignMixin
 
 
-class ContentPage(Page, MenuTitleable, Attachable):
+class ContentPage(Page, MenuTitleable, Attachable, PageDesignMixin):
     body = StreamField(ContentStreamBlock(), verbose_name="Page body", blank=True)
 
     search_fields = Page.search_fields + [
@@ -31,7 +31,7 @@ class ContentPage(Page, MenuTitleable, Attachable):
         FieldPanel('title'),
         StreamFieldPanel('body'),
         StreamFieldPanel('attachments'),
-    ]
+    ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 
@@ -77,7 +77,7 @@ class HomePage(Page):
         return context
 
 
-class SupportersPage(Page, MenuTitleable):
+class SupportersPage(Page, MenuTitleable, PageDesignMixin):
     supporters = StreamField([
         ('category', HeadingBlock()),
         ('supporter', SupporterBlock()),
@@ -92,7 +92,7 @@ class SupportersPage(Page, MenuTitleable):
     content_panels = [
         FieldPanel('title'),
         StreamFieldPanel('supporters'),
-    ]
+    ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 
@@ -100,7 +100,7 @@ class SupportersPage(Page, MenuTitleable):
         verbose_name = 'Supporters Page'
 
 
-class TeamPage(Page, MenuTitleable):
+class TeamPage(Page, MenuTitleable, PageDesignMixin):
     group1_title = models.CharField(
         max_length=50,
         blank=True,
@@ -160,7 +160,7 @@ class TeamPage(Page, MenuTitleable):
             heading="Team Group 3",
             classname="collapsible collapsed"
         ),
-    ]
+    ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 
@@ -238,7 +238,7 @@ class ContactFormPage(MenuTitleable, SendMailMixin, WagtailCaptchaEmailForm, Pag
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 
 
-class ContentIndexPage(MenuTitleable, Page):
+class ContentIndexPage(MenuTitleable, Page, PageDesignMixin):
     intro = RichTextField(blank=True)
     empty_message = models.CharField(max_length=200, default='Empty')
 

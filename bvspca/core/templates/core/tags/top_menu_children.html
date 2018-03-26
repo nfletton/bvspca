@@ -1,9 +1,25 @@
-{% load navigation_tags wagtailcore_tags %}
+{% load navigation_tags wagtailcore_tags wagtailimages_tags %}
 
 <div class="main-nav__children">
   <div class="main-nav__children-content">
-    {% for child in menuitems_children %}
-      <div><a href="{% pageurl child %}" class="main-nav__child-link">{{ child.menu_title|default:child.title }}</a></div>
-    {% endfor %}
+    {# display image links #}
+    <div class='main_nav__child-image-links'>
+      {% for child in menuitems_children %}
+        {% if child.menu_item_image %}
+          <a href="{% pageurl child %}" class="main_nav__child_image_link">
+            {% image child.menu_item_image fill-200x200 class="main_nav__child-image" %}
+            <div class="main_nav__child-title">{{ child.menu_title|default:child.title }}</div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {# display text links #}
+    <div class='main_nav__child-text-links'>
+      {% for child in menuitems_children %}
+        {% if not child.menu_item_image %}
+          <a href="{% pageurl child %}" class="main-nav__child-text-link">{{ child.menu_title|default:child.title }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </div>

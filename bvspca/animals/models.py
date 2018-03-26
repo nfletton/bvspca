@@ -11,7 +11,7 @@ from wagtail.images.models import Image
 from wagtail.search import index
 
 from bvspca.core.blocks import ContentStreamBlock
-from bvspca.core.models_abstract import MenuTitleable, MetaTagable
+from bvspca.core.models_abstract import MenuTitleable, MetaTagable, PageDesignMixin
 from bvspca.social.models import SocialMediaPostable
 
 
@@ -190,7 +190,7 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
         pass
 
 
-class AnimalsPage(Page, MenuTitleable):
+class AnimalsPage(Page, MenuTitleable, PageDesignMixin):
     PETPOINT_CAT_CODE = 'Cat'
     PETPOINT_DOG_CODE = 'Dog'
     ANIMAL_TYPES = ((PETPOINT_CAT_CODE, PETPOINT_CAT_CODE), (PETPOINT_DOG_CODE, PETPOINT_DOG_CODE))
@@ -198,7 +198,7 @@ class AnimalsPage(Page, MenuTitleable):
     content_panels = [
         FieldPanel('title'),
         FieldPanel('species'),
-    ]
+    ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 

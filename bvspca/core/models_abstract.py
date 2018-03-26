@@ -1,8 +1,10 @@
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.db import models
+from wagtail.admin.edit_handlers import MultiFieldPanel
 from wagtail.core.fields import StreamField
 from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class MenuTitleable(models.Model):
@@ -33,6 +35,39 @@ class MetaTagable(models.Model):
     class Meta:
         abstract = True
 
+
+class PageDesignMixin(models.Model):
+    banner_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='page banner image',
+        help_text='This image should be exactly 1600px wide and 560px high.'
+    )
+    menu_item_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='menu image',
+    )
+
+    content_panels = [
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('banner_image'),
+                ImageChooserPanel('menu_item_image'),
+            ],
+            heading='Page Design Elements',
+            classname='collapsible collapsed',
+        ),
+    ]
+
+    class Meta:
+        abstract = True
 
 class SendMailMixin:
     def send_mail(self, form):

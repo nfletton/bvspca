@@ -12,7 +12,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 from bvspca.core.blocks import ContentStreamBlock
-from bvspca.core.models_abstract import Attachable, MenuTitleable, MetaTagable
+from bvspca.core.models_abstract import Attachable, MenuTitleable, MetaTagable, PageDesignMixin
 
 
 class EventManager(PageManager):
@@ -91,10 +91,10 @@ class Event(Page, MetaTagable, Attachable):
         return self.title
 
 
-class EventsPage(Page, MenuTitleable):
+class EventsPage(Page, MenuTitleable, PageDesignMixin):
     content_panels = [
         FieldPanel('title'),
-    ]
+    ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 

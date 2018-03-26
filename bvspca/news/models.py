@@ -8,7 +8,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 from bvspca.core.blocks import ContentStreamBlock
-from bvspca.core.models_abstract import Attachable, MenuTitleable
+from bvspca.core.models_abstract import Attachable, MenuTitleable, PageDesignMixin
 
 
 class NewsManager(PageManager):
@@ -61,7 +61,7 @@ class News(Page, Attachable):
         return self.title
 
 
-class NewsPage(Page, MenuTitleable):
+class NewsPage(Page, MenuTitleable, PageDesignMixin):
     """
     News list view
     """
@@ -69,7 +69,7 @@ class NewsPage(Page, MenuTitleable):
 
     content_panels = [
         FieldPanel('title'),
-    ]
+    ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 

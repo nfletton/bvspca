@@ -31,32 +31,23 @@ def is_active(page, current_page):
     return (current_page.url.startswith(page.url) if current_page else False)
 
 
-# Retrieves the top menu items - the immediate children of the parent page
-# The has_menu_children method is necessary because the Foundation menu requires
-# a dropdown class to be applied to a parent
 @register.inclusion_tag('core/tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
-    menuitems = parent.get_children().live().in_menu().specific()
-    for menuitem in menuitems:
-        menuitem.show_dropdown = has_menu_children(menuitem)
-        # We don't directly check if calling_page is None since the template
-        # engine can pass an empty string to calling_page
-        # if the variable passed as calling_page does not exist.
-        menuitem.active = (calling_page.url.startswith(menuitem.url)
-                           if calling_page else False)
+    menu_items = parent.get_children().live().in_menu().specific()
+    for menu_item in menu_items:
+        menu_item.show_dropdown = has_menu_children(menu_item)
+        menu_item.active = (calling_page.url.startswith(menu_item.url) if calling_page else False)
     return {
         'calling_page': calling_page,
-        'menuitems': menuitems,
+        'menuitems': menu_items,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
 
 
-# Retrieves the children of the top menu items for the drop downs
 @register.inclusion_tag('core/tags/top_menu_children.html', takes_context=True)
 def top_menu_children(context, parent, calling_page=None):
-    menuitems_children = parent.get_children()
-    menuitems_children = menuitems_children.live().in_menu().specific()
+    menuitems_children = parent.get_children().live().in_menu().specific()
     for menuitem in menuitems_children:
         menuitem.has_dropdown = has_menu_children(menuitem)
         # We don't directly check if calling_page is None since the template

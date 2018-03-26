@@ -2,14 +2,10 @@ $nav-primary-color: #fff;
 $nav-active-color: #6b6b6b;
 $nav-bg-color: $primary-color;
 $nav-drop-down-bg-color: #af4700;
-$nav-bg-home-color: rgba(0, 0, 0, 0.6);
 $nav-mobile-bg-color: $nav-drop-down-bg-color;
 
 $nav-breakpoint: 850px;
-$nav-icon-size: 40px;
-$nav-sub-nav-width: 18em;
 
-$nav-height: 50px;
 $nav-color: #fff;
 $nav-active-color: $highlight-color;
 $nav-toggle-color: $primary-color;
@@ -17,6 +13,10 @@ $nav-icon-size: 40px;
 $nav-max-width: 320px;
 
 $nav-transition-time: 0.1s;
+
+$nav-image-link-image-width: 200px;     // should match image width in template top_menu_children
+$nav-image-link-border-width: 3px;
+$nav-image-link-width: $nav-image-link-image-width + 2*$nav-image-link-border-width;
 
 header {
   position: relative;
@@ -325,7 +325,7 @@ header {
     padding: 0;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: stretch;
     align-content: flex-end;
     width: auto;
   }
@@ -340,8 +340,9 @@ header {
 }
 
 .main-nav__item {
+  flex-grow: 1;
   a {
-    padding: 0.7rem 1rem;
+    padding: 0.7rem 0 0 1rem;
     &:hover {
       color: #fff;
     }
@@ -352,10 +353,12 @@ header {
     flex-direction: column;
     justify-content: center;
     padding: 0;
-    height: $nav-height;
     &:hover {
       background: transparent url(../svg/nav-pointer.svg) no-repeat 50% 100%;
       background-size: 16px;
+    }
+    a {
+      padding: 0.7rem 1rem;
     }
   }
 }
@@ -386,52 +389,8 @@ header {
   }
 }
 
-.main-nav__child-link {
-  color: #fff;
-  &:link,
-  &:visited {
-    color: #fff;
-  }
-}
-
 .main-nav__link--highlight {
   color: $nav-active-color;
-}
-
-.main-nav__children {
-  background-color: $nav-drop-down-bg-color;
-  list-style: none;
-  font-weight: 600;
-  @media(min-width: $nav-breakpoint) {
-    display: none !important;
-    padding: 0 0 1em 0.5em;
-    position: absolute;
-    right: 0;
-    left: auto;
-    top: 100%;
-    width: 100%;
-  }
-}
-
-.main-nav__children-content {
-  @media(min-width: $nav-breakpoint) {
-    @include container-narrow;
-    padding: {
-      top: 1rem;
-      bottom: 1rem;
-    }
-  }
-}
-
-.main-nav__child-link {
-  color: #fff;
-  display: block;
-  padding: 1rem 0 0 1.5rem;
-  text-align: left;
-  text-decoration: none;
-  &:hover {
-    color: $nav-active-color;
-  }
 }
 
 .main-nav {
@@ -488,9 +447,106 @@ header {
   }
 }
 
-@media(min-width: $nav-breakpoint) {
-  .home header,
-  .home .main-nav__children {
-    background-color: $nav-bg-home-color;
+/* Mega style drop-down */
+.main-nav__children {
+  background-color: $nav-drop-down-bg-color;
+  list-style: none;
+  font-weight: 600;
+  padding: 0 0 1em 0.5em;
+  @media(min-width: $nav-breakpoint) {
+    display: none !important;
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: 100%;
+    width: 100%;
+    padding: 0;
+    max-height: 360px;
+  }
+}
+
+.main-nav__children-content {
+  text-transform: uppercase;
+  @media(min-width: $nav-breakpoint) {
+    @include container-narrow;
+    padding: {
+      top: 1rem;
+      bottom: 1rem;
+    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+/* Image and text links in desktop child menus */
+
+.main_nav__child-image-links {
+  @media (min-width: $nav-breakpoint) {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
+  }
+}
+
+a.main_nav__child_image_link {
+  display: block;
+  &:link, &:visited, &:focus, &:active {
+    color: $nav-color;
+  }
+  &:hover {
+    .main_nav__child-image {
+      opacity: 0.7;
+    }
+  }
+  @media (min-width: $nav-breakpoint) {
+    width: $nav-image-link-width;
+    padding: 0;
+    margin: 0 1rem;
+  }
+}
+
+.main_nav__child-image {
+  display: none;
+  @media (min-width: $nav-breakpoint) {
+    display: block;
+    border-radius: $nav-image-link-image-width/2;
+    border: $nav-image-link-border-width solid $primary-color;
+  }
+}
+
+.main_nav__child-title {
+  padding: 0 0 0 2rem;
+  @media (min-width: $nav-breakpoint) {
+    margin-top: 1rem;
+    font-weight: 700;
+    padding: 0;
+  }
+}
+
+
+a.main-nav__child-text-link {
+  color: $nav-color;
+  display: block;
+  padding: 1rem 0 0 3rem;
+  text-align: left;
+  text-decoration: none;
+  @media (min-width: $nav-breakpoint) {
+    padding: 1rem 0 0 0;
+  }
+  &:hover {
+    color: $nav-active-color;
+  }
+  &:link, &:visited, &:focus, &:active {
+    color: $nav-color;
+  }
+}
+
+.main_nav__child-text-links {
+  @media (min-width: $nav-breakpoint) {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 }
