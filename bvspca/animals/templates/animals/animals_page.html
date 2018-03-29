@@ -3,7 +3,6 @@
 
 {% block content %}
   <div class="animals">
-    <h1>{{ page.title }}</h1>
     <ul class="animals-list">
       {% for animal in  page.animals %}
         <li class="animal-summary-item">
@@ -30,6 +29,9 @@
     </ul>
   </div>
 {% endblock content %}
+
+{% block extra_css %}
+{% endblock extra_css %}
 
 {% block extra_javascript %}
   <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us15.list-manage.com","uuid":"c26f76b0683e590dc58d9596d","lid":"89dbc69c09"}) })</script>

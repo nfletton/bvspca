@@ -1,4 +1,4 @@
-{% load i18n utility_tags navigation_tags static wagtailuserbar wagtailcore_tags %}<!DOCTYPE html>
+{% load i18n utility_tags navigation_tags static wagtailuserbar wagtailcore_tags wagtailimages_tags %}<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -33,10 +33,35 @@
 
   {% block css %}
   {% block extra_pre_css %}{% endblock extra_pre_css %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{% static 'dist/project.css' %}" rel="stylesheet">
   {% endblock %}
   {% block extra_css %}{% endblock extra_css %}
+  {% if page.banner_image %}
+    <style>
+      {% image page.banner_image original as page_banner_orig %}
+      {% image page.banner_image fill-1000x400 as page_banner_large %}
+      {% image page.banner_image fill-800x400 as page_banner_medium %}
+      {% image page.banner_image fill-500x400 as page_banner_small %}
+      .internal-hero {
+        background: url({{ page_banner_small.url }}) no-repeat center top/cover;
+      }
+      @media screen and (min-width: 500px) {
+        .internal-hero {
+          background-image: url({{ page_banner_medium.url }});
+        }
+      }
+      @media screen and (min-width: 800px) {
+        .internal-hero {
+          background-image: url({{ page_banner_large.url }});
+        }
+      }
+      @media screen and (min-width: 1000px) {
+        .internal-hero {
+          background-image: url({{ page_banner_orig.url }});
+        }
+      }
+    </style>
+  {% endif %}
 </head>
 
 <body class="{% block body_class %}{% endblock %} page-{{ page.pk }}">
@@ -109,6 +134,20 @@
       <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
     {% endfor %}
   {% endif %}
+
+  {% block content_heading %}
+    {% if page.banner_image %}
+      <div class="internal-hero">
+      <div class="internal-hero__content">
+        <h1 class="internal-hero__title">{{ page.title }}</h1>
+      </div>
+      </div>
+    {% else %}
+      <div class="title-region">
+        <h1 class="title-region__title">{{ page.title }}</h1>
+      </div>
+    {% endif %}
+  {% endblock content_heading %}
 
   {% block content %}{% endblock content %}
 </main>
@@ -187,13 +226,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
           integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
           crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-          crossorigin="anonymous"></script>
   <script src="{% static 'dist/site.js' %}"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-          crossorigin="anonymous"></script>
   {% block extra_javascript %}{% endblock extra_javascript %}
 {% endblock javascript %}
 {% get_google_analytics_id as ga_tracking_id %}

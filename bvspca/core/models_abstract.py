@@ -44,7 +44,7 @@ class PageDesignMixin(models.Model):
         on_delete=models.SET_NULL,
         related_name='+',
         verbose_name='page banner image',
-        help_text='This image should be exactly 1600px wide and 560px high.'
+        help_text='This image should be exactly 1400px wide and 370px high.'
     )
     menu_item_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -68,6 +68,7 @@ class PageDesignMixin(models.Model):
 
     class Meta:
         abstract = True
+
 
 class SendMailMixin:
     def send_mail(self, form):

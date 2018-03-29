@@ -3,7 +3,6 @@ $animal-block-padding: 1.5rem;
 
 .animals {
   @include container-wide;
-  margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
 }
 

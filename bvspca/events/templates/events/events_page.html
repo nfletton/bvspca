@@ -3,7 +3,6 @@
 
 {% block content %}
   <div class="events-page">
-    <h1>{{ page.title }}</h1>
     <div class="events">
       {% for event in events %}
         <a class="event-overview {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" href="{% pageurl event %}">
