@@ -1,12 +1,13 @@
 /* Animal list page */
+$animal-block-padding: 1.5rem;
+
 .animals {
   @include container-wide;
   margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
 }
 
-$animal-summary-photo-width: 240px;
-$animal-summary-photo-border-width: 4px;
+$animal-summary-photo-width: 275px;
 
 .animals-list {
   list-style: none;
@@ -22,12 +23,13 @@ $animal-summary-photo-border-width: 4px;
 }
 
 .animal-summary-item {
-  width: $animal-summary-photo-width + (2 * $animal-summary-photo-border-width);
+  width: $animal-summary-photo-width;
   position: relative;
   text-align: center;
-  margin: 0 0 2em 0;
+  margin: 0 0 3rem 0;
+  box-shadow: 0px 8px 5px 0px rgba(50, 50, 50, 0.3);
   @media(min-width: 400px) {
-    margin: 0 1em 2em 1em;
+    margin: 0 1rem 3rem 1rem;
   }
   &:hover {
     color: #fff;
@@ -43,11 +45,36 @@ $animal-summary-photo-border-width: 4px;
 
 .animal-summary__details {
   margin-top: 1rem;
+  color: $base-font-color;
+  font-size: 0.9rem;
+  span {
+    font-weight: 600;
+  }
 }
 
+.animal-summary__title {
+  color: $primary-color;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.animal-summary__gender,
+.animal-summary__age {
+  margin-bottom: 0.5rem;
+}
 .animal-summary__more {
-  width: 100%;
+  text-transform: uppercase;
+  background-color: $tertiary-color;
+  padding: $animal-block-padding/2 $animal-block-padding;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
   cursor: pointer;
+  margin-top: 1rem;
+  &:hover {
+    background-color: darken($tertiary-color, 10);
+  }
 }
 
 /* Animal profile page */

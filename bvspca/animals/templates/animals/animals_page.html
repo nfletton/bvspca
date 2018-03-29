@@ -10,19 +10,19 @@
           <a class="animal-summary" href="{% pageurl animal %}">
             <div class="animal-summary__photo">
               {% if animal.main_photo %}
-                {% image animal.main_photo fill-240x240 %}
+                {% image animal.main_photo fill-275x210 %}
               {% else %}
                 <img class="animal-summary__photo-placeholder"
                      src="{% if animal.species == 'Cat' %}{% static 'svg/cat.svg' %}{% else %}{% static 'svg/dog.svg' %}{% endif %}"
-                     width="240" height="240"
+                     width="275" height="210"
                 >
               {% endif %}
             </div>
             <div class="animal-summary__details">
               <div class="animal-summary__title">{{ animal.title }}</div>
-              <div class="animal-summary__gender">Gender: {{ animal.sex }}</div>
-              <div class="animal-summary__age">Age: {{ animal.age|to_years_and_months }}</div>
-              <button class="animal-summary__more">About {{ animal.title }} &hellip;</button>
+              <div class="animal-summary__gender"><span>Gender:</span> {{ animal.sex }}</div>
+              <div class="animal-summary__age"><span>Age:</span> {{ animal.age|to_years_and_months }}</div>
+              <div class="animal-summary__more">View</div>
             </div>
           </a>
         </li>
