@@ -73,15 +73,21 @@ class Command(BaseCommand):
             .filter(adoption_date__isnull=True, last_intake_date__gte=since)\
             .live()\
             .order_by('last_intake_date')
-        return render_to_string(
-            'newsletter/animal_list.html',
-            {'animals': new_animals, 'root_url': root_url}
-        )
+        if new_animals:
+            return render_to_string(
+                'newsletter/animal_list.html',
+                {'animals': new_animals, 'root_url': root_url}
+            )
+        else:
+            return '<p class="animal-news__empty">No new animals for this period</p>'
 
     @staticmethod
     def adopted_animals_list(since, root_url):
         adopted_animals = Animal.objects.filter(adoption_date__gte=since).live().order_by('adoption_date')
-        return render_to_string(
-            'newsletter/animal_list.html',
-            {'animals': adopted_animals, 'root_url': root_url}
-        )
+        if adopted_animals:
+            return render_to_string(
+                'newsletter/animal_list.html',
+                {'animals': adopted_animals, 'root_url': root_url}
+            )
+        else:
+            return '<p class="animal-news__empty">No adopted animals for this period</p>'
