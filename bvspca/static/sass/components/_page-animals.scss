@@ -83,7 +83,7 @@ $animal-profile-2-column: 800px;
 .animal-profile {
   @include container-wide;
   margin: {
-    top: $content-padding;
+    top: $content-padding-large;
     bottom: $content-padding;
   }
 }
@@ -149,25 +149,33 @@ $animal-profile-2-column: 800px;
 }
 
 .animal-profile__summary {
+  h1 {
+    color: $primary-color;
+    font-weight: 600;
+    font-size: 2.8rem;
+    text-align: center;
+  }
   @media(min-width: $animal-profile-2-column) {
     width: 48%;
+    h1 {
+      margin: {
+        top: 0;
+        bottom: 1rem;
+      }
+      text-align: left;
+    }
   }
 }
 
 .animal-profile__info {
-  display: flex;
-  flex-direction: column;
   padding: 0;
+  margin: 0;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 .animal-profile__info-item {
-  font-size: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: {
-    bottom: 1rem;
-  };
+  font-size: 0.9rem;
   @media(min-width: 400px) {
     margin: {
       left: 5%;
@@ -180,32 +188,34 @@ $animal-profile-2-column: 800px;
       right: 15%;
     };
   }
-  @media(min-width: 450px) {
-    font-size: inherit;
-  }
   @media(min-width: $animal-profile-2-column) {
     margin: {
       left: 0;
       right: 0;
     };
   }
-  span {
-    font-weight: 600;
-  }
 }
 
-.animal-profile__info-compatibility {
-  display: flex;
-  flex-direction: column;
+.animal-profile__info-item--even {
+  background-color: $bg-gray-even;
 }
 
-.animal-profile__compatibility-title {
-  margin-bottom: 0.5rem;
+.animal-profile__info-item-label {
   font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: none;
+  vertical-align: top;
+}
+
+.animal-profile__info-item-value {
+  padding: 0.5rem 1rem;
+  border: none;
 }
 
 .animal-profile__compatibilities {
   list-style: none;
+  margin: 0;
+  padding: 0;
   li {
     margin-bottom: 0.5rem;
   }
@@ -213,6 +223,17 @@ $animal-profile-2-column: 800px;
 
 .animal-profile__narrative {
   margin: $content-padding 0;
+  h2 {
+    text-align: center;
+    color: $tertiary-color;
+  }
+  @media(min-width: $animal-profile-2-column) {
+    width: 80%;
+    margin: {
+      left: auto;
+      right: auto;
+    };
+  }
 }
 
 .animal-profile__description {
