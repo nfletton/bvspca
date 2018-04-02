@@ -1,18 +1,13 @@
 $nav-primary-color: #fff;
-$nav-active-color: #6b6b6b;
-$nav-bg-color: $primary-color;
 $nav-drop-down-bg-color: #af4700;
 $nav-mobile-bg-color: $nav-drop-down-bg-color;
 
 $nav-breakpoint: 850px;
 
 $nav-color: #fff;
-$nav-active-color: $highlight-color;
+$nav-link-hover-opacity: 0.5;
 $nav-toggle-color: $primary-color;
 $nav-icon-size: 40px;
-$nav-max-width: 320px;
-
-$nav-transition-time: 0.1s;
 
 $nav-image-link-image-width: 200px;     // should match image width in template top_menu_children
 $nav-image-link-border-width: 3px;
@@ -381,16 +376,17 @@ header {
   text-transform: uppercase;
   font-weight: 700;
   &:hover {
-    color: $nav-active-color;
+    opacity: $nav-link-hover-opacity;
   }
   &:link,
   &:visited {
     color: $nav-primary-color;
   }
-}
-
-.main-nav__link--highlight {
-  color: $nav-active-color;
+  @media(min-width: $nav-breakpoint) {
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .main-nav {
@@ -495,14 +491,15 @@ a.main_nav__child_image_link {
     color: $nav-color;
   }
   &:hover {
-    .main_nav__child-image {
-      opacity: 0.7;
-    }
+    opacity: $nav-link-hover-opacity;
   }
   @media (min-width: $nav-breakpoint) {
     width: $nav-image-link-width;
     padding: 0;
     margin: 0 1rem;
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
 
@@ -535,7 +532,7 @@ a.main-nav__child-text-link {
     padding: 1rem 0 0 0;
   }
   &:hover {
-    color: $nav-active-color;
+    opacity: $nav-link-hover-opacity;
   }
   &:link, &:visited, &:focus, &:active {
     color: $nav-color;
