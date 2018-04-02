@@ -79,7 +79,7 @@ class Command(BaseCommand):
                 {'animals': new_animals, 'root_url': root_url}
             )
         else:
-            return '<p class="animal-news__empty">No new animals for this period</p>'
+            return '<p class="animal-news__empty" style="text-align:center">No new animals for this period</p>'
 
     @staticmethod
     def adopted_animals_list(since, root_url):
@@ -90,4 +90,4 @@ class Command(BaseCommand):
                 {'animals': adopted_animals, 'root_url': root_url}
             )
         else:
-            return '<p class="animal-news__empty">No adopted animals for this period</p>'
+            return '<p class="animal-news__empty" style="text-align:center">No adopted animals for this period</p>'

@@ -7,7 +7,7 @@
       <tr style="padding-top: 40px">
         <td style="padding: 40px 40px 0 0; vertical-align: top">
           {% if animal.main_photo %}
-            {% image animal.main_photo width-200 as main_photo%}
+            {% image animal.main_photo width-175 as main_photo%}
             <img src="{{ root_url }}{{ main_photo.url }}" width="{{ main_photo.width }}"
                  style="border: 1px solid #6e6e6e"
                  height="{{ main_photo.height }}" alt="{{ main_photo.alt }}" />
@@ -15,7 +15,7 @@
             <img class="animal-summary__photo-placeholder"
                  style="border: 1px solid #6e6e6e"
                  src="{% if animal.species == 'Cat' %}{% static 'svg/cat.svg' %}{% else %}{% static 'svg/dog.svg' %}{% endif %}"
-                 width="200" height="200">
+                 width="175" height="175">
           {% endif %}
         </td>
         <td style="width: 100%; padding: 40px 5px 0 0; vertical-align: top">
