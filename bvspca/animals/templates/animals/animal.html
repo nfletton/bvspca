@@ -103,6 +103,19 @@
         {{ page.description|safe }}
       </div>
       {% include 'core/includes/addthis_widgets.html' %}
+      <div class="animal-navigation">
+        {% if previous %}
+          <a class="animal-navigation__button animal-navigation__button--previous" href="{% pageurl previous %}"><span class="animal-navigation__action-label">Previous</span><span class="animal-navigation__species-label"> {{ page.species }}</span></a>
+        {% else %}
+          <div class="animal-navigation__button animal-navigation__button--previous animal-navigation__button--inactive"><span class="animal-navigation__action-label">Previous</span><span class="animal-navigation__species-label"> {{ page.species }}</span></div>
+        {% endif %}
+        <a class="animal-navigation__button" href="{% pageurl parent %}">Back<span class="animal-navigation__species-label"> to all {{ page.species }}s</span></a>
+        {% if next %}
+          <a  class="animal-navigation__button animal-navigation__button--next" href="{% pageurl next %}"><span class="animal-navigation__action-label">Next</span><span class="animal-navigation__species-label"> {{ page.species }}</span></a>
+        {% else %}
+          <div class="animal-navigation__button animal-navigation__button--next animal-navigation__button--inactive"><span class="animal-navigation__action-label">Next</span><span class="animal-navigation__species-label"> {{ page.species }}</span></div>
+        {% endif %}
+      </div>
       <div class="animal-profile__updates">
         {{ page.updates }}
       </div>
