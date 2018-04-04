@@ -1,44 +1,38 @@
 .adoption-centre {
-  @include container;
-  margin-top: $content-padding-large;
-  margin-bottom: $content-padding-large;
+
 }
 
-.block-picture_links {
+$picture-link-break: 800px;
+
+.region-picture-links {
   display: flex;
   flex-direction: column;
-  @media(min-width: 900px) {
+  @media(min-width: $picture-link-break) {
     flex-direction: row;
   }
 }
 
 .picture-link-block {
   display: block;
+  height: 470px;
   position: relative;
-  margin-bottom: $content-padding;
   &:hover {
     .picture-link-block__title {
-      background-color: darken($tertiary-color, 10);
+      background-color: $tertiary-color;
     }
   }
-  img {
-    display: block;
-    margin: {
-      left: auto;
-      right: auto;
-    };
+  @media(min-width: $picture-link-break) {
+    width: 50%;
   }
 }
 
 .picture-link-block__title {
   position: absolute;
-  bottom: 30px;
-  left: 170px;
-  right: 170px;
-  padding: 1rem;
-  font-size: 2rem;
-  background-color: $tertiary-color;
+  bottom: 3rem;
+  width: 100%;
+  padding: 1rem 0;
+  font-size: 3rem;
   color: #fff;
-  border-radius: 5px;
   text-align: center;
+  transition: all 0.23s ease-in-out 0s;
 }

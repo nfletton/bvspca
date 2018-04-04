@@ -1,8 +1,53 @@
 {% extends "base.html" %}
-{% load staticfiles wagtailcore_tags %}
+{% load staticfiles wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
   <div class="adoption-centre">
-    {{ page.body }}
+  <div class="region-picture-links">
+    <a class="picture-link-block picture-link-block-dogs" href="{% pageurl page.dogs_page %}">
+      <div class="picture-link-block__title">Adopt a Dog</div>
+    </a>
+    <a class="picture-link-block picture-link-block-cats" href="{% pageurl page.cats_page %}">
+      <div class="picture-link-block__title">Adopt a Cat</div>
+    </a>
+  </div>
   </div>
 {% endblock content %}
+
+{% block content_heading %}
+  {% comment %}No hero or title required for this page{% endcomment %}
+{% endblock content_heading %}
+
+{% block extra_pre_css %}
+  <style>
+    {% image page.dogs_image fill-400x470 as dogs_image_1 %}
+    {% image page.cats_image fill-400x470 as cats_image_1 %}
+    .picture-link-block-dogs {
+      background: url({{ dogs_image_1.url }}) no-repeat center top/cover;
+    }
+    .picture-link-block-cats {
+      background: url({{ cats_image_1.url }}) no-repeat center top/cover;
+    }
+    @media screen and (min-width: 400px) {
+      {% image page.dogs_image fill-600x470 as dogs_image_2 %}
+      {% image page.cats_image fill-600x470 as cats_image_2 %}
+      .picture-link-block-dogs {
+        background: url({{ dogs_image_2.url }}) no-repeat center top/cover;
+      }
+      .picture-link-block-cats {
+        background: url({{ cats_image_2.url }}) no-repeat center top/cover;
+      }
+    }
+    @media screen and (min-width: 600px) {
+      {% image page.dogs_image fill-800x470 as dogs_image_3 %}
+      {% image page.cats_image fill-800x470 as cats_image_3 %}
+      .picture-link-block-dogs {
+        background: url({{ dogs_image_3.url }}) no-repeat center top/cover;
+      }
+      .picture-link-block-cats {
+        background: url({{ cats_image_3.url }}) no-repeat center top/cover;
+      }
+    }
+
+  </style>
+{% endblock extra_pre_css %}

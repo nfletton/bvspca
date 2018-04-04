@@ -241,7 +241,7 @@ $mc-field-border-radius: 5px;
   border-bottom-right-radius: $mc-field-border-radius;
   letter-spacing: .03em;
   color: #fff;
-  background-color: $quinary-color;
+  background-color: $quaternary-color;
   box-sizing: border-box;
   height: $mc-field-height;
   line-height: $mc-field-height;
@@ -253,7 +253,7 @@ $mc-field-border-radius: 5px;
 }
 
 #mc_embed_signup .button:hover {
-  background-color: darken($quinary-color, 10);
+  background-color: darken($quaternary-color, 7);
   cursor: pointer;
 }
 

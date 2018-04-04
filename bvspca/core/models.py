@@ -1,7 +1,7 @@
 from django.db import models
 from django.http import HttpResponseRedirect
 from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel, PageChooserPanel
 from wagtail.contrib.forms.models import AbstractFormField
 from wagtail.core.blocks import ListBlock
 from wagtail.core.fields import RichTextField, StreamField
@@ -201,13 +201,54 @@ class AdoptionCentre(Page, MenuTitleable):
     are located as submenus items e.g. available dogs and cats,
     adoption policy, fees, etc.
     """
-    body = StreamField([
-        ('picture_links', ListBlock(PictureLinkBlock(), template='core/blocks/picture_links.html'))
-    ], blank=True)
-
+    dogs_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='dogs banner image',
+        help_text='This image should be exactly 1400px wide and 370px high.'
+    )
+    dogs_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        related_name='+',
+        on_delete=models.SET_NULL,
+    )
+    cats_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='cats banner image',
+        help_text='This image should be exactly 1400px wide and 370px high.'
+    )
+    cats_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        related_name='+',
+        on_delete=models.SET_NULL,
+    )
     content_panels = [
         FieldPanel('title'),
-        StreamFieldPanel('body'),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('dogs_image'),
+                PageChooserPanel('dogs_page'),
+            ],
+            heading='Dogs page link',
+        ),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('cats_image'),
+                PageChooserPanel('cats_page'),
+            ],
+            heading='Cats page link',
+        ),
     ]
 
     class Meta:
