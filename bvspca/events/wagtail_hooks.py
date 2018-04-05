@@ -10,6 +10,7 @@ class EventModelAdmin(ModelAdmin):
     add_to_settings_menu = False
     list_display = ('title', 'start_date', 'end_date',)
     ordering = ('-start_date',)
+    list_per_page = 20
 
 
 modeladmin_register(EventModelAdmin)

@@ -13,6 +13,7 @@ class AnimalModelAdmin(ModelAdmin):
     search_fields = ('title', 'description', 'petpoint_id', 'adoption_message')
     list_filter = ('species', 'sex',)
     ordering = ('-live', '-adoption_date', '-petpoint_id',)
+    list_per_page = 20
 
 
 modeladmin_register(AnimalModelAdmin)

@@ -12,6 +12,7 @@ class NewsModelAdmin(ModelAdmin):
     add_to_settings_menu = False
     list_display = ('title', 'first_published_at',)
     ordering = ('-first_published_at',)
+    list_per_page = 20
 
 
 modeladmin_register(NewsModelAdmin)

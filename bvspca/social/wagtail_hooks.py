@@ -11,6 +11,7 @@ class NewsSocialMediaQueueModelAdmin(ModelAdmin):
     add_to_settings_menu = True
     list_display = ('date', 'priority', '__str__', 'ready')
     ordering = ('priority', 'date')
+    list_per_page = 20
 
 
 modeladmin_register(NewsSocialMediaQueueModelAdmin)
