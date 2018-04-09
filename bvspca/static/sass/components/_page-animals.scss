@@ -37,6 +37,7 @@ $animal-summary-photo-width: 275px;
 
 .animal-summary {
   display: block;
+  line-height: 1.2;
   &:active, &:focus, &:hover {
     text-decoration: none;
   }
