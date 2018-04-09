@@ -36,12 +36,11 @@ const headerSearchButton = document.getElementById('header-button-search');
 const mobileSearchButton = document.getElementById('main-nav-mobile-search');
 
 if (searchBlock) {
-  searchBlock.addEventListener('click', (e) => {
-    if (e.target.id === 'search-button' && searchText.value !== '') {
+  searchButton.addEventListener('click', () => {
+    if (searchText.value !== '') {
       searchBlock.submit();
     }
     searchBlock.classList.add('search-block--active');
-    searchButton.src = '/static/svg/search-icon-green.svg';
     searchText.placeholder = '';
     searchText.focus();
   });

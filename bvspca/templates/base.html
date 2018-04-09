@@ -88,7 +88,7 @@
     <div class="search-region-content">
       <form id="search-block" class="search-block" method="get" action="{% url 'core:search' %}">
         <div class="search-controls">
-          <input id="search-text" class="search-block__text" name="query" type="text" placeholder="Search website"{% if search_query %} value="{{ search_query }}"{% endif %}>
+          <input id="search-text" class="search-block__text" name="query" type="text" size="15" placeholder="Search website"{% if search_query %} value="{{ search_query }}"{% endif %}>
           <div id="search-button" class="search-block__button"><span>Search</span></div>
         </div>
       </form>
