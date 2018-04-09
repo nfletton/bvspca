@@ -71,7 +71,7 @@ main {
   position: relative;
   &:hover {
     .random-animal__details  {
-      height: 40%;
+      height: 45%;
       transition: height 0.5s;
     }
   }
@@ -83,7 +83,7 @@ main {
 
 .random-animal__details {
   position: absolute;
-  height: 30%;
+  height: 35%;
   transition: height 0.5s;
   overflow: hidden;
   display: block;

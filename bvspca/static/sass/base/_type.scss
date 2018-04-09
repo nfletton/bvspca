@@ -2,7 +2,7 @@ body {
   color: $base-font-color;
   font-family: $base-font;
   font-size: $base-font-size;
-  line-height: 1.2;
+  line-height: 1.75;
   margin-bottom: 1rem;
 }
 
@@ -16,17 +16,19 @@ body {
 h2, .h2 {
   font-size: $base-font-size * 1.563;
   font-family: $heading-font;
-  font-weight: 400;
+  font-weight: 700;
   color: $primary-color;
 }
 
 h3, .h3 {
   font-size: $base-font-size * 1.25;
   font-family: $heading-font;
+  color: $tertiary-color;
 }
 
 h4, .h4 {
   font-family: $heading-font;
+  color: $heading-gray-color;
 }
 
 h5, .h5 {
