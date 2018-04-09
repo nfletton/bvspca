@@ -1,7 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="swiper-slide" id="slide-{{ forloop.counter }}" >
-  <a href="{% if value.page %}{% pageurl value.page %}{% else %}/{% endif %}">
+  <a class="swiper-slide__link" href="{% if value.page %}{% pageurl value.page %}{% else %}/{% endif %}">
     <div class="swiper-slide__title">{{ value.title }}</div>
     <div class="swiper-slide__summary">{{ value.summary }}</div>
   </a>

@@ -58,8 +58,8 @@
   {% include 'animals/includes/random_animals.html' %}
   <div class="home-news">
     <div class="home-news__header">
-      <div class="home-more-link home-more-link__news"><a href="{% slugurl 'news'  %}">All News</a></div>
       <h2>News</h2>
+      <div class="home-more-link home-more-link__news"><a href="{% slugurl 'news'  %}">All News</a></div>
     </div>
     <div class="home-news-list">
       {% for news_item in news %}
