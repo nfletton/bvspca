@@ -10,11 +10,10 @@ $supporters-block-break: 700px;
 }
 
 .supporter {
-  margin-bottom: $content-padding;
+  margin-bottom: $content-padding-medium;
   @media(min-width: $supporters-block-break)  {
     display: flex;
     justify-content: space-between;
-    margin-bottom: $content-padding-large;
   }
 }
 
@@ -44,7 +43,12 @@ $supporters-block-break: 700px;
   margin-top: 1em;
   display: block;
   text-align: center;
-  @media(min-width: $supporters-block-break) {
-    text-align: left;
+  font-weight: 600;
+  &:link, &:active, &:focus, &:visited {
+    color: $heading-gray-color;
+  }
+ @media(min-width: $supporters-block-break) {
+    text-align: right;
+   margin-right: 2rem;
   }
 }
