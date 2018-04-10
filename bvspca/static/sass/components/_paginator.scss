@@ -1,7 +1,11 @@
-.pagination {
+.pager-wrapper {
+  @include container-narrow;
+}
+
+.pager {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 2rem;
 }
 
@@ -9,10 +13,6 @@
 .pager-btn__next {
   i {
     margin: 7px 15px;
-    border-style: solid;
-    border-color: #3a3a3a;
-    width: 10px;
-    height: 10px;
     display: block;
     cursor: pointer;
     &:hover {
@@ -20,19 +20,29 @@
     }
   }
 }
-.pager-btn__previous {
-  i {
-    border-width: 1px 0 0 1px;
-    transform: rotate(-45deg);
-  }
-}
-.pager-btn__next {
-  i {
-    border-width: 1px 1px 0 0;
-    transform: rotate(45deg);
+
+.pager-btn {
+  border: 1px solid $heading-gray-color;
+  width: 40px;
+  height: 40px;
+  opacity: 0.3;
+  a {
+    display: block;
+    width: inherit;
+    height: inherit;
   }
 }
 
-.pager__current_page {
-  color: $primary-color;
+.pager-btn__previous {
+  background: url(../svg/chevron-left.svg) no-repeat 0 0;
+}
+.pager-btn__next {
+  background: url(../svg/chevron-right.svg) no-repeat 0 0;
+}
+
+.pager-btn--active {
+  opacity: 1;
+  &:hover {
+    opacity: 0.6;
+  }
 }

@@ -1,21 +1,17 @@
 {% load staticfiles %}
 
-<div class="pagination">
-  <div class="pager-btn__previous">
+<div class="pager-wrapper">
+<div class="pager">
+  <div class="pager-btn pager-btn__previous{% if target.has_previous %} pager-btn--active{% endif %}">
     {% if target.has_previous %}
-      <a href="?page={{ target.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" title="Previous">
-        <i></i>
-      </a>
+      <a href="?page={{ target.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" title="Previous"></a>
     {% endif %}
   </div>
-  <div class="pager__pages">
-    <span class="pager__current_page">{{ target.number }}</span> of {{ target.paginator.num_pages }}
-  </div>
-  <div class="pager-btn__next">
+  <div class="pager-pages">Page {{ target.number }} of {{ target.paginator.num_pages }}</div>
+  <div class="pager-btn pager-btn__next{% if target.has_next %} pager-btn--active{% endif %}">
     {% if target.has_next %}
-      <a href="?page={{ target.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" title="Next">
-        <i></i>
-      </a>
+      <a href="?page={{ target.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}" title="Next"></a>
     {% endif %}
   </div>
+</div>
 </div>

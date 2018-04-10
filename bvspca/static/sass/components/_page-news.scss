@@ -1,11 +1,18 @@
 /* News list page */
 .news-page {
-  @include container;
-  margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
 }
 
-a.news-item-overview {
+.news-item-overview-wrapper {
+  @include list-item-wrapper();
+}
+
+.news-item-overview-wrapper--odd {
+  background-color: $bg-gray-alternate;
+}
+
+.news-item-overview {
+  @include container;
   @include list-item();
 }
 
@@ -14,9 +21,9 @@ a.news-item-overview {
 }
 
 .news-item-overview__photo-placeholder {
-  width: 200px;
-  height: 200px;
-  padding: 60px;
+  width: 280px;
+  height: 280px;
+  padding: 90px;
   border: 1px solid #aeaeae;
 }
 

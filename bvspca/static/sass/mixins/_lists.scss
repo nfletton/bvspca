@@ -1,36 +1,28 @@
 $list-full-break: 700px;
 
-@mixin list-hover-bg-style() {
-  &:focus, &:hover {
-    text-decoration: none;
-  }
-  @media(min-width: $list-full-break) {
-    &.odd:hover, &.even:hover {
-      background-color: $bg-gray-hover;
-      color: $base-font-color;
-    }
-  }
-  &.even {
+@mixin list-item-wrapper() {
+  padding: {
+    top: 3rem;
+    bottom: 3rem;
   }
 }
 
 @mixin list-item() {
-  @include list-hover-bg-style;
   color: $base-font-color;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: $content-padding/2;
   @media(min-width: $list-full-break) {
     flex-direction: row;
   }
 }
 
 @mixin list-item-photo() {
+  display: block;
+  min-width: 280px;
   @media(min-width: $list-full-break) {
     margin: {
-      top: 0.4rem;
-      right: $content-padding;
+      right: $content-padding-medium;
     }
   }
   img {
@@ -46,23 +38,34 @@ $list-full-break: 700px;
 }
 
 @mixin list-item-date() {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 700;
+  text-transform: uppercase;
   text-align: center;
   margin-bottom: 0.5rem;
+  color: $tertiary-color;
   @media(min-width: $list-full-break) {
     text-align: left;
   }
 }
 
 @mixin list-item-title {
-  //color:$atesl-green;
+  color: $secondary-color;
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  line-height: 1.3;
   text-align: center;
   margin-bottom: 0.5rem;
   @media(min-width: $list-full-break) {
     text-align: left;
+  }
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+    &:link, &:active, &:visited {
+      color: $secondary-color;
+    }
   }
 }
 
@@ -81,8 +84,8 @@ $list-full-break: 700px;
 }
 
 @mixin list-item-read-more() {
-  font-size: 0.9rem;
-  color: $link-color;
+  color: $secondary-color;
+  font-weight: 600;
 }
 //@keyframes fadein {
 //  from {

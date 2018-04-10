@@ -5,21 +5,23 @@
   <div class="news-page">
     <div class="news">
       {% for news_item in news %}
-        <a class="news-item-overview {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" href="{% pageurl news_item %}">
-          <div class="news-item-overview__picture">
-            {% if news_item.main_photo %}
-              {% image news_item.main_photo fill-200x200 class="news-item-overview__photo" %}
-            {% else %}
-              <img class="news-item-overview__photo-placeholder" src="{% static 'svg/calendar.svg' %}" width="100" height="100" style="padding: 49px;border: 1px solid #aeaeae">
-            {% endif %}
-          </div>
-          <div class="news-item-overview__details">
-            <div class="news-item-overview__date">{{ news_item.first_published_at|date:'D, j M Y' }}</div>
-            <div class="news-item-overview__title">{{ news_item.title }}{% if news_item.published_status %}{% endif %}</div>
-            <div class="news-item-overview__summary">{{ news_item.details|truncatewords_html:50|striptags }}<span class="news-item-overview__read-more"> (read more)</span>
+        <div class="news-item-overview-wrapper  news-item-overview-wrapper--{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+          <div class="news-item-overview">
+            <a class="news-item-overview__picture" href="{% pageurl news_item %}">
+              {% if news_item.main_photo %}
+                {% image news_item.main_photo fill-280x280 class="news-item-overview__photo" %}
+              {% else %}
+                <img class="news-item-overview__photo-placeholder" src="{% static 'svg/calendar.svg' %}" style="padding: 49px;border: 1px solid #aeaeae">
+              {% endif %}
+            </a>
+            <div class="news-item-overview__details">
+              <div class="news-item-overview__date">{{ news_item.first_published_at|date:'D, j M Y' }}</div>
+              <div class="news-item-overview__title"><a href="{% pageurl news_item %}">{{ news_item.title }}{% if news_item.published_status %}{% endif %}</a></div>
+              <div class="news-item-overview__summary">{{ news_item.details|truncatewords_html:35|striptags }} <a class="news-item-overview__read-more" href="{% pageurl news_item %}">Read More</a>
+              </div>
             </div>
           </div>
-        </a>
+        </div>
       {% empty %}
         <div class="empty-list"><img src="{% static 'svg/warning.svg' %}">No news available</div>
       {% endfor %}
