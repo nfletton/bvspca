@@ -1,6 +1,6 @@
 $nav-primary-color: #fff;
 $nav-drop-down-bg-color: #af4700;
-$nav-mobile-bg-color: $nav-drop-down-bg-color;
+$nav-mobile-bg-color: $secondary-color;
 
 $nav-breakpoint: 850px;
 
@@ -307,7 +307,6 @@ header {
 }
 
 .main-nav__items-wrapper {
-  background-color: $nav-mobile-bg-color;
   @media(min-width: $nav-breakpoint) {
     background-image: linear-gradient(to bottom, rgba(191, 102, 30, 1) 0%, rgba(232, 125, 36, 1) 18%, rgba(232, 125, 36, 1) 100%);
   }
@@ -404,6 +403,7 @@ header {
     right: 0;
     z-index: 200;
     width: 0;
+    box-shadow:         inset 8px 0px 14px 0px rgba(50, 50, 50, 0.24);
   }
   .main-nav__items {
   }
@@ -447,12 +447,12 @@ header {
 
 /* Mega style drop-down */
 .main-nav__children {
-  background-color: $nav-drop-down-bg-color;
   list-style: none;
   font-weight: 600;
   padding: 0 0 1em 0.5em;
   line-height: 1.3;
   @media(min-width: $nav-breakpoint) {
+    background-color: $nav-drop-down-bg-color;
     display: none !important;
     position: absolute;
     right: 0;
