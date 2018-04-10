@@ -124,21 +124,29 @@
   text-align: center;
   font-size: 1.1em;
   a {
-    padding: 0.25em 1em 0.25em 0;
-    margin: 0 2rem 1rem;
+    padding: 0.25em 0 0.25em 0;
     display: block;
+    font-weight: 600;
     &:hover {
       span {
         background-image: url(../svg/download-active.svg);
       }
     }
+    &:link, &:focus, &:active, &:visited {
+      color: $base-font-color;
+    }
+    @media (min-width: 600px) {
+      margin: 0 2rem 1rem;
+    }
   }
   span {
     background: url(../svg/download.svg) no-repeat 100% 50%;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     line-height: 2;
-    padding-right: 1.5em;
+    padding-right: 1.5rem;
     text-transform: uppercase;
+    font-weight: 400;
+    margin-left: 2rem;
   }
 }
 

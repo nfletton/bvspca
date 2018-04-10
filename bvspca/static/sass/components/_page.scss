@@ -18,15 +18,15 @@ main {
     justify-content: space-between;
     overflow: hidden;
     padding: 0.25em 1em 0.25em 0;
-    margin: 0 2rem 1rem;
     font-weight: 600;
     span {
       position: relative;
       top: 0.2rem;
-      background: url(../svg/download.svg) no-repeat 100% 50%;
+      background: url(../svg/download.svg) no-repeat 100% 0.2rem;
+      background-size: 20px;
       font-size: 0.8rem;
       line-height: 2;
-      padding-right: 3rem;
+      padding-right: 2rem;
       text-transform: uppercase;
     }
     &.odd {
@@ -38,6 +38,9 @@ main {
     }
     &:link, &:focus, &:active, &:visited {
       color: $base-font-color;
+    }
+    @media (min-width: 600px) {
+      margin: 0 2rem 1rem;
     }
   }
 }
