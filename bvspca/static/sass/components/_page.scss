@@ -19,11 +19,14 @@ main {
     overflow: hidden;
     padding: 0.25em 1em 0.25em 0;
     margin: 0 2rem 1rem;
+    font-weight: 600;
     span {
+      position: relative;
+      top: 0.2rem;
       background: url(../svg/download.svg) no-repeat 100% 50%;
       font-size: 0.8rem;
       line-height: 2;
-      padding-right: 2rem;
+      padding-right: 3rem;
       text-transform: uppercase;
     }
     &.odd {
@@ -32,6 +35,9 @@ main {
       span {
         background-image: url(../svg/download-active.svg)
       }
+    }
+    &:link, &:focus, &:active, &:visited {
+      color: $base-font-color;
     }
   }
 }

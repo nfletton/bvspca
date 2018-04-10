@@ -102,12 +102,20 @@
 .external-link {
   a {
     padding: 0.25em 1em 0.25em 0;
-    margin: 0 2rem 1rem;
+    margin: 0 0 1rem 0;
     display: block;
     background: url(../svg/external.svg) no-repeat 100% 55%;
     background-size: 17px;
+    font-weight: 600;
     &:hover {
       background-image: url(../svg/external-active.svg);
+    }
+    &:link, &:focus, &:active, &:visited {
+      color: $base-font-color;
+    }
+    @media (min-width: 500px) {
+      padding: 0.25em 1em 0.25em 0;
+      margin: 0 2rem 1rem;
     }
   }
 }
