@@ -2,12 +2,19 @@
 
 /* Events list page */
 .events-page {
-  @include container;
-  margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
 }
 
-a.event-overview {
+.event-overview-wrapper {
+  @include list-item-wrapper();
+}
+
+.event-overview-wrapper--odd {
+  background-color: $bg-gray-alternate;
+}
+
+.event-overview {
+  @include container;
   @include list-item();
 }
 
@@ -16,9 +23,9 @@ a.event-overview {
 }
 
 .event-overview__photo-placeholder {
-  width: 200px;
-  height: 200px;
-  padding: 60px;
+  width: 280px;
+  height: 280px;
+  padding: 90px;
   border: 1px solid #aeaeae;
 }
 
@@ -55,32 +62,4 @@ a.event-overview {
   display: block;
   margin: $content-padding auto;
   @include responsive-image;
-}
-
-.event-block {
-
-}
-
-$block-row-break: 600px;
-
-.event-block-field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  text-align: center;
-  @media(min-width: $block-row-break) {
-    flex-direction: row;
-  }
-}
-
-.event_block_field__label {
-  font-weight: 600;
-  @media(min-width: $block-row-break) {
-    width: 10em;
-    text-align: right;
-    margin-right: 2em;
-  }
-}
-
-.event_block_field__value {
 }

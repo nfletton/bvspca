@@ -5,22 +5,24 @@
   <div class="events-page">
     <div class="events">
       {% for event in events %}
-        <a class="event-overview {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}" href="{% pageurl event %}">
-          <div class="event-overview__picture">
-            {% if event.main_photo %}
-              {% image event.main_photo fill-200x200 class="event-overview__photo" %}
-            {% else %}
-              <img class="event-overview__photo-placeholder" src="{% static 'svg/calendar.svg' %}" width="100" height="100" style="padding: 49px;border: 1px solid #aeaeae">
-            {% endif %}
-          </div>
-          <div class="event-overview__details">
-            <div class="event-overview__date">{{ event.formatted_date|safe }}</div>
-            <div class="event-overview__title">{{ event.title }}{% if event.published_status %}<span class="published-status {{ event.published_status }}">{{ event.published_status }}</span>{% endif %}</div>
-            <div class="event-overview__summary">
-              {{ event.details|truncatewords_html:50|striptags }}<span class="event-overview__read-more"> (read more)</span>
+        <div class="event-overview-wrapper  event-overview-wrapper--{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+          <div class="event-overview">
+            <a class="event-overview__picture" href="{% pageurl event %}">
+              {% if event.main_photo %}
+                {% image event.main_photo fill-280x280 class="event-overview__photo" %}
+              {% else %}
+                <img class="event-overview__photo-placeholder" src="{% static 'svg/calendar.svg' %}" style="padding: 49px;border: 1px solid #aeaeae">
+              {% endif %}
+            </a>
+            <div class="event-overview__details">
+              <div class="event-overview__date">{{ event.formatted_date|safe }}</div>
+              <div class="event-overview__title"><a href="{% pageurl event %}">{{ event.title }}{% if event.published_status %}<span class="published-status {{ event.published_status }}">{{ event.published_status }}</span>{% endif %}</a></div>
+              <div class="event-overview__summary">
+                {{ event.details|truncatewords_html:35|striptags }} <a class="event-overview__read-more" href="{% pageurl event %}">Read More</a>
+              </div>
             </div>
           </div>
-        </a>
+        </div>
       {% empty %}
         <div class="empty-list"><img src="{% static 'svg/warning.svg' %}">No events available</div>
       {% endfor %}
