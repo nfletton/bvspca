@@ -159,3 +159,111 @@ main {
     font-size: 4.5rem;
   }
 }
+
+/* page navigation on page details page */
+$page-nav-break-1: 440px;
+$page-nav-break-2: 650px;
+
+.page-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  a {
+    display: block;
+  }
+}
+
+.page-navigation__button {
+  border-radius: 2px;
+  background-color: $form-bg;
+  padding: 1rem 2rem;
+  font-weight: 600;
+}
+
+a.page-navigation__button {
+  color: lighten($base-font-color, 20);
+  &:link, &:focus, &:active {
+    color: lighten($base-font-color, 20);
+  }
+  &:hover {
+    background-color: darken($form-bg, 10);
+    text-decoration: none;
+  }
+  @media (min-width: $page-nav-break-2) {
+
+  }
+}
+
+.page-navigation__button--previous {
+  background: $form-bg url(../svg/previous.svg) no-repeat 50% 50%;
+  background-size: 7px;
+  padding: 1rem 1.5rem;
+  @media (min-width: $page-nav-break-1) {
+    padding: 1rem 2rem;
+    background-position: 12% 50%;
+  }
+  @media (min-width: $page-nav-break-2) {
+    padding: {
+      left: 2.5rem;
+    };
+  }
+}
+
+.page-navigation__button--next {
+  background: $form-bg url(../svg/next.svg) no-repeat 50% 50%;
+  background-size: 7px;
+  padding: 1rem 1.5rem;
+  @media (min-width: $page-nav-break-1) {
+    padding: 1rem 2rem;
+    background-position: 88% 50%;
+  }
+  @media (min-width: $page-nav-break-2) {
+    padding: {
+      right: 2.5rem;
+    };
+  }
+}
+
+.page-navigation__button--inactive {
+  color: lighten($base-font-color, 40);
+  padding: 1rem 1.5rem;
+  @media (min-width: $page-nav-break-1) {
+    padding: 1rem 2rem;
+  }
+  &.page-navigation__button--previous {
+    background-image: url(../svg/previous-inactive.svg);
+    @media (min-width: $page-nav-break-1) {
+      background-position: 12% 50%;
+    }
+    @media (min-width: $page-nav-break-2) {
+      padding: {
+        left: 2.5rem;
+      };
+    }
+  }
+  &.page-navigation__button--next {
+    background-image: url(../svg/next-inactive.svg);
+    @media (min-width: $page-nav-break-1) {
+      background-position: 88% 50%;
+    }
+    @media (min-width: $page-nav-break-2) {
+      padding: {
+        right: 2.5rem;
+      };
+    }
+  }
+}
+
+.page-navigation__item-label {
+  display: none;
+  @media (min-width: $page-nav-break-2) {
+    display: inline;
+  }
+}
+
+.page-navigation__action-label {
+  display: none;
+  @media (min-width: $page-nav-break-1) {
+    display: inline;
+  }
+}

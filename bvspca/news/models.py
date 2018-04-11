@@ -19,6 +19,18 @@ class NewsManager(PageManager):
             return news[:limit]
         return news
 
+    def previous(self, current_news_item_date):
+        previous = self.live()\
+            .filter(first_published_at__lt=current_news_item_date)\
+            .order_by('-first_published_at').first()
+        return previous if previous else None
+
+    def next(self, current_news_item_date):
+        next = self.live()\
+            .filter(first_published_at__gt=current_news_item_date)\
+            .order_by('-first_published_at').last()
+        return next if next else None
+
 
 class News(Page, Attachable):
     """
@@ -53,6 +65,13 @@ class News(Page, Attachable):
     settings_panels = Page.settings_panels + [
         FieldPanel('first_published_at')
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        # Update template context
+        context = super(News, self).get_context(request, args, kwargs)
+        context['previous'] = News.objects.previous(current_news_item_date=self.first_published_at)
+        context['next'] = News.objects.next(current_news_item_date=self.first_published_at)
+        return context
 
     class Meta:
         verbose_name_plural = 'News'

@@ -1,0 +1,15 @@
+{% load wagtailcore_tags %}
+
+<div class="page-navigation">
+  {% if previous %}
+    <a class="page-navigation__button page-navigation__button--previous" href="{% pageurl previous %}"><span class="page-navigation__action-label">Previous</span><span class="page-navigation__item-label"> {{ item_name }}</span></a>
+  {% else %}
+    <div class="page-navigation__button page-navigation__button--previous page-navigation__button--inactive"><span class="page-navigation__action-label">Previous</span><span class="page-navigation__item-label"> {{ item_name }}</span></div>
+  {% endif %}
+  <a class="page-navigation__button" href="{% pageurl page.get_parent %}">Back<span class="page-navigation__item-label"> to all {{ item_plural_name }}</span></a>
+  {% if next %}
+    <a  class="page-navigation__button page-navigation__button--next" href="{% pageurl next %}"><span class="page-navigation__action-label">Next</span><span class="page-navigation__item-label"> {{ item_name }}</span></a>
+  {% else %}
+    <div class="page-navigation__button page-navigation__button--next page-navigation__button--inactive"><span class="page-navigation__action-label">Next</span><span class="page-navigation__item-label"> {{ item_name }}</span></div>
+  {% endif %}
+</div>

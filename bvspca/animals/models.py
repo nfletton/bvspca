@@ -124,6 +124,9 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
     def social_media_post_image(self):
         return self.main_photo
 
+    def plural_species(self):
+        return '{}s'.format(self.species)
+
     @classmethod
     def create(cls, petpoint_data):
         return cls(**cls.map_fields(petpoint_data))
@@ -200,7 +203,6 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
         context = super(Animal, self).get_context(request, args, kwargs)
         context['previous'] = Animal.objects.previous(last_intake_date=self.last_intake_date, species=self.species)
         context['next'] = Animal.objects.next(last_intake_date=self.last_intake_date, species=self.species)
-        context['parent'] = self.get_parent()
         return context
 
     def __str__(self):
