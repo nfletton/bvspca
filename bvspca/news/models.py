@@ -67,7 +67,6 @@ class News(Page, Attachable):
     ]
 
     def get_context(self, request, *args, **kwargs):
-        # Update template context
         context = super(News, self).get_context(request, args, kwargs)
         context['previous'] = News.objects.previous(current_news_item_date=self.first_published_at)
         context['next'] = News.objects.next(current_news_item_date=self.first_published_at)

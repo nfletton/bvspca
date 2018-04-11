@@ -18,12 +18,28 @@ from bvspca.core.models_abstract import Attachable, MenuTitleable, MetaTagable, 
 class EventManager(PageManager):
 
     def future(self, limit=None):
-        events = self.live().filter(
-            Q(start_date__gte=datetime.date.today()) | Q(end_date__gte=datetime.date.today()),
-        ).order_by('start_date')
+        events = self.live()\
+            .filter(Q(start_date__gte=datetime.date.today()) | Q(end_date__gte=datetime.date.today()),)\
+            .order_by('start_date', 'end_date')
         if limit:
             return events[:limit]
         return events
+
+    def previous(self, current_event):
+        previous = self.live()\
+            .filter(Q(start_date__gte=datetime.date.today()) | Q(end_date__gte=datetime.date.today()),)\
+            .filter(start_date__lte=current_event.start_date)\
+            .exclude(pk=current_event.pk)\
+            .order_by('start_date', 'end_date').last()
+        return previous if previous else None
+
+    def next(self, current_event):
+        next = self.live()\
+            .filter(start_date__gte=current_event.start_date)\
+            .filter(start_date__gte=datetime.date.today())\
+            .exclude(pk=current_event.pk)\
+            .order_by('start_date', 'end_date').first()
+        return next if next else None
 
 
 class Event(Page, MetaTagable, Attachable):
@@ -86,6 +102,19 @@ class Event(Page, MetaTagable, Attachable):
             data['site_name'] = settings.WAGTAIL_SITE_NAME
             data['page_url'] = self.full_url
         return data
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(Event, self).get_context(request, args, kwargs)
+        context['previous'] = Event.objects.previous(self)
+        context['next'] = Event.objects.next(self)
+        return context
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['start_date']),
+            models.Index(fields=['end_date']),
+            models.Index(fields=['start_date', 'end_date']),
+        ]
 
     def __str__(self):
         return self.title
