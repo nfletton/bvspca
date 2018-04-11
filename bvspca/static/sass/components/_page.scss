@@ -160,6 +160,26 @@ main {
   }
 }
 
+body.news .title-region__title,
+body.event .title-region__title {
+  text-align: center;
+  color: #5b6972;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-top: 1.75em;
+  @media (min-width: 500px) {
+    font-size: 1.8rem;
+  }
+  @media (min-width: 600px) {
+    font-size: 2.1rem;
+  }
+  @media (min-width: 700px) {
+    font-size: 2.5rem;
+  }
+}
+
+
+
 /* page navigation on page details page */
 $page-nav-break-1: 440px;
 $page-nav-break-2: 650px;

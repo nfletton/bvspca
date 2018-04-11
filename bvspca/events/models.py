@@ -12,7 +12,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 from bvspca.core.blocks import ContentStreamBlock
-from bvspca.core.models_abstract import Attachable, MenuTitleable, MetaTagable, PageDesignMixin
+from bvspca.core.models_abstract import Attachable, MenuTitleable, MetaTagable, PageDesignMixin, PageTypeMixin
 
 
 class EventManager(PageManager):
@@ -42,7 +42,7 @@ class EventManager(PageManager):
         return next if next else None
 
 
-class Event(Page, MetaTagable, Attachable):
+class Event(Page, MetaTagable, Attachable, PageTypeMixin):
     details = RichTextField(verbose_name='details')
     start_date = models.DateField(verbose_name='start date')
     end_date = models.DateField(verbose_name='end date', blank=True, null=True)

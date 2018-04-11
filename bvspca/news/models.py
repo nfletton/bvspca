@@ -8,7 +8,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 from bvspca.core.blocks import ContentStreamBlock
-from bvspca.core.models_abstract import Attachable, MenuTitleable, PageDesignMixin
+from bvspca.core.models_abstract import Attachable, MenuTitleable, PageDesignMixin, PageTypeMixin
 
 
 class NewsManager(PageManager):
@@ -32,7 +32,7 @@ class NewsManager(PageManager):
         return next if next else None
 
 
-class News(Page, Attachable):
+class News(Page, Attachable, PageTypeMixin):
     """
     An individual news item
     """

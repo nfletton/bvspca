@@ -99,3 +99,8 @@ class SendMailMixin:
 
     class Meta:
         abstract = True
+
+
+class PageTypeMixin:
+    def page_type(self):
+        return type(self).__name__.lower()

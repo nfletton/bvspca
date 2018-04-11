@@ -46,14 +46,15 @@
 /* News page */
 .news-item-page {
   @include container-narrow;
-  margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
 }
 
 .news__date {
   text-align: center;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $tertiary-color;
 }
 
 .news-item__photo {
