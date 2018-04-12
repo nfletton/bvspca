@@ -121,6 +121,8 @@ class Event(Page, MetaTagable, Attachable, PageTypeMixin):
 
 
 class EventsPage(Page, MenuTitleable, PageDesignMixin):
+    parent_page_types = []
+
     content_panels = [
         FieldPanel('title'),
     ] + PageDesignMixin.content_panels

@@ -96,6 +96,7 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
         index.SearchField('adoption_message'),
     ]
 
+    parent_page_types = ['animals.AnimalsPage']
     subpage_types = []
 
     content_panels = [
@@ -227,6 +228,9 @@ class AnimalsPage(Page, MenuTitleable, PageDesignMixin):
     ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
+
+    parent_page_types = []
+    subpage_types = ['animals.Animal']
 
     def animals(self):
         return Animal.objects.live()\

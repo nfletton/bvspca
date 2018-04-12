@@ -83,6 +83,7 @@ class NewsPage(Page, MenuTitleable, PageDesignMixin):
     """
     News list view
     """
+    parent_page_types = []
     subpage_types = ['news.News']
 
     content_panels = [

@@ -90,6 +90,7 @@ class SupportersPage(Page, MenuTitleable, PageDesignMixin):
         ('supporter', SupporterBlock()),
     ], blank=True)
 
+    parent_page_types = []
     subpage_types = []
 
     search_fields = Page.search_fields + [
@@ -169,6 +170,9 @@ class TeamPage(Page, MenuTitleable, PageDesignMixin):
         ),
     ] + PageDesignMixin.content_panels
 
+    parent_page_types = []
+    subpage_types = []
+
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 
     def team_groups(self):
@@ -240,6 +244,9 @@ class AdoptionCentre(Page, MenuTitleable):
         related_name='+',
         on_delete=models.SET_NULL,
     )
+
+    parent_page_types = []
+
     content_panels = [
         FieldPanel('title'),
         MultiFieldPanel(
