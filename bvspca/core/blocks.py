@@ -128,7 +128,10 @@ class TeamMemberBlock(blocks.StructBlock):
     location = blocks.CharBlock(max_length=50, required=False)
     pets = blocks.CharBlock(max_length=200, required=False)
     bio = blocks.RichTextBlock(required=False)
-    photo = ImageChooserBlock(required=False)
+    photo = ImageChooserBlock(
+        required=False,
+        help_text='Image should be at least 350px x 350px',
+    )
 
     class Meta:
         template = 'core/blocks/team_member.html'

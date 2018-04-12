@@ -1,8 +1,8 @@
-$team-break: 550px;
-$team-photo-border-width: 1px;
+$team-break: 580px;
+$team-member-image-width: 216px;
 
 .team {
-  @include container;
+  @include container-wide;
   margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
   h2 {
@@ -16,51 +16,62 @@ $team-photo-border-width: 1px;
   flex-direction: row;
   flex-wrap: wrap;
   @media(min-width: $team-break) {
-    justify-content: space-between;
   }
 }
 
 .team-member {
-  margin: 2rem 1rem;
-  width: 200px + 2 * $team-photo-border-width;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 2rem;
+  width: $team-member-image-width;
   text-align: center;
   cursor: pointer;
   &:hover {
     .team-member__photo-bio-link {
-      background-color: rgba(0, 0, 0, 0.75);
+      background-color: darken($tertiary-color, 10);
     }
   }
 }
 
-.team-member__photo,
-.team-member__photo-paceholder {
-  border: 1px solid #e68a26;
+.team-member__photo {
   position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  img {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;  }
+}
+
+.team-member__photo-paceholder {
+  border-radius: 50%;
+  border: 1px solid $secondary-color;
+  margin-bottom: 1rem;
+  width: $team-member-image-width;
+  height: $team-member-image-width;
 }
 
 .team-member__photo-bio-link {
-  position: absolute;
-  bottom: 0;
-  right: 0;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: $tertiary-color;
+  border-radius: 3px;
   font-size: 0.85rem;
   padding: 0.25em 0.75em;
+  margin-top: 1rem;
 }
 
 .team-member__name {
-  margin: 1rem 0;
+  color: $base-font-color;
+  font-weight: 700;
 }
 
 .team-member__role {
-  margin: 1rem 0;
   font-size: 1rem;
-}
-
-.team-member__role-since {
-  font-weight: bold;
-  text-align: center;
-  margin: 2rem 0;
+  font-weight: 600;
+  color: $heading-gray-color;
 }
 
 .team-member__photo-paceholder {
@@ -68,51 +79,124 @@ $team-photo-border-width: 1px;
 }
 
 .team-member__bio {
+  padding: 1rem;
   background: #fff url(../svg/close.svg) no-repeat 98% 2%;
   background-size: 24px 24px;
   position: fixed;
-  top: 5%;
-  bottom: 5%;
+  top: 2%;
+  max-height: 96%;
   left: 0.5rem;
   right: 0.5rem;
   text-align: left;
+  border-radius: 10px;
+  @media(min-width: 650px) {
+    left: 5%;
+    right: 5%;
+  }
   @media(min-width: 850px) {
+    padding: 2rem;
+    left: 7%;
+    right: 7%;
+  }
+  @media(min-width: 1000px) {
+    padding: 4rem;
+    left: 10%;
+    right: 10%;
+  }
+  @media(min-width: 1200px) {
+    left: 15%;
+    right: 15%;
+  }
+  @media(min-width: 1400px) {
     left: 20%;
     right: 20%;
   }
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: #fff;
   z-index: 200;
-  padding: $content-padding;
-  span {
-    font-weight: bold;
-  }
 }
 
 .team-member__bio--hidden {
   display: none;
 }
-.team-member__bio-title {
-  text-align: center;
+
+$bio-break: 700px;
+
+.bio-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  @media (min-width: $bio-break) {
+    flex-direction: row;
+  }
 }
 
-.team-member__location {
-  text-align: center;
-  margin: 2rem 0;
-}
-
-.team-member__pets {
-  margin: 1rem 4rem;
-  text-align: center;
-}
-
-.team-member__bio-photo {
-  margin: 2rem 0;
+.bio-header__photo {
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  width: 300px;
+  height: 300px;
   img {
     display: block;
     margin: 0 auto;
-    @include responsive-image;
+    height: 100%;
+    width: auto;
   }
+  @media (min-width: $bio-break) {
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.bio-header__details {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  @media (min-width: $bio-break) {
+    text-align: left;
+  }
+}
+
+.bio-header__name_role {
+  margin-bottom: 1rem;
+  @media (min-width: $bio-break) {
+    margin-bottom: 0;
+  }
+}
+
+.bio-header__name {
+  color: $base-font-color;
+  font-weight: 700;
+  font-size: 2em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.bio-header__role {
+  color: $primary-color;
+  font-weight: 600;
+  font-size: 1.6em;
+  line-height: 1.2 ;
+}
+
+.bio-header__extras {
+  color: $heading-gray-color;
+  font-weight: 600;
+}
+
+.bio-header__location {
+}
+
+.bio-header__pets {
+}
+
+.bio-header__role-since {
 }
 
 .team-overlay {

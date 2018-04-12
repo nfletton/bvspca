@@ -3,37 +3,45 @@
 <div class="team-member" data-key="{{ forloop.parentloop.counter }}-{{ forloop.counter }}">
   {% if value.photo %}
     <div class="team-member__photo">
-      {% image value.photo fill-200x200 %}
-      <div class="team-member__photo-bio-link">bio</div>
+      {% image value.photo fill-216x216 %}
     </div>
   {%  else %}
     <div class="team-member__photo-paceholder">
       <img src="{% static 'svg/paw.svg' %}" width="100" height="100">
-      <div class="team-member__photo-bio-link">bio</div>
     </div>
   {% endif %}
   <div class="team-member__name">{{ value.name }}</div>
   {% if value.role %}
     <div class="team-member__role">{{ value.role }}</div>
   {% endif %}
+  <div class="team-member__photo-bio-link">Read bio</div>
   <div id="bio-{{ forloop.parentloop.counter }}-{{ forloop.counter }}" class="team-member__bio team-member__bio--hidden">
-    <h3 class="team-member__bio-title">{{ value.name }} &mdash; {{ value.role }}</h3>
-    {% if value.location %}
-      <div class="team-member__location">{{ value.location }}</div>
-    {% endif %}
-    {% if value.photo %}
-      <div class="team-member__bio-photo">
-        {% image value.photo width-500 %}
+    <div class="bio-header">
+      {% if value.photo %}
+        <div class="bio-header__photo">
+          {% image value.photo width-300 %}
+        </div>
+      {% endif %}
+      <div class="bio-header__details">
+        <div class="bio-header__name_role">
+          <div class="bio-header__name">{{ value.name }}</div>
+          <div class="bio-header__role">{{ value.role }}</div>
+        </div>
+        <div class="bio-header__extras">
+          {% if value.location %}
+            <div class="bio-header__location">{{ value.location }}</div>
+          {% endif %}
+          {% if value.pets %}
+            <div class="bio-header__pets"><span>Pets:</span> {{ value.pets }}</div>
+          {% endif %}
+          {% if value.role_since %}
+            <div class="bio-header__role-since">{{ value.role_since }}</div>
+          {% endif %}
+        </div>
       </div>
-    {% endif %}
-    {% if value.pets %}
-      <div class="team-member__pets"><span>Pets:</span> {{ value.pets }}</div>
-    {% endif %}
+    </div>
     {% if value.bio %}
       {{ value.bio|richtext }}
-    {% endif %}
-    {% if value.role_since %}
-      <div class="team-member__role-since">{{ value.role_since }}</div>
     {% endif %}
   </div>
 </div>
