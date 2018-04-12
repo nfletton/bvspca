@@ -35,6 +35,13 @@ class ContentPage(Page, MenuTitleable, Attachable, PageDesignMixin):
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
 
+    def title_size(self):
+        if len(self.title) > 50:
+            return 'small'
+        if len(self.title) > 30:
+            return 'medium'
+        return 'large'
+
     class Meta:
         verbose_name = 'General Content Page'
 

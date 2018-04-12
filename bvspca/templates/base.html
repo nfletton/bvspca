@@ -144,7 +144,7 @@
       </div>
     {% else %}
       <div class="title-region">
-        <h1 class="title-region__title">{{ page.title }}</h1>
+        <h1 class="title-region__title{% if page.title_size %} title-size-{{ page.title_size }}{% endif %}">{{ page.title }}</h1>
       </div>
     {% endif %}
   {% endblock content_heading %}

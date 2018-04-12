@@ -147,8 +147,8 @@ main {
 .title-region__title {
   text-align: center;
   color: #5b6972;
-  font-size: 2.2rem;
   font-weight: 400;
+  font-size: 2.2rem;
   @media (min-width: 500px) {
     font-size: 3rem;
   }
@@ -157,6 +157,30 @@ main {
   }
   @media (min-width: 700px) {
     font-size: 4.5rem;
+  }
+  &.title-size-medium {
+    font-size: 1.9rem;
+    @media (min-width: 500px) {
+      font-size: 2.3rem;
+    }
+    @media (min-width: 600px) {
+      font-size: 2.8rem;
+    }
+    @media (min-width: 700px) {
+      font-size: 3.7rem;
+    }
+  }
+  &.title-size-small {
+    font-size: 1.6rem;
+    @media (min-width: 500px) {
+      font-size: 2rem;
+    }
+    @media (min-width: 600px) {
+      font-size: 2.5rem;
+    }
+    @media (min-width: 700px) {
+      font-size: 3rem;
+    }
   }
 }
 
