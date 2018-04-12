@@ -1,0 +1,21 @@
+.content-index {
+  @include container;
+  margin-bottom: $content-padding-medium;
+}
+
+.content-index-items {
+  padding-left: 2rem;
+}
+
+.content-index-items__item {
+  font-weight: 600;
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 1rem;
+  &:link, &:active, &:visited {
+    color: $heading-gray-color;
+  }
+  &:hover {
+    color: darken($heading-gray-color, 10);
+  }
+}
