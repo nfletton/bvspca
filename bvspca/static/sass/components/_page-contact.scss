@@ -1,4 +1,34 @@
-.contact-content {
+$two-column-break: 900px;
+
+.contact-content-top {
+  @include container;
+  margin-bottom: $content-padding-medium;
+  @media (min-width: $two-column-break) {
+    @include container-wide;
+  }
+}
+
+.two-columns {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: $two-column-break) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.column-one {
+  @media (min-width: $two-column-break) {
+    margin-right: 4rem;
+  }
+}
+
+.column-two {
+  @media (min-width: $two-column-break) {
+  }
+}
+
+.contact-content-bottom {
   @include container-narrow;
   margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
@@ -14,4 +44,56 @@
   @include container-narrow;
   margin-top: $content-padding-large;
   margin-bottom: $content-padding-large;
+}
+
+.contact-bar-wrapper {
+  background-color: $secondary-color;
+}
+
+.contact-bar-container {
+  @include container-wide;
+}
+
+$contact-bar-break: 600px;
+.contact-bar {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  @media (min-width: $contact-bar-break) {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+.contact-bar-block {
+  display: block;
+  padding-top: 40px;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  a {
+    &:link, &:active, &:visited {
+      color: #fff;
+    }
+  }
+  @media (min-width: $contact-bar-break) {
+    margin-bottom: 0;
+  }
+}
+
+.contact-bar-block__phone {
+  background: url(../svg/phone-white.svg) no-repeat 50% 0;
+  background-size: 32px;
+}
+
+.contact-bar-block__email {
+  background: url(../svg/email-white.svg) no-repeat 50% 0;
+  background-size: 34px;
+}
+
+.contact-bar-block__fax {
+  background: url(../svg/fax-white.svg) no-repeat 50% 0;
+  background-size: 30px;
+  margin-bottom: 0;
 }

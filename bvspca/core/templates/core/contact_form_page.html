@@ -5,10 +5,30 @@
 {% block body_class %}contact-page{% endblock %}
 
 {% block content %}
-  <div class="contact-content">
-    {% for block in page.intro %}
-      {% include_block block %}
-    {% endfor %}
+  <div class="contact-content-top">
+    <div class="two-columns">
+      <div class="column-one">
+        {% for block in page.column_1 %}
+          {% include_block block %}
+        {% endfor %}
+      </div>
+      <div class="column-two">
+        {% for block in page.column_2 %}
+          {% include_block block %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="contact-bar-wrapper">
+    <div class="contact-bar-container">
+      <div class="contact-bar">
+        <div class="contact-bar-block contact-bar-block__phone"><a href="tel:1-403-609-2022">403-609-2022</a></div>
+        <div class="contact-bar-block contact-bar-block__email"><a href="mailto:info@bowvalleyspca.org">info@bowvalleyspca.org</a></div>
+        <div class="contact-bar-block contact-bar-block__fax">403-609-2110</div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-content-bottom">
     <form class="form-horizontal contact-form" action="{% pageurl page %}#form" method="POST" id="form">
       {% csrf_token %}
       {{ form|crispy }}

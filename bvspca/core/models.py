@@ -274,13 +274,15 @@ class ContactFormField(AbstractFormField):
 
 
 class ContactFormPage(MenuTitleable, SendMailMixin, WagtailCaptchaEmailForm, Page):
-    intro = StreamField(ContentStreamBlock(), verbose_name="Details", blank=True)
+    column_1 = StreamField(ContentStreamBlock(), blank=True)
+    column_2 = StreamField(ContentStreamBlock(), blank=True)
     thank_you_text = RichTextField(blank=True)
 
     subpage_types = []
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('intro'),
+        StreamFieldPanel('column_1'),
+        StreamFieldPanel('column_2'),
         FieldPanel('thank_you_text'),
         InlinePanel('form_fields', label="Form fields"),
         MultiFieldPanel([

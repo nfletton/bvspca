@@ -1,0 +1,9 @@
+table {
+  border-collapse: collapse;
+  tbody tr:nth-of-type(odd) {
+    background-color: $form-bg;
+  }
+  td {
+    padding-right: 1rem;
+  }
+}
