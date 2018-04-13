@@ -302,6 +302,6 @@ class ContentIndexPage(MenuTitleable, Page, PageDesignMixin):
     content_panels = Page.content_panels + [
         FieldPanel('intro'),
         FieldPanel('empty_message'),
-    ]
+    ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
