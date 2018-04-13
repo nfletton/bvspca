@@ -278,6 +278,7 @@ class ContactFormPage(MenuTitleable, SendMailMixin, WagtailCaptchaEmailForm, Pag
     column_2 = StreamField(ContentStreamBlock(), blank=True)
     thank_you_text = RichTextField(blank=True)
 
+    parent_page_types = []
     subpage_types = []
 
     content_panels = Page.content_panels + [
