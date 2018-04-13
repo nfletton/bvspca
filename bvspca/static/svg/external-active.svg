@@ -1,6 +1,1 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-<g id="icomoon-ignore">
-</g>
-<path fill="#424242" d="M352 416h-256v-256h144l64-64h-272v384h384v-272l-64 64v144z"></path>
-<path fill="#424242" d="M512 0h-208l80 80-240 240 48 48 240-240 80 80v-208z"></path>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#424242" d="M352 416H96V160h144l64-64H32v384h384V208l-64 64v144z"/><path fill="#424242" d="M512 0H304l80 80-240 240 48 48 240-240 80 80V0z"/></svg>
