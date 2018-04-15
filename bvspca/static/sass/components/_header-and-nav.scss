@@ -307,8 +307,10 @@ header {
 }
 
 .main-nav__items-wrapper {
+  display: none;
   @media(min-width: $nav-breakpoint) {
     background-image: linear-gradient(to bottom, rgba(191, 102, 30, 1) 0%, rgba(232, 125, 36, 1) 18%, rgba(232, 125, 36, 1) 100%);
+    display: block;
   }
 }
 
@@ -417,6 +419,9 @@ header {
     padding: 0 0 1rem 1rem;
   }
   .nav-visible {
+    .main-nav__items-wrapper {
+      display: block;
+    }
     .main-nav {
       background-color: $nav-mobile-bg-color;
       width: 320px;
