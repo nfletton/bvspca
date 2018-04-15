@@ -20,11 +20,13 @@ $two-column-break: 900px;
 .column-one {
   @media (min-width: $two-column-break) {
     margin-right: 4rem;
+    width: 50%;
   }
 }
 
 .column-two {
   @media (min-width: $two-column-break) {
+    width: 50%;
   }
 }
 
