@@ -57,6 +57,15 @@ footer {
   }
 }
 
+.footer-block-content {
+  display: inline-block;
+  text-align: center;
+  @media (min-width: $footer-block-break) {
+    text-align: left;
+    margin-bottom: 0;
+  }
+}
+
 .contact-block__hours {
 }
 
@@ -166,10 +175,6 @@ $copyright-break: 1000px;
   vertical-align: top;
   position: relative;
   top: 4px;
-}
-
-.indented-list-content {
-  display: inline-block;
 }
 
 /* Mailchimp footer signup */
