@@ -1,8 +1,15 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="swiper-slide" id="slide-{{ forloop.counter }}" >
-  <a class="swiper-slide__link" href="{% if value.page %}{% pageurl value.page %}{% else %}/{% endif %}">
-    <div class="swiper-slide__title">{{ value.title }}</div>
-    <div class="swiper-slide__summary">{{ value.summary }}</div>
-  </a>
+  {% if value.page %}
+    <a class="swiper-slide__message swiper-slide__link" href="{% pageurl value.page %}">
+      <div class="swiper-slide__title">{{ value.title }}<span></span></div>
+      <div class="swiper-slide__summary">{{ value.summary }}</div>
+    </a>
+  {% else %}
+    <div class="swiper-slide__message">
+      <div class="swiper-slide__title">{{ value.title }}</div>
+      <div class="swiper-slide__summary">{{ value.summary }}</div>
+    </div>
+  {% endif %}
 </div>

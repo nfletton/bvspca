@@ -23,9 +23,23 @@
   display: block;
 }
 
+.swiper-slide__message {
+  @include container;
+  margin-top: 150px;
+}
+
 .swiper-slide__link {
+  display: block;
   &:hover {
     text-decoration: none;
+    span {
+      background-image: url(../svg/continue.svg);
+    }
+  }
+  span {
+    padding: 0 2rem;
+    background: url(../svg/continue-white.svg) no-repeat 100% 60%;
+    background-size: 40px;
   }
 }
 
@@ -33,15 +47,10 @@
   font-size: 3rem;
   font-weight: 600;
   text-align: center;
-  margin-top: 150px;
   @media (min-width: 500px) {
     margin: 0;
     text-align: left;
-    position: absolute;
-    top: 103px;
-    left: 15%;
     font-size: 4rem;
-    z-index: 10;
     color: $primary-color;
   }
 }
@@ -54,11 +63,7 @@
   @media (min-width: 500px) {
     margin: 0;
     text-align: left;
-    position: absolute;
-    top: 205px;
-    left: 15%;
     width: 350px;
-    z-index: 10;
   }
 }
 
