@@ -160,8 +160,8 @@ class SupporterBlock(blocks.StructBlock):
 
 
 class SliderBlock(blocks.StructBlock):
-    title = blocks.CharBlock(max_length=25)
-    summary = blocks.TextBlock(max_length=60)
+    title = blocks.CharBlock(max_length=25, required=False)
+    summary = blocks.TextBlock(max_length=60, required=False)
     photo = ImageChooserBlock(help_text='This image MUST BE EXACTLY 1400px by 475px')
     page = PageChooserBlock(required=False)
 
