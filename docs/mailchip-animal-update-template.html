@@ -540,16 +540,34 @@
 			/*@editable*/line-height:150% !important;
 		}
 
-}		.animal-summary__adoption-message{
-			background-color:#f5dd5d;
-		}
-		.animal-heading{
-			color:#6d6d6d;
-		}
+}
+    .animal-summary__adoption-message{
+      background-color:#f5dd5d;
+    }
+    .animal-section {
+      color:#6d6d6d;
+      margin: 1rem 0 2rem 0;
+      text-align: center;
+      font-size: 20px;
+    }
+    .animal-heading {
+      color:#6d6d6d;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
     .animal-news__empty {
       text-align: center;
       font-style: italic;
       margin: 2rem  0;
+    }
+    .animal-read-more {
+      display: block;
+      text-align: center;
+      margin: 1rem 0 2rem 0;
+    }
+    .animal-photo {
+      text-align: center;
+      margin-bottom: 1rem;
     }
 </style></head>
   <body>
@@ -663,12 +681,12 @@
                     <tbody class="mcnTextBlockOuter">
                       <tr>
                         <td class="mcnTextBlockInner" valign="top">
-                          <div style="text-align:center;margin-top:20px;">
-                            <span class="animal-heading" style="font-size:20px">Animals arrived in the last 14 Days</span>
+                          <div class="animal-section">
+                            <span>Animals arrived in the last 14 Days</span>
                           </div>
                           <div class="mcnTextContent" mc:edit="arrived"></div>
-                          <div style="text-align:center;margin-top:40px;">
-                            <span class="animal-heading" style="font-size:20px">Animals adopted in the last 14 Days</span>
+                          <div class="animal-section">
+                            <span>Animals adopted in the last 14 Days</span>
                           </div>
                           <div class="mcnTextContent" mc:edit="adopted"></div>
                         </td>

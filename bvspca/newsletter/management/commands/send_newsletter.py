@@ -18,14 +18,15 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         client = MailChimp(settings.MAILCHIMP_SECRET_KEY, settings.MAILCHIMP_USERNAME,  timeout=20.0)
 
+        subject = '{} - {:%b %-d, %Y}'.format(settings.MAILCHIMP_SUBJECT, datetime.date.today())
         campaign_data = {
             "type": "regular",
             "recipients": {
                 "list_id": settings.MAILCHIMP_LIST_ID,
             },
             "settings": {
-                "subject_line": settings.MAILCHIMP_SUBJECT,
-                "title": '{} ({:%Y-%m-%d})'.format(settings.MAILCHIMP_SUBJECT, datetime.date.today()),
+                "subject_line": subject,
+                "title": subject,
                 "from_name": settings.MAILCHIMP_FROM_NAME,
                 "reply_to": settings.MAILCHIMP_REPLY_TO,
                 "template_id": int(settings.MAILCHIMP_TEMPLATE_ID),

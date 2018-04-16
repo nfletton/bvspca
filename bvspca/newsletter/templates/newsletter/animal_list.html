@@ -4,30 +4,22 @@
   <table style="width:100%">
     <tbody>
     {% for animal in animals %}
-      <tr style="padding-top: 40px">
-        <td style="padding: 40px 40px 0 0; vertical-align: top">
-          {% if animal.main_photo %}
-            {% image animal.main_photo width-175 as main_photo%}
+      <tr>
+        <h3 class="animal-heading">{{ animal.title }}</h3>
+        {% if animal.main_photo %}
+          <div class="animal-photo">
+            {% image animal.main_photo width-300 as main_photo%}
             <img src="{{ root_url }}{{ main_photo.url }}" width="{{ main_photo.width }}"
                  style="border: 1px solid #6e6e6e"
                  height="{{ main_photo.height }}" alt="{{ main_photo.alt }}" />
-          {% else %}
-            <img class="animal-summary__photo-placeholder"
-                 style="border: 1px solid #6e6e6e"
-                 src="{% if animal.species == 'Cat' %}{% static 'svg/cat.svg' %}{% else %}{% static 'svg/dog.svg' %}{% endif %}"
-                 width="175" height="175">
-          {% endif %}
-        </td>
-        <td style="width: 100%; padding: 40px 5px 0 0; vertical-align: top">
-          <h4 class="animal-heading">{{ animal.title }}</h4>
-          {% if animal.adoption_message %}
-            <div class="animal-summary__adoption-message">{{ animal.adoption_message }}</div>
-          {% else %}
-            <div class="animal-summary__description">{{ animal.description|truncatewords_html:100 }}</div>
-          {% endif %}
-          <a style="float: right; margin-top: 20px;"
-             href="{{ root_url }}{% pageurl animal %}">Learn more about {{ animal.title }} &hellip;</a>
-        </td>
+          </div>
+        {% endif %}
+        {% if animal.adoption_message %}
+          <div class="animal-summary__adoption-message">{{ animal.adoption_message }}</div>
+        {% else %}
+          <div class="animal-summary__description">{{ animal.description|truncatewords_html:100 }}</div>
+        {% endif %}
+        <a class="animal-read-more" href="{{ root_url }}{% pageurl animal %}">Learn more about {{ animal.title }} &hellip;</a>
       </tr>
     {% endfor %}
     </tbody>
