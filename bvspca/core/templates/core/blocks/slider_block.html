@@ -1,19 +1,21 @@
 {% load wagtailcore_tags wagtailimages_tags utility_tags %}
 
 <div class="swiper-slide" id="slide-{{ forloop.counter }}" >
-  {% if value.page %}
-    <a class="swiper-slide__message swiper-slide__link" href="{% pageurl value.page %}">
-      <div class="swiper-slide__content">
-        <div class="swiper-slide__title">{{ value.title }}<span></span></div>
-        <div class="swiper-slide__summary">{{ value.summary|add_breaks|safe }}</div>
+  {%  if value.title %}
+    {% if value.page %}
+      <a class="swiper-slide__message swiper-slide__link" href="{% pageurl value.page %}">
+        <div class="swiper-slide__content">
+          <div class="swiper-slide__title">{{ value.title }}<span></span></div>
+          <div class="swiper-slide__summary">{{ value.summary|add_breaks|safe }}</div>
+        </div>
+      </a>
+    {% else %}
+      <div class="swiper-slide__message">
+        <div class="swiper-slide__content">
+          <div class="swiper-slide__title">{{ value.title }}</div>
+          <div class="swiper-slide__summary">{{ value.summary|add_breaks|safe }}</div>
+        </div>
       </div>
-    </a>
-  {% else %}
-    <div class="swiper-slide__message">
-      <div class="swiper-slide__content">
-        <div class="swiper-slide__title">{{ value.title }}</div>
-        <div class="swiper-slide__summary">{{ value.summary|add_breaks|safe }}</div>
-      </div>
-    </div>
+    {% endif %}
   {% endif %}
 </div>
