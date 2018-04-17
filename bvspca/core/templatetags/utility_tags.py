@@ -43,3 +43,8 @@ def seo_and_social_meta_tags(context, page):
                 description=page.search_description,
             )
         return data
+
+
+@register.filter
+def add_breaks(value):
+    return value.replace('|', '<br>')
