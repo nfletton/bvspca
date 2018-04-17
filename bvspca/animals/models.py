@@ -192,9 +192,14 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
         data = super().seo_and_social_meta_values()
         if self.main_photo:
             data['photo'] = self.main_photo
-            data['social_title'] = 'Meet {}'.format(self.title)
-            data['social_description'] = \
-                '{} is looking for a forever home. Contact us for more information'.format(self.title)
+            if self.adoption_date:
+                data['social_title'] = '{} has been adopted!'.format(self.title)
+                data['social_description'] = \
+                    'We are pleased to announce that {} found their forever home on {{:%b %-d, %Y}}.'.format(self.title, self.adoption_date)
+            else:
+                data['social_title'] = 'Meet {}'.format(self.title)
+                data['social_description'] = \
+                    '{} is looking for a forever home. Contact us for more information'.format(self.title)
             data['site_name'] = getattr(settings, 'WAGTAIL_SITE_NAME')
             data['page_url'] = self.full_url
         return data
