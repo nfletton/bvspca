@@ -197,7 +197,7 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
                 data['social_description'] = \
                     'We are pleased to announce that {} found their forever home on {{:%b %-d, %Y}}.'.format(self.title, self.adoption_date)
             else:
-                data['social_title'] = 'Meet {}'.format(self.title)
+                data['social_title'] = 'Say hello to {}'.format(self.title)
                 data['social_description'] = \
                     '{} is looking for a forever home. Contact us for more information'.format(self.title)
             data['site_name'] = getattr(settings, 'WAGTAIL_SITE_NAME')
