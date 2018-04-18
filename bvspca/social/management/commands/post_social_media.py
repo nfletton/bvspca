@@ -3,6 +3,7 @@ import logging
 from TwitterAPI import TwitterAPI
 from django.conf import settings
 from django.core.management.base import BaseCommand
+from django.utils.html import strip_tags
 from django.utils.text import Truncator
 from facebook import GraphAPI
 
@@ -76,7 +77,7 @@ class Command(BaseCommand):
             raise
         else:
             return {
-                'message': page.social_media_post_text(),
+                'message': strip_tags(page.social_media_post_text()),
                 'image_data': raw_image_data,
                 'image_url': sized_image.url,
                 'destination': page.get_full_url(),
