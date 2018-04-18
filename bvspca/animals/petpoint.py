@@ -1,6 +1,7 @@
 import datetime
 import io
 import logging
+import html
 
 from django.conf import settings
 from lxml import etree
@@ -141,5 +142,5 @@ class PetPointAnimal:
                 return True if property_value == 'Yes' else False
             if property_value is None:
                 return ''
-            return property_value
+            return html.unescape(property_value)
         return None
