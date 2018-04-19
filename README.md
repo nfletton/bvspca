@@ -1,11 +1,58 @@
 # Bow Valley SPCA Website
 
-## Apps
+The Bow Valley SPCA's mission is to provide the community with an 
+adoption centre following a no kill, no cage philosophy to shelter, 
+care for and re-home stray and abandoned dogs and cats and promote 
+humane attitudes and responsible pet companionship through educational 
+programs and community leadership.
+
+Sponsorship of the website build has been provided by the
+[Calgary Foundation](https://calgaryfoundation.org/) and 
+[Blue Hut](https://www.thebluehut.com/). Read more 
+[here](https://www.bowvalleyspca.org/credits/)
+
+The code for the website is open source and other SPCAs, in particular,
+are encouraged to make use of the code as they see fit.
+
+## Key Website Features
+
+* Easy to use content editing interface
+* Supports news, events, team and general content management for the
+  centre
+* Integrates with [PetPoint](http://www.petpoint.com/) 
+  data management system for a feed of adoptable animals at the centre 
+* Animal data retrieved from PetPoint is stored locally to the website
+  to allow:
+    - end-users to interact with animal information directly
+      on the website
+    - improved social interactions with the website via Facebook, 
+      Twitter and email marketing
+    - improved SEO
+    - ability to allow additional content to be associated with animals
+      that is not supported by PetPoint
+* Automated posting of new and recently adopted animals to Facebook
+  and Twitter
+* Automated regular email listing new arrivals and recently adopted 
+  animals
+
+## Technical Overview
+
+The website is built with [Wagtail](https://wagtail.io/) and 
+[Django](https://www.djangoproject.com/).
+
+Experience with either Django or Wagtail will be required to make use
+of this code.
+
+Code structure based on 
+[cookiecutter-django](https://github.com/pydanny/cookiecutter-django)
+
+
+## Django Apps
 
 ### core
 
 ### animals
-This app provides the main functionality for displaying animals
+The animals app provides the main functionality for displaying animals
 available for adoption. The app is based around using 
 PetPoint (http://www.petpoint.com/) for managing animal data. It
 provides a Django [management command](#cronjobs) to synchronize 
@@ -15,27 +62,33 @@ with an 'Animal' Wagtail page model.
 A PETPOINT_AUTH_KEY [environment variable](#venv) needs to be set to
 enable access to the PetPoint SOAP API.
 
-Animal photo galleries use the 
+Photo galleries on the animal details page use
 [Featherlight](https://github.com/noelboss/featherlight/) jQuery 
 lightbox plugin.
 
 The animals app can easily be modified for rescue centres
 that do not use PetPoint by modifying the Wagtail Animal page model
-to suit specific requirements.
+to suit their specific requirements.
 
 
 ### newsletter
-Includes a management command to construct a weekly newsletter with
-recent updates on animals, news and events. The newsletter is published
-via MailChimp.
+The newsletter app provides a [management command](#cronjobs) to 
+construct and send a weekly newsletter listing recently arrived and 
+adopten animals. The newsletter is published via MailChimp.
 
 The newsletter includes:
 
 * animals arrived in the last 14 days
 * animals adopted in the last 14 days
-* upcoming events in the next 7 days
-* news items in the last 7 days
 
+### social
+
+The social app provides a simple queue where pages can be appended for
+later posting to social media. A [management command](#cronjobs) is run
+to dequeue items and post them to Facebook and Twitter.
+
+Pages implementing the SocialMediaPostable abstract class can be added 
+to the queue. Currently only the Animal page model implements this.
 
 ## Deployment
 ### <a name="venv"/>Evironment Variables
@@ -49,8 +102,8 @@ environment
 | DJANGO_ADMIN_URL | | r'my-secret-django-admin-path' | Defaults to 'djadmin' in development |
 | DATABASE_URL | | | |
 | WAGTAIL_ADMIN_URL | | r'my-secret-wagtail-admin-path' | Defaults to 'admin' in development |
-| RECAPTCHA_SITE_KEY | | | |
-| RECAPTCHA_SECRET_KEY | | | |
+| RECAPTCHA_SITE_KEY | | | Google Recaptcha |
+| RECAPTCHA_SECRET_KEY | | |  Google Recaptcha |
 | GOOGLE_ANALYTICS_ID | core | | |
 | ADDTHIS_PUB_ID  | core | | |
 | MAILCHIMP_USERNAME | newsletter | | Required by 'newsletter' app |
@@ -86,14 +139,6 @@ environment
   $ pytest bvspca -f               # watches for changes if pytest-xdist installed
 ```
 
-### Test coverage
-
-To run the tests, check your test coverage, and generate an HTML coverage report::
-```sh
-    $ pytest --cov=bvspca bvspca                              # results in terminal
-    $ pytest --cov-report html:htmlcov --cov=bvspca bvspca    # html report to directory htmlcov
-```
-
 ### Live reloading, Sass compilation and JS bundling
 
 ```sh
@@ -108,13 +153,10 @@ To run the tests, check your test coverage, and generate an HTML coverage report
 
 ## <a name="cronjobs"/>Manage.py Cron Jobs Summary
 
-| Command | Required by |Frequency | Note |
+| Command | Required by |Suggested Frequency | Note |
 |---|---|---|---|
 | clearsessions | django | daily | |
-| publish_scheduled_pages | wagtail | hourly | |
-| sync_petpoint_data | animals app | daily | |
+| publish_scheduled_pages | wagtail | every hour | |
+| sync_petpoint_data | animals app | every 30 minutes | |
 | send_newsletter | newsletter app | weekly | |
-
-## Graphic Design
-
-### Fonts
+| post_social_media | social app | daily | |
