@@ -38,6 +38,7 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
         verbose_name='petpoint animal id',
         unique=True,
     )
+    stage = models.CharField(max_length=100, blank=True)
     species = models.CharField(max_length=200, blank=True)
     sex = models.CharField(max_length=10)
     primary_breed = models.CharField(max_length=100, blank=True)
@@ -141,6 +142,7 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
         """
         return {
             'petpoint_id': petpoint_data.ID,
+            'stage': petpoint_data.Stage,
             'title': petpoint_data.AnimalName,
             'species': petpoint_data.Species,
             'sex': petpoint_data.Sex,

@@ -62,7 +62,7 @@
           </tr>
           <tr class="animal-profile__info-item">
             <td class="animal-profile__info-item-label">Status</td>
-            <td class="animal-profile__info-item-value">{% if page.on_hold %}On Hold{% elif page.adoption_date %}Adopted on {{ page.adoption_date }}{% else %}Available for Adoption{% endif %}</td>
+            <td class="animal-profile__info-item-value">{% if page.adoption_date %}Adopted on {{ page.adoption_date }}{% else %}{{ page.stage }}{% endif %}</td>
           </tr>
           {% if page.last_intake_date %}
             <tr class="animal-profile__info-item animal-profile__info-item--even">
