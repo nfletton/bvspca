@@ -1,7 +1,16 @@
+from wagtail.contrib.modeladmin.helpers import PagePermissionHelper
 from wagtail.contrib.modeladmin.options import (ModelAdmin, modeladmin_register)
 
 
 from .models import News
+
+
+class NewsPagePermissionHelper(PagePermissionHelper):
+    def user_can_list(self, user):
+        """
+        Only show news list page in admin if user can create one
+        """
+        return self.user_can_create(user)
 
 
 class NewsModelAdmin(ModelAdmin):
@@ -13,6 +22,7 @@ class NewsModelAdmin(ModelAdmin):
     list_display = ('title', 'first_published_at',)
     ordering = ('-first_published_at',)
     list_per_page = 20
+    permission_helper_class = NewsPagePermissionHelper
 
 
 modeladmin_register(NewsModelAdmin)
