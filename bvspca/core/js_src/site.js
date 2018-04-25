@@ -3,6 +3,33 @@ const SEARCH_VISIBLE_CLASS = 'search-visible';
 
 
 /* Navigation */
+function deactivateMainNavParentLinks() {
+  const mainNavParentItems = Array.from(document.getElementsByClassName('main-nav__parent'));
+  mainNavParentItems.forEach((parentNavItem) => {
+    parentNavItem.classList.add('disabled');
+    parentNavItem.href = '';
+    parentNavItem.addEventListener('click', (event) => {
+      event.preventDefault();
+    });
+  });
+}
+
+function onFirstTouch() {
+  // detect if the user is touching
+  // https://codeburst.io/the-only-way-to-detect-touch-with-javascript-7791a3346685
+  // alert('touch5');
+  document.body.classList.add('user-is-touching');
+  const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  // deactivate parent nav links if touch device and full navigation
+  if (width >= 850) {
+    deactivateMainNavParentLinks();
+  }
+  window.removeEventListener('touchstart', onFirstTouch, false);
+}
+
+window.addEventListener('touchstart', onFirstTouch, false);
+
+
 document.getElementById('main-nav-toggle').addEventListener('click', (event) => {
   const bodyClasses = document.body.classList;
   if (bodyClasses.contains(NAV_VISIBLE_CLASS)) {
