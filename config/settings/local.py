@@ -67,7 +67,7 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 # ------------------------------------------------------------------------------
 INSTALLED_APPS += ('wagtail.contrib.styleguide', )
 
-ALLOWED_HOSTS = ('127.0.0.1', '10.0.0.101', 'localhost', 'www.dev.bluehut.ca')
+ALLOWED_HOSTS = ('127.0.0.1', '10.0.0.101', 'localhost', 'www.dev.bluehut.ca', '192.168.0.106')
 
 # LOGGING CONFIGURATION
 # ------------------------------------------------------------------------------
