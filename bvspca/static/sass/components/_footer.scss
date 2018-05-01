@@ -141,22 +141,20 @@ $copyright-break: 1000px;
 .contact-icon {
   width: 22px;
   margin-right: 22px;
-  vertical-align: text-top;
+  vertical-align: top;
+  position: relative;
 }
 
 .contact-icon-email {
-  position: relative;
-  top: 5px;
+  top: 2px;
 }
 
 .contact-icon-phone {
-  position: relative;
   top: 3px;
 }
 
 .contact-icon-fax {
-  position: relative;
-  top: 3px;
+  top: -3px;
 }
 
 .footer-address-hours {
@@ -174,7 +172,7 @@ $copyright-break: 1000px;
   margin-right: 13px;
   vertical-align: top;
   position: relative;
-  top: 4px;
+  top: -2px;
 }
 
 /* Mailchimp footer signup */

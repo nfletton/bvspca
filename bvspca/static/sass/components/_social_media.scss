@@ -12,8 +12,7 @@
     color: $footer-text;
   }
   li {
-    margin-bottom: 1.5em;
-    vertical-align: top;
+    margin-bottom: 0.9em;
   }
 }
 
@@ -21,19 +20,25 @@
   width: 28px;
   margin-right: 28px;
   vertical-align: text-top;
+  position: relative;
 }
 
 .footer-social-icon__facebook {
   width: 14px;
   margin: 0 calc(7px + 28px) 0 7px;
+  top: -4px;
+}
+
+.footer-social-icon__twitter {
+  top: -3px;
 }
 
 .footer-social-icon__youtube {
-  position: relative;
-  top: 3px;
+  top: -2px;
 }
 
 .footer-social-icon__instagram {
   width: 24px;
   margin: 0 calc(2px + 28px) 0 2px;
+  top: -4px;
 }

@@ -35,9 +35,12 @@
 
 .pager-btn__previous {
   background: url(../svg/chevron-left.svg) no-repeat 0 0;
+  background-size: 38px;
 }
+
 .pager-btn__next {
   background: url(../svg/chevron-right.svg) no-repeat 0 0;
+  background-size: 38px;
 }
 
 .pager-btn--active {
