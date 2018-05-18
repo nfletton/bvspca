@@ -19,16 +19,16 @@ class AnimalManager(PageManager):
     def random(self, count):
         return self.live().filter(adoption_date__isnull=True).order_by('?')[:count]
 
-    def previous(self, last_intake_date, species):
+    def previous(self, pk, species):
         previous = self.live()\
-            .filter(species=species, adoption_date__isnull=True, last_intake_date__gt=last_intake_date)\
-            .order_by('-last_intake_date').last()
+            .filter(species=species, adoption_date__isnull=True, pk__gt=pk)\
+            .order_by('-pk').last()
         return previous if previous else None
 
-    def next(self, last_intake_date, species):
+    def next(self, pk, species):
         next = self.live()\
-            .filter(species=species, adoption_date__isnull=True, last_intake_date__lt=last_intake_date)\
-            .order_by('-last_intake_date').first()
+            .filter(species=species, adoption_date__isnull=True, pk__lt=pk)\
+            .order_by('-pk').first()
         return next if next else None
 
 
@@ -209,8 +209,8 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
     def get_context(self, request, *args, **kwargs):
         # Update template context
         context = super(Animal, self).get_context(request, args, kwargs)
-        context['previous'] = Animal.objects.previous(last_intake_date=self.last_intake_date, species=self.species)
-        context['next'] = Animal.objects.next(last_intake_date=self.last_intake_date, species=self.species)
+        context['previous'] = Animal.objects.previous(pk=self.pk, species=self.species)
+        context['next'] = Animal.objects.next(pk=self.pk, species=self.species)
         return context
 
     def __str__(self):
@@ -243,7 +243,7 @@ class AnimalsPage(Page, MenuTitleable, PageDesignMixin):
         return Animal.objects.live()\
             .descendant_of(self)\
             .filter(adoption_date__isnull=True)\
-            .order_by('-last_intake_date')
+            .order_by('-pk')
 
     def __str__(self):
         return self.title
