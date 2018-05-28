@@ -197,7 +197,7 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
             if self.adoption_date:
                 data['social_title'] = '{} has been adopted!'.format(self.title)
                 data['social_description'] = \
-                    'We are pleased to announce that {} found their forever home on {{:%b %-d, %Y}}.'.format(self.title, self.adoption_date)
+                    'We are pleased to announce that {} found their forever home on {:%b %-d, %Y}.'.format(self.title, self.adoption_date)
             else:
                 data['social_title'] = 'Say hello to {}'.format(self.title)
                 data['social_description'] = \
