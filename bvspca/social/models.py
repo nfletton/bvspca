@@ -24,11 +24,11 @@ class SocialMediaPostable():
 class SocialMediaQueueManager(models.Manager):
     def delete_old_entries(self):
         """
-        Delete all entries from queue older than 7 days
+        Delete all entries from queue older than 14 days
 
         :return:
         """
-        count, counts_by_object_type = self.filter(date__lt=datetime.now() - timedelta(7)).delete()
+        count, counts_by_object_type = self.filter(date__lt=datetime.now() - timedelta(14)).delete()
         if count > 0:
             for object_type, object_count in counts_by_object_type.items():
                 logger.info('Deleted {} objects of type {}'.format(object_count, object_type))
