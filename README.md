@@ -117,6 +117,7 @@ environment
 | WAGTAILADMIN_NOTIFICATION_FROM_EMAIL | | | Admin From email |
 | FACEBOOK_PAGE_ACCESS_TOKEN | social | | Facebook page access token |
 | FACEBOOK_PAGE_ID | social | | Facebook page id |
+| FB_PIXEL_ID | core | | |
 | TWITTER_CONSUMER_KEY | social | | Twitter consumer key |
 | TWITTER_CONSUMER_SECRET | social | | Twitter consumer secret |
 | TWITTER_ACCESS_TOKEN_KEY | social | | Twitter access token key |

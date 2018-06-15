@@ -29,6 +29,11 @@ def get_google_analytics_id():
     return getattr(settings, 'GOOGLE_ANALYTICS_ID', "")
 
 
+@register.simple_tag
+def get_fb_pixel_id():
+    return getattr(settings, 'FB_PIXEL_ID', "")
+
+
 @register.inclusion_tag('core/tags/meta_tags.html', takes_context=True)
 def seo_and_social_meta_tags(context, page):
     if page:
