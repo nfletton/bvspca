@@ -16,6 +16,7 @@ class Command(BaseCommand):
     logger = logging.getLogger('bvspca.social')
 
     def handle(self, *args, **options):
+        SocialMediaQueue.objects.delete_old_entries()
         queued_entries = SocialMediaQueue.objects.all().order_by('priority', '-date')
         for entry in queued_entries:
             # post first page ready to post
