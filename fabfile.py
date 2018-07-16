@@ -52,10 +52,10 @@ def deploy_full(dry_run='no', venv='yes'):
     run('mkdir -p logs')
     if dry_run == 'no':
         set_permissions()
+        collect_static()
         _stop_gunicorn()
         if venv == 'yes':
             rebuild_venv()
-        collect_static()
         migrate()
         _start_gunicorn()
         _reload_nginx()
