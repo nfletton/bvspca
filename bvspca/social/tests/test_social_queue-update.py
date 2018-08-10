@@ -60,39 +60,10 @@ def test_delete_old_entries_from_queue():
         animal.save()
         entries.append(add_to_social_queue(animal))
     # set date of entries that will be considered old
-    entries[0].date = timezone.now() - timedelta(8)
-    entries[3].data = timezone.now() - timedelta(20)
+    entries[0].date = timezone.now() - timedelta(29)
+    entries[3].data = timezone.now() - timedelta(41)
     # set date of entries that will be considered current
-    entries[1].date = timezone.now() - timedelta(7)
-    entries[2].data = timezone.now() - timedelta(6)
-    entries[4].data = timezone.now()
-    for entry in entries:
-        entry.save()
-    SocialMediaQueue.objects.delete_old_entries()
-    remaining_entries = SocialMediaQueue.objects.all()
-    assert len(remaining_entries) == 3
-
-
-@pytest.mark.django_db(transaction=False)
-def test_social_media_postable():
-    parent_page = Page.objects.get(url_path='/home/')
-    entries = []
-    for i in range(0, 5):
-        animal = Animal(
-            title='Test Animal',
-            petpoint_id=i,
-            sex='female',
-            age=i * 10,
-            size='M',
-        )
-        parent_page.add_child(instance=animal)
-        animal.save()
-        entries.append(add_to_social_queue(animal))
-    # set date of entries that will be considered old
-    entries[0].date = timezone.now() - timedelta(8)
-    entries[3].data = timezone.now() - timedelta(20)
-    # set date of entries that will be considered current
-    entries[1].date = timezone.now() - timedelta(7)
+    entries[1].date = timezone.now() - timedelta(28)
     entries[2].data = timezone.now() - timedelta(6)
     entries[4].data = timezone.now()
     for entry in entries:
