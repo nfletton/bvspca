@@ -107,15 +107,16 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
         StreamFieldPanel('updates'),
     ]
 
-    def social_media_ready_to_post(self):
-        if self.main_photo:
-            if self.adoption_date:
-                # animal adopted
-                return bool(self.adoption_message)
-            elif self.description:
-                # animal arrived
-                return True
-        return False
+    def social_media_post_status(self):
+        warnings = []
+
+        if not self.main_photo:
+            warnings.append("No main photo")
+        if self.adoption_date and not self.adoption_message:
+            warnings.append("Adopted but no adoption message")
+        elif not self.description:
+            warnings.append("No description")
+        return warnings
 
     def social_media_post_text(self):
         if self.adoption_date:

@@ -20,11 +20,11 @@ def get_test_image_file_jpeg(filename='test.jpg', colour='white', size=(640, 480
 
 
 @pytest.mark.django_db(transaction=False)
-def test_social_media_post_not_ready():
+def test_social_media_post_status():
     """
     Test that when an animal does not have all the data necessary
     for a social media post, Animal.social_media_ready_to_post()
-    returns false
+    returns a non-emty list
     """
     parent_page = Page.objects.get(url_path='/home/')
     animal = Animal(
@@ -38,7 +38,7 @@ def test_social_media_post_not_ready():
     animal.save()
     animal_pk = animal.pk
     animal = Animal.objects.get(pk=animal_pk)
-    assert not animal.social_media_ready_to_post()
+    assert animal.social_media_post_status()
 
 
 @pytest.mark.django_db(transaction=False)
@@ -67,7 +67,7 @@ def test_social_media_adoption_ready_to_post():
     animal.save()
     animal_pk = animal.pk
     animal = Animal.objects.get(pk=animal_pk)
-    assert animal.social_media_ready_to_post()
+    assert animal.social_media_post_status()
     assert animal.social_media_post_text() == 'Great news, today Test Animal was adopted'
     assert animal.social_media_post_image() == test_image
 
@@ -76,7 +76,7 @@ def test_social_media_adoption_ready_to_post():
 def test_social_media_new_arrival_ready_to_post():
     """
     Test that when an animal is available for adoption, has a main photo and an
-    adoption message, Animal.social_media_ready_to_post() returns true
+    adoption message, Animal.social_media_ready_to_post() returns an empty list
     """
     test_image = Image.objects.create(
         title="Test image",
@@ -96,6 +96,6 @@ def test_social_media_new_arrival_ready_to_post():
     animal.save()
     animal_pk = animal.pk
     animal = Animal.objects.get(pk=animal_pk)
-    assert animal.social_media_ready_to_post()
+    assert not animal.social_media_post_status()
     assert animal.social_media_post_text() == 'Great news, Test Animal arrived today'
     assert animal.social_media_post_image() == test_image

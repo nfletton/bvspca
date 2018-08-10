@@ -9,7 +9,7 @@ class NewsSocialMediaQueueModelAdmin(ModelAdmin):
     menu_icon = 'fa-share-square '
     menu_order = 450
     add_to_settings_menu = True
-    list_display = ('date', 'priority', '__str__', 'ready')
+    list_display = ('date', 'priority', 'page_link', 'status')
     ordering = ('priority', 'date')
     list_per_page = 20
 

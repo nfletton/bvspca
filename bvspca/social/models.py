@@ -2,13 +2,20 @@ import logging
 from datetime import datetime, timedelta
 
 from django.db import models
+from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from wagtail.core.models import Page
 
 logger = logging.getLogger('bvspca.social')
 
 
 class SocialMediaPostable():
-    def social_media_ready_to_post(self):
+    def social_media_post_status(self):
+        """
+        Status of a page in terms of it's readiness to be posted to social media.
+        :return: a list of textual reasons why a page is not ready to be posted to social media
+                 or an empty list if the page is ready to be posted
+        """
         raise NotImplemented()
 
     def social_media_post_text(self):
@@ -62,8 +69,15 @@ class SocialMediaQueue(models.Model):
     class Meta:
         pass
 
-    def ready(self):
-        return self.page.specific.social_media_ready_to_post()
+    def status(self):
+        status = self.page.specific.social_media_post_status()
+        if status:
+            return format_html("<span style=\"color:red\">{}</span>", mark_safe('<br>'.join(status)))
+        else:
+            return format_html('<span style="color:green">Ready to post</span>')
+
+    def page_link(self):
+        return format_html('<a href="{}">{}</a>', self.page.get_url(), self.page.title)
 
     def __str__(self):
         return self.page.title

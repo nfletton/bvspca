@@ -21,11 +21,11 @@ class Command(BaseCommand):
         for entry in queued_entries:
             # post first page ready to post
             page_to_post = entry.page.specific
-            if hasattr(page_to_post, 'social_media_ready_to_post') and page_to_post.social_media_ready_to_post():
+            if hasattr(page_to_post, 'social_media_post_status') and not page_to_post.social_media_post_status():
                 content = self.prepare_content(page_to_post)
                 self.twitter_post(content)
                 self.facebook_post(content)
-                entry.delete()
+                page_to_post.delete()
                 break
 
     def facebook_post(self, content):
