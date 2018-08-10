@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.db import models
-from wagtail.admin.edit_handlers import MultiFieldPanel
+from wagtail.admin.edit_handlers import MultiFieldPanel, FieldPanel
 from wagtail.core.fields import StreamField
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -54,12 +54,14 @@ class PageDesignMixin(models.Model):
         related_name='+',
         verbose_name='menu image',
     )
+    show_newsletter_signup = models.BooleanField(default=True)
 
     content_panels = [
         MultiFieldPanel(
             [
                 ImageChooserPanel('banner_image'),
                 ImageChooserPanel('menu_item_image'),
+                FieldPanel('show_newsletter_signup'),
             ],
             heading='Page Design Elements',
             classname='collapsible collapsed',

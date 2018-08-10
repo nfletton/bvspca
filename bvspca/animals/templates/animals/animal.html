@@ -107,6 +107,7 @@
         {{ page.description|safe }}
       </div>
       {% include 'core/includes/addthis_widgets.html' %}
+      <div class="animal-update-notice"><a href="{% slugurl 'animal-update-email' %}">Keep updated on new arrivals with our weekly animal update email...</a></div>
       {% include 'core/includes/page_navigation.html' with item_name=page.species item_plural_name=page.plural_species %}
       <div class="animal-profile__updates">
         {{ page.updates }}
@@ -145,5 +146,10 @@
 {% endblock %}
 
 {% block content_heading %}
-  {% comment %}No hero or title required for this page{% endcomment %}
+  {#  No hero or title required for this page#}
 {% endblock content_heading %}
+
+
+{% block newsletter_block %}
+  {# No general newsletter block as we have the animal update signup link and don't want to confuse things #}
+{%  endblock newsletter_block %}
