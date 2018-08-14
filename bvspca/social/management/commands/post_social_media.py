@@ -25,7 +25,7 @@ class Command(BaseCommand):
                 content = self.prepare_content(page_to_post)
                 self.twitter_post(content)
                 self.facebook_post(content)
-                page_to_post.delete()
+                entry.delete()
                 break
 
     def facebook_post(self, content):
