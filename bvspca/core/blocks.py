@@ -160,10 +160,10 @@ class SupporterBlock(blocks.StructBlock):
 
 
 class SliderBlock(blocks.StructBlock):
-    title = blocks.CharBlock(max_length=25, required=False)
-    summary = blocks.TextBlock(max_length=60, required=False)
-    photo = ImageChooserBlock(help_text='This image MUST BE EXACTLY 1400px by 475px')
+    photo = ImageChooserBlock(help_text='This image MUST BE EXACTLY 1400px by 550px')
     page = PageChooserBlock(required=False)
+    external_url = blocks.URLBlock(required=False)
+    active = blocks.BooleanBlock(required=False)
 
     class Meta:
         template = 'core/blocks/slider_block.html'

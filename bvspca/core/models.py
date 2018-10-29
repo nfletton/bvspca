@@ -83,6 +83,16 @@ class HomePage(Page):
         context['animal_counts'] = AnimalCountSettings.objects.get(pk=2)
         return context
 
+    @property
+    def has_multiple_slides(self):
+        active_slides = 0;
+        for slide in self.slider.stream_data:
+            if slide['value']['active']:
+                active_slides += 1
+            if active_slides > 1:
+                return True
+        return False
+
 
 class SupportersPage(Page, MenuTitleable, PageDesignMixin):
     supporters = StreamField([

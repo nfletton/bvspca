@@ -82,42 +82,23 @@
 {% block extra_pre_css %}
   <link rel="stylesheet" href="{% static '3rdparty/swiper/css/swiper.min.css' %}">
   <style>
-    {#  Slider images #}
-    {% for slider_item in page.slider %}
-      #slide-{{ forloop.counter }} {
-      {% image slider_item.value.photo fill-500x475 as photo_1 %}
-        background: url({{ photo_1.url }}) no-repeat center top/cover;
-      }
-      @media screen and (min-width: 500px) {
-      {% image slider_item.value.photo fill-800x475 as photo_2 %}
-        #slide-{{ forloop.counter }} {
-          background-image: url({{ photo_2.url }});
-        }
-      }
-      @media screen and (min-width: 800px) {
-      {% image slider_item.value.photo original as photo_3 %}
-        #slide-{{ forloop.counter }} {
-          background-image: url({{ photo_3.url }});
-        }
-      }
-    {% endfor %}
     {# Events image #}
+    .home-events-section {
+    {% image page.events_photo fill-500x475 as photo_1 %}
+      background: url({{ photo_1.url }}) no-repeat center top/cover;
+    }
+    @media screen and (min-width: 500px) {
+    {% image page.events_photo fill-800x475 as photo_2 %}
       .home-events-section {
-      {% image page.events_photo fill-500x475 as photo_1 %}
-        background: url({{ photo_1.url }}) no-repeat center top/cover;
+        background-image: url({{ photo_2.url }});
       }
-      @media screen and (min-width: 500px) {
-      {% image page.events_photo fill-800x475 as photo_2 %}
-        .home-events-section {
-          background-image: url({{ photo_2.url }});
-        }
+    }
+    @media screen and (min-width: 800px) {
+    {% image page.events_photo original as photo_3 %}
+      .home-events-section {
+        background-image: url({{ photo_3.url }});
       }
-      @media screen and (min-width: 800px) {
-      {% image page.events_photo original as photo_3 %}
-        .home-events-section {
-          background-image: url({{ photo_3.url }});
-        }
-      }
+    }
   </style>
 {% endblock extra_pre_css %}
 
@@ -133,14 +114,16 @@
       var mySwiper = new Swiper('.swiper-container', {
         direction: 'horizontal',
         loop: true,
-        speed: 600,
-        autoplay: {
-          delay: 7000,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
+        {% if page.has_multiple_slides %}
+          speed: 600,
+          autoplay: {
+            delay: 7000,
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+        {% endif %}
       });
     });
   </script>

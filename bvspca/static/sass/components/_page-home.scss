@@ -14,13 +14,18 @@
 /* Slider section */
 .swiper-container {
   width: 100%;
-  height: 475px;
+  height: auto;
 }
 
 .swiper-slide {
   position: relative;
   z-index: 0;
   display: block;
+}
+
+.swiper-slide__image {
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-slide__message {
@@ -75,13 +80,17 @@
   }
 }
 
+.swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 15px;
+}
+
 .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
     margin: 0 10px;
 }
 
 .swiper-pagination-bullet {
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   opacity: 0.3;
 }
 
