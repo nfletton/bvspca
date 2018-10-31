@@ -17,7 +17,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         client = Client('http://ws.petango.com/webservices/wsadoption.asmx?WSDL')
-        client.raw_response = True
 
         # create and update animals based on currently adoptable animals
         adoptable_animal_ids = fetch_petpoint_adoptable_animal_ids(client)
