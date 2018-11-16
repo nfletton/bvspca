@@ -18,7 +18,7 @@
               <div class="event-overview__date">{{ event.formatted_date|safe }}</div>
               <div class="event-overview__title"><a href="{% pageurl event %}">{{ event.title }}{% if event.published_status %}<span class="published-status {{ event.published_status }}">{{ event.published_status }}</span>{% endif %}</a></div>
               <div class="event-overview__summary">
-                {{ event.details|truncatewords_html:35|striptags }} <a class="event-overview__read-more" href="{% pageurl event %}">Read More</a>
+                {{ event.details|richtext|truncatewords_html:35|striptags }} <a class="event-overview__read-more" href="{% pageurl event %}">Read More</a>
               </div>
             </div>
           </div>

@@ -17,7 +17,7 @@
             <div class="news-item-overview__details">
               <div class="news-item-overview__date">{{ news_item.first_published_at|date:'D, j M Y' }}</div>
               <div class="news-item-overview__title"><a href="{% pageurl news_item %}">{{ news_item.title }}{% if news_item.published_status %}{% endif %}</a></div>
-              <div class="news-item-overview__summary">{{ news_item.details|truncatewords_html:35|striptags }} <a class="news-item-overview__read-more" href="{% pageurl news_item %}">Read More</a>
+              <div class="news-item-overview__summary">{{ news_item.details|richtext|truncatewords_html:35|striptags }} <a class="news-item-overview__read-more" href="{% pageurl news_item %}">Read More</a>
               </div>
             </div>
           </div>

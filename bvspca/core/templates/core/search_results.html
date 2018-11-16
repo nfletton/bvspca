@@ -15,7 +15,7 @@
               {% if result.specific.body %}
                 {{ result.specific.body|striptags|truncatechars:150 }}
               {% elif result.specific.details %}
-                {{ result.specific.details|striptags|truncatechars:150 }}
+                {{ result.specific.details|richtext|striptags|truncatechars:150 }}
               {% elif result.specific.description %}
                 {{ result.specific.description|striptags|truncatechars:150 }}
               {% endif %}

@@ -68,7 +68,7 @@
           <div class="home-news-list__item-details">
             <div class="home-news-list__item-date">{{ news_item.first_published_at|date:'M j' }}</div>
             <div class="home-news-list__item-title">{{ news_item.title }}</div>
-            <div class="home-news-list__item-summary">{{ news_item.details|striptags|truncatechars:80 }}</div>
+            <div class="home-news-list__item-summary">{{ news_item.details|richtext|striptags|truncatechars:80 }}</div>
           </div>
           <div class="home-news-list__item-full-post">Full Post</div>
         </a>
