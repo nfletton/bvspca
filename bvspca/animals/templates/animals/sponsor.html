@@ -1,0 +1,32 @@
+{% load wagtailimages_tags %}
+{% if sponsor %}
+  <script>
+    /**
+     * Function that registers a click on an outbound sponsor link in Analytics.
+     */
+    var getOutboundSponsorLink = function() {
+      gtag('event', 'click', {
+        'event_category': 'Sponsor: {{ sponsor.sponsor_name }}',
+        'event_label': '{{ animal.title }} - {{ animal.sub_location }}',
+        'transport_type': 'beacon',
+        'event_callback': function () {document.location = '{{ sponsor.url }}';}
+      });
+    };
+    gtag('event', 'view', {
+      'event_category': 'Sponsor: {{ sponsor.sponsor_name }}',
+      'event_label': '{{ animal.title }} - {{ animal.sub_location }}',
+      'transport_type': 'beacon'
+    });
+
+  </script>
+  <div  class="location-sponsor">
+    <p>
+      {{ animal.title }} is located in '{{ animal.sub_location }}', sponsored by{% if sponsor.logo %}:{% else %} {% if sponsor.url %}<a href="{{ sponsor.url }}" target="_blank" onclick="getOutboundSponsorLink(); return false;">{% endif %}{{ sponsor.sponsor_name }}{% if sponsor.url %}</a>{% endif %}{% endif %}
+    </p>
+    {% if sponsor.logo  %}
+      {% if sponsor.url %}<a href="{{ sponsor.url }}" target="_blank" onclick="getOutboundSponsorLink(); return false;">{% endif %}
+    {% image sponsor.logo width-150 class="location-sponsor__logo" %}
+    {% if sponsor.url %}</a>{% endif %}
+    {% endif %}
+  </div>
+{% endif %}

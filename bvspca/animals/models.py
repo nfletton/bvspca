@@ -9,6 +9,7 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import Image
 from wagtail.search import index
+from wagtail.snippets.models import register_snippet
 
 from bvspca.core.blocks import ContentStreamBlock
 from bvspca.core.models_abstract import MenuTitleable, MetaTagable, PageDesignMixin
@@ -63,6 +64,8 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
     surrender_date = models.DateField(null=True, blank=True)
     last_intake_date = models.DateField(null=True, blank=True)
     adoption_date = models.DateField(blank=True, null=True)
+    location = models.CharField(max_length=200, blank=True)
+    sub_location = models.CharField(max_length=200, blank=True)
     # local updatable fields
     main_photo = ForeignKey(
         Image,
@@ -168,6 +171,8 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
             'weight': petpoint_data.BodyWeight,
             'surrender_date': petpoint_data.DateOfSurrender,
             'last_intake_date': petpoint_data.LastIntakeDate,
+            'location': petpoint_data.Location,
+            'sub_location': petpoint_data.Sublocation,
         }
 
     def updateAdoptableAnimal(self, petpoint_data):
@@ -266,3 +271,27 @@ class AnimalCountSettings(BaseSetting):
 
     class Meta:
         verbose_name = 'animals counts'
+
+
+@register_snippet
+class LocationSponsor(models.Model):
+    location = models.CharField(max_length=200, unique=True)
+    sponsor_name = models.CharField(max_length=200)
+    url = models.URLField(null=True, blank=True)
+    logo = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    panels = [
+        FieldPanel('location'),
+        FieldPanel('sponsor_name'),
+        FieldPanel('url'),
+        ImageChooserPanel('logo'),
+    ]
+
+    def __str__(self):
+        return '{} - {}'.format(self.location, self.sponsor_name)

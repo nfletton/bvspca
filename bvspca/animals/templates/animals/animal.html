@@ -106,6 +106,9 @@
       <div class="animal-profile__description">
         {{ page.description|safe }}
       </div>
+      {% if not page.adoption_date %}
+        {% location_sponsor page %}
+      {% endif %}
       {% include 'core/includes/addthis_widgets.html' %}
       <div class="animal-update-notice"><a href="{% slugurl 'animal-update-email' %}">Keep updated on new arrivals with our weekly animal update email...</a></div>
       {% include 'core/includes/page_navigation.html' with item_name=page.species item_plural_name=page.plural_species %}

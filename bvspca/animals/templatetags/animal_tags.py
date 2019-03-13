@@ -1,5 +1,7 @@
 from django import template
 
+from bvspca.animals.models import LocationSponsor
+
 register = template.Library()
 
 
@@ -36,3 +38,13 @@ def to_friendly_size(size_code):
     if size_code == 'XL':
         return 'Extra Large'
     return size_code
+
+
+@register.inclusion_tag('animals/sponsor.html')
+def location_sponsor(animal):
+    try:
+        sponsor = LocationSponsor.objects.get(location=animal.sub_location)
+    except LocationSponsor.DoesNotExist:
+        sponsor = None
+    return {'sponsor': sponsor, 'animal': animal}
+
