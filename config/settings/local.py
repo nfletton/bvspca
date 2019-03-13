@@ -149,5 +149,3 @@ LOGGING = {
         },
     }
 }
-
-GOOGLE_ANALYTICS_ID = 'UA-3313232-1'
