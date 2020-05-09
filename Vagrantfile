@@ -4,10 +4,10 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  if ENV['VAGRANT_BASE_BOX_16_04']
-    config.vm.box = ENV['VAGRANT_BASE_BOX_16_04']
+  if ENV['VAGRANT_BASE_BOX_18_04']
+    config.vm.box = ENV['VAGRANT_BASE_BOX_18_04']
   else
-    config.vm.box = "xenial64"
+    config.vm.box = "bionic64"
   end
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = ENV['HOME'] + "/ansible-playbooks/django-dev.yml"
