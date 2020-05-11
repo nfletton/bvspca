@@ -118,6 +118,11 @@ def upload_files(dry_run='no', media=False):
                   default_opts='-thrvz',
                   delete=True,
                   extra_opts='--dry-run' if dry_run == 'yes' else '')
+    rsync_project(remote_dir=env.remote_dir,
+                  local_dir=env.local_dir + '/wsadoption.asmx',
+                  default_opts='-thrvz',
+                  delete=True,
+                  extra_opts='--dry-run' if dry_run == 'yes' else '')
 
 
 @task

@@ -2,7 +2,7 @@ import datetime
 import logging
 
 from django.core.management.base import BaseCommand
-from zeep import Client
+from zeep import Client, Settings
 
 from bvspca.animals.models import Animal, AnimalCountSettings, AnimalsPage
 from bvspca.animals.petpoint import fetch_petpoint_adoptable_animal_ids, fetch_petpoint_adopted_dates_since, \
@@ -16,7 +16,8 @@ class Command(BaseCommand):
     help = 'Synchronize data from PetPoint with local Animal objects'
 
     def handle(self, *args, **options):
-        client = Client('http://ws.petango.com/webservices/wsadoption.asmx?WSDL')
+        settings = Settings(strict=False)
+        client = Client('file://wsadoption.asmx', settings=settings)
 
         # create and update animals based on currently adoptable animals
         adoptable_animal_ids = fetch_petpoint_adoptable_animal_ids(client)
