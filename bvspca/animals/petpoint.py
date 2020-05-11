@@ -95,9 +95,9 @@ def fetch_petpoint_adopted_dates_since(client, start_date):
                 all_adoptions.extend(extract_animal_adoption_dates(etree.parse(io.BytesIO(adoption_list_response.content))))
             else:
                 error_logger.error(
-                    'Failed to retrieve adopted animalsfor day {}. HTTP status code {}'.format(
-                        adoption_list_response.status_code,
+                    'Failed to retrieve adopted animals for day {}. HTTP status code {}'.format(
                         loop_date,
+                        adoption_list_response.status_code,
                     )
                 )
             loop_date += one_day_delta
