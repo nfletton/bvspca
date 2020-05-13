@@ -74,7 +74,7 @@ class Command(BaseCommand):
                         )
                 except Animal.DoesNotExist:
                     logger.error(
-                        'Animal {} did not exist when attempting to set adoption date'.format(
+                        'Animal {} did not exist when attempting to set adoption date {}'.format(
                             adoption[0],
                             adoption[1],
                         )
