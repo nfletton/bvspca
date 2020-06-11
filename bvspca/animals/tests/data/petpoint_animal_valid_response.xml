@@ -1,66 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <soap:Body>
-    <AdoptableDetailsResponse xmlns="http://www.petango.com/">
-      <AdoptableDetailsResult>
-        <adoptableDetails xmlns="">
-          <CompanyID>3290</CompanyID>
-          <ID>36607476</ID>
-          <AnimalName>Sniffy</AnimalName>
-          <Species>Cat</Species>
-          <Sex>Male</Sex>
-          <Altered>Yes</Altered>
-          <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-          <SecondaryBreed>Mix</SecondaryBreed>
-          <PrimaryColor>Brown</PrimaryColor>
-          <SecondaryColor>Black</SecondaryColor>
-          <Age>157</Age>
-          <Size>L</Size>
-          <Housetrained>Unknown</Housetrained>
-          <Declawed>No</Declawed>
-          <Price>0.00</Price>
-          <LastIntakeDate>2017-09-20 17:49:00</LastIntakeDate>
-          <Location>Cat Area</Location>
-          <Dsc></Dsc>
-          <Photo1>http://media.petango.com/sms/photos/3290/588eea17-6f3c-46fe-86d8-59ff9c6f3f16.jpg</Photo1>
-          <Photo2></Photo2>
-          <Photo3></Photo3>
-          <OnHold>No</OnHold>
-          <SpecialNeeds></SpecialNeeds>
-          <NoDogs></NoDogs>
-          <NoCats></NoCats>
-          <NoKids></NoKids>
-          <BehaviorResult></BehaviorResult>
-          <MemoList/>
-          <Site>Bow Valley SPCA</Site>
-          <DateOfSurrender>2017-09-20 17:56:07</DateOfSurrender>
-          <TimeInFormerHome>13 Years</TimeInFormerHome>
-          <ReasonForSurrender>Not Housebroken / Housesoiling</ReasonForSurrender>
-          <PrevEnvironment></PrevEnvironment>
-          <LivedWithChildren>No</LivedWithChildren>
-          <LivedWithAnimals>No</LivedWithAnimals>
-          <LivedWithAnimalTypes></LivedWithAnimalTypes>
-          <BodyWeight>1 kilograms</BodyWeight>
-          <DateOfBirth>2004-09-20</DateOfBirth>
-          <ARN></ARN>
-          <VideoID></VideoID>
-          <BehaviorTestList/>
-          <Stage>Available</Stage>
-          <AnimalType>2</AnimalType>
-          <AgeGroup>Senior</AgeGroup>
-          <WildlifeIntakeInjury></WildlifeIntakeInjury>
-          <WildlifeIntakeCause></WildlifeIntakeCause>
-          <BuddyID>0</BuddyID>
-          <Featured>No</Featured>
-          <Sublocation>Chalet 4</Sublocation>
-          <ChipNumber>982009102726261</ChipNumber>
-          <ColorPattern>Tabby</ColorPattern>
-          <BannerURL>
-            https://ws.petango.com/webservices/adoptablesearch/images/24PW-Pet-Insurance-Programs-150x84-with-white-space.png
-          </BannerURL>
-        </adoptableDetails>
-      </AdoptableDetailsResult>
-    </AdoptableDetailsResponse>
-  </soap:Body>
-</soap:Envelope>
+<adoptableDetails>
+  <CompanyID>3290</CompanyID>
+  <ID>36607476</ID>
+  <AnimalName>Sniffy</AnimalName>
+  <Species>Cat</Species>
+  <Sex>Male</Sex>
+  <Altered>Yes</Altered>
+  <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+  <SecondaryBreed>Mix</SecondaryBreed>
+  <PrimaryColor>Brown</PrimaryColor>
+  <SecondaryColor>Black</SecondaryColor>
+  <Age>157</Age>
+  <Size>L</Size>
+  <Housetrained>Unknown</Housetrained>
+  <Declawed>No</Declawed>
+  <Price>0.00</Price>
+  <LastIntakeDate>2017-09-20 17:49:00</LastIntakeDate>
+  <Location>Cat Area</Location>
+  <Dsc></Dsc>
+  <Photo1>http://media.petango.com/sms/photos/3290/588eea17-6f3c-46fe-86d8-59ff9c6f3f16.jpg</Photo1>
+  <Photo2></Photo2>
+  <Photo3></Photo3>
+  <OnHold>No</OnHold>
+  <SpecialNeeds></SpecialNeeds>
+  <NoDogs></NoDogs>
+  <NoCats></NoCats>
+  <NoKids></NoKids>
+  <BehaviorResult></BehaviorResult>
+  <MemoList/>
+  <Site>Bow Valley SPCA</Site>
+  <DateOfSurrender>2017-09-20 17:56:07</DateOfSurrender>
+  <TimeInFormerHome>13 Years</TimeInFormerHome>
+  <ReasonForSurrender>Not Housebroken / Housesoiling</ReasonForSurrender>
+  <PrevEnvironment></PrevEnvironment>
+  <LivedWithChildren>No</LivedWithChildren>
+  <LivedWithAnimals>No</LivedWithAnimals>
+  <LivedWithAnimalTypes></LivedWithAnimalTypes>
+  <BodyWeight>1 kilograms</BodyWeight>
+  <DateOfBirth>2004-09-20</DateOfBirth>
+  <ARN></ARN>
+  <VideoID></VideoID>
+  <BehaviorTestList/>
+  <Stage>Available</Stage>
+  <AnimalType>2</AnimalType>
+  <AgeGroup>Senior</AgeGroup>
+  <WildlifeIntakeInjury></WildlifeIntakeInjury>
+  <WildlifeIntakeCause></WildlifeIntakeCause>
+  <BuddyID>0</BuddyID>
+  <Featured>No</Featured>
+  <Sublocation>Chalet 4</Sublocation>
+  <ChipNumber>982009102726261</ChipNumber>
+  <ColorPattern>Tabby</ColorPattern>
+  <BannerURL>
+    https://ws.petango.com/webservices/adoptablesearch/images/24PW-Pet-Insurance-Programs-150x84-with-white-space.png
+  </BannerURL>
+</adoptableDetails>

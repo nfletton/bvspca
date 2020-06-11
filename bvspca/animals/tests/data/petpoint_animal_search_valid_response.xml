@@ -1,910 +1,904 @@
 <?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <soap:Body>
-    <AdoptableSearchResponse xmlns="http://www.petango.com/">
-      <AdoptableSearchResult>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36607476</ID>
-            <Name>Sniffy</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>157</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/588eea17-6f3c-46fe-86d8-59ff9c6f3f16_TN1.jpg</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Senior</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 4</Sublocation>
-            <ChipNumber>982009102726261</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36633837</ID>
-            <Name>Jean-Guy</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>4</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Isolation</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>Cat</AnimalType>
-            <AgeGroup>Baby</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Isolation 3</Sublocation>
-            <ChipNumber></ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36633933</ID>
-            <Name>Al</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>4</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Isolation</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>Cat</AnimalType>
-            <AgeGroup>Baby</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Isolation 3</Sublocation>
-            <ChipNumber></ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36634148</ID>
-            <Name>Peggy</Name>
-            <Species>Cat</Species>
-            <Sex>Female</Sex>
-            <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Spayed</SN>
-            <Age>37</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Isolation</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>Cat</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Isolation 3</Sublocation>
-            <ChipNumber></ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36635514</ID>
-            <Name>Baby</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>19</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Young</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 5</Sublocation>
-            <ChipNumber>982000411136299</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36636183</ID>
-            <Name>Baby7</Name>
-            <Species>Cat</Species>
-            <Sex>Female</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Spayed</SN>
-            <Age>97</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Foster Homes</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Foster</Sublocation>
-            <ChipNumber>956000004931177</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36636350</ID>
-            <Name>Tigger</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>76</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/91e68b49-5390-4ec3-a194-13db6f970e0d_TN1.jpg</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 2</Sublocation>
-            <ChipNumber>982000123143772</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36636666</ID>
-            <Name>Chicago</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>49</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 4</Sublocation>
-            <ChipNumber>900026000614879</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36670630</ID>
-            <Name>Piper</Name>
-            <Species>Cat</Species>
-            <Sex>Female</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Spayed</SN>
-            <Age>68</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/366e36a1-af06-41e6-b473-935452d0e66a_TN1.jpg</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Cat Play Room</Sublocation>
-            <ChipNumber>956000004379416</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36670991</ID>
-            <Name>Faith</Name>
-            <Species>Cat</Species>
-            <Sex>Female</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Spayed</SN>
-            <Age>13</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 1</Sublocation>
-            <ChipNumber>982000408412204</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36671202</ID>
-            <Name>Lucky</Name>
-            <Species>Cat</Species>
-            <Sex>Female</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Spayed</SN>
-            <Age>133</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Isolation</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Senior</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Isolation 2</Sublocation>
-            <ChipNumber>982009102729757</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36671404</ID>
-            <Name>Mr. Friskies</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>19</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Young</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 5</Sublocation>
-            <ChipNumber>982000411136413</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36672266</ID>
-            <Name>Muggles</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>76</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/6fccfe75-908c-4776-985a-2d88edd0bf08_TN1.jpg</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Senior</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 2</Sublocation>
-            <ChipNumber>982000123143746</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36675317</ID>
-            <Name>Minksi</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>0</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/066cb2a3-b193-47bf-a93b-5139e18e7433_TN1.jpg</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Senior</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 1</Sublocation>
-            <ChipNumber>982000407275537</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36675822</ID>
-            <Name>Nigel</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>125</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/e150cec6-9550-44ec-a1c6-0a720f1fcd55_TN1.jpg</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Senior</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 1</Sublocation>
-            <ChipNumber>956000006247582</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36678573</ID>
-            <Name>Noel</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>34</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/a79126f7-714d-4a3d-9f7d-f96cb68bab4c_TN1.jpg</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Cat Play Room</Sublocation>
-            <ChipNumber></ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36678828</ID>
-            <Name>Percy</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>15</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/a7c5742a-9d7f-485e-ad1c-ff6292d1fb0f_TN1.jpg</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 5</Sublocation>
-            <ChipNumber>900026000607523</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36679597</ID>
-            <Name>Oliver</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>34</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/90dc070d-1c09-4bb3-8d94-3fc534c67d2d_TN1.jpg</Photo>
-            <Location>Foster Homes</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Foster</Sublocation>
-            <ChipNumber></ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36679914</ID>
-            <Name>Sagey</Name>
-            <Species>Cat</Species>
-            <Sex>Female</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Spayed</SN>
-            <Age>15</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/57a217d4-8d1f-4f20-8ab4-7d55378321b9_TN1.jpg</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 3</Sublocation>
-            <ChipNumber></ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36680407</ID>
-            <Name>Sage</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>117</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Senior</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 1</Sublocation>
-            <ChipNumber>982000407278218</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36680506</ID>
-            <Name>Tommy</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>99</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Senior</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 4</Sublocation>
-            <ChipNumber>956000004809840</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36744898</ID>
-            <Name>Freddie</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>25</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 1</Sublocation>
-            <ChipNumber>982000411139508</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36945833</ID>
-            <Name>Foster</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>60</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/70898752-8b2e-4a34-9ae5-51407588915d_TN1.jpg</Photo>
-            <Location>Isolation</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Isolation 1</Sublocation>
-            <ChipNumber>982000412061671</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>37065292</ID>
-            <Name>DJ</Name>
-            <Species>Cat</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>7</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/f16e2bb5-b654-4327-889a-1fc93ab483cd_TN1.jpg</Photo>
-            <Location>Cat Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>2</AnimalType>
-            <AgeGroup>Young</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Chalet 1</Sublocation>
-            <ChipNumber>982000411709337</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36604225</ID>
-            <Name>Dooby</Name>
-            <Species>Dog</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Thai Ridgeback</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>109</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-dog.gif</Photo>
-            <Location>Dog Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>1</AnimalType>
-            <AgeGroup>Senior</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Cabin 5</Sublocation>
-            <ChipNumber>900012000693280</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36607749</ID>
-            <Name>Jerry</Name>
-            <Species>Dog</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Thai Ridgeback</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>54</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-dog.gif</Photo>
-            <Location>Dog Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>1</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Cabin 4</Sublocation>
-            <ChipNumber>933076400525738</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36619041</ID>
-            <Name>Lola</Name>
-            <Species>Dog</Species>
-            <Sex>Female</Sex>
-            <PrimaryBreed>German Shepherd</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Spayed</SN>
-            <Age>37</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-dog.gif</Photo>
-            <Location>Dog Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>1</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Cabin 4</Sublocation>
-            <ChipNumber>982000363139170</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36627856</ID>
-            <Name>Treble</Name>
-            <Species>Dog</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Newfoundland</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>61</Age>
-            <Photo>http://media.petango.com/sms/photos/3290/734fcc6c-5b65-4862-bffe-5bb578bc2932_TN1.jpg</Photo>
-            <Location>Dog Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>1</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Cabin 6</Sublocation>
-            <ChipNumber></ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode>
-          <adoptableSearch xmlns="">
-            <ID>36917491</ID>
-            <Name>Tommy</Name>
-            <Species>Dog</Species>
-            <Sex>Male</Sex>
-            <PrimaryBreed>Terrier, American Staffordshire</PrimaryBreed>
-            <SecondaryBreed>Mix</SecondaryBreed>
-            <SN>Neutered</SN>
-            <Age>24</Age>
-            <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-dog.gif</Photo>
-            <Location>Dog Area</Location>
-            <OnHold>No</OnHold>
-            <SpecialNeeds></SpecialNeeds>
-            <NoDogs></NoDogs>
-            <NoCats></NoCats>
-            <NoKids></NoKids>
-            <MemoList/>
-            <ARN></ARN>
-            <BehaviorTestList></BehaviorTestList>
-            <Stage>Available</Stage>
-            <AnimalType>1</AnimalType>
-            <AgeGroup>Adult</AgeGroup>
-            <WildlifeIntakeInjury></WildlifeIntakeInjury>
-            <WildlifeIntakeCause></WildlifeIntakeCause>
-            <BuddyID>0</BuddyID>
-            <Featured>No</Featured>
-            <Sublocation>Cabin 1</Sublocation>
-            <ChipNumber>956000009452407</ChipNumber>
-          </adoptableSearch>
-        </XmlNode>
-        <XmlNode xsi:nil="true"/>
-      </AdoptableSearchResult>
-    </AdoptableSearchResponse>
-  </soap:Body>
-</soap:Envelope>
+<ArrayOfXmlNode xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns="http://www.petango.com/">
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36607476</ID>
+      <Name>Sniffy</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>157</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/588eea17-6f3c-46fe-86d8-59ff9c6f3f16_TN1.jpg</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Senior</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 4</Sublocation>
+      <ChipNumber>982009102726261</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36633837</ID>
+      <Name>Jean-Guy</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>4</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Isolation</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>Cat</AnimalType>
+      <AgeGroup>Baby</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Isolation 3</Sublocation>
+      <ChipNumber></ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36633933</ID>
+      <Name>Al</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>4</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Isolation</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>Cat</AnimalType>
+      <AgeGroup>Baby</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Isolation 3</Sublocation>
+      <ChipNumber></ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36634148</ID>
+      <Name>Peggy</Name>
+      <Species>Cat</Species>
+      <Sex>Female</Sex>
+      <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Spayed</SN>
+      <Age>37</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Isolation</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>Cat</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Isolation 3</Sublocation>
+      <ChipNumber></ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36635514</ID>
+      <Name>Baby</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>19</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Young</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 5</Sublocation>
+      <ChipNumber>982000411136299</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36636183</ID>
+      <Name>Baby7</Name>
+      <Species>Cat</Species>
+      <Sex>Female</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Spayed</SN>
+      <Age>97</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Foster Homes</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Foster</Sublocation>
+      <ChipNumber>956000004931177</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36636350</ID>
+      <Name>Tigger</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>76</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/91e68b49-5390-4ec3-a194-13db6f970e0d_TN1.jpg</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 2</Sublocation>
+      <ChipNumber>982000123143772</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36636666</ID>
+      <Name>Chicago</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>49</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 4</Sublocation>
+      <ChipNumber>900026000614879</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36670630</ID>
+      <Name>Piper</Name>
+      <Species>Cat</Species>
+      <Sex>Female</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Spayed</SN>
+      <Age>68</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/366e36a1-af06-41e6-b473-935452d0e66a_TN1.jpg</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Cat Play Room</Sublocation>
+      <ChipNumber>956000004379416</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36670991</ID>
+      <Name>Faith</Name>
+      <Species>Cat</Species>
+      <Sex>Female</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Spayed</SN>
+      <Age>13</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 1</Sublocation>
+      <ChipNumber>982000408412204</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36671202</ID>
+      <Name>Lucky</Name>
+      <Species>Cat</Species>
+      <Sex>Female</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Spayed</SN>
+      <Age>133</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Isolation</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Senior</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Isolation 2</Sublocation>
+      <ChipNumber>982009102729757</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36671404</ID>
+      <Name>Mr. Friskies</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>19</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Young</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 5</Sublocation>
+      <ChipNumber>982000411136413</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36672266</ID>
+      <Name>Muggles</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>76</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/6fccfe75-908c-4776-985a-2d88edd0bf08_TN1.jpg</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Senior</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 2</Sublocation>
+      <ChipNumber>982000123143746</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36675317</ID>
+      <Name>Minksi</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>0</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/066cb2a3-b193-47bf-a93b-5139e18e7433_TN1.jpg</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Senior</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 1</Sublocation>
+      <ChipNumber>982000407275537</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36675822</ID>
+      <Name>Nigel</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>125</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/e150cec6-9550-44ec-a1c6-0a720f1fcd55_TN1.jpg</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Senior</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 1</Sublocation>
+      <ChipNumber>956000006247582</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36678573</ID>
+      <Name>Noel</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>34</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/a79126f7-714d-4a3d-9f7d-f96cb68bab4c_TN1.jpg</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Cat Play Room</Sublocation>
+      <ChipNumber></ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36678828</ID>
+      <Name>Percy</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>15</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/a7c5742a-9d7f-485e-ad1c-ff6292d1fb0f_TN1.jpg</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 5</Sublocation>
+      <ChipNumber>900026000607523</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36679597</ID>
+      <Name>Oliver</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>34</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/90dc070d-1c09-4bb3-8d94-3fc534c67d2d_TN1.jpg</Photo>
+      <Location>Foster Homes</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Foster</Sublocation>
+      <ChipNumber></ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36679914</ID>
+      <Name>Sagey</Name>
+      <Species>Cat</Species>
+      <Sex>Female</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Spayed</SN>
+      <Age>15</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/57a217d4-8d1f-4f20-8ab4-7d55378321b9_TN1.jpg</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 3</Sublocation>
+      <ChipNumber></ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36680407</ID>
+      <Name>Sage</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>117</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Senior</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 1</Sublocation>
+      <ChipNumber>982000407278218</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36680506</ID>
+      <Name>Tommy</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>99</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Senior</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 4</Sublocation>
+      <ChipNumber>956000004809840</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36744898</ID>
+      <Name>Freddie</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>25</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-cat.gif</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 1</Sublocation>
+      <ChipNumber>982000411139508</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36945833</ID>
+      <Name>Foster</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Shorthair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>60</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/70898752-8b2e-4a34-9ae5-51407588915d_TN1.jpg</Photo>
+      <Location>Isolation</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Isolation 1</Sublocation>
+      <ChipNumber>982000412061671</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>37065292</ID>
+      <Name>DJ</Name>
+      <Species>Cat</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Domestic Medium Hair</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>7</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/f16e2bb5-b654-4327-889a-1fc93ab483cd_TN1.jpg</Photo>
+      <Location>Cat Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>2</AnimalType>
+      <AgeGroup>Young</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Chalet 1</Sublocation>
+      <ChipNumber>982000411709337</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36604225</ID>
+      <Name>Dooby</Name>
+      <Species>Dog</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Thai Ridgeback</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>109</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-dog.gif</Photo>
+      <Location>Dog Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>1</AnimalType>
+      <AgeGroup>Senior</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Cabin 5</Sublocation>
+      <ChipNumber>900012000693280</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36607749</ID>
+      <Name>Jerry</Name>
+      <Species>Dog</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Thai Ridgeback</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>54</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-dog.gif</Photo>
+      <Location>Dog Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>1</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Cabin 4</Sublocation>
+      <ChipNumber>933076400525738</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36619041</ID>
+      <Name>Lola</Name>
+      <Species>Dog</Species>
+      <Sex>Female</Sex>
+      <PrimaryBreed>German Shepherd</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Spayed</SN>
+      <Age>37</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-dog.gif</Photo>
+      <Location>Dog Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>1</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Cabin 4</Sublocation>
+      <ChipNumber>982000363139170</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36627856</ID>
+      <Name>Treble</Name>
+      <Species>Dog</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Newfoundland</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>61</Age>
+      <Photo>http://media.petango.com/sms/photos/3290/734fcc6c-5b65-4862-bffe-5bb578bc2932_TN1.jpg</Photo>
+      <Location>Dog Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>1</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Cabin 6</Sublocation>
+      <ChipNumber></ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode>
+    <adoptableSearch xmlns="">
+      <ID>36917491</ID>
+      <Name>Tommy</Name>
+      <Species>Dog</Species>
+      <Sex>Male</Sex>
+      <PrimaryBreed>Terrier, American Staffordshire</PrimaryBreed>
+      <SecondaryBreed>Mix</SecondaryBreed>
+      <SN>Neutered</SN>
+      <Age>24</Age>
+      <Photo>http://media.petango.com/webservices/adoptablesearch/images/Photo-Not-Available-dog.gif</Photo>
+      <Location>Dog Area</Location>
+      <OnHold>No</OnHold>
+      <SpecialNeeds></SpecialNeeds>
+      <NoDogs></NoDogs>
+      <NoCats></NoCats>
+      <NoKids></NoKids>
+      <MemoList/>
+      <ARN></ARN>
+      <BehaviorTestList></BehaviorTestList>
+      <Stage>Available</Stage>
+      <AnimalType>1</AnimalType>
+      <AgeGroup>Adult</AgeGroup>
+      <WildlifeIntakeInjury></WildlifeIntakeInjury>
+      <WildlifeIntakeCause></WildlifeIntakeCause>
+      <BuddyID>0</BuddyID>
+      <Featured>No</Featured>
+      <Sublocation>Cabin 1</Sublocation>
+      <ChipNumber>956000009452407</ChipNumber>
+    </adoptableSearch>
+  </XmlNode>
+  <XmlNode xsi:nil="true"/>
+</ArrayOfXmlNode>

@@ -1,0 +1,3 @@
+GET https://ws.petango.com/webservices/wsadoption.asmx/AdoptionList?authkey=01ca528g13fqneodgf46ypedajhyym2io4ktd6nhsy7qiwt8h5&animalID=36604225&adoptionDate=2017-12-23&siteID=0
+Accept: */*
+Cache-Control: no-cache

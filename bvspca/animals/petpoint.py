@@ -1,12 +1,9 @@
 import datetime
+import html
 import io
 import logging
-import html
 
-from django.conf import settings
 from lxml import etree
-
-PETPOINT_AUTH_KEY = getattr(settings, 'PETPOINT_AUTH_KEY', "")
 
 logger = logging.getLogger('bvspca.animals.petpoint')
 error_logger = logging.getLogger('bvspca.animals.petpoint.errors')
@@ -21,33 +18,32 @@ def extract_animal_ids(animal_summary_etree):
     return animal_ids
 
 
-def fetch_petpoint_adoptable_animal_ids(client):
-    with client.settings(raw_response=True):
-        adoptable_search_response = client.service.AdoptableSearch(
-            PETPOINT_AUTH_KEY,
-            0,  # speciesID
-            'All',  # sex
-            'All',  # ageGroup
-            '',  # location
-            0,  # site
-            'A',  # onHold
-            'ID',  # orderBy
-            '',  # primaryBreed
-            '',  # secondaryBreed
-            'A',  # SpecialNeeds
-            'A',  # noDogs
-            'A',  # noCats
-            'A',  # noKids
-            '',  # stageID
-        )
-        if adoptable_search_response.status_code is 200:
-            return extract_animal_ids(etree.parse(io.BytesIO(adoptable_search_response.content)))
-        else:
-            error_logger.error(
-                'Failed to retrieve adoptable animals. HTTP status code {}'.format(
-                    adoptable_search_response.status_code,
-                )
+def fetch_petpoint_adoptable_animal_ids(session, base_url):
+    params = {
+        'speciesID': 0,
+        'sex': 'All',
+        'ageGroup': 'All',
+        'location': '',
+        'site': 0,
+        'onHold': 'A',
+        'orderBy': 'ID',
+        'primaryBreed': '',
+        'secondaryBreed': '',
+        'SpecialNeeds': 'A',
+        'noDogs': 'A',
+        'noCats': 'A',
+        'noKids': 'A',
+        'stageID': '',
+    }
+    adoptable_search_response = session.get(base_url.format('AdoptableSearch'), params=params)
+    if adoptable_search_response.status_code is 200:
+        return extract_animal_ids(etree.parse(io.BytesIO(adoptable_search_response.content)))
+    else:
+        error_logger.error(
+            'Failed to retrieve adoptable animals. HTTP status code {}'.format(
+                adoptable_search_response.status_code,
             )
+        )
 
 
 def extract_animal_adoption_dates(adoptions_etree):
@@ -72,11 +68,12 @@ def extract_animal_adoption_dates(adoptions_etree):
     return animal_adoptions
 
 
-def fetch_petpoint_adopted_dates_since(client, start_date):
+def fetch_petpoint_adopted_dates_since(session, base_url, start_date):
     """
     From the start date, retrieve all adopted animals
 
-    :param client: lxml client object
+    :param session: requests session object
+    :param base_url: base url of petpoint services
     :param start_date: the date to start checking for adoptions
     :return: a list of animal id and adoption date tuples
     """
@@ -85,46 +82,43 @@ def fetch_petpoint_adopted_dates_since(client, start_date):
     end_date = datetime.date.today()
     all_adoptions = []
     while loop_date <= end_date:
-        with client.settings(raw_response=True):
-            adoption_list_response = client.service.AdoptionList(
-                PETPOINT_AUTH_KEY,
-                loop_date,                       # adoptionDate
-                0,                               # sideID
-            )
-            if adoption_list_response.status_code is 200:
-                all_adoptions.extend(extract_animal_adoption_dates(etree.parse(io.BytesIO(adoption_list_response.content))))
-            else:
-                error_logger.error(
-                    'Failed to retrieve adopted animals for day {}. HTTP status code {}'.format(
-                        loop_date,
-                        adoption_list_response.status_code,
-                    )
+        params = {
+            'adoptionDate': loop_date,
+            'siteID': '',
+        }
+        adoption_list_response = session.get(base_url.format('AdoptionList'), params=params)
+        if adoption_list_response.status_code is 200:
+            all_adoptions.extend(extract_animal_adoption_dates(etree.parse(io.BytesIO(adoption_list_response.content))))
+        else:
+            error_logger.error(
+                'Failed to retrieve adopted animals for day {}. HTTP status code {}'.format(
+                    loop_date,
+                    adoption_list_response.status_code,
                 )
-            loop_date += one_day_delta
+            )
+        loop_date += one_day_delta
     return all_adoptions
 
 
 def extract_animal(animal_detail_etree):
-    details = animal_detail_etree.find('.//adoptableDetails')
-    return PetPointAnimal(details)
+    return PetPointAnimal(animal_detail_etree)
 
 
-def fetch_petpoint_animal(client, animal_id):
-    with client.settings(raw_response=True):
-        animal_details_response = client.service.AdoptableDetails(
-            animal_id,
-            PETPOINT_AUTH_KEY,
-        )
-        if animal_details_response.status_code is 200:
-            return extract_animal(etree.parse(io.BytesIO(animal_details_response.content)))
-        else:
-            error_logger.error(
-                'Failed to retrieve animal {} details. HTTP status code: {}. Reason: {}'.format(
-                    animal_id,
-                    animal_details_response.status_code,
-                    animal_details_response.reason,
-                )
+def fetch_petpoint_animal(session, base_url, animal_id):
+    params = {
+        'animalID': animal_id,
+    }
+    animal_details_response = session.get(base_url.format('AdoptableDetails'), params=params)
+    if animal_details_response.status_code is 200:
+        return extract_animal(etree.parse(io.BytesIO(animal_details_response.content)))
+    else:
+        error_logger.error(
+            'Failed to retrieve animal {} details. HTTP status code: {}. Reason: {}'.format(
+                animal_id,
+                animal_details_response.status_code,
+                animal_details_response.reason,
             )
+        )
 
 
 class PetPointAnimal:
@@ -134,7 +128,7 @@ class PetPointAnimal:
     def __getattr__(self, propName):
         property_element = self.element.find(propName)
         if property_element is not None:
-            property_value = property_element.text
+            property_value = property_element.text.strip()
             if propName in ['ID', 'Age']:
                 return int(property_value)
             if propName in ['DateOfSurrender', 'LastIntakeDate']:

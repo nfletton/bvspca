@@ -1,84 +1,88 @@
 import datetime
 import logging
 
+import requests
+from django.conf import settings
 from django.core.management.base import BaseCommand
-from zeep import Client, Settings
 
 from bvspca.animals.models import Animal, AnimalCountSettings, AnimalsPage
-from bvspca.animals.petpoint import fetch_petpoint_adoptable_animal_ids, fetch_petpoint_adopted_dates_since, \
+from bvspca.animals.petpoint import fetch_petpoint_adoptable_animal_ids, \
+    fetch_petpoint_adopted_dates_since, \
     fetch_petpoint_animal
 from bvspca.social.interface import add_to_social_queue
 
 logger = logging.getLogger('bvspca.animals.petpoint')
+
+PETPOINT_AUTH_KEY = getattr(settings, 'PETPOINT_AUTH_KEY', "")
+PETPOINT_BASE_URL = 'https://ws.petango.com/webservices/wsadoption.asmx/{}'
 
 
 class Command(BaseCommand):
     help = 'Synchronize data from PetPoint with local Animal objects'
 
     def handle(self, *args, **options):
-        settings = Settings(strict=False)
-        client = Client('file://wsadoption.asmx', settings=settings)
-
-        # create and update animals based on currently adoptable animals
-        adoptable_animal_ids = fetch_petpoint_adoptable_animal_ids(client)
-        if adoptable_animal_ids is not None:
-            for animal_id in adoptable_animal_ids:
-                petpoint_animal = fetch_petpoint_animal(client, animal_id)
-                if petpoint_animal is not None:
-                    try:
-                        local_animal = Animal.objects.get(petpoint_id=animal_id)
-                        if local_animal.adoption_date:
-                            # adjust adopted count since animal previously adopted
-                            self.increment_animal_count(local_animal.species, 'adopted', -1)
-                        if local_animal.updateAdoptableAnimal(petpoint_animal):
+        with requests.Session() as session:
+            session.params = {'authKey': PETPOINT_AUTH_KEY}
+            # create and update animals based on currently adoptable animals
+            adoptable_animal_ids = fetch_petpoint_adoptable_animal_ids(session, PETPOINT_BASE_URL)
+            if adoptable_animal_ids is not None:
+                for animal_id in adoptable_animal_ids:
+                    petpoint_animal = fetch_petpoint_animal(session, PETPOINT_BASE_URL, animal_id)
+                    if petpoint_animal is not None:
+                        try:
+                            local_animal = Animal.objects.get(petpoint_id=animal_id)
+                            if local_animal.adoption_date:
+                                # adjust adopted count since animal previously adopted
+                                self.increment_animal_count(local_animal.species, 'adopted', -1)
+                            if local_animal.updateAdoptableAnimal(petpoint_animal):
+                                logger.info(
+                                    '{} {} updated ({})'.format(
+                                        local_animal.species,
+                                        local_animal.petpoint_id,
+                                        local_animal.title,
+                                    )
+                                )
+                        except Animal.DoesNotExist:
+                            new_animal = Animal.create(petpoint_animal)
+                            self.increment_animal_count(new_animal.species, 'rescued')
+                            animal_parent = AnimalsPage.objects.get(species=new_animal.species)
+                            animal_parent.add_child(instance=new_animal)
+                            add_to_social_queue(new_animal)
                             logger.info(
-                                '{} {} updated ({})'.format(
+                                '{} {} created ({})'.format(
+                                    new_animal.species,
+                                    new_animal.petpoint_id,
+                                    new_animal.title,
+                                )
+                            )
+
+            # check for adoptions since yesterday and set adoption dates
+            adoptions = fetch_petpoint_adopted_dates_since(session, PETPOINT_BASE_URL, datetime.date.today() - datetime.timedelta(1))
+            if adoptions:
+                for adoption in adoptions:
+                    try:
+                        local_animal = Animal.objects.get(petpoint_id=adoption[0])
+                        if local_animal.adoption_date != adoption[1]:
+                            local_animal.adoption_date = adoption[1]
+                            local_animal.live = True
+                            local_animal.save()
+                            self.increment_animal_count(local_animal.species, 'adopted')
+                            add_to_social_queue(local_animal)
+                            logger.info(
+                                '{} {} adopted on {} ({})'.format(
                                     local_animal.species,
                                     local_animal.petpoint_id,
+                                    local_animal.adoption_date,
                                     local_animal.title,
                                 )
                             )
                     except Animal.DoesNotExist:
-                        new_animal = Animal.create(petpoint_animal)
-                        self.increment_animal_count(new_animal.species, 'rescued')
-                        animal_parent = AnimalsPage.objects.get(species=new_animal.species)
-                        animal_parent.add_child(instance=new_animal)
-                        add_to_social_queue(new_animal)
-                        logger.info(
-                            '{} {} created ({})'.format(
-                                new_animal.species,
-                                new_animal.petpoint_id,
-                                new_animal.title,
+                        logger.error(
+                            'Animal {} did not exist when attempting to set adoption date {}'.format(
+                                adoption[0],
+                                adoption[1],
                             )
                         )
-
-        # check for adoptions since yesterday and set adoption dates
-        adoptions = fetch_petpoint_adopted_dates_since(client, datetime.date.today() - datetime.timedelta(1))
-        if adoptions:
-            for adoption in adoptions:
-                try:
-                    local_animal = Animal.objects.get(petpoint_id=adoption[0])
-                    if local_animal.adoption_date != adoption[1]:
-                        local_animal.adoption_date = adoption[1]
-                        local_animal.live = True
-                        local_animal.save()
-                        self.increment_animal_count(local_animal.species, 'adopted')
-                        add_to_social_queue(local_animal)
-                        logger.info(
-                            '{} {} adopted on {} ({})'.format(
-                                local_animal.species,
-                                local_animal.petpoint_id,
-                                local_animal.adoption_date,
-                                local_animal.title,
-                            )
-                        )
-                except Animal.DoesNotExist:
-                    logger.error(
-                        'Animal {} did not exist when attempting to set adoption date {}'.format(
-                            adoption[0],
-                            adoption[1],
-                        )
-                    )
 
         # unpublish animals no longer adoptable yet have not been adopted
         if adoptable_animal_ids is not None:

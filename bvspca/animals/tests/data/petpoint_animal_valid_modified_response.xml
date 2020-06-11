@@ -1,66 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <soap:Body>
-    <AdoptableDetailsResponse xmlns="http://www.petango.com/">
-      <AdoptableDetailsResult>
-        <adoptableDetails xmlns="">
-          <CompanyID>3290</CompanyID>
-          <ID>36607476</ID>
-          <AnimalName>Sniffy 2</AnimalName>
-          <Species>Dog</Species>
-          <Sex>Female</Sex>
-          <Altered>Yes</Altered>
-          <PrimaryBreed>Domestic Longhair</PrimaryBreed>
-          <SecondaryBreed>Mix 2</SecondaryBreed>
-          <PrimaryColor>Orange</PrimaryColor>
-          <SecondaryColor>Brown</SecondaryColor>
-          <Age>160</Age>
-          <Size>M</Size>
-          <Housetrained>Unknown</Housetrained>
-          <Declawed>No</Declawed>
-          <Price>0.00</Price>
-          <LastIntakeDate>2017-09-20 17:49:00</LastIntakeDate>
-          <Location>Cat Area</Location>
-          <Dsc>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Dsc>
-          <Photo1>http://www.example.com/1.jpg</Photo1>
-          <Photo2>http://www.example.com/2.jpg</Photo2>
-          <Photo3>http://www.example.com/3.jpg</Photo3>
-          <OnHold>Yes</OnHold>
-          <SpecialNeeds>special needs</SpecialNeeds>
-          <NoDogs>Y</NoDogs>
-          <NoCats></NoCats>
-          <NoKids>Y</NoKids>
-          <BehaviorResult></BehaviorResult>
-          <MemoList/>
-          <Site>Bow Valley SPCA</Site>
-          <DateOfSurrender>2017-11-11 17:56:07</DateOfSurrender>
-          <TimeInFormerHome>13 Years</TimeInFormerHome>
-          <ReasonForSurrender>Not Housebroken / Housesoiling</ReasonForSurrender>
-          <PrevEnvironment></PrevEnvironment>
-          <LivedWithChildren>No</LivedWithChildren>
-          <LivedWithAnimals>Unknown</LivedWithAnimals>
-          <LivedWithAnimalTypes>snakes</LivedWithAnimalTypes>
-          <BodyWeight>2 kilograms</BodyWeight>
-          <DateOfBirth>2004-09-20</DateOfBirth>
-          <ARN></ARN>
-          <VideoID></VideoID>
-          <BehaviorTestList/>
-          <Stage>Available</Stage>
-          <AnimalType>2</AnimalType>
-          <AgeGroup>Senior</AgeGroup>
-          <WildlifeIntakeInjury></WildlifeIntakeInjury>
-          <WildlifeIntakeCause></WildlifeIntakeCause>
-          <BuddyID>0</BuddyID>
-          <Featured>No</Featured>
-          <Sublocation>Chalet 4</Sublocation>
-          <ChipNumber>982009102726261</ChipNumber>
-          <ColorPattern>Tabby</ColorPattern>
-          <BannerURL>
-            https://ws.petango.com/webservices/adoptablesearch/images/24PW-Pet-Insurance-Programs-150x84-with-white-space.png
-          </BannerURL>
-        </adoptableDetails>
-      </AdoptableDetailsResult>
-    </AdoptableDetailsResponse>
-  </soap:Body>
-</soap:Envelope>
+<adoptableDetails>
+  <CompanyID>3290</CompanyID>
+  <ID>36607476</ID>
+  <AnimalName>Sniffy 2</AnimalName>
+  <Species>Dog</Species>
+  <Sex>Female</Sex>
+  <Altered>Yes</Altered>
+  <PrimaryBreed>Domestic Longhair</PrimaryBreed>
+  <SecondaryBreed>Mix 2</SecondaryBreed>
+  <PrimaryColor>Orange</PrimaryColor>
+  <SecondaryColor>Brown</SecondaryColor>
+  <Age>160</Age>
+  <Size>M</Size>
+  <Housetrained>Unknown</Housetrained>
+  <Declawed>No</Declawed>
+  <Price>0.00</Price>
+  <LastIntakeDate>2017-09-20 17:49:00</LastIntakeDate>
+  <Location>Cat Area</Location>
+  <Dsc>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Dsc>
+  <Photo1>http://www.example.com/1.jpg</Photo1>
+  <Photo2>http://www.example.com/2.jpg</Photo2>
+  <Photo3>http://www.example.com/3.jpg</Photo3>
+  <OnHold>Yes</OnHold>
+  <SpecialNeeds>special needs</SpecialNeeds>
+  <NoDogs>Y</NoDogs>
+  <NoCats></NoCats>
+  <NoKids>Y</NoKids>
+  <BehaviorResult></BehaviorResult>
+  <MemoList/>
+  <Site>Bow Valley SPCA</Site>
+  <DateOfSurrender>2017-11-11 17:56:07</DateOfSurrender>
+  <TimeInFormerHome>13 Years</TimeInFormerHome>
+  <ReasonForSurrender>Not Housebroken / Housesoiling</ReasonForSurrender>
+  <PrevEnvironment></PrevEnvironment>
+  <LivedWithChildren>No</LivedWithChildren>
+  <LivedWithAnimals>Unknown</LivedWithAnimals>
+  <LivedWithAnimalTypes>snakes</LivedWithAnimalTypes>
+  <BodyWeight>2 kilograms</BodyWeight>
+  <DateOfBirth>2004-09-20</DateOfBirth>
+  <ARN></ARN>
+  <VideoID></VideoID>
+  <BehaviorTestList/>
+  <Stage>Available</Stage>
+  <AnimalType>2</AnimalType>
+  <AgeGroup>Senior</AgeGroup>
+  <WildlifeIntakeInjury></WildlifeIntakeInjury>
+  <WildlifeIntakeCause></WildlifeIntakeCause>
+  <BuddyID>0</BuddyID>
+  <Featured>No</Featured>
+  <Sublocation>Chalet 4</Sublocation>
+  <ChipNumber>982009102726261</ChipNumber>
+  <ColorPattern>Tabby</ColorPattern>
+  <BannerURL>
+    https://ws.petango.com/webservices/adoptablesearch/images/24PW-Pet-Insurance-Programs-150x84-with-white-space.png
+  </BannerURL>
+</adoptableDetails>
