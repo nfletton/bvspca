@@ -58,6 +58,10 @@ node_modules/
 # virtual environments
 .env
 
+.env.local
+.env.production
+.env.test
+
 # User-uploaded media
 media/
 
@@ -65,8 +69,6 @@ staticfiles/
 
 db/
 libs/
-
-staticfiles/
 
 .cache/
 bvspca/static/dist/
