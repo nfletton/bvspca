@@ -32,6 +32,9 @@
   "engines": {
     "node": ">=0.8.0"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "scripts": {
     "build": "webpack -p",
     "start": "gulp & webpack --watch --devtool=sourcemaps",

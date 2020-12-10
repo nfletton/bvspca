@@ -47,7 +47,7 @@ const config = function () {
                   plugins: () => {
                     const cssPlugins = [
                       postCssFlexbugsFixes,
-                      autoprefixer({ browsers: ['last 2 version'] }),
+                      autoprefixer(),
                     ];
                     if (process.env.NODE_ENV === 'production') {
                       cssPlugins.push(cssnano);
