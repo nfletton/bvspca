@@ -1,11 +1,14 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel, PageChooserPanel
 from wagtail.contrib.forms.models import AbstractFormField
 from wagtail.core.blocks import ListBlock
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
+from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtailcaptcha.models import WagtailCaptchaEmailForm
@@ -318,3 +321,76 @@ class ContentIndexPage(MenuTitleable, Page, PageDesignMixin):
     ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
+
+
+class RedirectPage(Page):
+    """
+    A page to provide a mechanism to add menu items that redirect to another page,
+    a document or an external site.
+    """
+    link_external = models.URLField("External link", blank=True)
+    link_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        related_name='+',
+        on_delete=models.SET_NULL,
+    )
+    link_document = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        related_name='+',
+        on_delete=models.SET_NULL,
+    )
+    new_tab = models.BooleanField(
+        'Open in new tab',
+        blank=True,
+        default=False,
+    )
+
+    subpage_types = []
+    content_panels = [
+        FieldPanel('title'),
+        FieldPanel('link_external'),
+        PageChooserPanel('link_page'),
+        DocumentChooserPanel('link_document'),
+        FieldPanel('new_tab')
+    ]
+
+    @property
+    def link(self):
+        if self.link_page:
+            return self.link_page.url
+        elif self.link_document:
+            return self.link_document.url
+        else:
+            return self.link_external
+
+    def clean(self):
+        link_field_names = ['link_external', 'link_page', 'link_document']
+        set_fields_count = 0
+        for field_name in link_field_names:
+            if getattr(self, field_name, None):
+                set_fields_count += 1
+        # at least one link field should be set
+        if not set_fields_count:
+            error = ValidationError('one (and only one) of these link fields must be set', code='not_allowed')
+            errors = {}
+            for field_name in link_field_names:
+                errors[field_name] = error
+            raise ValidationError(errors)
+        # only one link field can be set
+        if set_fields_count > 1:
+            error = ValidationError('only one of these link fields can be set', code='not_allowed')
+            errors = {}
+            for field_name in link_field_names:
+                if getattr(self, field_name, None):
+                    errors[field_name] = error
+            raise ValidationError(errors)
+
+    class Meta:
+        verbose_name = 'Redirect Page'
+
+    def serve(self, request):
+        return redirect(self.link, permanent=False)

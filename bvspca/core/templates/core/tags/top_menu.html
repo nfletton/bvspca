@@ -9,7 +9,7 @@
       </a>
       {% top_menu_children parent=menuitem %}
     {% else %}
-      <a href="{% pageurl menuitem %}" class="main-nav__link">{{ menuitem.menu_title|default:menuitem.title }}</a>
+      <a href="{% pageurl menuitem %}"{% if menuitem.new_tab %} target="_blank"{% endif %} class="main-nav__link">{{ menuitem.menu_title|default:menuitem.title }}</a>
     {% endif %}
   </li>
 {% endfor %}
