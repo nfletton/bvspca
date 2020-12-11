@@ -64,7 +64,7 @@ header {
   border: 2px solid $primary-color;
   @media(min-width: $nav-breakpoint) {
     display: block;
-    padding: 0.9rem 2.5rem;
+    padding: 0.5rem 1.2rem;
     font-size: 0.9rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -96,7 +96,7 @@ header {
     background: transparent url(../svg/search-icon-grey.svg) no-repeat 50% 50%;
     background-size: 35px;
     position: static;
-    padding: 1.5rem 2.2rem;
+    padding: 1.25rem 2rem;
     &:link, &:focus, &:active, &:visited {
       color: $tertiary-color;
     }
@@ -220,7 +220,8 @@ header {
   }
 }
 
-.mobile-button__adopt {
+.mobile-button__adopt,
+.mobile-button__shop {
   background-color: $tertiary-color;
   &:hover {
     background-color: darken($tertiary-color, 10);
