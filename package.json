@@ -19,7 +19,7 @@
     "gulp": "^3.9.1",
     "gulp-livereload": "^4.0.0",
     "gulp-plumber": "^1.2.0",
-    "node-sass": "^4.9.4",
+    "node-sass": "^4.13.1",
     "path": "^0.12.7",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
