@@ -27,4 +27,4 @@ mailchimp3==3.0.14
 django-ical==1.7.1
 TwitterApi==2.5.11
 facebook-sdk==3.1.0
-lxml==4.5.1
+lxml==4.6.3
