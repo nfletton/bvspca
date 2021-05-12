@@ -2,7 +2,7 @@
   "name": "bvspca",
   "version": "0.1.0",
   "dependencies": {
-    "swiper": "^4.3.3"
+    "swiper": "^6.5.1"
   },
   "devDependencies": {
     "autoprefixer": "^9.3.1",
