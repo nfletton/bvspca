@@ -1,22 +1,37 @@
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const path = require('path');
-const postCssFlexbugsFixes = require('postcss-flexbugs-fixes');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const basePath = `${__dirname}/bvspca`;
 
-const config = function () {
+const config = function (env, argv) {
+  const isProductionMode = argv.mode === 'production';
   return {
     entry: {
-      sass: `${basePath}/static/sass/project.scss`,
+      project: `${basePath}/static/sass/project.scss`,
       bio: `${basePath}/core/js_src/bio.js`,
       site: `${basePath}/core/js_src/site.js`,
     },
     output: {
       path: `${basePath}/static/dist`,
       filename: '[name].js',
+    },
+    optimization: {
+      minimizer: [
+        new TerserPlugin({}),
+        new OptimizeCSSAssetsPlugin({
+          cssProcessorOptions: {
+            map: {
+              /* output sourcemaps */
+              inline: false,
+              annotation: true,
+            },
+          },
+        }),
+      ],
+      splitChunks: {
+        chunks: 'all',
+      },
     },
     module: {
       rules: [
@@ -25,51 +40,43 @@ const config = function () {
           use: [
             {
               loader: 'babel-loader',
-              options: {
-                presets: ['es2015'],
-              },
             },
           ],
-          exclude: /(node_modules|bower_components)/,
         },
         {
           test: /\.scss$/,
-          use: ExtractTextPlugin.extract({
-            use: [
-              // {loader: 'style-loader'},
-              {
-                loader: 'css-loader',
-                options: { url: false, sourceMap: true },
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                url: false,
               },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  plugins: () => {
-                    const cssPlugins = [
-                      postCssFlexbugsFixes,
-                      autoprefixer(),
-                    ];
-                    if (process.env.NODE_ENV === 'production') {
-                      cssPlugins.push(cssnano);
-                    }
-                    return cssPlugins;
-                  },
-                  sourceMap: true,
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [
+                    'postcss-preset-env',
+                  ],
                 },
               },
-              {
-                loader: 'sass-loader',
-                options: {
-                  sourceMap: true,
-                },
-              },
-            ],
-          }),
+            },
+            {
+              loader: 'sass-loader',
+            },
+          ],
         },
       ],
     },
     plugins: [
-      new ExtractTextPlugin('project.css'),
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: '[id].css',
+      }),
     ],
   };
 };

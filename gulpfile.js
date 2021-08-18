@@ -1,25 +1,29 @@
-/*eslint-env node*/
-var gulp = require('gulp');
-var livereload = require('gulp-livereload');
-var plumber = require('gulp-plumber');
-var path = require('path');
+/* eslint-env node */
+const { parallel, watch, src } = require('gulp');
+const livereload = require('gulp-livereload');
 
-gulp.task('watch', function () {
+function reloadClientSideChange(cb) {
+  const watchPath = 'bvspca/static/dist/*';
   livereload.listen();
 
-  gulp.watch(
-    [
-      'bvspca/**/*.html',
-      'bvspca/**/*.py',
-      'bvspca/static/dist/*',
-    ],
-    { awaitWriteFinish: true },
-    function (event) {
-      gulp.src(event.path)
-        .pipe(plumber())
-        .pipe(livereload());
-    });
-});
+  watch(
+    watchPath,
+    { delay: 0 },
+    () => src(watchPath).pipe(livereload()),
+  );
+  cb();
+}
 
+function reloadServerSideChange(cb) {
+  const watchPath = ['bvspca/**/*.html', 'bvspca/**/*.pyc'];
+  livereload.listen();
 
-gulp.task('default', ['watch']);
+  watch(
+    watchPath,
+    { delay: 300 },
+    () => src(watchPath).pipe(livereload()),
+  );
+  cb();
+}
+
+exports.default = parallel(reloadClientSideChange, reloadServerSideChange);

@@ -11,13 +11,24 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 [*.{py,rst,ini}]
+indent_style = space
 indent_size = 4
 
 [*.py]
-line_length=120
-known_first_party=bvspca
-multi_line_output=3
-default_section=THIRDPARTY
+line_length = 120
+known_first_party = bvspca,config
+multi_line_output = 3
+default_section = THIRDPARTY
+recursive = true
+skip = venv/
+skip_glob = **/migrations/*.py
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+
+[*.{html,css,scss,json,yml,js}]
+indent_style = space
+indent_size = 2
 
 [*.md]
 trim_trailing_whitespace = false
