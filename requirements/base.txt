@@ -20,7 +20,7 @@ psycopg2-binary==2.8.5
 pytz==2021.1
 
 # Your custom requirements go here
-wagtail>=2.10,<2.11
+wagtail>=2.11,<2.12
 wagtailfontawesome==1.2.1
 wagtail-django-recaptcha==1.0
 mailchimp3==3.0.15
