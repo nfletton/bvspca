@@ -1,5 +1,6 @@
 from django import template
 from django.conf import settings
+from wagtail.core.models import Site
 
 register = template.Library()
 
@@ -41,7 +42,7 @@ def seo_and_social_meta_tags(context, page):
         if hasattr(page, 'seo_and_social_meta_values'):
             request = context.request
             data = page.seo_and_social_meta_values()
-            data['root_url'] = request.site.root_url
+            data['root_url'] = Site.find_for_request(context['request']).root_url
         else:
             data = dict(
                 title='{} | {}'.format(page.seo_title if page.seo_title else page.title, site_short_name),

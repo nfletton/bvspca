@@ -89,8 +89,8 @@ class HomePage(Page):
     @property
     def has_multiple_slides(self):
         active_slides = 0;
-        for slide in self.slider.stream_data:
-            if slide['value']['active']:
+        for slide in self.slider:
+            if slide.value['active']:
                 active_slides += 1
             if active_slides > 1:
                 return True
