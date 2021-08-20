@@ -51,7 +51,7 @@ class Command(BaseCommand):
                          credentials['ACCESS_TOKEN_KEY'],
                          credentials['ACCESS_TOKEN_SECRET'])
         response = api.request('media/upload', None, {'media': content['image_data']})
-        if response.status_code is 200:
+        if response.status_code == 200:
             media_id = response.json()['media_id']
             response = api.request(
                 'statuses/update',

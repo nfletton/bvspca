@@ -36,7 +36,7 @@ def fetch_petpoint_adoptable_animal_ids(session, base_url):
         'stageID': '',
     }
     adoptable_search_response = session.get(base_url.format('AdoptableSearch'), params=params)
-    if adoptable_search_response.status_code is 200:
+    if adoptable_search_response.status_code == 200:
         return extract_animal_ids(etree.parse(io.BytesIO(adoptable_search_response.content)))
     else:
         error_logger.error(
@@ -87,7 +87,7 @@ def fetch_petpoint_adopted_dates_since(session, base_url, start_date):
             'siteID': '',
         }
         adoption_list_response = session.get(base_url.format('AdoptionList'), params=params)
-        if adoption_list_response.status_code is 200:
+        if adoption_list_response.status_code == 200:
             all_adoptions.extend(extract_animal_adoption_dates(etree.parse(io.BytesIO(adoption_list_response.content))))
         else:
             error_logger.error(
@@ -109,7 +109,7 @@ def fetch_petpoint_animal(session, base_url, animal_id):
         'animalID': animal_id,
     }
     animal_details_response = session.get(base_url.format('AdoptableDetails'), params=params)
-    if animal_details_response.status_code is 200:
+    if animal_details_response.status_code == 200:
         return extract_animal(etree.parse(io.BytesIO(animal_details_response.content)))
     else:
         error_logger.error(
