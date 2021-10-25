@@ -70,27 +70,6 @@
               <td class="animal-profile__info-item-value">{{ page.last_intake_date }}</td>
             </tr>
           {% endif %}
-          <tr class="animal-profile__info-item">
-            <td class="animal-profile__info-item-label">Compatibility</td>
-            <td class="animal-profile__info-item-value">
-              <ul class="animal-profile__compatibilities"  class="animal-profile__info-item-value">
-                {% if page.special_needs %}
-                  <li>Special needs: {{ page.special_needs }}</li>{% endif %}
-                {% if page.no_dogs == 'Y' %}
-                  <li>No Dogs</li>{% endif %}
-                {% if page.no_cats == 'Y' %}
-                  <li>No Cats</li>{% endif %}
-                {% if page.no_kids == 'Y' %}
-                  <li>No Children</li>{% endif %}
-                {% if page.lived_with_kids %}
-                  <li>Has lived with kids: {{ page.lived_with_kids }}</li>{% endif %}
-                {% if page.lived_with_animals %}
-                  <li>Has lived with animals: {{ page.lived_with_animals }}</li>{% endif %}
-                {% if page.lived_with_animal_types %}
-                  <li>Has lived with these animals: {{ page.lived_with_animal_types }}</li>{% endif %}
-              </ul>
-            </td>
-          </tr>
           </tbody>
         </table>
       </div>
