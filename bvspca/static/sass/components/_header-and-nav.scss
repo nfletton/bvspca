@@ -81,9 +81,17 @@ header {
 
 .header-button__donate {
   border-color: $tertiary-color;
-  color: $tertiary-color;
+  background-color: $tertiary-color;
+  color: #fff;
+  font-weight: 800;
+  margin-left: 30px;
+  padding: 0.5rem 2rem;
   &:link, &:focus, &:active, &:visited {
-    color: $tertiary-color;
+    color: #fff;
+  }
+  &:hover {
+    background-color: darken($tertiary-color, 10);
+    border-color: darken($tertiary-color, 10);
   }
 }
 
@@ -231,6 +239,7 @@ header {
 
 .mobile-button__donate {
   background-color: $primary-color;
+  font-weight: 800;
   &:hover {
     background-color: darken($primary-color, 10);
     text-decoration: none;
