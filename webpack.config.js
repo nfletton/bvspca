@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
 
 const basePath = `${__dirname}/bvspca`;
@@ -19,15 +19,7 @@ const config = function (env, argv) {
     optimization: {
       minimizer: [
         new TerserPlugin({}),
-        new OptimizeCSSAssetsPlugin({
-          cssProcessorOptions: {
-            map: {
-              /* output sourcemaps */
-              inline: false,
-              annotation: true,
-            },
-          },
-        }),
+        new CssMinimizerPlugin(),
       ],
       splitChunks: {
         chunks: 'all',
@@ -77,6 +69,7 @@ const config = function (env, argv) {
         filename: '[name].css',
         chunkFilename: '[id].css',
       }),
+      new MiniCssExtractPlugin(),
     ],
   };
 };

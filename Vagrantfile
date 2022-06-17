@@ -4,13 +4,13 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  if ENV['VAGRANT_BASE_BOX_20_04']
-    config.vm.box = ENV['VAGRANT_BASE_BOX_20_04']
+  if ENV['VAGRANT_BASE_BOX_22_04']
+    config.vm.box = ENV['VAGRANT_BASE_BOX_22_04']
   else
-    config.vm.box = "focal64"
+    config.vm.box = "jammy64"
   end
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = ENV['HOME'] + "/ansible-playbooks/django-dev-20.04.yml"
+    ansible.playbook = ENV['HOME'] + "/ansible-playbooks/django-dev-22.04.yml"
     ansible.become = true
     ansible.extra_vars = ENV['HOME'] + "/ansible-playbooks/host_vars/dev.bowvalleyspca.org.yml"
   end
