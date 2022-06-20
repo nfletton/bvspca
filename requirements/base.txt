@@ -1,30 +1,27 @@
 django>=3.2,<3.3
 
 # Configuration
-django-environ==0.4.5
+django-environ==0.9
 
 # Forms
-django-braces==1.14.0
-django-crispy-forms==1.12.0
+django-braces==1.15.0
+django-crispy-forms==1.14.0
 
 # Models
-django-model-utils==4.1.1
+django-model-utils==4.2.0
 
 # Password storage
 argon2-cffi==20.1.0
 
-# Python-PostgreSQL Database Adapter
-psycopg2-binary==2.8.5
-
 # Time zones support
-pytz==2021.1
+pytz==2022.1
 
 # Your custom requirements go here
 wagtail>=2.15,<2.16
 wagtailfontawesome==1.2.1
 wagtail-django-recaptcha==1.0
-mailchimp3==3.0.15
-django-ical==1.8.0
-TwitterApi==2.5.11
+mailchimp3==3.0.17
+django-ical==1.8.3
+TwitterApi==2.7.13
 facebook-sdk==3.1.0
-lxml==4.6.3
+lxml==4.9.0

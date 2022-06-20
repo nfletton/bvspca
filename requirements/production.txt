@@ -6,4 +6,5 @@
 
 # WSGI Handler
 # ------------------------------------------------
-gunicorn==19.9.0
+gunicorn==20.1.0
+psycopg2==2.9.3  # https://github.com/psycopg/psycopg2
