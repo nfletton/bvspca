@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load wagtailcore_tags crispy_forms_tags %}
+{% load utility_tags wagtailcore_tags crispy_forms_tags %}
 
 {% block body_class %}contact-page{% endblock %}
 
@@ -28,15 +28,27 @@
     </div>
   </div>
   <div class="contact-content-bottom">
-    <form class="form-horizontal contact-form" action="{% pageurl page %}#form" method="POST" id="form">
+    <form class="form-horizontal contact-form" action="{% pageurl page %}#form" method="POST" id="contact-form">
       {% csrf_token %}
       {{ form|crispy }}
       <div class="control-group">
         <div class="controls">
-          <button type="submit" class="btn btn-primary">Send</button>
+          <button class="g-recaptcha btn btn-primary"
+                  data-sitekey="{% get_recaptcha_site_key %}"
+                  data-callback='onContactSubmit'
+                  data-action='submit'>Submit</button>
         </div>
       </div>
     </form>
     <div class="contact-close">{{ page.close|richtext }}</div>
   </div>
 {% endblock content %}
+
+{% block extra_javascript %}
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+  <script>
+    function onContactSubmit(token) {
+      document.getElementById("contact-form").submit();
+    }
+  </script>
+{% endblock extra_javascript %}

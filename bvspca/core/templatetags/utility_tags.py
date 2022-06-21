@@ -16,6 +16,11 @@ def get_property(instance, key):
 
 
 @register.simple_tag
+def get_recaptcha_site_key():
+    return getattr(settings, 'RECAPTCHA_PUBLIC_KEY', "")
+
+
+@register.simple_tag
 def get_addthis_pub_id():
     return getattr(settings, 'ADDTHIS_PUB_ID', "")
 

@@ -4,20 +4,19 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel, PageChooserPanel
-from wagtail.contrib.forms.models import AbstractFormField
-from wagtail.core.blocks import ListBlock
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
-from wagtailcaptcha.models import WagtailCaptchaEmailForm
 
 from bvspca.animals.models import Animal, AnimalCountSettings
-from bvspca.core.blocks import HeadingBlock, PictureLinkBlock, SliderBlock, SupporterBlock, TeamMemberBlock
+from bvspca.core.blocks import HeadingBlock, SliderBlock, SupporterBlock, TeamMemberBlock
 from bvspca.events.models import Event
 from bvspca.news.models import News
 from .blocks import ContentStreamBlock
+from .forms import WagtailCaptchaFormBuilder, remove_captcha_field
 from .models_abstract import Attachable, MenuTitleable, SendMailMixin, PageDesignMixin
 
 
@@ -282,11 +281,24 @@ class AdoptionCentre(Page, MenuTitleable):
         verbose_name = 'Adoption Centre'
 
 
+class WagtailCaptchaEmailForm(AbstractEmailForm):
+    """Pages implementing a captcha form with email notification should inherit from this"""
+
+    form_builder = WagtailCaptchaFormBuilder
+
+    def process_form_submission(self, form):
+        remove_captcha_field(form)
+        return super().process_form_submission(form)
+
+    class Meta:
+        abstract = True
+
+
 class ContactFormField(AbstractFormField):
     page = ParentalKey('ContactFormPage', related_name='form_fields')
 
 
-class ContactFormPage(MenuTitleable, SendMailMixin, WagtailCaptchaEmailForm, Page):
+class ContactFormPage(MenuTitleable, WagtailCaptchaEmailForm):
     column_1 = StreamField(ContentStreamBlock(), blank=True)
     column_2 = StreamField(ContentStreamBlock(), blank=True)
     thank_you_text = RichTextField(blank=True)
