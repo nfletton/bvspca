@@ -1,0 +1,9 @@
+{% load wagtailcore_tags %}
+
+{% with parent_uuid=block.block.uuid %}
+  <ul class="accordion" id="accordion-{{ parent_uuid }}">
+    {% for child_block in value %}
+      {% include_block child_block %}
+    {% endfor %}
+  </ul>
+{% endwith %}

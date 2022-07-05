@@ -1,0 +1,12 @@
+{% load wagtailcore_tags %}
+
+{% with uuid=value.uuid %}
+  <li class="accordion-item">
+    <h3 class="accordion-header" id="accordion__heading--{{ uuid }}">
+      <a>{{ value.title }}</a>
+    </h3>
+    <div class="accordion-body">
+      {{ value.content|richtext }}
+    </div>
+  </li>
+{% endwith %}

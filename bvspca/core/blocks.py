@@ -1,11 +1,13 @@
+import uuid
+
 from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
+from wagtail.core.blocks import (CharBlock, ChoiceBlock, ListBlock, PageChooserBlock, RawHTMLBlock, RichTextBlock,
+                                 StreamBlock,
+                                 StructBlock, StructValue, TextBlock)
 from wagtail.documents.blocks import DocumentChooserBlock
-from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.core.blocks import (
-    CharBlock, ChoiceBlock, RichTextBlock, StreamBlock, StructBlock, TextBlock,
-    RawHTMLBlock, PageChooserBlock)
+from wagtail.images.blocks import ImageChooserBlock
 
 
 class DonateBlock(blocks.StructBlock):
@@ -100,6 +102,40 @@ class ExternalLinkBlock(StructBlock):
         icon = 'fa-external-link'
 
 
+class UniqueStructValue(StructValue):
+    """
+    Adds a uuid property to blocks that need template markup
+    that distinguishes between multiple instances of the same block.
+    """
+    @property
+    def uuid(self):
+        return uuid.uuid1().__str__()[:8]
+
+
+class AccordionItemBlock(StructBlock):
+    title = CharBlock()
+    content = RichTextBlock(
+        features=['h2', 'h3', 'h4', 'h5', 'bold', 'italic', 'link', 'document-link', 'ol', 'ul', 'blockquote', 'hr',
+                  'superscript', 'subscript', 'image'])
+
+    class Meta:
+        icon = 'doc-empty'
+        template = 'core/blocks/accordion_item.html'
+        label = 'Accordion Item'
+        value_class = UniqueStructValue
+
+
+class AccordionBlock(ListBlock):
+    def uuid(self):
+        """ provide a unique id, accessible from the template, to distinguish accordion instances """
+        return uuid.uuid1().__str__()[:8]
+
+    class Meta:
+        min_num = 1
+        template = 'core/blocks/accordion_list.html'
+        label = 'Accordion Block'
+
+
 class ContentStreamBlock(StreamBlock):
     heading_block = HeadingBlock()
     paragraph_block = RichTextBlock(
@@ -119,6 +155,7 @@ class ContentStreamBlock(StreamBlock):
     table_block = ContentTableBlock()
     raw_html = ContentRawHTML()
     donate_button = DonateBlock()
+    accordion = AccordionBlock(AccordionItemBlock())
 
 
 class TeamMemberBlock(blocks.StructBlock):
