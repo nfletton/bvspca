@@ -228,8 +228,7 @@ header {
   }
 }
 
-.mobile-button__adopt,
-.mobile-button__shop {
+.mobile-button__adopt {
   background-color: $tertiary-color;
   &:hover {
     background-color: darken($tertiary-color, 10);
