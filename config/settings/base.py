@@ -56,7 +56,6 @@ THIRD_PARTY_APPS = [
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
     'wagtail.contrib.settings',
-    'wagtail.contrib.postgres_search',
 
     'taggit',
     'modelcluster',
@@ -275,7 +274,7 @@ WAGTAIL_SITE_NAME = 'Bow Valley SPCA'
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = env('WAGTAILADMIN_NOTIFICATION_FROM_EMAIL', default='no-reply@example.com')
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.contrib.postgres_search.backend',
+        'BACKEND': 'wagtail.search.backends.database',
     },
 }
 
