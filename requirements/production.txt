@@ -7,4 +7,4 @@
 # WSGI Handler
 # ------------------------------------------------
 gunicorn==20.1.0
-psycopg2==2.9.3  # https://github.com/psycopg/psycopg2
+psycopg2==2.9.5  # https://github.com/psycopg/psycopg2
