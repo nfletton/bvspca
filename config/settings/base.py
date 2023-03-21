@@ -277,6 +277,7 @@ WAGTAILSEARCH_BACKENDS = {
         'BACKEND': 'wagtail.search.backends.database',
     },
 }
+WAGTAILADMIN_BASE_URL = 'https://www.bowvalleyspca.org/'
 
 RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_SITE_KEY')
 RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_SECRET_KEY')
