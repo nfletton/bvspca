@@ -5,10 +5,9 @@ from django.db import models
 from django.db.models import Q
 from django.utils.html import strip_tags
 from django.utils.text import Truncator
-from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page, PageManager
-from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 from bvspca.core.blocks import ContentStreamBlock
@@ -58,7 +57,11 @@ class Event(Page, MetaTagable, Attachable, PageTypeMixin):
     contact_phone = models.CharField(max_length=15, blank=True)
     website = models.URLField(max_length=200, blank=True)
 
-    extra_details = StreamField(ContentStreamBlock(required=False), verbose_name="Extra Content", blank=True)
+    extra_details = StreamField(ContentStreamBlock(
+        required=False),
+        verbose_name="Extra Content",
+        blank=True,
+        use_json_field=False)
 
     objects = EventManager()
 
@@ -68,7 +71,7 @@ class Event(Page, MetaTagable, Attachable, PageTypeMixin):
 
     subpage_types = []
     content_panels = Page.content_panels + [
-        ImageChooserPanel('main_photo'),
+        FieldPanel('main_photo'),
         FieldRowPanel([
             FieldPanel('start_date'),
             FieldPanel('end_date'),
@@ -78,8 +81,8 @@ class Event(Page, MetaTagable, Attachable, PageTypeMixin):
         FieldPanel('contact_email'),
         FieldPanel('contact_phone'),
         FieldPanel('website'),
-        StreamFieldPanel('extra_details'),
-        StreamFieldPanel('attachments'),
+        FieldPanel('extra_details'),
+        FieldPanel('attachments'),
     ]
 
     def save(self, *args, **kwargs):

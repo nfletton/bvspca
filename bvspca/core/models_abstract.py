@@ -4,7 +4,6 @@ from django.db import models
 from wagtail.admin.edit_handlers import MultiFieldPanel, FieldPanel
 from wagtail.core.fields import StreamField
 from wagtail.documents.blocks import DocumentChooserBlock
-from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class MenuTitleable(models.Model):
@@ -17,7 +16,7 @@ class MenuTitleable(models.Model):
 class Attachable(models.Model):
     attachments = StreamField([
         ('document', DocumentChooserBlock(icon='fa-file-text')),
-    ], blank=True,)
+    ], blank=True, use_json_field=False)
 
     class Meta:
         abstract = True
@@ -59,8 +58,8 @@ class PageDesignMixin(models.Model):
     content_panels = [
         MultiFieldPanel(
             [
-                ImageChooserPanel('banner_image'),
-                ImageChooserPanel('menu_item_image'),
+                FieldPanel('banner_image'),
+                FieldPanel('menu_item_image'),
                 FieldPanel('show_newsletter_signup'),
             ],
             heading='Page Design Elements',

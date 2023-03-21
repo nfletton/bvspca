@@ -3,12 +3,10 @@ from django.db import models
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel, PageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, PageChooserPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
-from wagtail.documents.edit_handlers import DocumentChooserPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 from bvspca.animals.models import Animal, AnimalCountSettings
@@ -21,7 +19,7 @@ from .models_abstract import Attachable, MenuTitleable, SendMailMixin, PageDesig
 
 
 class ContentPage(Page, MenuTitleable, Attachable, PageDesignMixin):
-    body = StreamField(ContentStreamBlock(), verbose_name="Page body", blank=True)
+    body = StreamField(ContentStreamBlock(), verbose_name="Page body", blank=True, use_json_field=False)
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
@@ -31,8 +29,8 @@ class ContentPage(Page, MenuTitleable, Attachable, PageDesignMixin):
 
     content_panels = [
         FieldPanel('title'),
-        StreamFieldPanel('body'),
-        StreamFieldPanel('attachments'),
+        FieldPanel('body'),
+        FieldPanel('attachments'),
     ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
@@ -51,7 +49,7 @@ class ContentPage(Page, MenuTitleable, Attachable, PageDesignMixin):
 class HomePage(Page):
     slider = StreamField([
         ('slider_item', SliderBlock())
-    ], blank=True)
+    ], blank=True, use_json_field=False)
 
     events_photo = models.ForeignKey(
         'wagtailimages.Image',
@@ -69,8 +67,8 @@ class HomePage(Page):
 
     content_panels = [
         FieldPanel('title'),
-        StreamFieldPanel('slider'),
-        ImageChooserPanel('events_photo')
+        FieldPanel('slider'),
+        FieldPanel('events_photo')
     ]
 
     class Meta:
@@ -100,7 +98,7 @@ class SupportersPage(Page, MenuTitleable, PageDesignMixin):
     supporters = StreamField([
         ('category', HeadingBlock()),
         ('supporter', SupporterBlock()),
-    ], blank=True)
+    ], blank=True, use_json_field=False)
 
     parent_page_types = []
     subpage_types = []
@@ -111,7 +109,7 @@ class SupportersPage(Page, MenuTitleable, PageDesignMixin):
 
     content_panels = [
         FieldPanel('title'),
-        StreamFieldPanel('supporters'),
+        FieldPanel('supporters'),
     ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]
@@ -129,7 +127,7 @@ class TeamPage(Page, MenuTitleable, PageDesignMixin):
     )
     group1_members = StreamField([
         ('member', TeamMemberBlock())
-    ], blank=True, verbose_name='members')
+    ], blank=True, verbose_name='members', use_json_field=False)
     group2_title = models.CharField(
         max_length=50,
         blank=True,
@@ -138,7 +136,7 @@ class TeamPage(Page, MenuTitleable, PageDesignMixin):
     )
     group2_members = StreamField([
         ('member', TeamMemberBlock())
-    ], blank=True, verbose_name='members')
+    ], blank=True, verbose_name='members', use_json_field=False)
     group3_title = models.CharField(
         max_length=50,
         blank=True,
@@ -147,7 +145,7 @@ class TeamPage(Page, MenuTitleable, PageDesignMixin):
     )
     group3_members = StreamField([
         ('member', TeamMemberBlock())
-    ], blank=True, verbose_name='members')
+    ], blank=True, verbose_name='members', use_json_field=False)
 
     subpage_types = []
 
@@ -161,21 +159,21 @@ class TeamPage(Page, MenuTitleable, PageDesignMixin):
         FieldPanel('title'),
         MultiFieldPanel([
             FieldPanel('group1_title'),
-            StreamFieldPanel('group1_members'),
+            FieldPanel('group1_members'),
         ],
             heading="Team Group 1",
             classname="collapsible collapsed"
         ),
         MultiFieldPanel([
             FieldPanel('group2_title'),
-            StreamFieldPanel('group2_members'),
+            FieldPanel('group2_members'),
         ],
             heading="Team Group 2",
             classname="collapsible collapsed"
         ),
         MultiFieldPanel([
             FieldPanel('group3_title'),
-            StreamFieldPanel('group3_members'),
+            FieldPanel('group3_members'),
         ],
             heading="Team Group 3",
             classname="collapsible collapsed"
@@ -263,14 +261,14 @@ class AdoptionCentre(Page, MenuTitleable):
         FieldPanel('title'),
         MultiFieldPanel(
             [
-                ImageChooserPanel('dogs_image'),
+                FieldPanel('dogs_image'),
                 PageChooserPanel('dogs_page'),
             ],
             heading='Dogs page link',
         ),
         MultiFieldPanel(
             [
-                ImageChooserPanel('cats_image'),
+                FieldPanel('cats_image'),
                 PageChooserPanel('cats_page'),
             ],
             heading='Cats page link',
@@ -299,16 +297,16 @@ class ContactFormField(AbstractFormField):
 
 
 class ContactFormPage(MenuTitleable, WagtailCaptchaEmailForm):
-    column_1 = StreamField(ContentStreamBlock(), blank=True)
-    column_2 = StreamField(ContentStreamBlock(), blank=True)
+    column_1 = StreamField(ContentStreamBlock(), blank=True, use_json_field=False)
+    column_2 = StreamField(ContentStreamBlock(), blank=True, use_json_field=False)
     thank_you_text = RichTextField(blank=True)
 
     parent_page_types = []
     subpage_types = []
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('column_1'),
-        StreamFieldPanel('column_2'),
+        FieldPanel('column_1'),
+        FieldPanel('column_2'),
         FieldPanel('thank_you_text'),
         InlinePanel('form_fields', label="Form fields"),
         MultiFieldPanel([
@@ -366,7 +364,7 @@ class RedirectPage(Page):
         FieldPanel('title'),
         FieldPanel('link_external'),
         PageChooserPanel('link_page'),
-        DocumentChooserPanel('link_document'),
+        FieldPanel('link_document'),
         FieldPanel('new_tab')
     ]
 

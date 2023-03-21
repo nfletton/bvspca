@@ -2,11 +2,10 @@ from django.conf import settings
 from django.db import models
 from django.db.models import ForeignKey
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page, PageManager
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.models import Image
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
@@ -79,12 +78,14 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
             ('image', ImageChooserBlock())
         ],
         blank=True,
+        use_json_field=False
     )
     adoption_message = models.TextField(blank=True)
     updates = StreamField(
         ContentStreamBlock(required=False),
         verbose_name='Animal Updates',
         blank=True,
+        use_json_field=False
     )
 
     objects = AnimalManager()
@@ -104,10 +105,10 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
     subpage_types = []
 
     content_panels = [
-        ImageChooserPanel('main_photo'),
-        StreamFieldPanel('additional_photos'),
+        FieldPanel('main_photo'),
+        FieldPanel('additional_photos'),
         FieldPanel('adoption_message'),
-        StreamFieldPanel('updates'),
+        FieldPanel('updates'),
     ]
 
     def social_media_post_status(self):
@@ -290,7 +291,7 @@ class LocationSponsor(models.Model):
         FieldPanel('location'),
         FieldPanel('sponsor_name'),
         FieldPanel('url'),
-        ImageChooserPanel('logo'),
+        FieldPanel('logo'),
     ]
 
     def __str__(self):
