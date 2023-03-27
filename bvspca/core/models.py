@@ -99,6 +99,7 @@ class SupportersPage(Page, MenuTitleable, PageDesignMixin):
         ('category', HeadingBlock()),
         ('supporter', SupporterBlock()),
     ], blank=True, use_json_field=False)
+    body = StreamField(ContentStreamBlock(), verbose_name="Page body", blank=True, use_json_field=False)
 
     parent_page_types = []
     subpage_types = []
@@ -110,6 +111,7 @@ class SupportersPage(Page, MenuTitleable, PageDesignMixin):
     content_panels = [
         FieldPanel('title'),
         FieldPanel('supporters'),
+        FieldPanel('body'),
     ] + PageDesignMixin.content_panels
 
     promote_panels = Page.promote_panels + [FieldPanel('menu_title')]

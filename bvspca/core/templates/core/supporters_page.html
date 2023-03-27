@@ -1,5 +1,12 @@
 {% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    <div class="supporters">{{ page.supporters }}</div>
+  <div class="supporters">
+    {{ page.supporters }}
+    {% for block in page.body %}
+      {% include_block block %}
+    {% endfor %}
+  </div>
+
 {% endblock content %}
