@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.db.models import ForeignKey
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page, PageManager
@@ -257,7 +257,7 @@ class AnimalsPage(Page, MenuTitleable, PageDesignMixin):
 
 
 @register_setting(icon='fa-paw')
-class AnimalCountSettings(BaseSetting):
+class AnimalCountSettings(BaseSiteSetting):
     cats_adopted = models.PositiveIntegerField(default=0)
     cats_rescued = models.PositiveIntegerField(default=0)
     dogs_adopted = models.PositiveIntegerField(default=0)
