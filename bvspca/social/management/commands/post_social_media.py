@@ -23,7 +23,7 @@ class Command(BaseCommand):
             page_to_post = entry.page.specific
             if hasattr(page_to_post, 'social_media_post_status') and not page_to_post.social_media_post_status():
                 content = self.prepare_content(page_to_post)
-                self.twitter_post(content)
+                # self.twitter_post(content)
                 self.facebook_post(content)
                 entry.delete()
                 break
@@ -63,7 +63,7 @@ class Command(BaseCommand):
             if response.status_code != 200:
                 self.logger.error('Twitter post failed for page {}: {}'.format(content['name'], response.text))
         else:
-            self.logger.error('Twitter image upload failed for {}: {}'.format(content['image'].title, response.text))
+            self.logger.error('Twitter image upload failed: {}'.format(response.text))
 
     def prepare_content(self, page):
         page_image = page.social_media_post_image()
