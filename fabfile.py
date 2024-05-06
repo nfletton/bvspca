@@ -2,10 +2,10 @@ import time
 from os import path
 from os.path import expanduser
 
-from fabric.api import env, put, run, sudo, task
+from fabric.api import env, put, sudo, task
 from fabric.context_managers import prefix
 from fabric.contrib.project import rsync_project
-from fabric.operations import local, run
+from fabric.operations import run
 
 with open(expanduser('~') + '/ansible-playbooks/env/bvspca.py', 'r') as config:
     exec(config.read())
@@ -79,15 +79,15 @@ def set_permissions():
     for file in GROUP_NO_PERMS:
         remote_dir = env.remote_dir + '/' + file
         run(
-            'find ' + remote_dir + ' -type d -exec chmod 700 {} \; && find ' + remote_dir + ' -type f -exec chmod 600 {} \;')
+            'find ' + remote_dir + r' -type d -exec chmod 700 {} \; && find ' + remote_dir + r' -type f -exec chmod 600 {} \;')
     for file in GROUP_READ_PERMS:
         remote_dir = env.remote_dir + '/' + file
         run(
-            'find ' + remote_dir + ' -type d -exec chmod 750 {} \; && find ' + remote_dir + ' -type f -exec chmod 640 {} \;')
+            'find ' + remote_dir + r' -type d -exec chmod 750 {} \; && find ' + remote_dir + r' -type f -exec chmod 640 {} \;')
     for file in GROUP_RW_PERMS:
         remote_dir = env.remote_dir + '/' + file
         run(
-            'find ' + remote_dir + ' -type d -exec chmod 770 {} \; && find ' + remote_dir + ' -type f -exec chmod 660 {} \;')
+            'find ' + remote_dir + r' -type d -exec chmod 770 {} \; && find ' + remote_dir + r' -type f -exec chmod 660 {} \;')
 
 
 @task
