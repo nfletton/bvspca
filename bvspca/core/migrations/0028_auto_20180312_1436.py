@@ -2,8 +2,8 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -23,6 +23,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='homepage',
             name='slider',
-            field=wagtail.core.fields.StreamField((('slider_item', wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock(max_length=25)), ('summary', wagtail.core.blocks.TextBlock(max_length=60)), ('photo', wagtail.images.blocks.ImageChooserBlock(help_text='This image MUST BE EXACTLY 1400px by 475px')), ('page', wagtail.core.blocks.PageChooserBlock(required=False))))),), blank=True),
+            field=wagtail.fields.StreamField((('slider_item', wagtail.blocks.StructBlock((('title', wagtail.blocks.CharBlock(max_length=25)), ('summary', wagtail.blocks.TextBlock(max_length=60)), ('photo', wagtail.images.blocks.ImageChooserBlock(help_text='This image MUST BE EXACTLY 1400px by 475px')), ('page', wagtail.blocks.PageChooserBlock(required=False))))),), blank=True),
         ),
     ]

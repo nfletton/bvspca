@@ -3,10 +3,10 @@ from django.db import models
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from modelcluster.fields import ParentalKey
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, PageChooserPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel, PageChooserPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page
 from wagtail.search import index
 
 from bvspca.animals.models import Animal, AnimalCountSettings

@@ -5,9 +5,9 @@ from django.db import models
 from django.db.models import Q
 from django.utils.html import strip_tags
 from django.utils.text import Truncator
-from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page, PageManager
+from wagtail.admin.panels import FieldPanel, FieldRowPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page, PageManager
 from wagtail.search import index
 
 from bvspca.core.blocks import ContentStreamBlock

@@ -1,9 +1,9 @@
 from django.conf import settings
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page, PageManager
+from wagtail.admin.panels import FieldPanel
+from wagtail.fields import RichTextField, StreamField
+from wagtail.models import Page, PageManager
 from wagtail.search import index
 
 from bvspca.core.blocks import ContentStreamBlock

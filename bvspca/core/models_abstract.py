@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.db import models
-from wagtail.admin.edit_handlers import MultiFieldPanel, FieldPanel
-from wagtail.core.fields import StreamField
+from wagtail.admin.panels import MultiFieldPanel, FieldPanel
+from wagtail.fields import StreamField
 from wagtail.documents.blocks import DocumentChooserBlock
 
 

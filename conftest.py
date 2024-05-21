@@ -1,5 +1,5 @@
 import pytest
-from wagtail.core.models import Page, Site
+from wagtail.models import Page, Site
 
 from bvspca.animals.models import AnimalCountSettings
 

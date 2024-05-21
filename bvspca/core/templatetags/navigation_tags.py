@@ -1,6 +1,6 @@
 from django import template
 
-from wagtail.core.models import Page, Site
+from wagtail.models import Page, Site
 
 register = template.Library()
 # https://docs.djangoproject.com/en/1.9/howto/custom-template-tags/

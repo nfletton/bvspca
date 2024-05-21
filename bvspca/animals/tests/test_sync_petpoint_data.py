@@ -3,7 +3,7 @@ import datetime
 import pytest
 from django.core.management import call_command
 from lxml import etree
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 from bvspca.animals.petpoint import extract_animal_ids, extract_animal, extract_animal_adoption_dates
 from bvspca.animals.models import Animal

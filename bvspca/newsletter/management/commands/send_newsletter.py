@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from mailchimp3 import MailChimp
-from wagtail.core.models import Site
+from wagtail.models import Site
 
 from bvspca.animals.models import Animal
 

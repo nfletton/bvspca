@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from django.db import models
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 logger = logging.getLogger('bvspca.social')
 

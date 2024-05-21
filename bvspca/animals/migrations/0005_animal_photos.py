@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
-import wagtail.core.fields
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='animal',
             name='photos',
-            field=wagtail.core.fields.StreamField((('image', wagtail.images.blocks.ImageChooserBlock()),), blank=True),
+            field=wagtail.fields.StreamField((('image', wagtail.images.blocks.ImageChooserBlock()),), blank=True),
         ),
     ]

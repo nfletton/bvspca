@@ -3,8 +3,8 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.images.blocks
 
 
@@ -26,6 +26,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='adoptioncentre',
             name='body',
-            field=wagtail.core.fields.StreamField((('picture_links', wagtail.core.blocks.ListBlock(wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock(max_length=50)), ('image', wagtail.images.blocks.ImageChooserBlock()), ('page', wagtail.core.blocks.PageChooserBlock()))))),), blank=True),
+            field=wagtail.fields.StreamField((('picture_links', wagtail.blocks.ListBlock(wagtail.blocks.StructBlock((('title', wagtail.blocks.CharBlock(max_length=50)), ('image', wagtail.images.blocks.ImageChooserBlock()), ('page', wagtail.blocks.PageChooserBlock()))))),), blank=True),
         ),
     ]

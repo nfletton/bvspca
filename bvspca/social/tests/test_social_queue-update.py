@@ -2,7 +2,7 @@ from datetime import timedelta
 
 import pytest
 from django.utils import timezone
-from wagtail.core.models import Page
+from wagtail.models import Page
 
 from bvspca.animals.models import Animal
 from bvspca.social.interface import add_to_social_queue

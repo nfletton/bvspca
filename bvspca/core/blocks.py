@@ -1,8 +1,8 @@
 import uuid
 
 from wagtail.contrib.table_block.blocks import TableBlock
-from wagtail.core import blocks
-from wagtail.core.blocks import (CharBlock, ChoiceBlock, ListBlock, PageChooserBlock, RawHTMLBlock, RichTextBlock,
+from wagtail import blocks
+from wagtail.blocks import (CharBlock, ChoiceBlock, ListBlock, PageChooserBlock, RawHTMLBlock, RichTextBlock,
                                  StreamBlock,
                                  StructBlock, StructValue, TextBlock)
 from wagtail.documents.blocks import DocumentChooserBlock

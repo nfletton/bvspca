@@ -4,7 +4,7 @@ import PIL.Image
 import pytest
 from django.core.files.images import ImageFile
 from django.utils import timezone
-from wagtail.core.models import Page
+from wagtail.models import Page
 from wagtail.images import get_image_model
 
 from bvspca.animals.models import Animal

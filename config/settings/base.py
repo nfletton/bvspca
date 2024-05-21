@@ -51,7 +51,7 @@ THIRD_PARTY_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail.core',
+    'wagtail',
 
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
@@ -61,7 +61,6 @@ THIRD_PARTY_APPS = [
     'modelcluster',
 
     'captcha',
-    'wagtailfontawesome',
 ]
 
 # Apps specific for this project go here.

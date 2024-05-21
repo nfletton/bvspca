@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
-import wagtail.core.fields
+import wagtail.fields
 import wagtail.documents.blocks
 
 
@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='event',
             name='attachments',
-            field=wagtail.core.fields.StreamField((('document', wagtail.documents.blocks.DocumentChooserBlock(icon='fa-file-text')),), blank=True),
+            field=wagtail.fields.StreamField((('document', wagtail.documents.blocks.DocumentChooserBlock(icon='fa-file-text')),), blank=True),
         ),
     ]
