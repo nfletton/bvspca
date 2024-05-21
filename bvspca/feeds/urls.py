@@ -1,10 +1,10 @@
-from django.conf.urls import url
+from django.urls import re_path
 
 from bvspca.feeds.feeds import EventFeed, AllContentFeed, LatestNewsFeed, AnimalsFeed
 
 urlpatterns = [
-    url(r'^animals/$', AnimalsFeed()),
-    url(r'^events/$', EventFeed()),
-    url(r'^news/$', LatestNewsFeed()),
-    url(r'^all/$', AllContentFeed()),
+    re_path(r'^animals/$', AnimalsFeed()),
+    re_path(r'^events/$', EventFeed()),
+    re_path(r'^news/$', LatestNewsFeed()),
+    re_path(r'^all/$', AllContentFeed()),
 ]

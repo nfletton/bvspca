@@ -1,27 +1,27 @@
 # Local development dependencies go here
 -r base.txt
 
-psycopg2-binary==2.9.5  # https://github.com/psycopg/psycopg2
+psycopg2-binary==2.9.9  # https://github.com/psycopg/psycopg2
 
-django-coverage-plugin==3.0.0
+django-coverage-plugin==3.1.0
 
-django-extensions==3.2.1
-Werkzeug==2.2.3
-django-test-plus==2.2.1
-factory-boy==3.2.1
+django-extensions==3.2.3
+Werkzeug==3.0.3
+django-test-plus==2.2.3
+factory-boy==3.3.0
 
-django-debug-toolbar==3.8.1
+django-debug-toolbar==4.3.0
 
 # improved REPL
 ipdb==0.13.13
 
-flake8==6.0.0
+flake8==7.0.0
 
-pytest-django==4.5.2
-pytest-sugar==0.9.6
-pytest-xdist==3.2.1
+pytest-django==4.8.0
+pytest-sugar==1.0.0
+pytest-xdist==3.6.1
 
-pylint-django==2.5.3
+pylint-django==2.5.5
 pylint-common==0.2.5
 
 # Your custom requirements go here

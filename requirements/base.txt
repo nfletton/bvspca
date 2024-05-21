@@ -1,26 +1,26 @@
-django>=3.2,<3.3
+django>=4.2,<4.3
 
 # Configuration
-django-environ==0.10
+django-environ==0.11.2
 
 # Forms
 django-braces==1.15.0
 django-crispy-forms==1.14.0
 
 # Models
-django-model-utils==4.3.1
+django-model-utils==4.5.1
 
 # Password storage
-argon2-cffi==21.3.0
+argon2-cffi==23.1.0
 
 # Time zones support
-pytz==2022.7.1
+pytz==2024.1
 
 # Your custom requirements go here
 wagtail>=5.2,<5.3
 django-recaptcha==3.0.0
-mailchimp3==3.0.17
-django-ical==1.8.3
-TwitterApi==2.8.1
+mailchimp3==3.0.21
+django-ical==1.9.2
+TwitterApi==2.8.2
 facebook-sdk==3.1.0
-lxml==4.9.0
+lxml==4.9.4
