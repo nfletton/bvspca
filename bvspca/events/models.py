@@ -61,7 +61,7 @@ class Event(Page, MetaTagable, Attachable, PageTypeMixin):
         required=False),
         verbose_name="Extra Content",
         blank=True,
-        use_json_field=False)
+        use_json_field=True)
 
     objects = EventManager()
 

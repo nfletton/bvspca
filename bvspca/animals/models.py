@@ -78,14 +78,14 @@ class Animal(Page, MetaTagable, SocialMediaPostable):
             ('image', ImageChooserBlock())
         ],
         blank=True,
-        use_json_field=False
+        use_json_field=True
     )
     adoption_message = models.TextField(blank=True)
     updates = StreamField(
         ContentStreamBlock(required=False),
         verbose_name='Animal Updates',
         blank=True,
-        use_json_field=False
+        use_json_field=True
     )
 
     objects = AnimalManager()

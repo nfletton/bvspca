@@ -47,7 +47,7 @@ class News(Page, Attachable, PageTypeMixin):
         required=False),
         verbose_name="Extra Content",
         blank=True,
-        use_json_field=False)
+        use_json_field=True)
 
     objects = NewsManager()
 

@@ -19,7 +19,7 @@ from .models_abstract import Attachable, MenuTitleable, SendMailMixin, PageDesig
 
 
 class ContentPage(Page, MenuTitleable, Attachable, PageDesignMixin):
-    body = StreamField(ContentStreamBlock(), verbose_name="Page body", blank=True, use_json_field=False)
+    body = StreamField(ContentStreamBlock(), verbose_name="Page body", blank=True, use_json_field=True)
 
     search_fields = Page.search_fields + [
         index.SearchField('body'),
@@ -49,7 +49,7 @@ class ContentPage(Page, MenuTitleable, Attachable, PageDesignMixin):
 class HomePage(Page):
     slider = StreamField([
         ('slider_item', SliderBlock())
-    ], blank=True, use_json_field=False)
+    ], blank=True, use_json_field=True)
 
     events_photo = models.ForeignKey(
         'wagtailimages.Image',
@@ -98,8 +98,8 @@ class SupportersPage(Page, MenuTitleable, PageDesignMixin):
     supporters = StreamField([
         ('category', HeadingBlock()),
         ('supporter', SupporterBlock()),
-    ], blank=True, use_json_field=False)
-    body = StreamField(ContentStreamBlock(), verbose_name="Page body", blank=True, use_json_field=False)
+    ], blank=True, use_json_field=True)
+    body = StreamField(ContentStreamBlock(), verbose_name="Page body", blank=True, use_json_field=True)
 
     parent_page_types = []
     subpage_types = []
@@ -129,7 +129,7 @@ class TeamPage(Page, MenuTitleable, PageDesignMixin):
     )
     group1_members = StreamField([
         ('member', TeamMemberBlock())
-    ], blank=True, verbose_name='members', use_json_field=False)
+    ], blank=True, verbose_name='members', use_json_field=True)
     group2_title = models.CharField(
         max_length=50,
         blank=True,
@@ -138,7 +138,7 @@ class TeamPage(Page, MenuTitleable, PageDesignMixin):
     )
     group2_members = StreamField([
         ('member', TeamMemberBlock())
-    ], blank=True, verbose_name='members', use_json_field=False)
+    ], blank=True, verbose_name='members', use_json_field=True)
     group3_title = models.CharField(
         max_length=50,
         blank=True,
@@ -147,7 +147,7 @@ class TeamPage(Page, MenuTitleable, PageDesignMixin):
     )
     group3_members = StreamField([
         ('member', TeamMemberBlock())
-    ], blank=True, verbose_name='members', use_json_field=False)
+    ], blank=True, verbose_name='members', use_json_field=True)
 
     subpage_types = []
 
@@ -299,8 +299,8 @@ class ContactFormField(AbstractFormField):
 
 
 class ContactFormPage(MenuTitleable, WagtailCaptchaEmailForm):
-    column_1 = StreamField(ContentStreamBlock(), blank=True, use_json_field=False)
-    column_2 = StreamField(ContentStreamBlock(), blank=True, use_json_field=False)
+    column_1 = StreamField(ContentStreamBlock(), blank=True, use_json_field=True)
+    column_2 = StreamField(ContentStreamBlock(), blank=True, use_json_field=True)
     thank_you_text = RichTextField(blank=True)
 
     parent_page_types = []
