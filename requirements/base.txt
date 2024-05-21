@@ -17,7 +17,7 @@ argon2-cffi==21.3.0
 pytz==2022.7.1
 
 # Your custom requirements go here
-wagtail>=5.0,<5.1
+wagtail>=5.1,<5.2
 django-recaptcha==3.0.0
 mailchimp3==3.0.17
 django-ical==1.8.3
