@@ -10,9 +10,7 @@
 
 {% if photo %}
   {% image photo width-1200 as social_photo %}
-  <meta name="twitter:card" content="summary_large_image">
   <meta name="og:image" content="{{ root_url }}{{ social_photo.url }}">
-  <meta name="twitter:image:src" content="{{ root_url }}{{ social_photo.url }}">
   <meta name="og:title" content="{{ social_title }}">
   <meta name="og:description" content="{{ social_description }}">
   <meta name="og:url" content="{{ page_url }}">

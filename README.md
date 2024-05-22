@@ -25,13 +25,11 @@ are encouraged to make use of the code as they see fit.
   to allow:
     - end-users to interact with animal information directly
       on the website
-    - improved social interactions with the website via Facebook, 
-      Twitter and email marketing
+    - improved social interactions with the website via Facebook and email marketing
     - improved SEO
     - ability to allow additional content to be associated with animals
       that is not supported by PetPoint
 * Automated posting of new and recently adopted animals to Facebook
-  and Twitter
 * Automated regular email listing new arrivals and recently adopted 
   animals
 
@@ -85,7 +83,7 @@ The newsletter includes:
 
 The social app provides a simple queue where pages can be appended for
 later posting to social media. A [management command](#cronjobs) is run
-to dequeue items and post them to Facebook and Twitter.
+to dequeue items and post them to Facebook.
 
 Pages implementing the SocialMediaPostable abstract class can be added 
 to the queue. Currently only the Animal page model implements this.
@@ -118,10 +116,6 @@ environment
 | FACEBOOK_PAGE_ACCESS_TOKEN | social | | Facebook page access token |
 | FACEBOOK_PAGE_ID | social | | Facebook page id |
 | FB_PIXEL_ID | core | | |
-| TWITTER_CONSUMER_KEY | social | | Twitter consumer key |
-| TWITTER_CONSUMER_SECRET | social | | Twitter consumer secret |
-| TWITTER_ACCESS_TOKEN_KEY | social | | Twitter access token key |
-| TWITTER_ACCESS_TOKEN_SECRET | social | | Twitter access token secret |
 
 ## Development Commands
 
