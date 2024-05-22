@@ -90,32 +90,35 @@ to the queue. Currently only the Animal page model implements this.
 
 ## Deployment
 ### <a name="venv"/>Evironment Variables
-The following environment variables need to be set in a production
-environment
+The following environment variables need to be available in production and local environments. They
+can be made available in `.env.production` and `.env.local` files in the project root where they are read
+at startup in `config/settings/base.py`.
 
-| Name | App |Example | Note |
-|---|---|---|---|
-| DJANGO_SECRET_KEY | | | |
-| DJANGO_SETTINGS_MODULE | | config.settings.production | |
-| DJANGO_ADMIN_URL | | r'my-secret-django-admin-path' | Defaults to 'djadmin' in development |
-| DATABASE_URL | | | |
-| WAGTAIL_ADMIN_URL | | r'my-secret-wagtail-admin-path' | Defaults to 'admin' in development |
-| RECAPTCHA_SITE_KEY | | | Google Recaptcha |
-| RECAPTCHA_SECRET_KEY | | |  Google Recaptcha |
-| GOOGLE_ANALYTICS_ID | core | | |
-| ADDTHIS_PUB_ID  | core | | |
-| MAILCHIMP_USERNAME | newsletter | | Required by 'newsletter' app |
-| MAILCHIMP_SECRET_KEY | newsletter | | Required by 'newsletter' app |
-| MAILCHIMP_LIST_ID | newsletter | 83c4276af1 | MailChimp list ID that newsletter will be distributed to |
-| MAILCHIMP_TEMPLATE_ID | newsletter | 351313 | MailChimp template ID that newsletter will be created with |
-| MAILCHIMP_SUBJECT | newsletter | | Subject line of email |
-| MAILCHIMP_FROM_NAME | newsletter | | From name of email |
-| MAILCHIMP_REPLY_TO | newsletter | | Reply to address of email |
-| PETPOINT_AUTH_KEY | animals | | PetPoint Authorization Key |
-| WAGTAILADMIN_NOTIFICATION_FROM_EMAIL | | | Admin From email |
-| FACEBOOK_PAGE_ACCESS_TOKEN | social | | Facebook page access token |
-| FACEBOOK_PAGE_ID | social | | Facebook page id |
-| FB_PIXEL_ID | core | | |
+| Name                                 | App | Example                         | Note                                                       |
+|--------------------------------------|---|---------------------------------|------------------------------------------------------------|
+| HOME                                 | | home/bvspca                     | Project root                                               |
+| DJANGO_SECRET_KEY                    | |                                 |                                                            |
+| DJANGO_SETTINGS_MODULE               | | config.settings.production      |                                                            |
+| DJANGO_ADMIN_URL                     | | r'my-secret-django-admin-path'  | Defaults to 'djadmin' in development                       |
+| DATABASE_URL                         | |                                 |                                                            |
+| PATH                                 | | $PATH:/home/bvspca/BVSPCA/bin   | Python virtual environment                                 |
+| WAGTAIL_ADMIN_URL                    | | r'my-secret-wagtail-admin-path' | Defaults to 'admin' in development                         |
+| RECAPTCHA_SITE_KEY                   | |                                 | Google Recaptcha                                           |
+| RECAPTCHA_SECRET_KEY                 | |                                 | Google Recaptcha                                           |
+| GOOGLE_ANALYTICS_ID                  | core |                                 |                                                            |
+| ADDTHIS_PUB_ID                       | core |                                 |                                                            |
+| MAILCHIMP_USERNAME                   | newsletter |                                 | Required by 'newsletter' app                               |
+| MAILCHIMP_SECRET_KEY                 | newsletter |                                 | Required by 'newsletter' app                               |
+| MAILCHIMP_LIST_ID                    | newsletter | 83c4276af1                      | MailChimp list ID that newsletter will be distributed to   |
+| MAILCHIMP_TEMPLATE_ID                | newsletter | 351313                          | MailChimp template ID that newsletter will be created with |
+| MAILCHIMP_SUBJECT                    | newsletter |                                 | Subject line of email                                      |
+| MAILCHIMP_FROM_NAME                  | newsletter |                                 | From name of email                                         |
+| MAILCHIMP_REPLY_TO                   | newsletter |                                 | Reply to address of email                                  |
+| PETPOINT_AUTH_KEY                    | animals |                                 | PetPoint Authorization Key                                 |
+| WAGTAILADMIN_NOTIFICATION_FROM_EMAIL | |                                 | Admin From email                                           |
+| FACEBOOK_PAGE_ACCESS_TOKEN           | social |                                 | Facebook page access token                                 |
+| FACEBOOK_PAGE_ID                     | social |                                 | Facebook page id                                           |
+| FB_PIXEL_ID                          | core |                                 |                                                            |
 
 ## Development Commands
 
