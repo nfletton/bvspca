@@ -15,7 +15,7 @@
     "gulp": "^4.0.2",
     "gulp-livereload": "^4.0.2",
     "mini-css-extract-plugin": "^2.6.1",
-    "node-sass": "^7.0.1",
+    "node-sass": "^7.0.3",
     "css-minimizer-webpack-plugin": "^4.0.0",
     "postcss-loader": "^7.0.0",
     "postcss-preset-env": "^7.7.1",
