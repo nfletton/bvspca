@@ -18,6 +18,7 @@ pytz==2024.1
 
 # Your custom requirements go here
 wagtail>=5.2,<5.3
+wagtail-modeladmin>=2.2.0,<2.3.0
 django-recaptcha==3.0.0
 mailchimp3==3.0.21
 django-ical==1.9.2

@@ -53,12 +53,12 @@ THIRD_PARTY_APPS = [
     'wagtail.admin',
     'wagtail',
 
-    'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
     'wagtail.contrib.settings',
 
     'taggit',
     'modelcluster',
+    'wagtail_modeladmin',
 
     'captcha',
 ]
