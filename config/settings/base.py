@@ -53,6 +53,7 @@ THIRD_PARTY_APPS = [
     'wagtail.admin',
     'wagtail',
 
+    'wagtail.contrib.search_promotions',
     'wagtail.contrib.table_block',
     'wagtail.contrib.settings',
 
